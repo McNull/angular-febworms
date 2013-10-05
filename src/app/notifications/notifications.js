@@ -3,10 +3,11 @@ angular.module('myApp').factory('notifications', function() {
 
   var messages = [];
 
-  function add(text, type) {
+  function add(text, type, ttl) {
     messages.push({
       text: text,
-      type: type || 'info'
+      type: type || 'info',
+      ttl: ttl || 0
     });
   }
 
@@ -18,10 +19,19 @@ angular.module('myApp').factory('notifications', function() {
     messages.length = 0;
   }
 
+  function tick() {
+    if(messages.length) {
+      _.remove(messages, function(message) {
+        return message.ttl-- <= 0;
+      });
+    }
+  }
+
   return {
     add: add,
     remove: remove,
     clear: clear,
+    tick: tick,
     messages: messages
   };
 });
@@ -53,10 +63,6 @@ angular.module('myApp').directive('notifications', function() {
 
 angular.module('myApp').factory('errorHttpInterceptor', function ($q, notifications) {
 
-  function displayError(message) {
-    notifications.add(message, 'error');
-  }
-
   return function (promise) {
     return promise.then(function (response) {
       return response;
@@ -72,6 +78,12 @@ angular.module('myApp').factory('errorHttpInterceptor', function ($q, notificati
 });
 
 if(!window.jasmine) {
+  angular.module('myApp').run(function($rootScope, notifications) {
+    $rootScope.$on("$locationChangeStart", function ( /* event, nextLocation, currentLocation */) {
+      notifications.tick();
+    });
+  });
+
   angular.module('myApp').config(function ($httpProvider) {
     $httpProvider.responseInterceptors.push('errorHttpInterceptor');
   });

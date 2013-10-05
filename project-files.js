@@ -27,7 +27,7 @@ var files = {
       'vendor/angular/angular.js',
       'vendor/angular-resource/angular-resource.js',
       'vendor/angular-route/angular-route.js',
-      'vendor/lodash/dist/lodash.js'
+      'vendor/lodash/dist/lodash.compat.js'
     ],
     test: [
       'vendor/angular-mocks/angular-mocks.js'

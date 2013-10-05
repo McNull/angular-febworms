@@ -14,7 +14,7 @@ angular.module('myApp').controller('FormEditController', function ($scope, Form,
 
       (function (name) {
         $scope.form.$save().then(function () {
-          notifications.add("Schema for " + name + " saved.");
+          notifications.add("Schema for " + name + " saved.", 'info', 1);
           $location.path('/form');
         });
       })(name);

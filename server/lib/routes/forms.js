@@ -24,7 +24,8 @@ module.exports.addRoutes = function(app, config) {
 
   app.post('/api/form', function(req, res) {
 
-    req.body.id = _.max(forms, { id: 1 });
+    var max = _.max(forms, 'id') || 0;
+    req.body.id = max === -Infinity ? 1 : max.id + 1;
 
     forms.push(req.body);
 
