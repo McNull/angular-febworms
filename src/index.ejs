@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+<%
+    var styles = helpers.getIncludes('css');
+    _.forEach(styles, function(style) {
+%>      <link rel="stylesheet" href="<%=style%>"/>
+<%
+    });
+%>
+</head>
+<body ng-app="myApp">
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div data-navbar></div>
+            <div data-notifications></div>
+            <div class="container-fluid" ng-view>
+            </div>
+        </div>
+    </div>
+</div>
+<%
+    var scripts = helpers.getIncludes('js');
+    _.forEach(scripts, function(script) {
+%><script src="<%=script%>"></script>
+<%
+    });
+%>
+</body>
+</html>

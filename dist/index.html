@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+      <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap.css"/>
+      <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap-responsive.css"/>
+      <link rel="stylesheet" href="febworms/febworms.css"/>
+      <link rel="stylesheet" href="app/app.css"/>
+      <link rel="stylesheet" href="app/navbar/navbar.css"/>
+
+</head>
+<body ng-app="myApp">
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div data-navbar></div>
+            <div data-notifications></div>
+            <div class="container-fluid" ng-view>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="vendor/angular/angular.js"></script>
+<script src="vendor/angular-resource/angular-resource.js"></script>
+<script src="vendor/angular-route/angular-route.js"></script>
+<script src="vendor/lodash/dist/lodash.js"></script>
+<script src="febworms/febworms.js"></script>
+<script src="febworms/edit/feb-edit-controller.js"></script>
+<script src="febworms/edit/feb-edit-directive.js"></script>
+<script src="febworms/templates-febworms.js"></script>
+<script src="app/app.js"></script>
+<script src="app/common/directives.js"></script>
+<script src="app/form/edit/form-edit.js"></script>
+<script src="app/form/list/form-list-controller.js"></script>
+<script src="app/form/list/form-list-directive.js"></script>
+<script src="app/navbar/navbar-controller.js"></script>
+<script src="app/navbar/navbar-directive.js"></script>
+<script src="app/notifications/notifications.js"></script>
+<script src="app/templates-app.js"></script>
+
+</body>
+</html>
