@@ -1,14 +1,16 @@
 
 var files = {
   febworms: {
-    js: [
-      'febworms/febworms.js',
-      'febworms/**/*.js',
-      '!febworms/**/*.test.js'
+    js: 'febworms/febworms.min.js',
+    jsSrc: [
+      'src/febworms/febworms.js',
+      'src/febworms/**/*.js',
+      '!src/febworms/**/*.test.js'
     ],
-    css: [
-      'febworms/febworms.css',
-      'febworms/**/*.css'
+    css: 'febworms/febworms.min.css',
+    cssSrc: [
+      'src/febworms/febworms.css',
+      'src/febworms/**/*.css'
     ],
     test: [
       'febworms/**/*.test.js'
@@ -43,14 +45,16 @@ var files = {
   },
   
   app: {
-    js: [
-      'app/app.js',
-      'app/**/*.js',
-      '!app/**/*.test.js'
+    js: 'app/app.min.js',
+    jsSrc: [
+      'src/app/app.js',
+      'src/app/**/*.js',
+      '!src/app/**/*.test.js'
     ],
-    css: [
-      'app/app.css',
-      'app/**/*.css'
+    css: 'app/app.min.css',
+    cssSrc: [
+      'src/app/app.css',
+      'src/app/**/*.css'
     ],
     test: [
       'app/**/*.test.js'

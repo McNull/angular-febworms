@@ -1,4 +1,0 @@
-.control-required .control-label:after {
-    content: ' *';
-    color: #888;
-}

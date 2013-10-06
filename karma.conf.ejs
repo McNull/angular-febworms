@@ -10,9 +10,10 @@ module.exports = function(config) {
 
 
 <%
+var isReleaseTarget = helpers.target === 'release';
 var files = helpers.getIncludes('js', ['vendor'], '.')
                    .concat(helpers.getIncludes('test', ['vendor'], '.'))
-                   .concat(helpers.getIncludes('js', ['febworms', 'app'], 'src', true))
+                   .concat(helpers.getIncludes('js', ['febworms', 'app'], isReleaseTarget ? 'dist' : 'src', true))
                    .concat(helpers.getIncludes('html2js', ['febworms', 'app'], 'dist', true))
                    .concat(helpers.getIncludes('test', ['febworms', 'app'], 'src', true));
 %>

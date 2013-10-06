@@ -37,12 +37,12 @@ angular.module('myApp').factory('notifications', function() {
 });
 
 angular.module('myApp').config(function($provide) {
-  $provide.decorator("$exceptionHandler", function($delegate, notifications) {
+  $provide.decorator("$exceptionHandler", [ '$delegate', 'notifications', function($delegate, notifications) {
     return function(exception, cause) {
       $delegate(exception, cause);
       notifications.add(exception.toString(), 'error');
     };
-  });
+  }]);
 });
 
 angular.module('myApp').controller('NotificationsController', function($scope, notifications) {

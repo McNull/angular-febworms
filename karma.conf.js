@@ -13,25 +13,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      "vendor/angular/angular.js",
-      "vendor/angular-resource/angular-resource.js",
-      "vendor/angular-route/angular-route.js",
-      "vendor/lodash/dist/lodash.compat.js",
+      "vendor/angular/angular.min.js",
+      "vendor/angular-resource/angular-resource.min.js",
+      "vendor/angular-route/angular-route.min.js",
+      "vendor/lodash/dist/lodash.compat.min.js",
       "vendor/angular-mocks/angular-mocks.js",
-      "src/febworms/febworms.js",
-      "src/febworms/edit/feb-edit-controller.js",
-      "src/febworms/edit/feb-edit-directive.js",
-      "src/app/app.js",
-      "src/app/common/directives.js",
-      "src/app/form/config.js",
-      "src/app/form/edit.js",
-      "src/app/form/index.js",
-      "src/app/jsonify/jsonify.js",
-      "src/app/navbar/navbar-controller.js",
-      "src/app/navbar/navbar-directive.js",
-      "src/app/notifications/notifications.js",
-      "dist/febworms/templates-febworms.js",
-      "dist/app/templates-app.js",
+      "dist/febworms/febworms.min.js",
+      "dist/app/app.min.js",
       "src/app/navbar/navbar-controller.test.js"
 ],
 

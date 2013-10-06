@@ -3,7 +3,9 @@ var fs = require('fs');
 
 module.exports = function(grunt, projectFiles) {
 
-  if(grunt.option('target') === 'common') {
+  var target = grunt.option('target');
+
+  if(target === 'common') {
     throw Error("Don't play smart with me: 'common' is not a valid target to build");
   }
 
@@ -52,11 +54,11 @@ module.exports = function(grunt, projectFiles) {
     },
     render: {
       index: {
-        options: { helpers: { getIncludes: getIncludes } },
+        options: { helpers: { getIncludes: getIncludes, target: target } },
         files: { 'dist/index.html': [ 'src/index.ejs' ] }
       },
       karmaConf: {
-        options: { helpers: { getIncludes: getIncludes } },
+        options: { helpers: { getIncludes: getIncludes, target: target } },
         files: { 'karma.conf.js': [ 'karma.conf.ejs' ] }
       }
     }
