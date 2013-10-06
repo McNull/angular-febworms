@@ -5,5 +5,11 @@ module.exports = function(grunt) {
 
   grunt.log.writeln('Target set to: "' + target + '". Specify with --target=(debug/release).');
 
-  require('./grunt/grunt-' + target)(grunt);
+  var projectFiles = require('./grunt/project-files-' + target);
+  var gruntCommon = require('./grunt/grunt-common');
+  var gruntTarget = require('./grunt/grunt-' + target);
+
+  var commonConfig = gruntCommon(grunt, projectFiles);
+
+  gruntTarget(grunt, commonConfig);
 };

@@ -1,4 +1,4 @@
-angular.module('myApp').directive('confirm', ['$window', function($window) {
+angular.module('myApp').directive('confirm', function($window) {
   return {
     restrict: 'A',
     priority: 100,
@@ -13,4 +13,4 @@ angular.module('myApp').directive('confirm', ['$window', function($window) {
       });
     }
   };
-}]);
+});
