@@ -93,7 +93,7 @@ module.exports = function (grunt, commonConfig) {
 
   //grunt.registerTask('build', [ 'vendor', 'app', 'febworms', 'render:index', 'render:karmaConf', 'clean:postBuild' ]);
 
-  grunt.registerTask('build', [ 'clean:tmp', 'vendor', 'app', 'febworms', 'ejs', 'clean:postBuild' ]);
+  grunt.registerTask('build', [ 'clean:tmp', 'vendor', 'app', 'febworms', 'ejs', 'clean:postBuild', 'test' ]);
   grunt.registerTask('default', 'build');
 
 };

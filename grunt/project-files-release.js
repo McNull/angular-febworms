@@ -32,6 +32,10 @@ var files = {
       'vendor/lodash/dist/lodash.compat.min.js'
     ],
     test: [
+      'vendor/angular/angular.js',
+      'vendor/angular-resource/angular-resource.js',
+      'vendor/angular-route/angular-route.js',
+      'vendor/lodash/dist/lodash.compat.js',
       'vendor/angular-mocks/angular-mocks.js'
     ],
     css: [

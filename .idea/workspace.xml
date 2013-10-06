@@ -2,34 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b682dd1b-9f15-4f7d-bfdd-0a7f30e73497" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/app.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/common/directives.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/form/config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/form/edit.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/form/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/jsonify/jsonify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/navbar/navbar-controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/navbar/navbar-directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/navbar/navbar.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/notifications/notifications.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/templates-app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/febworms/edit/feb-edit-controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/febworms/edit/feb-edit-directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/febworms/febworms.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/febworms/febworms.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/febworms/templates-febworms.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendor/angular-resource/angular-resource.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendor/angular-route/angular-route.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendor/angular/angular.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendor/bootstrap-css/css/bootstrap-responsive.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/vendor/bootstrap-css/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/karma.conf.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/karma.conf.ejs" afterPath="$PROJECT_DIR$/karma/karma.conf.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grunt/grunt-common.js" afterPath="$PROJECT_DIR$/grunt/grunt-common.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grunt/grunt-release.js" afterPath="$PROJECT_DIR$/grunt/grunt-release.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/karma.conf.ejs" afterPath="$PROJECT_DIR$/karma.conf.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/karma.conf.js" afterPath="$PROJECT_DIR$/karma.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/notifications/notifications.js" afterPath="$PROJECT_DIR$/src/app/notifications/notifications.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grunt/project-files-release.js" afterPath="$PROJECT_DIR$/grunt/project-files-release.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -54,47 +30,7 @@
     <favorites_list name="angular-febworms" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="karma.conf.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/karma.conf.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="192" selection-end="192" vertical-scroll-proportion="0.28380635" vertical-offset="0" max-vertical-offset="1207">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="karma.conf.ejs" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/karma.conf.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="76" selection-start="661" selection-end="661" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="1173">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="notifications.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/notifications/notifications.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="17" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1615">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.ngmin.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tmp/app/app.ngmin.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="214" column="25" selection-start="5731" selection-end="5731" vertical-scroll-proportion="0.0" vertical-offset="3422" max-vertical-offset="4675">
-              <folding>
-                <marker date="1381076501000" expanded="true" signature="5786:5874" placeholder="{...}" />
-                <marker date="1381076501000" expanded="true" signature="5792:5868" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -112,8 +48,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/app/form/common.js" />
-        <option value="$PROJECT_DIR$/dist/vendor/bootstrap-css/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/src/app/form/routes.js" />
         <option value="$PROJECT_DIR$/src/app/app.js" />
         <option value="$PROJECT_DIR$/src/app/form/config.js" />
@@ -121,13 +55,15 @@
         <option value="$PROJECT_DIR$/dist/app/common/directives.js" />
         <option value="$PROJECT_DIR$/grunt/grunt-debug.js" />
         <option value="$PROJECT_DIR$/dist/app/app.min.css" />
-        <option value="$PROJECT_DIR$/grunt/project-files-release.js" />
         <option value="$PROJECT_DIR$/dist/app/app.min.js" />
-        <option value="$PROJECT_DIR$/grunt/grunt-common.js" />
-        <option value="$PROJECT_DIR$/karma.conf.ejs" />
-        <option value="$PROJECT_DIR$/grunt/grunt-release.js" />
-        <option value="$PROJECT_DIR$/karma.conf.js" />
         <option value="$PROJECT_DIR$/src/app/notifications/notifications.js" />
+        <option value="$PROJECT_DIR$/grunt/project-files-release.js" />
+        <option value="$PROJECT_DIR$/karma.conf.ejs" />
+        <option value="$PROJECT_DIR$/karma.conf.js" />
+        <option value="$PROJECT_DIR$/karma/karma.conf.ejs" />
+        <option value="$PROJECT_DIR$/karma/karma.conf.js" />
+        <option value="$PROJECT_DIR$/grunt/grunt-common.js" />
+        <option value="$PROJECT_DIR$/grunt/grunt-release.js" />
       </list>
     </option>
   </component>
@@ -219,7 +155,6 @@
       <sortByType ProjectPane="false" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -235,38 +170,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tmp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -330,32 +233,39 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="karma" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angular-febworms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angular-febworms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="notifications" />
+              <option name="myItemId" value="grunt" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="preferences.externalTools" />
     <property name="TODO_SCOPE" value="Project Files" />
+    <property name="options.lastSelected" value="preferences.externalTools" />
+    <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -365,6 +275,7 @@
       <recent name="$PROJECT_DIR$/src/vendor" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/karma" />
       <recent name="$PROJECT_DIR$/grunt" />
       <recent name="$PROJECT_DIR$/src/app/form" />
       <recent name="$PROJECT_DIR$/src/app/navbar" />
@@ -391,7 +302,7 @@
         <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_Grunt_Grunt Build" />
       </method>
     </configuration>
-    <configuration default="false" name="Karma Run" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="$PROJECT_DIR$/karma.conf.js">
+    <configuration default="false" name="Karma Run" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="$PROJECT_DIR$/karma/karma.conf.js">
       <envs />
       <RunnerSettings RunnerId="KarmaJavaScriptTestRunnerDebug" />
       <RunnerSettings RunnerId="KarmaJavaScriptTestRunnerRun" />
@@ -429,23 +340,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1174" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993513" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993513" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900834" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29889297" sideWeight="0.5810936" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29889297" sideWeight="0.5810936" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39851713" sideWeight="0.49973643" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808155" sideWeight="0.23510806" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4189064" sideWeight="0.7648919" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="122" width="1720" height="974" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961932" sideWeight="0.49973643" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993513" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -461,50 +372,102 @@
     <MESSAGE value="Notification list TTL" />
     <MESSAGE value="$routeProvider promise refactor" />
     <MESSAGE value="Grunt debug refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Grunt debug refactor" />
+    <MESSAGE value="Grunt Release Target" />
+    <option name="LAST_COMMIT_MESSAGE" value="Grunt Release Target" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/navbar/navbar-controller.test.js</url>
-          <line>5</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/navbar/navbar-controller.test.js</url>
-          <line>6</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="43" />
+      <option name="time" value="45" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grunt/project-files-debug.js">
+    <entry file="file://$PROJECT_DIR$/vendor/angular/angular.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1258">
+        <state line="27" column="0" selection-start="11323" selection-end="11323" vertical-scroll-proportion="0.33223686" vertical-offset="189" max-vertical-offset="3196" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/angular-mocks/angular-mocks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1949" column="32" selection-start="62527" selection-end="62527" vertical-scroll-proportion="0.55233496" vertical-offset="32688" max-vertical-offset="33354" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/karma-jasmine/lib/jasmine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="597" column="0" selection-start="15816" selection-end="15816" vertical-scroll-proportion="0.33223686" vertical-offset="9947" max-vertical-offset="45713" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmp/app/app.ngmin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="214" column="25" selection-start="5731" selection-end="5731" vertical-scroll-proportion="0.0" vertical-offset="3422" max-vertical-offset="4675" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/notifications/notifications.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="17" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1615">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grunt/project-files-release.js">
+    <entry file="file://$PROJECT_DIR$/karma/karma.conf.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="29" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="341" selection-end="341" vertical-scroll-proportion="0.24727273" vertical-offset="0" max-vertical-offset="595">
+        <state line="12" column="49" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1326">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grunt/grunt-release.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="98" selection-start="2685" selection-end="2685" vertical-scroll-proportion="0.85809684" vertical-offset="1101" max-vertical-offset="1768">
+        <state line="68" column="9" selection-start="1718" selection-end="1718" vertical-scroll-proportion="0.072916664" vertical-offset="1114" max-vertical-offset="1768">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grunt/project-files-release.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="40" selection-start="807" selection-end="807" vertical-scroll-proportion="0.9933222" vertical-offset="0" max-vertical-offset="1394">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="28" selection-start="352" selection-end="352" vertical-scroll-proportion="0.5340314" vertical-offset="0" max-vertical-offset="573">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/navbar/navbar-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/navbar/navbar-controller.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="59" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0" vertical-offset="56" max-vertical-offset="2482">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/karma/karma.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1207">
+          <folding>
+            <marker date="1381078455000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1381078455000" expanded="true" signature="-1:-1" placeholder="{&quot;basePath&quot;: '../'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grunt/grunt-common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="0" selection-start="2048" selection-end="2048" vertical-scroll-proportion="2.1569283" vertical-offset="0" max-vertical-offset="1462">
           <folding />
         </state>
       </provider>
@@ -516,82 +479,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grunt/grunt-common.js">
+    <entry file="file://$PROJECT_DIR$/grunt/project-files-debug.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="70" selection-start="1586" selection-end="1586" vertical-scroll-proportion="0.8196995" vertical-offset="529" max-vertical-offset="1360">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/angular/angular.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="11323" selection-end="11323" vertical-scroll-proportion="0.33223686" vertical-offset="189" max-vertical-offset="3196">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/angular-mocks/angular-mocks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1949" column="32" selection-start="62527" selection-end="62527" vertical-scroll-proportion="0.55233496" vertical-offset="32688" max-vertical-offset="33354">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/karma-jasmine/lib/jasmine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="597" column="0" selection-start="15816" selection-end="15816" vertical-scroll-proportion="0.33223686" vertical-offset="9947" max-vertical-offset="45713">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/navbar/navbar-controller.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="302" selection-end="302" vertical-scroll-proportion="0.24637681" vertical-offset="34" max-vertical-offset="2482">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tmp/app/app.ngmin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="214" column="25" selection-start="5731" selection-end="5731" vertical-scroll-proportion="0.0" vertical-offset="3422" max-vertical-offset="4675">
-          <folding>
-            <marker date="1381076501000" expanded="true" signature="5786:5874" placeholder="{...}" />
-            <marker date="1381076501000" expanded="true" signature="5792:5868" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/notifications/notifications.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="17" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/karma.conf.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="76" selection-start="661" selection-end="661" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="1173">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/karma.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="192" selection-end="192" vertical-scroll-proportion="0.28380635" vertical-offset="0" max-vertical-offset="1207">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1258">
           <folding />
         </state>
       </provider>

@@ -39,7 +39,7 @@ module.exports = function(grunt, projectFiles) {
   var gruntConfig = {
     files: projectFiles,
     clean: {
-      render: [ 'dist/index.html', 'karma.conf.js' ],
+      render: [ 'dist/index.html', 'karma/karma.conf.js' ],
       febworms: [ 'dist/febworms' ],
       tmp: [ 'tmp' ],
       app: [ 'dist/app' ],
@@ -59,15 +59,21 @@ module.exports = function(grunt, projectFiles) {
       },
       karmaConf: {
         options: { helpers: { getIncludes: getIncludes, target: target } },
-        files: { 'karma.conf.js': [ 'karma.conf.ejs' ] }
+        files: { 'karma/karma.conf.js': [ 'karma/karma.conf.ejs' ] }
+      }
+    },
+    karma: {
+      unit: {
+        configFile: 'karma/karma.conf.js'
       }
     }
   };
 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-ejs-render');
-
+  grunt.loadNpmTasks('grunt-karma');
   grunt.registerTask('ejs', [ 'clean:render', 'render:index', 'render:karmaConf' ]);
+  grunt.registerTask('test', [ 'render:karmaConf', 'karma:unit' ]);
 
   return gruntConfig;
 };

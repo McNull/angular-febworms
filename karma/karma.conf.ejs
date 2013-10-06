@@ -2,7 +2,7 @@ module.exports = function(config) {
   config.set({
 
     // base path, that will be used to resolve files and exclude
-    basePath: '',
+    basePath: '../',
 
 
     // frameworks to use
@@ -11,11 +11,20 @@ module.exports = function(config) {
 
 <%
 var isReleaseTarget = helpers.target === 'release';
-var files = helpers.getIncludes('js', ['vendor'], '.')
-                   .concat(helpers.getIncludes('test', ['vendor'], '.'))
-                   .concat(helpers.getIncludes('js', ['febworms', 'app'], isReleaseTarget ? 'dist' : 'src', true))
-                   .concat(helpers.getIncludes('html2js', ['febworms', 'app'], 'dist', true))
-                   .concat(helpers.getIncludes('test', ['febworms', 'app'], 'src', true));
+var files = [];
+
+// We don't want the minified vendor js files when testing -- they don't always contain the full error messages.
+// In release mode the 'js' properties only contain the minified targets -- the 'test' properties
+// contain all the nonminified vendor scripts.
+
+if(!isReleaseTarget) {
+    files = helpers.getIncludes('js', ['vendor'], '.')
+}
+
+files = files.concat(helpers.getIncludes('test', ['vendor'], '.'))
+             .concat(helpers.getIncludes('js', ['febworms', 'app'], isReleaseTarget ? 'dist' : 'src', true))
+             .concat(helpers.getIncludes('html2js', ['febworms', 'app'], 'dist', true))
+             .concat(helpers.getIncludes('test', ['febworms', 'app'], 'src', true));
 %>
 
     // list of files / patterns to load in the browser
