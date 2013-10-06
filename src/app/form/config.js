@@ -10,18 +10,18 @@ angular.module('myApp').factory('Form',function ($resource) {
         templateUrl: 'app/form/edit.tmpl.html',
         controller: 'FormEditController',
         resolve: {
-          form: function ($route, Form) {
+          form: ['$route', 'Form', function ($route, Form) {
             return new Form({ schema: {} });
-          }
+          }]
         }
       });
       $routeProvider.when('/form/edit/:id', {
         templateUrl: 'app/form/edit.tmpl.html',
         controller: 'FormEditController',
         resolve: {
-          form: function ($route, Form) {
+          form: ['$route', 'Form',function ($route, Form) {
             return Form.get({ id: $route.current.params.id }).$promise;
-          }
+          }]
         }
       });
     }
