@@ -2,30 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b682dd1b-9f15-4f7d-bfdd-0a7f30e73497" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/form/config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/form/edit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/jsonify/jsonify.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/jsonify/jsonify.tmpl.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/form/edit/form-edit.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/form/list/form-list-controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/app/form/list/form-list-directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/form/create.tmpl.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/form/edit/form-edit.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/form/edit/form-edit.tmpl.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/form/list/form-list-directive.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/form/list/form-list-controller.js" afterPath="$PROJECT_DIR$/src/app/form/index.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/form/list/form-list.tmpl.html" afterPath="$PROJECT_DIR$/src/app/form/index.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/app/app.js" afterPath="$PROJECT_DIR$/dist/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/app.js" afterPath="$PROJECT_DIR$/src/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/form/edit.tmpl.html" afterPath="$PROJECT_DIR$/src/app/form/edit.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/febworms/edit/feb-edit-controller.js" afterPath="$PROJECT_DIR$/dist/febworms/edit/feb-edit-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/edit/feb-edit-controller.js" afterPath="$PROJECT_DIR$/src/febworms/edit/feb-edit-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/edit/feb-edit.tmpl.html" afterPath="$PROJECT_DIR$/src/febworms/edit/feb-edit.tmpl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/data/forms.json" afterPath="$PROJECT_DIR$/server/data/forms.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/karma.conf.js" afterPath="$PROJECT_DIR$/karma.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/app/templates-app.js" afterPath="$PROJECT_DIR$/dist/app/templates-app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/febworms/templates-febworms.js" afterPath="$PROJECT_DIR$/dist/febworms/templates-febworms.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="angular-febworms.iws" />
