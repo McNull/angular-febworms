@@ -1,2 +1,37 @@
-<h1>Edit FebWorms Schema</h1>
-<div data-form-edit></div>
+<h1>{{ title }}</h1>
+<div>
+
+    <form novalidate name="myForm" class="form-horizontal">
+        <!-- Application specific form information -->
+        <fieldset>
+            <legend>General Information</legend>
+            <div class="control-group control-required">
+                <label class="control-label" for="formName">Name</label>
+                <div class="controls">
+                    <input type="text"
+                           id="formName"
+                           name="formName"
+                           placeholder="The name of the form"
+                           ng-model="form.name"
+                           ng-required="true">
+                    <span ng-if="myForm.formName.$error.required && myForm.formName.$dirty" class="help-inline">This field is required.</span>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+    <div data-feb-edit data-schema="form.schema"></div>
+
+    <div class="form-horizontal">
+        <div class="form-actions">
+            <a class="btn btn-primary" ng-disabled="myForm.$invalid || !form.schema.isValid" ng-click="save()">Save changes</a>
+            <a class="btn" href="#/form">Cancel</a>
+        </div>
+    </div>
+
+    <div>
+        <pre>{{ form | j$on }}</pre>
+    </div>
+
+</div>
+

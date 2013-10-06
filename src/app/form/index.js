@@ -1,8 +1,8 @@
-angular.module('myApp').controller('FormListController', function ($scope, Form, $window, notifications) {
+angular.module('myApp').controller('FormIndexController', function ($scope, Form, $window, notifications) {
   $scope.items = Form.query();
 
   $scope.removeItem = function (item) {
-    var name = item.schema.name;
+    var name = item.name;
 
     (function (name) {
       if ($window.confirm("Remove schema '" + name + "' from list?")) {
@@ -12,6 +12,5 @@ angular.module('myApp').controller('FormListController', function ($scope, Form,
         });
       }
     })(name);
-
   };
 });

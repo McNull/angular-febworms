@@ -1,8 +1,16 @@
 [
   {
     "schema": {
-      "name": "bnnbnbnbn"
+      "isValid": true
     },
+    "name": "test",
     "id": 1
+  },
+  {
+    "schema": {
+      "isValid": true
+    },
+    "name": "dhdhdhd",
+    "id": 2
   }
 ]
