@@ -7,6 +7,7 @@
             <legend>General Information</legend>
             <div class="control-group control-required">
                 <label class="control-label" for="formName">Name</label>
+
                 <div class="controls">
                     <input type="text"
                            id="formName"
@@ -23,14 +24,20 @@
     <div data-feb-edit data-schema="form.schema"></div>
 
     <div class="form-horizontal">
+
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="displayDebugData"> Display debug information
+            </label>
+        </div>
+
+        <div ng-if="displayDebugData" data-jsonify="form"></div>
+
         <div class="form-actions">
-            <a class="btn btn-primary" ng-disabled="myForm.$invalid || !form.schema.isValid" ng-click="save()">Save changes</a>
+            <a class="btn btn-primary" ng-disabled="myForm.$invalid || !form.schema.isValid" ng-click="save()">Save
+                changes</a>
             <a class="btn" href="#/form">Cancel</a>
         </div>
-    </div>
-
-    <div>
-        <pre>{{ form | j$on }}</pre>
     </div>
 
 </div>

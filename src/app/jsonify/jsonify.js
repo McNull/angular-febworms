@@ -5,6 +5,9 @@ angular.module('myApp').directive('jsonify', function() {
     replace: true,
     scope: {
       jsonify: "="
+    },
+    link: function postLink(scope, iElement, iAttrs) {
+
     }
   };
 });
