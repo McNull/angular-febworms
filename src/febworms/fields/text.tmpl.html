@@ -1,0 +1,13 @@
+<label class="control-label" for="{{ field.id }}">{{ field.displayName }}</label>
+<div class="controls">
+    <input type="{{ field.type }}"
+           id="{{ field.id }}"
+           placeholder="{{ field.placeholder }}"
+           ng-model="field.value"
+           ng-required="field.validation.required"
+           ng-minlength="{{ field.validation.minlength }}"
+           ng-maxlength="{{ field.validation.maxlength }}"
+           ng-pattern="/{{ field.validation.pattern }}/"
+           ng-disabled="isDisabled(field)">
+    <!--<div class="inline" ng-include="'input-validation-summary.html'"></div>-->
+</div>

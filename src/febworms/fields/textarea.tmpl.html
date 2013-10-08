@@ -1,0 +1,10 @@
+<label class="control-label" for="{{ field.id }}">{{ field.displayName }}</label>
+<div class="controls">
+    <textarea id="{{ field.id }}"
+              ng-model="field.value"
+              ng-required="field.validation.required"
+              ng-minlength="{{ field.validation.minlength }}"
+              ng-maxlength="{{ field.validation.maxlength }}"
+              ng-pattern="/{{ field.validation.pattern }}/">
+    </textarea>
+</div>

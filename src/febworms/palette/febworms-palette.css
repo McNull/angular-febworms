@@ -1,0 +1,39 @@
+.febworms-palette .controls {
+    margin-left: 0;
+}
+
+.febworms-palette .control-label {
+    float: none;
+    width: auto;
+    padding-top: 0;
+    text-align: left;
+}
+
+.febworms-palette .control-group {
+    margin-bottom: 0;
+}
+
+.febworms-palette-field {
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.febworms-palette-field:hover {
+    background-color: #f5f5f5;
+}
+.febworms-palette-field-overlay {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    -moz-opacity: 0.0;
+    opacity:.0;
+    filter: alpha(opacity=0);
+    /* Needed by IE */
+    background: #FFF;
+    cursor: pointer;
+}

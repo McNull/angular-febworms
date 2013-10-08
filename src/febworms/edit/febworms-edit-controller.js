@@ -1,4 +1,4 @@
-angular.module('febworms').controller('febEditController', function($scope) {
+angular.module('febworms').controller('febwormsEditController', function($scope) {
 
   $scope.schema.isValid = true;
   // $scope.schema is set by the parent controller
