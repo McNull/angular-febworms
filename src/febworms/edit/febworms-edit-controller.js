@@ -1,22 +1,24 @@
 angular.module('febworms').controller('febwormsEditController', function($scope) {
 
-  $scope.schema.isValid = true;
-  // $scope.schema is set by the parent controller
-  // For some unknown reason the schema property isn't available directly.
+  if(!$scope.schema) {
+    throw Error('Schema attribute not set.')
+  }
 
-//  $scope.$watch('schema.name', function(value) {
-//    console.log(value);
-//  });
-//  $scope.$watch('myForm.$valid', function(value) {
-//    console.log($scope.schema);
-////    $scope.schema.isValid = value;
-//  });
+  // TODO: This should be dynamic
+  $scope.schema.$_invalid = true;
 
-//  $scope.$watch('schema', function(value) {
-//    console.log('schema', value);
-//  });
-//
-//  $scope.fuck = function() {
-//    console.log($scope.schema);
-//  }
+  $scope.addFieldToSchema = function(field) {
+    if(!angular.isArray($scope.schema.fields)) {
+      $scope.schema.fields = [];
+    }
+
+    var copy = angular.copy(field);
+
+    var fieldCount = $scope.schema.fields.length;
+    copy.id = copy.name = 'field' + (fieldCount + 1);
+
+    $scope.schema.fields.push(copy);
+  };
+
+
 });

@@ -34,7 +34,7 @@
         <div ng-if="displayDebugData" data-jsonify="form"></div>
 
         <div class="form-actions">
-            <a class="btn btn-primary" ng-disabled="myForm.$invalid || !form.schema.isValid" ng-click="save()">Save
+            <a class="btn btn-primary" ng-disabled="myForm.$invalid || !form.schema.$_invalid" ng-click="save()">Save
                 changes</a>
             <a class="btn" href="#/form">Cancel</a>
         </div>

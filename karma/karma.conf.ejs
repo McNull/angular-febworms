@@ -13,13 +13,14 @@ module.exports = function(config) {
 var isReleaseTarget = helpers.target === 'release';
 var files = [];
 
+/* IGNORE
 // We don't want the minified vendor js files when testing -- they don't always contain the full error messages.
 // In release mode the 'js' properties only contain the minified targets -- the 'test' properties
 // contain all the nonminified vendor scripts.
 
-if(!isReleaseTarget) {
+ if(!isReleaseTarget) {
     files = helpers.getIncludes('js', ['vendor'], '.')
-}
+} IGNORE */
 
 files = files.concat(helpers.getIncludes('test', ['vendor'], '.'))
              .concat(helpers.getIncludes('js', ['febworms', 'app'], isReleaseTarget ? 'dist' : 'src', true))

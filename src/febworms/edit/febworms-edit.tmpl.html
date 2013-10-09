@@ -3,12 +3,17 @@
         <form novalidate name="febwormsCanvas" class="form-horizontal">
             <fieldset>
                 <legend>Canvas</legend>
-
+                <ul ng-repeat="field in schema.fields">
+                    <li>
+                        {{ field.displayName }}
+                    </li>
+                </ul>
             </fieldset>
         </form>
     </div>
     <div class="span3">
         <div data-febworms-palette></div>
+        <!--<div data-febworms-palette data-schema="schema"></div>-->
     </div>
 </div>
 

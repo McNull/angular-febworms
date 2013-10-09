@@ -3,7 +3,9 @@
         <fieldset>
             <legend>Palette</legend>
             <div ng-repeat="field in fields" class="febworms-palette-field">
-                <div class="febworms-palette-field-overlay"></div>
+                <div class="febworms-palette-field-overlay" ng-dblclick="addFieldToSchema(field)">
+                    <button class="btn btn-mini" type="button" ng-click="addFieldToSchema(field)">Add</button>
+                </div>
                 <div class="control-group">
                     <div ng-include="field.templateUrl"></div>
                 </div>
