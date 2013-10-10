@@ -2,7 +2,7 @@
     <form novalidate name="febwormsPalette" class="form-horizontal">
         <fieldset>
             <legend>Palette</legend>
-            <div ng-repeat="field in fields" class="febworms-palette-field">
+            <div ng-repeat="field in palette.fields" class="febworms-palette-field">
                 <div class="febworms-palette-field-overlay" ng-dblclick="addFieldToSchema(field)">
                     <button class="btn btn-mini" type="button" ng-click="addFieldToSchema(field)">Add</button>
                 </div>

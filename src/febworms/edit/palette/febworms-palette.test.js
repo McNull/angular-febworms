@@ -25,7 +25,7 @@ describe('febworms palette', function () {
 
       // Assert
 
-      expect($scope.fields).toBe(febwormsConfig.fields);
+      expect($scope.palette.fields).toBe(febwormsConfig.fields);
     });
   });
 

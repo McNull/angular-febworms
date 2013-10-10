@@ -6,6 +6,6 @@ angular.module('febworms').directive('febwormsPalette',function () {
   };
 }).controller('febwormsPaletteController', function ($scope, febwormsConfig) {
 
-    $scope.fields = febwormsConfig.fields;
+    $scope.palette = { fields: febwormsConfig.fields };
 
-  });
+});
