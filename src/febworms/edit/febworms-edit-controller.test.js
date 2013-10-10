@@ -127,4 +127,83 @@ describe('febworms-edit-controller', function() {
     });
 
   });
+
+  describe('removeFieldFromSchema', function() {
+
+    it('should remove field by index', function() {
+
+      // Arrange
+
+      var index = 1;
+
+      $scope.schema.fields = [
+        { name: 'Ein' }, { name: 'Zwein' }, { name: 'Drein' }
+      ];
+
+      $controller('febwormsEditController', { $scope: $scope });
+
+      // Act
+
+      $scope.removeFieldFromSchema(index);
+
+      // Assert
+
+      expect($scope.schema.fields.length).toBe(2);
+      expect(_.find($scope.schema.fields, { name: 'Zwein' })).toBeFalsy();
+    });
+  });
+
+  describe('swapFieldsInSchema', function() {
+
+    it('should swap fields by indices', function() {
+
+      // Arrange
+
+      $scope.schema.fields = [
+        { name: 'Ein' }, { name: 'Zwein' }, { name: 'Drein' }
+      ];
+
+      $controller('febwormsEditController', { $scope: $scope });
+
+      // Act
+
+      $scope.swapFieldsInSchema(0, 1);
+
+      // Assert
+
+      expect($scope.schema.fields[0].name).toBe('Zwein');
+      expect($scope.schema.fields[1].name).toBe('Ein');
+      expect($scope.schema.fields[2].name).toBe('Drein');
+
+    });
+
+    it('should NOT swap fields on array edges', function() {
+
+      // Arrange
+
+      $controller('febwormsEditController', { $scope: $scope });
+
+      function isUnchangedAfterSwap(idx1, idx2) {
+
+        $scope.schema.fields = [
+          { name: 'Ein' }, { name: 'Zwein' }, { name: 'Drein' }
+        ];
+
+        $scope.swapFieldsInSchema(idx1, idx2);
+
+        return $scope.schema.fields[0] && $scope.schema.fields[0].name === 'Ein' &&
+               $scope.schema.fields[1] && $scope.schema.fields[1].name === 'Zwein' &&
+               $scope.schema.fields[2] && $scope.schema.fields[2].name === 'Drein';
+      }
+
+      // Act & Assert
+
+      expect(isUnchangedAfterSwap(-1,0)).toBeTruthy();
+      expect(isUnchangedAfterSwap(0,-1)).toBeTruthy();
+      expect(isUnchangedAfterSwap(3,0)).toBeTruthy();
+      expect(isUnchangedAfterSwap(0,3)).toBeTruthy();
+      expect(isUnchangedAfterSwap(-1,3)).toBeTruthy();
+      expect(isUnchangedAfterSwap(3,-1)).toBeTruthy();
+    });
+  });
 });
