@@ -7,100 +7,24 @@
           "id": "field1",
           "displayName": "Textbox",
           "name": "field1"
-        },
-        {
-          "type": "email",
-          "id": "field2",
-          "templateType": "text",
-          "displayName": "Email",
-          "name": "field2"
-        },
-        {
-          "type": "password",
-          "id": "field3",
-          "templateType": "text",
-          "displayName": "Password",
-          "name": "field3"
-        },
-        {
-          "type": "checkbox",
-          "id": "field5",
-          "displayName": "Checkbox",
-          "name": "field5"
-        },
-        {
-          "type": "radiobuttonlist",
-          "id": "field7",
-          "displayName": "Radiobutton List",
-          "options": [
-            {
-              "value": "1",
-              "text": "Option 1"
-            },
-            {
-              "value": "2",
-              "text": "Option 2"
-            },
-            {
-              "value": "3",
-              "text": "Option 3"
-            }
-          ],
-          "value": "1",
-          "name": "field7"
-        },
-        {
-          "type": "textarea",
-          "id": "field4",
-          "displayName": "Textarea",
-          "name": "field4"
-        },
-        {
-          "type": "selectlist",
-          "id": "field8",
-          "displayName": "Select List",
-          "options": [
-            {
-              "value": "1",
-              "text": "Option 1"
-            },
-            {
-              "value": "2",
-              "text": "Option 2"
-            },
-            {
-              "value": "3",
-              "text": "Option 3"
-            }
-          ],
-          "value": "1",
-          "name": "field8"
-        },
-        {
-          "type": "checkboxlist",
-          "id": "field6",
-          "displayName": "Checkbox List",
-          "options": [
-            {
-              "value": "1",
-              "text": "Option 1",
-              "checked": true
-            },
-            {
-              "value": "2",
-              "text": "Option 2",
-              "checked": true
-            },
-            {
-              "value": "3",
-              "text": "Option 3"
-            }
-          ],
-          "name": "field6"
         }
       ]
     },
     "name": "My Little Form",
     "id": 1
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "text",
+          "id": "field1",
+          "displayName": "Textbox",
+          "name": "field2"
+        }
+      ]
+    },
+    "name": "Gedoe",
+    "id": 2
   }
 ]

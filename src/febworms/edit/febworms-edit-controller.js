@@ -8,17 +8,27 @@ angular.module('febworms').controller('febwormsEditController', function ($scope
     $scope.schema.fields = [];
   }
 
-  // TODO: This should be dynamic
-  $scope.schema.$_invalid = true;
+  $scope.$watch(function(scope) {
+
+    scope.schema.$_invalid = false;
+
+    _.forEach(scope.schema.fields, function(field) {
+      if(field.$_invalid) {
+        $scope.schema.$_invalid = true;
+        return false; // break
+      }
+    });
+  });
 
   // - - - 8-< - - - - - - - - - - - - - - - - - - - - -
+
+  var nextAutoFieldCount = 1;
 
   $scope.addFieldToSchema = function (field) {
 
     var copy = angular.copy(field);
 
-    var fieldCount = $scope.schema.fields.length;
-    copy.id = copy.name = 'field' + (fieldCount + 1);
+    copy.id = copy.name = 'field' + nextAutoFieldCount++;
 
     $scope.schema.fields.push(copy);
   };

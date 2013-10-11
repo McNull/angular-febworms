@@ -1,0 +1,76 @@
+<div class="febworms-field-properties">
+    <div class="febworms-field-properties-label">Field Properties</div>
+    <form novalidate class="form-horizontal" name="fieldPropertiesForm">
+
+        <!-- displayName -->
+        <div class="control-group" ng-class="{ 'error': fieldPropertiesForm.displayName.$invalid }">
+            <label class="control-label">Display name</label>
+
+            <div class="controls">
+                <input type="text"
+                       name="displayName"
+                       ng-model="field.displayName"/>
+
+                <div data-febworms-canvas-field-validation
+                     data-form-field="fieldPropertiesForm.displayName"></div>
+            </div>
+        </div>
+
+        <!-- fieldName -->
+        <div class="control-group" ng-class="{ 'error': fieldPropertiesForm.fieldName.$invalid }">
+            <label class="control-label">Name</label>
+
+            <div class="controls">
+                <input type="text"
+                       name="fieldName"
+                       ng-model="field.name"
+                       ng-required="true"/>
+
+                <div data-febworms-canvas-field-validation
+                     data-form-field="fieldPropertiesForm.fieldName"></div>
+            </div>
+        </div>
+
+
+
+        <!--<div class="control-group">-->
+        <!--<label class="control-label">Initial value</label>-->
+
+        <!--<div class="controls">-->
+        <!--<input type="text"-->
+        <!--ng-model="field.value"/>-->
+        <!--</div>-->
+        <!--</div>-->
+
+
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="field.$_displayPropertiesDebugData"> Display debug
+                information
+            </label>
+        </div>
+
+        <div ng-if="field.$_displayPropertiesDebugData" data-jsonify="fieldPropertiesForm"></div>
+        <div>
+            <!--<div class="control-group">-->
+            <!--<label class="control-label">Display name</label>-->
+
+            <!--<div class="controls">-->
+            <!--<input type="text"-->
+            <!--ng-model="field.displayName"/>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="control-group">-->
+            <!--<label class="control-label">Initial value</label>-->
+
+            <!--<div class="controls">-->
+            <!--<input type="text"-->
+            <!--ng-model="field.value"/>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+
+
+    </form>
+</div>

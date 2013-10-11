@@ -20,9 +20,15 @@
     background-color: #f5f5f5;
 }
 
-.febworms-canvas .control-group, .febworms-palette .control-group {
+.febworms-canvas .febworms-field > .control-group, .febworms-palette .control-group {
     margin-bottom: 0;
 }
+
+.febworms-canvas .febworms-field.error {
+    background-color: #f2dede;
+    border-color: #b94a48;
+}
+
 
 .febworms-field-overlay {
     position: absolute;

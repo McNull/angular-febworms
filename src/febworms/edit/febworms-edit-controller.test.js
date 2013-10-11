@@ -22,6 +22,66 @@ describe('febworms-edit-controller', function() {
     expect(controller).toBeDefined();
   });
 
+  describe('schema (in)valid', function() {
+
+    it('should set schema valid on empty field list', function() {
+
+      // Arrange
+
+      $controller('febwormsEditController', { $scope: $scope });
+
+      // Act
+
+      $scope.$digest();
+
+      // Assert
+
+      expect($scope.schema.$_invalid).toBeFalsy();
+    });
+
+    it('should set schema to invalid with invalid fields', function() {
+
+      // Arrange
+
+      $scope.schema.fields = [
+        { $_invalid: true }
+      ];
+
+      $controller('febwormsEditController', { $scope: $scope });
+
+      // Act
+
+      $scope.$digest();
+
+      // Assert
+
+      expect($scope.schema.$_invalid).toBeTruthy();
+    });
+
+    it('should set schema back to valid when field is valid again', function() {
+
+      // Arrange
+
+      $scope.schema.fields = [
+        { $_invalid: true }
+      ];
+
+      $controller('febwormsEditController', { $scope: $scope });
+      $scope.$digest();
+
+      // Act
+
+      var before = $scope.schema.$_invalid;
+      $scope.schema.fields[0].$_invalid = false;
+      $scope.$digest();
+      var after = $scope.schema.$_invalid;
+      // Assert
+
+      expect(before).toBeTruthy();
+      expect(after).toBeFalsy();
+    });
+  });
+
   describe('addFieldToSchema', function() {
 
     it('should create addFieldToSchema function on scope', function() {
@@ -124,6 +184,49 @@ describe('febworms-edit-controller', function() {
 
       expect(result1.id).not.toBe(result2.id);
       expect(result1.name).not.toBe(result2.name);
+    });
+
+    it('should generate a unique id and name after modification of list', function() {
+
+      // Arrange
+
+      $controller('febwormsEditController', { $scope: $scope });
+
+      var displayName1 = 'DisplayName1';
+      var field1 = new febworms.Field(displayName1);
+
+      var displayName2 = 'DisplayName2';
+      var field2 = new febworms.Field(displayName2);
+
+      var displayName3 = 'DisplayName3';
+      var field3 = new febworms.Field(displayName3);
+
+      $scope.addFieldToSchema(field1);
+      $scope.addFieldToSchema(field2);
+
+      // Act
+
+      $scope.removeFieldFromSchema(field1);
+      $scope.addFieldToSchema(field3);
+
+      var result1 = _.find($scope.schema.fields, { displayName: displayName1 });
+      var result2 = _.find($scope.schema.fields, { displayName: displayName2 });
+      var result3 = _.find($scope.schema.fields, { displayName: displayName3 });
+
+      // Assert
+
+      expect(result1).toBeUndefined();
+
+      expect(result3).toBeDefined();
+      expect(result3.id).toBeDefined();
+      expect(result3.name).toBeDefined();
+
+      expect(result2).toBeDefined();
+      expect(result2.id).toBeDefined();
+      expect(result2.name).toBeDefined();
+
+      expect(result3.id).not.toBe(result2.id);
+      expect(result3.name).not.toBe(result2.name);
     });
 
   });
