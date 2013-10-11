@@ -8,16 +8,18 @@ angular.module('febworms').controller('febwormsEditController', function ($scope
     $scope.schema.fields = [];
   }
 
-  $scope.$watch(function(scope) {
+  $scope.$watch(function (scope) {
 
-    scope.schema.$_invalid = false;
+    if (scope.schema) {
+      scope.schema.$_invalid = false;
 
-    _.forEach(scope.schema.fields, function(field) {
-      if(field.$_invalid) {
-        $scope.schema.$_invalid = true;
-        return false; // break
-      }
-    });
+      _.forEach(scope.schema.fields, function (field) {
+        if (field.$_invalid) {
+          $scope.schema.$_invalid = true;
+          return false; // break
+        }
+      });
+    }
   });
 
   // - - - 8-< - - - - - - - - - - - - - - - - - - - - -
@@ -42,9 +44,7 @@ angular.module('febworms').controller('febwormsEditController', function ($scope
   // - - - 8-< - - - - - - - - - - - - - - - - - - - - -
 
   $scope.swapFieldsInSchema = function (idx1, idx2) {
-    if(idx1 <= -1 || idx2 <= -1 ||
-      idx1 >= $scope.schema.fields.length ||
-      idx2 >= $scope.schema.fields.length) {
+    if (idx1 <= -1 || idx2 <= -1 || idx1 >= $scope.schema.fields.length || idx2 >= $scope.schema.fields.length) {
       return;
     }
 
@@ -53,17 +53,19 @@ angular.module('febworms').controller('febwormsEditController', function ($scope
 
   // - - - 8-< - - - - - - - - - - - - - - - - - - - - -
 
-  $scope.initField = function(field) {
+  $scope.initField = function (field) {
 
-    if(!field.type) {
+    if (!field.type) {
       throw Error('Field has no type.');
     }
 
+    var areas = [ 'palette', 'canvas', 'properties' ];
+
     field.$_templateUrl = field.$_templateUrl || [];
 
-    field.$_templateUrl['palette'] = field.$_templateUrl['palette'] || febwormsUtils.getTemplateUrl(field, 'palette');
-    field.$_templateUrl['canvas'] = field.$_templateUrl['canvas'] || febwormsUtils.getTemplateUrl(field, 'canvas');
-
+    _.forEach(areas, function (area) {
+      field.$_templateUrl[area] = field.$_templateUrl[area] || febwormsUtils.getTemplateUrl(field, area);
+    });
   };
 
   // - - - 8-< - - - - - - - - - - - - - - - - - - - - -

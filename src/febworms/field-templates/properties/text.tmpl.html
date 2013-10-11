@@ -1,0 +1,25 @@
+<div class="control-group" ng-class="{ 'error': fieldPropertiesForm.fieldValue.$invalid }">
+    <label class="control-label">Initial value</label>
+
+    <div class="controls">
+        <input type="{{ field.type }}"
+               name="fieldValue"
+               ng-model="field.value"/>
+
+        <div data-febworms-canvas-field-validation
+             data-form-field="fieldPropertiesForm.fieldValue"></div>
+    </div>
+</div>
+
+<div class="control-group" ng-class="{ 'error': fieldPropertiesForm.fieldPlaceholder.$invalid }">
+    <label class="control-label">Placeholder text</label>
+
+    <div class="controls">
+        <input type="text"
+               name="fieldPlaceholder"
+               ng-model="field.placeholder"/>
+
+        <div data-febworms-canvas-field-validation
+             data-form-field="fieldPropertiesForm.fieldPlaceholder"></div>
+    </div>
+</div>

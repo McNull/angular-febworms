@@ -78,6 +78,28 @@ describe('febwormsUtils', function () {
       expect($templateCache.get).toHaveBeenCalledWith(defaultCacheKey);
     });
 
+    it('should NOT fallback to the default area when the specified area is "properties"', function () {
+      // Arrange
+
+      var field = new febworms.Field('myType');
+      var area = 'properties';
+      var areaCacheKey = febwormsUtils.formatTemplateUrl(field.type, area);
+      var defaultCacheKey = febwormsUtils.formatTemplateUrl(field.type, 'default');
+      var expected = febwormsUtils.formatTemplateUrl('not-in-cache');
+
+      spyOn($templateCache, 'get');
+
+      // Act
+
+      var result = febwormsUtils.getTemplateUrl(field, area);
+
+      // Assert
+
+      expect($templateCache.get).toHaveBeenCalledWith(areaCacheKey);
+      expect($templateCache.get).not.toHaveBeenCalledWith(defaultCacheKey);
+      expect(result).toBe(expected);
+    });
+
     it('should return "not-in-cache" template', function () {
       // Arrange
 

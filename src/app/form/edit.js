@@ -12,7 +12,7 @@ angular.module('myApp').controller('FormEditController', function ($scope, form,
 //  }
 
   $scope.save = function () {
-    if ($scope.myForm.$valid) {
+    if ($scope.myForm.$valid && !$scope.form.schema.$_invalid) {
       var name = $scope.form.name;
 
       (function (name) {

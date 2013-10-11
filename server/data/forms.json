@@ -5,26 +5,42 @@
         {
           "type": "text",
           "id": "field1",
-          "displayName": "Textbox",
-          "name": "field1"
+          "displayName": "",
+          "placeholder": "Got some text for me?",
+          "value": "",
+          "name": "ddddd"
+        },
+        {
+          "type": "textarea",
+          "id": "field3",
+          "displayName": "Textarea",
+          "name": "field3"
+        },
+        {
+          "type": "checkboxlist",
+          "id": "field4",
+          "displayName": "Checkbox List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1",
+              "checked": true
+            },
+            {
+              "value": "2",
+              "text": "Option 2",
+              "checked": true
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "name": "field4"
         }
       ]
     },
     "name": "My Little Form",
     "id": 1
-  },
-  {
-    "schema": {
-      "fields": [
-        {
-          "type": "text",
-          "id": "field1",
-          "displayName": "Textbox",
-          "name": "field2"
-        }
-      ]
-    },
-    "name": "Gedoe",
-    "id": 2
   }
 ]

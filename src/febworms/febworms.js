@@ -63,7 +63,11 @@ angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
         var cached = $templateCache.get(templateUrl);
 
         if (!cached) {
-          if (area !== this.defaultArea) {
+
+          // Url is not in cache -- fallback to default area.
+          // Properties area will never fallback to default area.
+
+          if (area !== 'properties' && area !== this.defaultArea) {
             templateUrl = this.getTemplateUrl(field, this.defaultArea);
           } else {
             return this.formatTemplateUrl('not-in-cache');
