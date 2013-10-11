@@ -1,28 +1,37 @@
 [
   {
     "schema": {
-      "isValid": true,
       "fields": [
         {
-          "id": "field1",
-          "name": "field1",
-          "displayName": "Textbox",
           "type": "text",
-          "templateUrl": "febworms/fields/text.tmpl.html"
+          "id": "field1",
+          "displayName": "Textbox",
+          "name": "field1"
         },
         {
-          "id": "field2",
-          "name": "field2",
-          "displayName": "Email",
           "type": "email",
-          "templateUrl": "febworms/fields/text.tmpl.html"
+          "id": "field2",
+          "templateType": "text",
+          "displayName": "Email",
+          "name": "field2"
         },
         {
+          "type": "password",
           "id": "field3",
-          "name": "field3",
-          "displayName": "Radiobutton List",
+          "templateType": "text",
+          "displayName": "Password",
+          "name": "field3"
+        },
+        {
+          "type": "checkbox",
+          "id": "field5",
+          "displayName": "Checkbox",
+          "name": "field5"
+        },
+        {
           "type": "radiobuttonlist",
-          "templateUrl": "febworms/fields/radiobuttonlist.tmpl.html",
+          "id": "field7",
+          "displayName": "Radiobutton List",
           "options": [
             {
               "value": "1",
@@ -37,57 +46,40 @@
               "text": "Option 3"
             }
           ],
-          "value": "1"
-        }
-      ]
-    },
-    "name": "bleeeh",
-    "id": 8
-  },
-  {
-    "schema": {
-      "isValid": true
-    },
-    "name": "gedoe inactie",
-    "id": 9
-  },
-  {
-    "schema": {
-      "fields": [
-        {
-          "id": "field1",
-          "name": "field1",
-          "displayName": "Textbox",
-          "type": "text",
-          "templateUrl": "febworms/fields/text.tmpl.html"
+          "value": "1",
+          "name": "field7"
         },
         {
-          "id": "field2",
-          "name": "field2",
-          "displayName": "Email",
-          "type": "email",
-          "templateUrl": "febworms/fields/text.tmpl.html"
-        },
-        {
-          "id": "field3",
-          "name": "field3",
-          "displayName": "Textarea",
           "type": "textarea",
-          "templateUrl": "febworms/fields/textarea.tmpl.html"
-        },
-        {
           "id": "field4",
-          "name": "field4",
-          "displayName": "Checkbox",
-          "type": "checkbox",
-          "templateUrl": "febworms/fields/checkbox.tmpl.html"
+          "displayName": "Textarea",
+          "name": "field4"
         },
         {
-          "id": "field5",
-          "name": "field5",
-          "displayName": "Checkbox List",
+          "type": "selectlist",
+          "id": "field8",
+          "displayName": "Select List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1",
+          "name": "field8"
+        },
+        {
           "type": "checkboxlist",
-          "templateUrl": "febworms/fields/checkboxlist.tmpl.html",
+          "id": "field6",
+          "displayName": "Checkbox List",
           "options": [
             {
               "value": "1",
@@ -103,55 +95,12 @@
               "value": "3",
               "text": "Option 3"
             }
-          ]
-        },
-        {
-          "id": "field6",
-          "name": "field6",
-          "displayName": "Radiobutton List",
-          "type": "radiobuttonlist",
-          "templateUrl": "febworms/fields/radiobuttonlist.tmpl.html",
-          "options": [
-            {
-              "value": "1",
-              "text": "Option 1"
-            },
-            {
-              "value": "2",
-              "text": "Option 2"
-            },
-            {
-              "value": "3",
-              "text": "Option 3"
-            }
           ],
-          "value": "1"
-        },
-        {
-          "id": "field7",
-          "name": "field7",
-          "displayName": "Select List",
-          "type": "selectlist",
-          "templateUrl": "febworms/fields/selectlist.tmpl.html",
-          "options": [
-            {
-              "value": "1",
-              "text": "Option 1"
-            },
-            {
-              "value": "2",
-              "text": "Option 2"
-            },
-            {
-              "value": "3",
-              "text": "Option 3"
-            }
-          ],
-          "value": "1"
+          "name": "field6"
         }
       ]
     },
-    "name": "The form",
-    "id": 10
+    "name": "My Little Form",
+    "id": 1
   }
 ]

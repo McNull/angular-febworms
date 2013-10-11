@@ -1,4 +1,4 @@
-angular.module('febworms').controller('febwormsEditController', function ($scope) {
+angular.module('febworms').controller('febwormsEditController', function ($scope, febwormsUtils) {
 
   if (!$scope.schema) {
     throw Error('Schema attribute not set.')
@@ -11,6 +11,8 @@ angular.module('febworms').controller('febwormsEditController', function ($scope
   // TODO: This should be dynamic
   $scope.schema.$_invalid = true;
 
+  // - - - 8-< - - - - - - - - - - - - - - - - - - - - -
+
   $scope.addFieldToSchema = function (field) {
 
     var copy = angular.copy(field);
@@ -21,9 +23,13 @@ angular.module('febworms').controller('febwormsEditController', function ($scope
     $scope.schema.fields.push(copy);
   };
 
+  // - - - 8-< - - - - - - - - - - - - - - - - - - - - -
+
   $scope.removeFieldFromSchema = function (index) {
     $scope.schema.fields.splice(index, 1);
   };
+
+  // - - - 8-< - - - - - - - - - - - - - - - - - - - - -
 
   $scope.swapFieldsInSchema = function (idx1, idx2) {
     if(idx1 <= -1 || idx2 <= -1 ||
@@ -34,4 +40,21 @@ angular.module('febworms').controller('febwormsEditController', function ($scope
 
     $scope.schema.fields[idx1] = $scope.schema.fields.splice(idx2, 1, $scope.schema.fields[idx1])[0];
   };
+
+  // - - - 8-< - - - - - - - - - - - - - - - - - - - - -
+
+  $scope.initField = function(field) {
+
+    if(!field.type) {
+      throw Error('Field has no type.');
+    }
+
+    field.$_templateUrl = field.$_templateUrl || [];
+
+    field.$_templateUrl['palette'] = field.$_templateUrl['palette'] || febwormsUtils.getTemplateUrl(field, 'palette');
+    field.$_templateUrl['canvas'] = field.$_templateUrl['canvas'] || febwormsUtils.getTemplateUrl(field, 'canvas');
+
+  };
+
+  // - - - 8-< - - - - - - - - - - - - - - - - - - - - -
 });

@@ -1,0 +1,9 @@
+<label class="control-label">{{ field.displayName }}</label>
+<div class="controls">
+    <label class="radio" ng-repeat="option in field.options">
+        <input type="radio"
+               name="{{ field.name }}[]" value="{{ option.value }}"
+               ng-model="field.value">
+        <span>{{option.text}}</span>
+    </label>
+</div>

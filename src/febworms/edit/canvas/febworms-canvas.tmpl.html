@@ -6,7 +6,7 @@
                 <p class="lead"><strong>Drag</strong> one of the available <strong>templates</strong> from the
                     <strong>palette</strong> to this <strong>canvas</strong>.</p>
             </div>
-            <div ng-repeat="field in schema.fields" class="febworms-field">
+            <div ng-repeat="field in schema.fields" class="febworms-field" ng-init="initField(field)">
                 <div class="febworms-field-overlay">
                     <div class="btn-toolbar btn-toolbar-left">
                         <button class="btn btn-mini" type="button" ng-click="addFieldToSchema(field)">Properties
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <div ng-include="field.templateUrl"></div>
+                    <div ng-include="field.$_templateUrl['canvas']"></div>
                 </div>
             </div>
         </fieldset>

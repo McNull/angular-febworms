@@ -1,0 +1,9 @@
+<label class="control-label">{{ field.displayName }}</label>
+<div class="controls">
+    <label class="checkbox" ng-repeat="option in field.options">
+        <input type="checkbox"
+               name="{{ field.name }}[]" value="{{ option.value }}"
+               ng-model="option.checked">
+        <span>{{option.text}}</span>
+    </label>
+</div>

@@ -51,6 +51,24 @@ describe('febworms palette', function () {
 
     describe('febworms-palette-field', function() {
 
+      it('should call the field init for each field template', function() {
+        // Arrange
+
+        $scope.initField = angular.noop;
+        spyOn($scope, 'initField');
+
+        var fieldCount = febwormsConfig.fields.length;
+        var $element = $compile($(template))($scope);
+
+        // Act
+
+        $scope.$digest();
+
+        // Assert
+
+        expect($scope.initField.calls.length).toBe(fieldCount);
+      });
+
       it('should render all field templates from config', function() {
 
         // Arrange
@@ -61,7 +79,7 @@ describe('febworms palette', function () {
         // Act
 
         $scope.$digest();
-        var result = $element.find('.febworms-palette-field');
+        var result = $element.find('.febworms-field');
 
         // Assert
 
@@ -83,7 +101,7 @@ describe('febworms palette', function () {
 
         // Act
 
-        $element.find('.febworms-palette-field-overlay').first().dblclick();
+        $element.find('.febworms-field-overlay').first().dblclick();
 
         // Assert
 
