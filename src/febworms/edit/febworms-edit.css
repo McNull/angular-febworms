@@ -20,8 +20,12 @@
     background-color: #f5f5f5;
 }
 
-.febworms-canvas .febworms-field > .control-group, .febworms-palette .control-group {
+.febworms-canvas .febworms-field div > .control-group, .febworms-palette .control-group {
     margin-bottom: 0;
+}
+
+.febworms-field {
+    min-height: 25px;
 }
 
 .febworms-canvas .febworms-field.error {

@@ -9,53 +9,6 @@
     text-align: left;
 }
 
-/*.febworms-palette .control-group {*/
-    /*margin-bottom: 0; *//* TODO: kill */
-/*}*/
-
-/*.febworms-palette-field {*/
-
-    /*-webkit-touch-callout: none;*/
-    /*-webkit-user-select: none;*/
-    /*-khtml-user-select: none;*/
-    /*-moz-user-select: none;*/
-    /*-ms-user-select: none;*/
-    /*user-select: none;*/
-
-    /*padding: 10px;*/
-    /*margin-bottom: 20px;*/
-    /*background-color: #fff;*/
-    /*border: 1px solid #ddd;*/
-    /*-webkit-border-radius: 4px;*/
-    /*-moz-border-radius: 4px;*/
-    /*border-radius: 4px;*/
-    /*position: relative;*/
-/*}*/
-
-/*.febworms-palette-field:hover {*/
-    /*background-color: #f5f5f5;*/
-/*}*/
-/*.febworms-palette-field-overlay {*/
-    /*position: absolute;*/
-    /*top: 0; right: 0; bottom: 0; left: 0;*/
-    /*-moz-opacity: 0.0;*/
-    /*opacity:.0;*/
-
-    /* Needed by IE */
-    /*filter: alpha(opacity=0);*/
-    /*background: #FFF;*/
-    /*background-color: rgba(255,255,255,0.0);*/
-    /*cursor: pointer;*/
-/*}*/
-
-/*.febworms-palette-field-overlay > .btn {*/
-    /*position: absolute;*/
-    /*right: 5px;*/
-    /*top: -10px;*/
-
-    /*display: none;*/
-/*}*/
-
-/*.febworms-palette-field-overlay:hover > .btn {*/
-    /*display: inline-block;*/
-/*}*/
+.febworms-field-drag {
+    opacity: 0.8;
+}

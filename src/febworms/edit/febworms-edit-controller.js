@@ -26,13 +26,17 @@ angular.module('febworms').controller('febwormsEditController', function ($scope
 
   var nextAutoFieldCount = 1;
 
-  $scope.addFieldToSchema = function (field) {
-
+  $scope.copyPaletteField = function(field) {
     var copy = angular.copy(field);
-
     copy.id = copy.name = 'field' + nextAutoFieldCount++;
+    return copy;
+  };
 
-    $scope.schema.fields.push(copy);
+  // - - - 8-< - - - - - - - - - - - - - - - - - - - - -
+
+  $scope.addFieldToSchema = function (field) {
+    field = $scope.copyPaletteField(field);
+    $scope.schema.fields.push(field);
   };
 
   // - - - 8-< - - - - - - - - - - - - - - - - - - - - -

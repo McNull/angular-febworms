@@ -42,5 +42,24 @@
     },
     "name": "My Little Form",
     "id": 1
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "dragproxy",
+          "id": "field1",
+          "target": {
+            "type": "text",
+            "id": "field.text",
+            "displayName": "PROXY"
+          },
+          "displayName": "Dragproxy",
+          "name": "field1"
+        }
+      ]
+    },
+    "name": "Proxy",
+    "id": 2
   }
 ]

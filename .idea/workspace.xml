@@ -2,18 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b682dd1b-9f15-4f7d-bfdd-0a7f30e73497" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/febworms/field-templates/properties/text.tmpl.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/febworms/field-templates/canvas/checkbox.tmpl.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/febworms/field-templates/canvas/checkboxlist.tmpl.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/febworms/field-templates/canvas/radiobuttonlist.tmpl.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/febworms/field-templates/canvas/selectlist.tmpl.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/febworms/field-templates/canvas/text.tmpl.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/febworms/field-templates/canvas/textarea.tmpl.html" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/febworms/field-templates/default/dragproxy.tmpl.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas-field.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/angular-febworms.iml" afterPath="$PROJECT_DIR$/.idea/angular-febworms.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/form/edit.js" afterPath="$PROJECT_DIR$/src/app/form/edit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas-field-properties.tmpl.html" afterPath="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas-field-properties.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.css" afterPath="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.js" afterPath="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.tmpl.html" afterPath="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.tmpl.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/edit/febworms-edit-controller.js" afterPath="$PROJECT_DIR$/src/febworms/edit/febworms-edit-controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/edit/febworms-edit.css" afterPath="$PROJECT_DIR$/src/febworms/edit/febworms-edit.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/edit/febworms-edit.tmpl.html" afterPath="$PROJECT_DIR$/src/febworms/edit/febworms-edit.tmpl.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/edit/palette/febworms-palette.css" afterPath="$PROJECT_DIR$/src/febworms/edit/palette/febworms-palette.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/edit/palette/febworms-palette.js" afterPath="$PROJECT_DIR$/src/febworms/edit/palette/febworms-palette.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/edit/palette/febworms-palette.tmpl.html" afterPath="$PROJECT_DIR$/src/febworms/edit/palette/febworms-palette.tmpl.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/febworms.js" afterPath="$PROJECT_DIR$/src/febworms/febworms.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/febworms/febworms.test.js" afterPath="$PROJECT_DIR$/src/febworms/febworms.test.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/data/forms.json" afterPath="$PROJECT_DIR$/server/data/forms.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -38,55 +41,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="text.tmpl.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/febworms/field-templates/properties/text.tmpl.html">
+      <file leaf-file-name="febworms-canvas.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="66" selection-start="841" selection-end="841" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="510">
+            <state line="47" column="34" selection-start="1358" selection-end="1358" vertical-scroll-proportion="0.0" vertical-offset="416" max-vertical-offset="1955">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="text.tmpl.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/febworms/field-templates/default/text.tmpl.html">
+      <file leaf-file-name="febworms-canvas.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="6" selection-start="613" selection-end="613" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="306">
+            <state line="28" column="31" selection-start="645" selection-end="645" vertical-scroll-proportion="0.0" vertical-offset="127" max-vertical-offset="867">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="febworms-canvas-field-properties.tmpl.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas-field-properties.tmpl.html">
+      <file leaf-file-name="febworms-canvas.test.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="33" selection-start="932" selection-end="932" vertical-scroll-proportion="-13.076923" vertical-offset="34" max-vertical-offset="1224">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="febworms-edit-controller.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="febworms.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dist/febworms/febworms.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+              <folding>
+                <marker date="1381574862000" expanded="true" signature="39:78" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="febworms-edit-controller.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/febworms/edit/febworms-edit-controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="23" selection-start="575" selection-end="575" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
+            <state line="38" column="35" selection-start="988" selection-end="988" vertical-scroll-proportion="0.7338129" vertical-offset="136" max-vertical-offset="1394">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/form/edit.js">
+      <file leaf-file-name="febworms.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/febworms/febworms.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="45" selection-start="352" selection-end="352" vertical-scroll-proportion="0.24460432" vertical-offset="0" max-vertical-offset="935">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit.tmpl.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/form/edit.tmpl.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.65384614" vertical-offset="17" max-vertical-offset="850">
+            <state line="112" column="41" selection-start="3343" selection-end="3343" vertical-scroll-proportion="0.0" vertical-offset="1588" max-vertical-offset="2907">
               <folding />
             </state>
           </provider>
@@ -111,22 +116,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/febworms/validation-summary/validation-summary.js" />
-        <option value="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas-field-properties-validation.html" />
-        <option value="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas-formfield-validation.html" />
-        <option value="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas-field-validation.tmpl.html" />
-        <option value="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.js" />
-        <option value="$PROJECT_DIR$/src/febworms/edit/febworms-edit.css" />
-        <option value="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.tmpl.html" />
-        <option value="$PROJECT_DIR$/src/febworms/edit/febworms-edit-controller.test.js" />
-        <option value="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.test.js" />
-        <option value="$PROJECT_DIR$/src/febworms/field-templates/properties.html" />
-        <option value="$PROJECT_DIR$/src/febworms/febworms.test.js" />
-        <option value="$PROJECT_DIR$/src/febworms/febworms.js" />
-        <option value="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas-field-properties.tmpl.html" />
         <option value="$PROJECT_DIR$/src/febworms/field-templates/properties/text.tmpl.html" />
-        <option value="$PROJECT_DIR$/src/febworms/edit/febworms-edit-controller.js" />
         <option value="$PROJECT_DIR$/src/app/form/edit.js" />
+        <option value="$PROJECT_DIR$/src/febworms/edit/palette/febworms-palette.css" />
+        <option value="$PROJECT_DIR$/src/febworms/edit/palette/febworms-palette.js" />
+        <option value="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas-field-properties.tmpl.html" />
+        <option value="$PROJECT_DIR$/src/febworms/field-templates/default/dragproxy.tmpl.html" />
+        <option value="$PROJECT_DIR$/src/febworms/edit/febworms-edit.css" />
+        <option value="$PROJECT_DIR$/src/febworms/edit/febworms-edit.tmpl.html" />
+        <option value="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.tmpl.html" />
+        <option value="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas-field.tmpl.html" />
+        <option value="$PROJECT_DIR$/src/febworms/edit/palette/febworms-palette.tmpl.html" />
+        <option value="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.js" />
+        <option value="$PROJECT_DIR$/dist/febworms/febworms.js" />
+        <option value="$PROJECT_DIR$/src/febworms/febworms.js" />
+        <option value="$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.css" />
+        <option value="$PROJECT_DIR$/src/febworms/edit/febworms-edit-controller.js" />
       </list>
     </option>
   </component>
@@ -218,6 +223,7 @@
       <sortByType ProjectPane="false" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -286,80 +292,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="field-templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="properties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="field-templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="field-templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="default" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="edit" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -390,123 +322,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="form" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="karma" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="grunt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular-febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="febworms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="preferences.externalTools" />
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="TODO_SCOPE" value="Project Files" />
+    <property name="options.lastSelected" value="preferences.externalTools" />
+    <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -524,7 +355,7 @@
       <recent name="$PROJECT_DIR$/src/app/form" />
     </key>
   </component>
-  <component name="RunManager" selected="Karma.Karma Run">
+  <component name="RunManager" selected="JavaScript Debug.Website Debug">
     <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
       <envs />
       <method />
@@ -584,7 +415,6 @@
     <frame x="0" y="22" width="1920" height="1174" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993513" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993513" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900834" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -599,6 +429,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961932" sideWeight="0.49973643" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993513" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -619,9 +450,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29889297" sideWeight="0.6320667" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36793327" sideWeight="0.7648919" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36793327" sideWeight="0.7648919" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -645,122 +476,125 @@
     <MESSAGE value="palette: $scope.fields -&gt; $scope.palette.fields" />
     <MESSAGE value="field template refactor" />
     <MESSAGE value="initial field property edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial field property edit" />
+    <MESSAGE value="textbox properties edit template" />
+    <option name="LAST_COMMIT_MESSAGE" value="textbox properties edit template" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="58" />
+      <option name="time" value="69" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.tmpl.html">
+    <entry file="file://$PROJECT_DIR$/src/febworms/edit/palette/febworms-palette.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="96" selection-start="787" selection-end="787" vertical-scroll-proportion="-7.1923075" vertical-offset="17" max-vertical-offset="816">
+        <state line="13" column="1" selection-start="209" selection-end="209" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/febworms/febworms.test.js">
+    <entry file="file://$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.tmpl.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="36" selection-start="2623" selection-end="2623" vertical-scroll-proportion="0.021582734" vertical-offset="1634" max-vertical-offset="2414">
+        <state line="1" column="49" selection-start="38" selection-end="79" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1859" column="22" selection-start="30915" selection-end="30915" vertical-scroll-proportion="0.3323741" vertical-offset="31372" max-vertical-offset="64651">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas-field.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="58" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/karma/karma.conf.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/febworms/edit/palette/febworms-palette.tmpl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="77" selection-start="309" selection-end="309" vertical-scroll-proportion="0.1270553" vertical-offset="0" max-vertical-offset="669">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/febworms/edit/palette/febworms-palette.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="672">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="672">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/febworms/edit/febworms-edit.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="18" selection-start="788" selection-end="788" vertical-scroll-proportion="0.097841725" vertical-offset="459" max-vertical-offset="1360">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/febworms/febworms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="32" selection-start="3290" selection-end="3290" vertical-scroll-proportion="0.45467627" vertical-offset="1554" max-vertical-offset="2890">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="34" selection-start="1358" selection-end="1358" vertical-scroll-proportion="0.0" vertical-offset="416" max-vertical-offset="1955">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/febworms/febworms.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+          <folding>
+            <marker date="1381574862000" expanded="true" signature="39:78" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/febworms/febworms.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="65" selection-start="2098" selection-end="2098" vertical-scroll-proportion="0.0" vertical-offset="682" max-vertical-offset="1479">
+        <state line="112" column="41" selection-start="3343" selection-end="3343" vertical-scroll-proportion="0.0" vertical-offset="1588" max-vertical-offset="2907">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/febworms/edit/febworms-edit-controller.test.js">
+    <entry file="file://$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="37" selection-start="2162" selection-end="2162" vertical-scroll-proportion="-3.4834533" vertical-offset="4155" max-vertical-offset="5389">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/febworms/field-templates/default/selectlist.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="672">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/febworms/field-templates/default/radiobuttonlist.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="672">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/febworms/field-templates/default/textarea.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="672">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/febworms/field-templates/default/not-in-cache.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="672">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/febworms/field-templates/default/checkboxlist.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="672">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/febworms/field-templates/default/checkbox.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="6" selection-start="171" selection-end="171" vertical-scroll-proportion="0.1270553" vertical-offset="0" max-vertical-offset="669">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/febworms/edit/canvas/febworms-canvas-field-properties.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="33" selection-start="932" selection-end="932" vertical-scroll-proportion="-13.076923" vertical-offset="34" max-vertical-offset="1224">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/febworms/field-templates/properties/text.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="66" selection-start="841" selection-end="841" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/febworms/field-templates/default/text.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="6" selection-start="613" selection-end="613" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="306">
+        <state line="28" column="31" selection-start="645" selection-end="645" vertical-scroll-proportion="0.0" vertical-offset="127" max-vertical-offset="867">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/febworms/edit/febworms-edit-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="23" selection-start="575" selection-end="575" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/form/edit.tmpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.65384614" vertical-offset="17" max-vertical-offset="850">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/form/edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="45" selection-start="352" selection-end="352" vertical-scroll-proportion="0.24460432" vertical-offset="0" max-vertical-offset="935">
+        <state line="38" column="35" selection-start="988" selection-end="988" vertical-scroll-proportion="0.7338129" vertical-offset="136" max-vertical-offset="1394">
           <folding />
         </state>
       </provider>

@@ -4,8 +4,6 @@ angular.module('febworms').directive('febwormsPalette',function () {
     templateUrl: 'febworms/edit/palette/febworms-palette.tmpl.html',
     controller: 'febwormsPaletteController'
   };
-}).controller('febwormsPaletteController', function ($scope, febwormsConfig) {
-
+}).controller('febwormsPaletteController',function ($scope, febwormsConfig) {
     $scope.palette = { fields: febwormsConfig.fields };
-
-});
+  });
