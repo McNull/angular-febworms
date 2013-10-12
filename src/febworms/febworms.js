@@ -87,6 +87,27 @@ angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
 
         return false;
       },
+      findElementsByClass: function(root, className, recursive, buffer) {
+        buffer = buffer || [];
+
+        if(root.className === className) {
+          buffer.push(root);
+        }
+
+        if(root.hasChildNodes()) {
+          for(var i = 0; i < root.children.length; i++) {
+            var child = root.children[i];
+            if(child.className === className) {
+              buffer.push(child);
+            }
+            if(recursive) {
+              this.findElementsByClass(child, className, recursive, buffer);
+            }
+          }
+        }
+
+        return buffer;
+      },
       getCursorPosition: function (e) {
         var x, y;
 
@@ -117,8 +138,9 @@ angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
 
 
         if(!result) {
-          console.log('pos', pos);
-          console.log('rect', rect);
+          console.log('pos', pos.x + ', ' + pos.y);
+          console.log('width', 'left: ' + rect.left + ', width: ' + rect.width);
+          console.log('height', 'top: ' + rect.top + ', height: ' + rect.height);
         }
 
         return result;

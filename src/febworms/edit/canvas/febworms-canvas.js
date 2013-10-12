@@ -7,18 +7,24 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
 
       var $ = angular.element;
 
-      var $canvas = $(_.find($element[0].children, { className: 'febworms-canvas' }));
+      var $canvas = $(febwormsUtils.findElementsByClass($element[0], 'febworms-canvas', true)[0]);
+
       var dragover = false;
 
       $canvas.on('dragenter', function (e) {
         if (!dragover) {
-          console.log('dragenter');
           dragover = true;
           scope.$apply(scope.addDragProxy);
         }
       });
 
       $canvas.on('dragover', function (e) {
+
+        var pos = febwormsUtils.getCursorPosition(e);
+
+        pos.x -= $canvas[0].offsetLeft;
+        pos.y -= $canvas[0].offsetTop;
+
         e.dataTransfer.dropEffect = "copyMove";
         return febwormsUtils.stopEvent(e);
       });
@@ -27,7 +33,6 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
 
         if (dragover) {
           var json = e.dataTransfer.getData('text');
-          console.log('data transfer data', json);
           var dragData = angular.fromJson(json);
 
           scope.$apply(function () {
@@ -44,11 +49,15 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
 
         if (dragover) {
           var pos = febwormsUtils.getCursorPosition(e);
-          var rect = this.getBoundingClientRect();
-          if (!febwormsUtils.containsPoint(rect, pos)) {
-            console.log('dragleave');
-            dragover = false;
+
+          var canvas = $canvas[0];
+
+          pos.x -= canvas.offsetLeft;
+          pos.y -= canvas.offsetTop;
+
+          if (pos.x < 0 || pos.x >= canvas.offsetWidth || pos.y < 0 || pos.y >= canvas.offsetHeight) {
             scope.$apply(scope.clearAllDragProxies);
+            dragover = false;
           }
         }
       });
@@ -57,20 +66,16 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
 }).controller('febwormsCanvasController',function ($scope) {
 
     $scope.clearAllDragProxies = function () {
-      console.log('clear');
       _.remove($scope.schema.fields, { type: 'dragproxy'});
     };
 
     $scope.addDragProxy = function () {
-      console.log('add');
       if (_.first($scope.schema.fields, { type: 'dragproxy' }).length === 0) {
         $scope.schema.fields.push(new febworms.Field('dragproxy'));
       }
     };
 
     $scope.handleDrop = function (dropData) {
-      console.log('drop');
-
       var field = dropData.field;
 
       if (dropData.source === 'palette') {
