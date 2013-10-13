@@ -1,39 +1,101 @@
 describe('febworms palette', function () {
 
+  var $controller, $scope, febwormsConfigMock, $compile, $templateCache;
 
-  beforeEach(module('febworms'));
+  beforeEach(function () {
 
-  var $controller, $scope, febwormsConfig, $compile;
+    module('febworms');
 
-  beforeEach(inject(function (_$controller_, _$rootScope_, _febwormsConfig_, _$compile_) {
-    $controller = _$controller_;
-    $scope = _$rootScope_.$new();
-    febwormsConfig = _febwormsConfig_;
-    $compile = _$compile_;
-  }));
+    febwormsConfigMock = {
+      fields: {
+        templates: [],
+        categories: []
+      }
+    };
+
+    module(function ($provide) {
+      $provide.constant('febwormsConfig', febwormsConfigMock);
+    });
+
+    inject(function (_$controller_, _$rootScope_, _$compile_, _$templateCache_) {
+      $controller = _$controller_;
+      $scope = _$rootScope_.$new();
+      $compile = _$compile_;
+      $templateCache = _$templateCache_;
+    });
+  });
 
   describe('controller', function () {
 
-    it('should assign fields config to scope', function () {
+    it('should assign scope properties', function () {
+
+      // Arrange
+
+      febwormsConfigMock.fields.templates = [
+        new febworms.Field('myType')
+      ];
+
+      febwormsConfigMock.fields.categories = {
+        'myCategory': ['myType']
+      };
+
+      var categoryKeys = _.keys(febwormsConfigMock.fields.categories);
 
       // Act
 
       $controller('febwormsPaletteController', {
         $scope: $scope,
-        febwormsConfig: febwormsConfig
+        febwormsConfig: febwormsConfigMock
       });
 
       // Assert
 
-      expect($scope.palette.fields).toBe(febwormsConfig.fields);
+      expect($scope.palette.fields).toBe(febwormsConfigMock.fields.templates);
+      expect($scope.palette.categoryKeys).toEqual(categoryKeys);
+      expect($scope.palette.categoryKey).toBeDefined();
     });
+
+    it('should keep track of the selected category', function () {
+
+      // Arrange
+
+      febwormsConfigMock.fields.templates = [
+        new febworms.Field('myType'), new febworms.Field('myOtherType')
+      ];
+
+      febwormsConfigMock.fields.categories = {
+        'myCategory': ['myType'],
+        'myOtherCategory': ['myOtherType']
+      };
+
+      $controller('febwormsPaletteController', {
+        $scope: $scope,
+        febwormsConfig: febwormsConfigMock
+      });
+
+      $scope.$digest();
+
+      var expected = febwormsConfigMock.fields.categories['myOtherCategory'];
+
+      // Act
+
+      $scope.palette.categoryKey = 'myOtherCategory';
+      $scope.$digest();
+
+      var result = $scope.palette.category;
+
+      // Assert
+
+      expect(result).toBe(expected);
+    });
+
   });
 
-  describe('directive', function() {
+  describe('directive', function () {
 
     var template = '<div data-febworms-palette></div>';
 
-    it('should compile the template', function() {
+    it('should compile the template', function () {
 
       // Arrange
 
@@ -49,85 +111,139 @@ describe('febworms palette', function () {
       expect(result.find('.febworms-palette').length).toBe(1);
     });
 
-    describe('febworms-palette-field', function() {
 
-      it('should call the field init for each field template', function() {
-        // Arrange
+    it('should call the field init for each field template', function () {
+      // Arrange
 
-        $scope.initField = angular.noop;
-        spyOn($scope, 'initField');
+      $scope.initField = angular.noop;
+      spyOn($scope, 'initField');
 
-        var fieldCount = febwormsConfig.fields.length;
-        var $element = $compile($(template))($scope);
+      febwormsConfigMock.fields.templates.push(new febworms.Field('Ein'));
+      febwormsConfigMock.fields.templates.push(new febworms.Field('Zwein'));
+      febwormsConfigMock.fields.templates.push(new febworms.Field('Drein'));
 
-        // Act
+      var fieldCount = febwormsConfigMock.fields.templates.length;
+      var $element = $compile($(template))($scope);
 
-        $scope.$digest();
+      // Act
 
-        // Assert
+      $scope.$digest();
 
-        expect($scope.initField.calls.length).toBe(fieldCount);
+      // Assert
+
+      expect($scope.initField.calls.length).toBe(fieldCount);
+    });
+
+    it('should render all field templates from config', function () {
+
+      // Arrange
+
+      febwormsConfigMock.fields.templates.push(new febworms.Field('Ein'));
+      febwormsConfigMock.fields.templates.push(new febworms.Field('Zwein'));
+      febwormsConfigMock.fields.templates.push(new febworms.Field('Drein'));
+
+      var fieldCount = febwormsConfigMock.fields.templates.length;
+      var $element = $compile($(template))($scope);
+
+      // Act
+
+      $scope.$digest();
+      var result = $element.find('.febworms-field');
+
+      // Assert
+
+      expect(result.length).toBe(fieldCount);
+
+      result.each(function () {
+        var $overlay = $(this).find('.febworms-field-overlay');
+        expect($overlay.length).toBe(1);
       });
 
-      it('should render all field templates from config', function() {
+    });
 
-        // Arrange
+    it('should call the addFieldToSchema on overlay double click', function () {
 
-        var fieldCount = febwormsConfig.fields.length;
-        var $element = $compile($(template))($scope);
+      // Arrange
 
-        // Act
+      var field = new febworms.Field('foo');
+      febwormsConfigMock.fields.templates.push(field);
 
-        $scope.$digest();
-        var result = $element.find('.febworms-field');
+      $scope.addFieldToSchema = angular.noop;
+      spyOn($scope, 'addFieldToSchema');
 
-        // Assert
+      var $element = $compile($(template))($scope);
+      $scope.$digest();
 
-        expect(result.length).toBe(fieldCount);
+      // Act
 
+      var $fieldOverlay = $element.find('.febworms-field-overlay').first();
+      $fieldOverlay.dblclick();
+
+      // Assert
+
+      expect($scope.addFieldToSchema).toHaveBeenCalledWith(field);
+    });
+
+    it('should call the addFieldToSchema on button click', function () {
+
+      // Arrange
+
+      var field = new febworms.Field('foo');
+      febwormsConfigMock.fields.templates.push(field);
+
+      $scope.addFieldToSchema = angular.noop;
+      spyOn($scope, 'addFieldToSchema');
+
+      var $element = $compile($(template))($scope);
+      $scope.$digest();
+
+      // Act
+
+      $element.find('.btn').first().click();
+
+      // Assert
+
+      expect($scope.addFieldToSchema).toHaveBeenCalledWith(field);
+    });
+
+    it('should only render fields of the selected category', function () {
+
+      // Arrange
+
+      febwormsConfigMock.fields.templates = [
+        new febworms.Field('myType'), new febworms.Field('myOtherType')
+      ];
+
+      febwormsConfigMock.fields.categories = {
+        'myCategory': ['myType'],
+        'myOtherCategory': ['myOtherType']
+      };
+
+      _.forEach(febwormsConfigMock.fields.templates, function(field) {
+        $templateCache.put('template-' + field.type + '.tmpl.html', '<div class="render-result">' + field.type + '</div>')
       });
 
-      it('should call the addFieldToSchema on overlay double click', function() {
+      $scope.initField = function(field) {
+        field.$_templateUrl = { palette: 'template-' + field.type + '.tmpl.html' };
+      };
 
-        // Arrange
+      var $element = $compile($(template))($scope);
+      $scope.$digest();
 
-        $scope.addFieldToSchema = angular.noop;
-        spyOn($scope, 'addFieldToSchema');
+      // Act
 
-        var $element = $compile($(template))($scope);
-        $scope.$digest();
+      var before = $element.find('.render-result').text();
 
-        var field = febwormsConfig.fields[0];
+      $scope.palette.categoryKey = 'myOtherCategory';
+      $scope.$digest();
 
-        // Act
+      var after = $element.find('.render-result').text();
 
-        $element.find('.febworms-field-overlay').first().dblclick();
+      // Assert
 
-        // Assert
-
-        expect($scope.addFieldToSchema).toHaveBeenCalledWith(field);
-      });
-
-      it('should call the addFieldToSchema on button click', function() {
-
-        // Arrange
-
-        $scope.addFieldToSchema = angular.noop;
-        spyOn($scope, 'addFieldToSchema');
-
-        var $element = $compile($(template))($scope);
-        $scope.$digest();
-
-        var field = febwormsConfig.fields[0];
-
-        // Act
-
-        $element.find('.btn').first().click();
-
-        // Assert
-
-        expect($scope.addFieldToSchema).toHaveBeenCalledWith(field);
-      });
+      expect(before).not.toBe(after);
+      expect(before).toBe('myType');
+      expect(after).toBe('myOtherType');
     });
   });
 });

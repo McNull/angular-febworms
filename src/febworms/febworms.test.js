@@ -1,21 +1,24 @@
 describe('febwormsUtils', function () {
 
-  beforeEach(module('febworms'));
-
   var febwormsUtils;
+  var $templateCache;
+  var febwormsConfigMock;
 
-  beforeEach(inject(function (_febwormsUtils_) {
-    febwormsUtils = _febwormsUtils_;
-  }));
+  beforeEach(function () {
+    module('febworms');
+
+    module(function ($provide) {
+      febwormsConfigMock = { fields: { templates: [], aliases: {} }};
+      $provide.constant('febwormsConfig', febwormsConfigMock);
+    });
+
+    inject(function (_febwormsUtils_, _$templateCache_) {
+      febwormsUtils = _febwormsUtils_;
+      $templateCache = _$templateCache_;
+    });
+  });
 
   describe('getTemplateUrl', function () {
-
-    var $templateCache;
-
-    beforeEach(inject(function (_$templateCache_) {
-      $templateCache = _$templateCache_;
-    }));
-
 
     it('should check the template cache for an entry', function () {
       // Arrange
@@ -119,10 +122,15 @@ describe('febwormsUtils', function () {
     it('should use the template type value of the field', function () {
       // Arrange
 
-      var field = new febworms.Field('myType', { templateType: 'myTemplateType' });
-      var expected = febwormsUtils.formatTemplateUrl(field.templateType);
+      var templateAlias = 'myAlias';
+      var field = new febworms.Field('myType');
 
-      spyOn($templateCache, 'get').andCallFake(function() { return true; });
+      febwormsConfigMock.fields.aliases['myType'] = templateAlias;
+      var expected = febwormsUtils.formatTemplateUrl(templateAlias);
+
+      spyOn($templateCache, 'get').andCallFake(function () {
+        return true;
+      });
 
       // Act
 

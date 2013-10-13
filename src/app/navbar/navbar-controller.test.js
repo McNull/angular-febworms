@@ -3,6 +3,7 @@ describe('NavbarController', function() {
   var $injector, $controller, $rootScope, $location;
 
   beforeEach(module('myApp'));
+
   beforeEach(inject(function(_$controller_, _$rootScope_, _$location_) {
     $controller = _$controller_;
     $rootScope = _$rootScope_;

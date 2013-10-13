@@ -12,39 +12,46 @@ febworms.Field = function (type, properties) {
 };
 
 angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
-  fields: [
-    new febworms.Field('text', {
-      displayName: 'Textbox'
-    }), new febworms.Field('email', {
-      templateType: 'text'
-    }), new febworms.Field('password', {
-      templateType: 'text'
-    }), new febworms.Field('textarea'), new febworms.Field('checkbox'), new febworms.Field('checkboxlist', {
-      displayName: 'Checkbox List',
-      options: [
-        { value: '1', text: 'Option 1', checked: true },
-        { value: '2', text: 'Option 2', checked: true },
-        { value: '3', text: 'Option 3' }
-      ]
-    }), new febworms.Field('radiobuttonlist', {
-      displayName: 'Radiobutton List',
-      options: [
-        { value: '1', text: 'Option 1' },
-        { value: '2', text: 'Option 2' },
-        { value: '3', text: 'Option 3' }
-      ],
-      value: '1'
-    }), new febworms.Field('selectlist', {
-      displayName: 'Select List',
-      options: [
-        { value: '1', text: 'Option 1' },
-        { value: '2', text: 'Option 2' },
-        { value: '3', text: 'Option 3' }
-      ],
-      value: '1'
-    }) // , new febworms.Field('dragproxy')
-  ]
-}).factory('febwormsUtils',function ($templateCache, $window) {
+  fields: {
+    templates: [
+      new febworms.Field('text', {
+        displayName: 'Textbox'
+      }), new febworms.Field('email'), new febworms.Field('password'), new febworms.Field('textarea'), new febworms.Field('checkbox'), new febworms.Field('checkboxlist', {
+        displayName: 'Checkbox List',
+        options: [
+          { value: '1', text: 'Option 1', checked: true },
+          { value: '2', text: 'Option 2', checked: true },
+          { value: '3', text: 'Option 3' }
+        ]
+      }), new febworms.Field('radiobuttonlist', {
+        displayName: 'Radiobutton List',
+        options: [
+          { value: '1', text: 'Option 1' },
+          { value: '2', text: 'Option 2' },
+          { value: '3', text: 'Option 3' }
+        ],
+        value: '1'
+      }), new febworms.Field('selectlist', {
+        displayName: 'Select List',
+        options: [
+          { value: '1', text: 'Option 1' },
+          { value: '2', text: 'Option 2' },
+          { value: '3', text: 'Option 3' }
+        ],
+        value: '1'
+      }) // , new febworms.Field('dragproxy')
+    ],
+    aliases: {
+      'email': 'text',
+      'password': 'text'
+    },
+    categories: {
+      'Text input fields': [ 'text', 'email', 'password', 'textarea' ],
+      'Checkbox fields': [ 'checkbox', 'checkboxlist' ],
+      'Select input fields': [ 'radiobuttonlist', 'selectlist' ]
+    }
+  }
+}).factory('febwormsUtils',function ($templateCache, $window, febwormsConfig) {
     return {
       defaultArea: 'default',
       formatTemplateUrl: function (type, area) {
@@ -54,7 +61,7 @@ angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
 
         area = area || this.defaultArea;
 
-        var templateType = field.templateType || field.type;
+        var templateType = febwormsConfig.fields.aliases[field.type] || field.type;
         var templateUrl = this.formatTemplateUrl(templateType, area);
 
         var cached = $templateCache.get(templateUrl);
@@ -87,20 +94,20 @@ angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
 
         return false;
       },
-      findElementsByClass: function(root, className, recursive, buffer) {
+      findElementsByClass: function (root, className, recursive, buffer) {
         buffer = buffer || [];
 
-        if(root.className === className) {
+        if (root.className === className) {
           buffer.push(root);
         }
 
-        if(root.hasChildNodes()) {
-          for(var i = 0; i < root.children.length; i++) {
+        if (root.hasChildNodes()) {
+          for (var i = 0; i < root.children.length; i++) {
             var child = root.children[i];
-            if(child.className === className) {
+            if (child.className === className) {
               buffer.push(child);
             }
-            if(recursive) {
+            if (recursive) {
               this.findElementsByClass(child, className, recursive, buffer);
             }
           }
@@ -135,7 +142,7 @@ angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
     function handleDragStart(e, dragData) {
       dragData = angular.toJson(dragData || {});
 
-//      console.log('dragData', dragData);
+      //      console.log('dragData', dragData);
 
       e.dataTransfer.effectAllowed = 'copy';
       e.dataTransfer.setData('text', dragData);

@@ -5,7 +5,7 @@
             <legend>Canvas</legend>
             <div ng-if="!(schema.fields.length)" class="alert alert-info text-center" style="height: 300px;">
                 <p style="font-size: 200px; line-height: 300px;">X</p>
-                <p class="lead"><strong>Drag</strong> one of the available <strong>templates</strong> from the
+                <p class="lead hidden-phone"><strong>Drag</strong> one of the available <strong>templates</strong> from the
                     <strong>palette</strong> onto this <strong>canvas</strong>.</p>
             </div>
             <div ng-repeat="field in schema.fields" ng-init="initField(field)">
