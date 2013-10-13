@@ -7,9 +7,11 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
 
       var $ = angular.element;
 
-      var $canvas = $(febwormsUtils.findElementsByClass($element[0], 'febworms-canvas', true)[0]);
+      var canvas = febwormsUtils.findElementsByClass($element[0], 'febworms-canvas', true)[0];
+      var $canvas = $(canvas);
 
       var dragover = false;
+      var pos = {};
 
       $canvas.on('dragenter', function (e) {
         if (!dragover) {
@@ -18,12 +20,14 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
         }
       });
 
+      $canvas.on('mousemove', function(e) {
+        // IE made me do this.
+        pos = febwormsUtils.getCursorPosition(e);
+        pos.x -= canvas.offsetLeft;
+        pos.y -= canvas.offsetTop;
+      });
+
       $canvas.on('dragover', function (e) {
-
-        var pos = febwormsUtils.getCursorPosition(e);
-
-        pos.x -= $canvas[0].offsetLeft;
-        pos.y -= $canvas[0].offsetTop;
 
         e.dataTransfer.dropEffect = "copyMove";
         return febwormsUtils.stopEvent(e);
@@ -46,16 +50,24 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
       });
 
       $canvas.on('dragleave', function (e) {
-
         if (dragover) {
-          var pos = febwormsUtils.getCursorPosition(e);
+          // This doesn't work for IE (including 10+)
+          // IE thinks it's cool to provide old event data.
+          // GOD, I HATE THAT BROWSER!!!!
+          // var pos = febwormsUtils.getCursorPosition(e);
 
-          var canvas = $canvas[0];
+          // var canvas = $canvas[0];
 
-          pos.x -= canvas.offsetLeft;
-          pos.y -= canvas.offsetTop;
+          // pos.x -= canvas.offsetLeft;
+          // pos.y -= canvas.offsetTop;
 
+          // pos is now updated via mouse move event
           if (pos.x < 0 || pos.x >= canvas.offsetWidth || pos.y < 0 || pos.y >= canvas.offsetHeight) {
+
+            var json = angular.toJson({ stamp: Date.now(), pos: pos, offsetWidth: canvas.offsetWidth, offsetHeight: canvas.offsetHeight }, true);
+
+            console.log(json);
+
             scope.$apply(scope.clearAllDragProxies);
             dragover = false;
           }

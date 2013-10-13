@@ -37,6 +37,7 @@
     overflow: hidden;
     position: relative;
     padding-bottom: 100px;
+    min-height: 500px;
 }
 
 .febworms-field-dragproxy {

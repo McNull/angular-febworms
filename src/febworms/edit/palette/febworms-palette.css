@@ -12,3 +12,31 @@
 .febworms-field-drag {
     opacity: 0.8;
 }
+
+.febworms-palette-categories {
+    position: relative;
+    color: #999;
+    font-weight: lighter;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.febworms-palette-categories .caret {
+    border-top: 4px solid #999;
+    margin-top: 20px;
+}
+
+.febworms-palette-categories:hover {
+    color: #333;
+}
+
+.febworms-palette-categories:hover .caret {
+    border-top: 4px solid #333;
+}
+
+.febworms-palette-categories .dropdown-menu {
+    font-size: 14px;
+    line-height: 20px;
+    right: auto;
+    left: auto;
+}

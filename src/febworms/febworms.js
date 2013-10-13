@@ -109,6 +109,9 @@ angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
         return buffer;
       },
       getCursorPosition: function (e) {
+
+        if (!e) e = $window.event;
+
         var x, y;
 
         if (typeof e.clientX === 'undefined') {
@@ -125,25 +128,6 @@ angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
         y += doc.scrollTop;
 
         return { x: x, y: y };
-      },
-      containsPoint: function(rect, pos) {
-
-        var left = Math.abs(rect.left);
-        var top = Math.abs(rect.top);
-
-        var result = pos.x < left + rect.width &&
-          pos.x >= left &&
-          pos.y < top + rect.height &&
-          pos.y >= top;
-
-
-        if(!result) {
-          console.log('pos', pos.x + ', ' + pos.y);
-          console.log('width', 'left: ' + rect.left + ', width: ' + rect.width);
-          console.log('height', 'top: ' + rect.top + ', height: ' + rect.height);
-        }
-
-        return result;
       }
     };
   }).directive('febwormsDraggable', function () {
@@ -151,7 +135,7 @@ angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
     function handleDragStart(e, dragData) {
       dragData = angular.toJson(dragData || {});
 
-      console.log('dragData', dragData);
+//      console.log('dragData', dragData);
 
       e.dataTransfer.effectAllowed = 'copy';
       e.dataTransfer.setData('text', dragData);
