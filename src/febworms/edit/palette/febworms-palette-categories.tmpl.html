@@ -2,8 +2,14 @@
      ng-class="{ 'open': paletteCategoriesMenuOpen }"
      ng-click="paletteCategoriesMenuOpen = !paletteCategoriesMenuOpen">- {{ palette.categoryKey }} <i class="caret"></i>
     <ul class="dropdown-menu" ng-mouseleave="paletteCategoriesMenuOpen = false">
-        <li><a ng-repeat="categoryKey in palette.categoryKeys" ng-click="palette.categoryKey = categoryKey">{{ categoryKey }}</a></li>
+        <li ng-class="{ 'active': palette.categoryKey === categoryKey }" ng-repeat="categoryKey in palette.categoryKeys">
+            <a ng-click="palette.categoryKey = categoryKey">
+                {{ categoryKey }}
+            </a>
+        </li>
         <li class="divider"></li>
-        <li><a ng-click="palette.categoryKey = 'All field types'">All field types</a></li>
+        <li ng-class="{ 'active': palette.categoryKey === 'All field types' }">
+            <a ng-click="palette.categoryKey = 'All field types'">All field types</a>
+        </li>
     </ul>
 </div>

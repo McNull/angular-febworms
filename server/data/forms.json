@@ -61,5 +61,32 @@
     },
     "name": "Proxy",
     "id": 2
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "text",
+          "id": "field1",
+          "displayName": "Textbox",
+          "name": "field1"
+        },
+        {
+          "type": "password",
+          "id": "field3",
+          "displayName": "Password",
+          "name": "field3"
+        },
+        {
+          "type": "checkbox",
+          "id": "field5",
+          "displayName": "Checkbox",
+          "name": "field5",
+          "value": true
+        }
+      ]
+    },
+    "name": "Checkbox",
+    "id": 3
   }
 ]
