@@ -5,71 +5,14 @@
         {
           "type": "text",
           "id": "field1",
-          "displayName": "",
-          "placeholder": "Got some text for me?",
-          "value": "",
-          "name": "ddddd"
-        },
-        {
-          "type": "textarea",
-          "id": "field3",
-          "displayName": "Textarea",
-          "name": "field3"
-        },
-        {
-          "type": "checkboxlist",
-          "id": "field4",
-          "displayName": "Checkbox List",
-          "options": [
-            {
-              "value": "1",
-              "text": "Option 1",
-              "checked": true
-            },
-            {
-              "value": "2",
-              "text": "Option 2",
-              "checked": true
-            },
-            {
-              "value": "3",
-              "text": "Option 3"
-            }
-          ],
-          "name": "field4"
-        }
-      ]
-    },
-    "name": "My Little Form",
-    "id": 1
-  },
-  {
-    "schema": {
-      "fields": [
-        {
-          "type": "dragproxy",
-          "id": "field1",
-          "target": {
-            "type": "text",
-            "id": "field.text",
-            "displayName": "PROXY"
-          },
-          "displayName": "Dragproxy",
-          "name": "field1"
-        }
-      ]
-    },
-    "name": "Proxy",
-    "id": 2
-  },
-  {
-    "schema": {
-      "fields": [
-        {
-          "type": "text",
-          "id": "field1",
           "displayName": "Textbox",
           "name": "field1"
+        },
+        {
+          "type": "email",
+          "id": "field2",
+          "displayName": "Email",
+          "name": "field2"
         },
         {
           "type": "password",
@@ -78,15 +21,14 @@
           "name": "field3"
         },
         {
-          "type": "checkbox",
-          "id": "field5",
-          "displayName": "Checkbox",
-          "name": "field5",
-          "value": true
+          "type": "textarea",
+          "id": "field4",
+          "displayName": "Textarea",
+          "name": "field4"
         }
       ]
     },
-    "name": "Checkbox",
-    "id": 3
+    "name": "Duymmy",
+    "id": 1
   }
 ]

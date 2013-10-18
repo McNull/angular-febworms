@@ -250,8 +250,21 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="1">
+          <list size="14">
             <item index="0" class="java.lang.String" itemvalue="witdh" />
+            <item index="1" class="java.lang.String" itemvalue="dq-draggable" />
+            <item index="2" class="java.lang.String" itemvalue="dq-drag-start" />
+            <item index="3" class="java.lang.String" itemvalue="dq-drag-begin" />
+            <item index="4" class="java.lang.String" itemvalue="dq-drag-end" />
+            <item index="5" class="java.lang.String" itemvalue="dq-drag-area" />
+            <item index="6" class="java.lang.String" itemvalue="dq-drag-process-begin" />
+            <item index="7" class="java.lang.String" itemvalue="dq-drag-process-end" />
+            <item index="8" class="java.lang.String" itemvalue="dq-drag-progress-begin" />
+            <item index="9" class="java.lang.String" itemvalue="dq-drag-progress-end" />
+            <item index="10" class="java.lang.String" itemvalue="dq-drag-enter" />
+            <item index="11" class="java.lang.String" itemvalue="dq-drag-leave" />
+            <item index="12" class="java.lang.String" itemvalue="dq-drag-over" />
+            <item index="13" class="java.lang.String" itemvalue="dq-drop" />
           </list>
         </value>
       </option>

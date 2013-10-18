@@ -3,7 +3,7 @@
         <fieldset>
             <legend>Palette <span data-febworms-palette-categories></span></legend>
             <div ng-repeat="field in palette.fields | filter:palette.categoryFilter" class="febworms-field"
-                 data-febworms-draggable="{ source: 'palette', field: field }"
+                 dq-draggable="febworms-canvas" dq-drag-begin="{ source: 'palette', field: field }"
                  ng-init="initField(field)">
                 <div class="febworms-field-overlay" ng-dblclick="addFieldToSchema(field)">
                     <div class="btn-toolbar btn-toolbar-right">

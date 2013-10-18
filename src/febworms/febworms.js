@@ -11,7 +11,7 @@ febworms.Field = function (type, properties) {
   this.displayName = this.displayName || this.type[0].toUpperCase() + this.type.substring(1);
 };
 
-angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
+angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfig', {
   fields: {
     templates: [
       new febworms.Field('text', {
@@ -39,7 +39,7 @@ angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
           { value: '3', text: 'Option 3' }
         ],
         value: '1'
-      }) // , new febworms.Field('dragproxy')
+      })
     ],
     aliases: {
       'email': 'text',
@@ -117,62 +117,44 @@ angular.module('febworms', ['templates-febworms']).constant('febwormsConfig', {
       },
       getCursorPosition: function (e) {
 
-        if (!e) e = $window.event;
+        var x = 0, y = 0;
 
-        var x, y;
-
-        if (typeof e.clientX === 'undefined') {
+        if (!e) e = window.event;
+        if (e.pageX || e.pageY) 	{
           x = e.pageX;
           y = e.pageY;
-        } else {
-          x = e.clientX;
-          y = e.clientY;
+        }
+        else if (e.clientX || e.clientY) 	{
+          x = e.clientX + document.body.scrollLeft
+            + document.documentElement.scrollLeft;
+          y = e.clientY + document.body.scrollTop
+            + document.documentElement.scrollTop;
         }
 
-        var doc = $window.document.documentElement;
+        return { x: x, y: y };
 
-        x += doc.scrollLeft;
-        y += doc.scrollTop;
+        // posx and posy contain the mouse position relative to the document
+        // Do something with this information
+
+//        if (!e) e = $window.event;
+//
+//        var x, y;
+//
+//        if (typeof e.clientX === 'undefined') {
+//          x = e.pageX;
+//          y = e.pageY;
+//        } else {
+//          x = e.clientX;
+//          y = e.clientY;
+//        }
+
+        //var doc = $window.document.documentElement;
+//
+//        x += doc.scrollLeft;
+//        y += doc.scrollTop;
+
 
         return { x: x, y: y };
       }
     };
-  }).directive('febwormsDraggable', function () {
-
-    function handleDragStart(e, dragData) {
-      dragData = angular.toJson(dragData || {});
-
-      //      console.log('dragData', dragData);
-
-      e.dataTransfer.effectAllowed = 'copy';
-      e.dataTransfer.setData('text', dragData);
-
-      var target = e.target || e.srcElement;
-      target.classList.add('febworms-drag');
-
-      return false;
-    }
-
-    function handleDragEnd(e) {
-      var target = e.target || e.srcElement;
-      target.classList.remove('febworms-drag');
-      return false;
-    }
-
-    return {
-      restrict: 'A',
-      link: function (scope, element, attr) {
-
-        var dragData = scope.$eval(attr.febwormsDraggable);
-
-        element.attr('draggable', true);
-        element.on('dragstart', function (e) {
-          return handleDragStart(e, dragData);
-        });
-        element.on('dragend', function (e) {
-          return handleDragEnd(e);
-        });
-      }
-    };
   });
-

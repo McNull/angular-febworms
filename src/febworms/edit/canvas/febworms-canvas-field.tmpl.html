@@ -1,33 +1,33 @@
-<div class="febworms-field febworms-field-{{ field.type }} febworms-canvas-field" ng-class="{ 'error': field.$_invalid }">
-    <div ng-if="field.type !== 'dragproxy'">
-        <div class="control-group">
-            <div class="febworms-field-overlay"
-                 ng-dblclick="field.$_displayProperties = !field.$_displayProperties">
-                <div class="btn-toolbar btn-toolbar-left">
-                    <button class="btn btn-mini" type="button"
-                            ng-click="field.$_displayProperties = !field.$_displayProperties">Properties
-                    </button>
-                </div>
-                <div class="btn-toolbar btn-toolbar-right">
-                    <button class="btn btn-mini" type="button"
-                            ng-click="swapFieldsInSchema($index - 1, $index)"
-                            ng-disabled="$index === 0">
-                        Up
-                    </button>
-                    <button class="btn btn-mini" type="button"
-                            ng-click="swapFieldsInSchema($index, $index + 1)"
-                            ng-disabled="$index === schema.fields.length - 1">
-                        Down
-                    </button>
-                    <button class="btn btn-mini" type="button" ng-click="removeFieldFromSchema($index)">
-                        Remove
-                    </button>
-                </div>
+<div class="febworms-field febworms-field-{{ field.type }} febworms-canvas-field"
+     ng-class="{ 'error': field.$_invalid }">
+    <div class="control-group">
+        <div class="febworms-field-overlay"
+             ng-dblclick="field.$_displayProperties = !field.$_displayProperties">
+            <div class="febworms-field-overlay-drag-top" dq-drag-enter="dragPlaceholder.index = $index"></div>
+            <div class="febworms-field-overlay-drag-bottom" dq-drag-enter="dragPlaceholder.index = ($index + 1)"></div>
+            <div class="btn-toolbar btn-toolbar-left">
+                <button class="btn btn-mini" type="button"
+                        ng-click="field.$_displayProperties = !field.$_displayProperties">Properties
+                </button>
             </div>
-            <div ng-include="field.$_templateUrl['canvas']"></div>
+            <div class="btn-toolbar btn-toolbar-right">
+                <button class="btn btn-mini" type="button"
+                        ng-click="swapFieldsInSchema($index - 1, $index)"
+                        ng-disabled="$index === 0">
+                    Up
+                </button>
+                <button class="btn btn-mini" type="button"
+                        ng-click="swapFieldsInSchema($index, $index + 1)"
+                        ng-disabled="$index === schema.fields.length - 1">
+                    Down
+                </button>
+                <button class="btn btn-mini" type="button" ng-click="removeFieldFromSchema($index)">
+                    Remove
+                </button>
+            </div>
         </div>
-        <div data-febworms-canvas-field-properties data-field="field"
-             ng-show="field.$_displayProperties"></div>
+        <div ng-include="field.$_templateUrl['canvas']"></div>
     </div>
-
+    <div data-febworms-canvas-field-properties data-field="field"
+         ng-show="field.$_displayProperties"></div>
 </div>
