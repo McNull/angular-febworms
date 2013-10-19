@@ -1,7 +1,7 @@
 <div class="febworms-palette-categories"
      ng-class="{ 'open': paletteCategoriesMenuOpen }"
      ng-click="paletteCategoriesMenuOpen = !paletteCategoriesMenuOpen">- {{ palette.categoryKey }} <i class="caret"></i>
-    <ul class="dropdown-menu" ng-mouseleave="paletteCategoriesMenuOpen = false">
+    <ul class="dropdown-menu">
         <li ng-class="{ 'active': palette.categoryKey === categoryKey }" ng-repeat="categoryKey in palette.categoryKeys">
             <a ng-click="palette.categoryKey = categoryKey">
                 {{ categoryKey }}

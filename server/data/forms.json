@@ -3,10 +3,318 @@
     "schema": {
       "fields": [
         {
+          "type": "checkboxlist",
+          "id": "field28",
+          "displayName": "Checkbox List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1",
+              "checked": true
+            },
+            {
+              "value": "2",
+              "text": "Option 2",
+              "checked": true
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "name": "field28"
+        },
+        {
+          "type": "radiobuttonlist",
+          "id": "field26",
+          "displayName": "Radiobutton List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1",
+          "name": "field26"
+        },
+        {
+          "type": "checkboxlist",
+          "id": "field27",
+          "displayName": "Checkbox List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1",
+              "checked": true
+            },
+            {
+              "value": "2",
+              "text": "Option 2",
+              "checked": true
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "name": "field27"
+        },
+        {
           "type": "text",
           "id": "field1",
           "displayName": "Textbox",
           "name": "field1"
+        },
+        {
+          "type": "selectlist",
+          "id": "field23",
+          "displayName": "Select List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1",
+          "name": "field23"
+        },
+        {
+          "type": "radiobuttonlist",
+          "id": "field25",
+          "displayName": "Radiobutton List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1",
+          "name": "field25"
+        },
+        {
+          "type": "selectlist",
+          "id": "field24",
+          "displayName": "Select List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1",
+          "name": "field24"
+        },
+        {
+          "type": "radiobuttonlist",
+          "id": "field22",
+          "displayName": "Radiobutton List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1",
+          "name": "field22"
+        },
+        {
+          "type": "selectlist",
+          "id": "field20",
+          "displayName": "Select List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1",
+          "name": "field20"
+        },
+        {
+          "type": "selectlist",
+          "id": "field21",
+          "displayName": "Select List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1",
+          "name": "field21"
+        },
+        {
+          "type": "radiobuttonlist",
+          "id": "field19",
+          "displayName": "Radiobutton List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1",
+          "name": "field19"
+        },
+        {
+          "type": "email",
+          "id": "field17",
+          "displayName": "Email",
+          "name": "field17"
+        },
+        {
+          "type": "email",
+          "id": "field18",
+          "displayName": "Email",
+          "name": "field18"
+        },
+        {
+          "type": "email",
+          "id": "field16",
+          "displayName": "Email",
+          "name": "field16"
+        },
+        {
+          "type": "textarea",
+          "id": "field15",
+          "displayName": "Textarea",
+          "name": "field15"
+        },
+        {
+          "type": "text",
+          "id": "field12",
+          "displayName": "Textbox",
+          "name": "field12"
+        },
+        {
+          "type": "email",
+          "id": "field13",
+          "displayName": "Email",
+          "name": "field13"
+        },
+        {
+          "type": "password",
+          "id": "field14",
+          "displayName": "Password",
+          "name": "field14"
+        },
+        {
+          "type": "text",
+          "id": "field9",
+          "displayName": "Textbox",
+          "name": "field9"
+        },
+        {
+          "type": "text",
+          "id": "field6",
+          "displayName": "Textbox",
+          "name": "field6"
+        },
+        {
+          "type": "password",
+          "id": "field10",
+          "displayName": "Password",
+          "name": "field10"
+        },
+        {
+          "type": "text",
+          "id": "field1",
+          "displayName": "Textbox",
+          "name": "field1"
+        },
+        {
+          "type": "email",
+          "id": "field8",
+          "displayName": "Email",
+          "name": "field8"
+        },
+        {
+          "type": "password",
+          "id": "field7",
+          "displayName": "Password",
+          "name": "field7"
+        },
+        {
+          "type": "email",
+          "id": "field5",
+          "displayName": "Email",
+          "name": "field5"
+        },
+        {
+          "type": "email",
+          "id": "field3",
+          "displayName": "Email",
+          "name": "field3"
+        },
+        {
+          "type": "password",
+          "id": "field4",
+          "displayName": "Password",
+          "name": "field4"
         },
         {
           "type": "email",
@@ -25,6 +333,18 @@
           "id": "field4",
           "displayName": "Textarea",
           "name": "field4"
+        },
+        {
+          "type": "text",
+          "id": "field2",
+          "displayName": "Textbox",
+          "name": "field2"
+        },
+        {
+          "type": "password",
+          "id": "field11",
+          "displayName": "Password",
+          "name": "field11"
         }
       ]
     },

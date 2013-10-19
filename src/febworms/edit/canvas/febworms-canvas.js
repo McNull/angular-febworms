@@ -4,7 +4,7 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
     templateUrl: 'febworms/edit/canvas/febworms-canvas.tmpl.html',
     controller: 'febwormsCanvasController'
   };
-}).controller('febwormsCanvasController',function ($scope, dqUtils) {
+}).controller('febwormsCanvasController',function ($scope, dqUtils, $timeout) {
 
     $scope.dragPlaceholder = {
       visible: false,
@@ -20,24 +20,41 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
       $scope.dragPlaceholder.visible = false;
     };
 
+    $scope.dragBeginCanvasField = function(index, field) {
+
+      $timeout(function() {
+        field.$_isDragging = true;
+      }, 1);
+
+      return { source: 'canvas', field: field, index: index };
+    };
+
+    $scope.dragEndCanvasField = function(field) {
+      field.$_isDragging = false;
+    };
+
     $scope.drop = function () {
 
-      console.log('expression');
-
       var dragData = dqUtils.dragData();
-
-      console.log(angular.toJson(dragData, true));
 
       if(dragData && dragData.data) {
 
         var field = dragData.data.field;
         var source = dragData.data.source;
+        var index = dragData.data.index;
+        var fields = $scope.schema.fields;
 
         if(source == 'palette') {
           field = $scope.copyPaletteField(field);
-
-          $scope.schema.fields.splice($scope.dragPlaceholder.index, 0, field);
+          fields.splice($scope.dragPlaceholder.index, 0, field);
+        } else if (source == 'canvas') {
+          fields.splice(index, 1);
+          fields.splice($scope.dragPlaceholder.index, 0, field);
         }
+
+      } else {
+        console.log('Drop without data');
+        debugger;
       }
     };
 

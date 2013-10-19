@@ -70,6 +70,10 @@
     margin-bottom: 0px;
 }
 
+.febworms-canvas .febworms-field.dragging {
+    display: none;
+}
+
 /* Landscape phones and down */
 @media (max-width: 480px) {
     .febworms-field-properties .control-group {

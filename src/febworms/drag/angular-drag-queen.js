@@ -22,10 +22,6 @@ angular.module('dq', []).factory('dqUtils', function($window, $rootScope) {
       if (data === undefined) {
         return _dragData;
       }
-      if(data == null) {
-        console.log('null!!');
-      }
-      console.log('set data');
       _dragData = data;
     },
     getParentArea: function ($scope) {

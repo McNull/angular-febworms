@@ -156,7 +156,6 @@ angular.module('dq').directive('dqDragEnter',function (dqDragTrack) {
         //noinspection FunctionWithInconsistentReturnsJS
         $element.on('drop', function(e) {
 
-          console.log('drop');
           e = dqUtils.getEvent(e);
 
           if(trackingEnabled) {
