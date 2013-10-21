@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html id="ng-app" ng-app="myApp">
 <head>
     <meta name="viewport" content="width=device-width">
     <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--[if lt IE 8]>
+        <script>
+            window.hasOwnProperty = function(obj){
+                return (this[obj]) ? true : false;
+            }
+        </script>
+    <![endif]-->
 <%
     var styles = helpers.getIncludes('css');
     _.forEach(styles, function(style) {
@@ -11,7 +19,7 @@
     });
 %>
 </head>
-<body ng-app="myApp">
+<body>
 
 <div class="container-fluid">
     <div class="row-fluid">

@@ -8,7 +8,7 @@ febworms.Field = function (type, properties) {
     angular.extend(this, properties);
   }
 
-  this.displayName = this.displayName || this.type[0].toUpperCase() + this.type.substring(1);
+  this.displayName = this.displayName || this.type.charAt(0).toUpperCase() + this.type.substring(1);
 };
 
 angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfig', {

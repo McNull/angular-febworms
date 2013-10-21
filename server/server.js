@@ -7,6 +7,16 @@ var app = express();
 
 app.use(express.logger());                                  // Log requests to the console
 app.use(express.bodyParser());                              // Extract the data from the body of the request
+
+app.use(function ieEdge(req, res, next){
+
+  // Is there an edge to IE??!! :S
+
+  res.header("X-UA-Compatible", "IE=edge");
+  next();
+
+});
+
 app.use(function noCache(req, res, next){
   res.header("Cache-Control", "no-cache, no-store, must-revalidate");
   res.header("Pragma", "no-cache");
