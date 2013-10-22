@@ -55,7 +55,7 @@ describe('febworms-canvas', function() {
       // Assert
 
       expect(result).toBeDefined();
-      expect(result[0].className).toBe('febworms-field-properties');
+      expect(result.hasClass('febworms-field-properties')).toBe(true);
     });
 
     it('should set the field validation to invalid if the form validation fails', function() {

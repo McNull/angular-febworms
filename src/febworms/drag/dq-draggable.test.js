@@ -1,5 +1,7 @@
 describe('angular-drag-queen', function () {
 
+  return;
+  
   beforeEach(function () {
     module('dq');
   });
