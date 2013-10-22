@@ -41,10 +41,10 @@ angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfi
         value: '1'
       })
     ],
-    aliases: {
-      'email': 'text',
-      'password': 'text'
-    },
+//    aliases: {
+//      'email': 'text',
+//      'password': 'text'
+//    },
     categories: {
       'Text input fields': [ 'text', 'email', 'password', 'textarea' ],
       'Checkbox fields': [ 'checkbox', 'checkboxlist' ],
@@ -61,7 +61,9 @@ angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfi
 
         area = area || this.defaultArea;
 
-        var templateType = febwormsConfig.fields.aliases[field.type] || field.type;
+        // IE8 fix: Aliases removed
+        // var templateType = febwormsConfig.fields.aliases[field.type] || field.type;
+        var templateType = field.type;
         var templateUrl = this.formatTemplateUrl(templateType, area);
 
         var cached = $templateCache.get(templateUrl);

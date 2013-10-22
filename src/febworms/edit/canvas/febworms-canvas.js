@@ -30,6 +30,7 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
     };
 
     $scope.dragEndCanvasField = function(field) {
+
       field.$_isDragging = false;
     };
 
@@ -52,6 +53,8 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
           fields.splice($scope.dragPlaceholder.index, 0, field);
         }
 
+        // IE fix: not calling dragEnd sometimes
+        field.$_isDragging = false;
       } else {
         console.log('Drop without data');
         debugger;
