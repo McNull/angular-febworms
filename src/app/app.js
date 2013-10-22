@@ -1,4 +1,4 @@
-angular.module('myApp', [ 'febworms', 'ngRoute', 'ngResource', 'templates-app' ], null).value('navItems', [
+angular.module('myApp', [ 'febworms', 'ngResource', 'templates-app' ], null).value('navItems', [
 
     { text: 'Home', url: '#/' },
     { text: 'Forms', url: '#/form', pattern: "/form(/.*)?" }
