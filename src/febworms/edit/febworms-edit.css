@@ -44,7 +44,7 @@
     filter: alpha(opacity=0);
     background: #FFF;
     background-color: rgba(255,255,255,0.0);
-    cursor: pointer;
+    cursor: move;
 }
 
 .febworms-field-overlay .btn-toolbar {
@@ -54,7 +54,7 @@
     top: -10px;
 }
 
-.febworms-field-overlay:hover .btn-toolbar {
+.febworms-field:hover .btn-toolbar {
     display: block;
 }
 

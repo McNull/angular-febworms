@@ -119,26 +119,26 @@ describe('febwormsUtils', function () {
       expect(result).toBe(expected);
     });
 
-    it('should use the template type value of the field', function () {
-      // Arrange
-
-      var templateAlias = 'myAlias';
-      var field = new febworms.Field('myType');
-
-      febwormsConfigMock.fields.aliases['myType'] = templateAlias;
-      var expected = febwormsUtils.formatTemplateUrl(templateAlias);
-
-      spyOn($templateCache, 'get').andCallFake(function () {
-        return true;
-      });
-
-      // Act
-
-      febwormsUtils.getTemplateUrl(field);
-
-      // Assert
-
-      expect($templateCache.get).toHaveBeenCalledWith(expected);
-    });
+//    it('should use the template type value of the field', function () {
+//      // Arrange
+//
+//      var templateAlias = 'myAlias';
+//      var field = new febworms.Field('myType');
+//
+//      febwormsConfigMock.fields.aliases['myType'] = templateAlias;
+//      var expected = febwormsUtils.formatTemplateUrl(templateAlias);
+//
+//      spyOn($templateCache, 'get').andCallFake(function () {
+//        return true;
+//      });
+//
+//      // Act
+//
+//      febwormsUtils.getTemplateUrl(field);
+//
+//      // Assert
+//
+//      expect($templateCache.get).toHaveBeenCalledWith(expected);
+//    });
   });
 });

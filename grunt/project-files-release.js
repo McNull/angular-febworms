@@ -26,16 +26,18 @@ var files = {
 
   vendor: {
     js: [
-      'vendor/bower-angular-1.1.5/angular.min.js',
-      'vendor/bower-angular-1.1.5/angular-resource.min.js',
+      'vendor/angular/angular.min.js',
+      'vendor/angular-resource/angular-resource.min.js',
+      'vendor/angular-route/angular-route.min.js',
       'vendor/lodash/dist/lodash.compat.min.js'
     ],
     test: [
       'vendor/jquery/jquery.js',
-      'vendor/bower-angular-1.1.5/angular.js',
-      'vendor/bower-angular-1.1.5/angular-resource.js',
+      'vendor/angular/angular.js',
+      'vendor/angular-resource/angular-resource.js',
+      'vendor/angular-route/angular-route.js',
       'vendor/lodash/dist/lodash.compat.js',
-      'vendor/bower-angular-1.1.5/angular-mocks.js'
+      'vendor/angular-mocks/angular-mocks.js'
     ],
     css: [
       'vendor/bootstrap-css/css/bootstrap.min.css',
@@ -46,7 +48,7 @@ var files = {
       'vendor/**/*.jpg'
     ]
   },
-  
+
   app: {
     js: 'app/app.min.js',
     jsSrc: [

@@ -20,18 +20,28 @@ angular.module('dq').directive('dqDraggable', function (dqUtils, $rootScope) {
     link: function ($scope, $element, $attrs) {
 
       var targetArea = $attrs.dqDraggable || $attrs.dqDragTargetArea || "";
+      var disabled = false;
 
-      $element.attr('draggable', 'true').on('selectstart',function (e) {
+      $scope.$watch($attrs.dqDragDisabled, function(value) {
+        disabled = value;
+        $element.attr('draggable', disabled ? 'false' : 'true');
+      });
+
+      $element.on('selectstart',function (e) {
 
         // Pure IE evilness
 
-        if (this.dragDrop) {
+        if (!disabled && this.dragDrop) {
           this.dragDrop();
           e = dqUtils.getEvent(e);
           return dqUtils.stopEvent(e);
         }
       }).on('dragstart',function (e) {
           e = dqUtils.getEvent(e);
+
+          if(disabled) {
+            return dqUtils.stopEvent(e);
+          }
 
           var dt = e.dataTransfer;
           dt.effectAllowed = 'all';

@@ -22,6 +22,8 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
 
     $scope.dragBeginCanvasField = function(index, field) {
 
+      // Delay is set to prevent browser from copying adjusted html as copy image
+
       $timeout(function() {
         field.$_isDragging = true;
       }, 1);
@@ -31,7 +33,11 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
 
     $scope.dragEndCanvasField = function(field) {
 
+      // IE Fix: ensure this is fired after the drag begin
+
+      $timeout(function() {
       field.$_isDragging = false;
+      }, 10);
     };
 
     $scope.drop = function () {

@@ -1,11 +1,12 @@
+
 <div class="febworms-field febworms-field-{{ field.type }} febworms-canvas-field"
+     ng-class="{ 'error': field.$_invalid, 'dragging': field.$_isDragging }"
      dq-draggable="febworms-canvas"
+     dq-drag-disabled="dragEnabled === false"
      dq-drag-begin="dragBeginCanvasField($index, field)"
-     dq-drag-end="dragEndCanvasField(field)"
-     ng-class="{ 'error': field.$_invalid, 'dragging': field.$_isDragging }">
+     dq-drag-end="dragEndCanvasField(field)">
     <div class="control-group">
-        <div class="febworms-field-overlay"
-             ng-dblclick="field.$_displayProperties = !field.$_displayProperties">
+        <div class="febworms-field-overlay" ng-mouseenter="dragEnabled = true"  ng-mouseleave="dragEnabled = false">
             <div class="febworms-field-overlay-drag-top" dq-drag-enter="dragPlaceholder.index = $index"></div>
             <div class="febworms-field-overlay-drag-bottom" dq-drag-enter="dragPlaceholder.index = ($index + 1)"></div>
             <div class="btn-toolbar btn-toolbar-left">

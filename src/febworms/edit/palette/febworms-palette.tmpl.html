@@ -5,7 +5,7 @@
             <div ng-repeat="field in palette.fields | filter:palette.categoryFilter" class="febworms-field"
                  dq-draggable="febworms-canvas" dq-drag-begin="{ source: 'palette', field: field }"
                  ng-init="initField(field)">
-                <div class="febworms-field-overlay" ng-dblclick="addFieldToSchema(field)">
+                <div class="febworms-field-overlay">
                     <div class="btn-toolbar btn-toolbar-right">
                         <button class="btn btn-mini" type="button" ng-click="addFieldToSchema(field)">Add</button>
                     </div>

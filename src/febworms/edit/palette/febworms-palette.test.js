@@ -161,28 +161,28 @@ describe('febworms palette', function () {
 
     });
 
-    it('should call the addFieldToSchema on overlay double click', function () {
-
-      // Arrange
-
-      var field = new febworms.Field('foo');
-      febwormsConfigMock.fields.templates.push(field);
-
-      $scope.addFieldToSchema = angular.noop;
-      spyOn($scope, 'addFieldToSchema');
-
-      var $element = $compile($(template))($scope);
-      $scope.$digest();
-
-      // Act
-
-      var $fieldOverlay = $element.find('.febworms-field-overlay').first();
-      $fieldOverlay.dblclick();
-
-      // Assert
-
-      expect($scope.addFieldToSchema).toHaveBeenCalledWith(field);
-    });
+//    it('should call the addFieldToSchema on overlay double click', function () {
+//
+//      // Arrange
+//
+//      var field = new febworms.Field('foo');
+//      febwormsConfigMock.fields.templates.push(field);
+//
+//      $scope.addFieldToSchema = angular.noop;
+//      spyOn($scope, 'addFieldToSchema');
+//
+//      var $element = $compile($(template))($scope);
+//      $scope.$digest();
+//
+//      // Act
+//
+//      var $fieldOverlay = $element.find('.febworms-field-overlay').first();
+//      $fieldOverlay.dblclick();
+//
+//      // Assert
+//
+//      expect($scope.addFieldToSchema).toHaveBeenCalledWith(field);
+//    });
 
     it('should call the addFieldToSchema on button click', function () {
 
