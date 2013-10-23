@@ -2,6 +2,7 @@
 <div class="controls">
     <label class="checkbox" ng-repeat="option in field.options">
         <input type="checkbox"
+               tabindex="{{ $_noTabIndex ? '-1' : 'auto' }}"
                name="{{ field.name }}[]" value="{{ option.value }}"
                ng-model="option.checked">
         <span>{{option.text}}</span>

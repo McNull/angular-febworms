@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <div ng-include="field.$_templateUrl['palette']"></div>
+                    <div ng-init="$_noTabIndex = true" ng-include="field.$_templateUrl['palette']"></div>
                 </div>
             </div>
         </fieldset>

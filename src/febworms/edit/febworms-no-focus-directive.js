@@ -1,10 +1,13 @@
 angular.module('febworms')
   .directive('febwormsNoFocus', function() {
     return {
-      priority: 9999,
+      priority: 0,
       restrict: 'AEC',
       link: function($scope, $element, $attrs) {
-        console.log($element);
+
+        $scope.$on('$includeContentLoaded', function($event) {
+          console.log($event);
+        });
       }
     };
   });

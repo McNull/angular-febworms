@@ -30,7 +30,7 @@
                 </button>
             </div>
         </div>
-        <div ng-include="field.$_templateUrl['canvas']"></div>
+        <div ng-init="$_noTabIndex = true" ng-include="field.$_templateUrl['canvas']"></div>
     </div>
     <div data-febworms-canvas-field-properties data-field="field"
          ng-show="field.$_displayProperties"></div>

@@ -3,6 +3,7 @@
     <select id="{{ field.id }}"
             ng-model="field.value"
             ng-required="field.validation.required"
+            tabindex="{{ $_noTabIndex ? '-1' : 'auto' }}"
             ng-options="option.value as option.text for option in field.options">
     </select>
 </div>

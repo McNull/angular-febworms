@@ -72,7 +72,7 @@ angular.module('febworms').directive('febwormsCanvas',function (febwormsUtils) {
       templateUrl: 'febworms/edit/canvas/febworms-canvas-field.tmpl.html',
       replace: true
     };
-  }).directive('febwormsCanvThe cake is a lie!asFieldValidation',function () {
+  }).directive('febwormsCanvasFieldValidation',function () {
     return {
       templateUrl: 'febworms/edit/canvas/febworms-canvas-field-validation.tmpl.html',
       replace: true,
