@@ -11,8 +11,7 @@
                        name="displayName"
                        ng-model="field.displayName"/>
 
-                <div febworms-canvas-field-validation
-                     data-form-field="fieldPropertiesForm.displayName"></div>
+                <div febworms-validation-summary data-form-field="fieldPropertiesForm.displayName"></div>
             </div>
         </div>
 
@@ -25,10 +24,10 @@
                        name="fieldName"
                        ng-model="field.name"
                        ng-required="true"
+                       ng-pattern="/^[a-zA-Z][\w]+$/"
                        febworms-unique-field-name/>
 
-                <div febworms-canvas-field-validation
-                     data-form-field="fieldPropertiesForm.fieldName"></div>
+                <div febworms-validation-summary data-form-field="fieldPropertiesForm.fieldName"></div>
             </div>
         </div>
 
