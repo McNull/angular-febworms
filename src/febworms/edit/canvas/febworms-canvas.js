@@ -127,6 +127,8 @@ angular.module('febworms').directive('febwormsCanvas',function () {
         $scope.$watch(function() { return changeTick; }, function() {
           validate(ngModel, field, fields);
         });
+
+        validate(ngModel, field, fields);
       }
     };
   });

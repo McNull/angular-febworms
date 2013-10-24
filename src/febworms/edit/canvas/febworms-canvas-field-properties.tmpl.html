@@ -11,7 +11,7 @@
                        name="displayName"
                        ng-model="field.displayName"/>
 
-                <div data-febworms-canvas-field-validation
+                <div febworms-canvas-field-validation
                      data-form-field="fieldPropertiesForm.displayName"></div>
             </div>
         </div>
@@ -25,9 +25,9 @@
                        name="fieldName"
                        ng-model="field.name"
                        ng-required="true"
-                       data-febworms-unique-field-name/>
+                       febworms-unique-field-name/>
 
-                <div data-febworms-canvas-field-validation
+                <div febworms-canvas-field-validation
                      data-form-field="fieldPropertiesForm.fieldName"></div>
             </div>
         </div>
@@ -45,26 +45,6 @@
         </div>
 
         <div ng-if="field.$_displayPropertiesDebugData" data-jsonify="fieldPropertiesForm"></div>
-        <div>
-            <!--<div class="control-group">-->
-            <!--<label class="control-label">Display name</label>-->
-
-            <!--<div class="controls">-->
-            <!--<input type="text"-->
-            <!--ng-model="field.displayName"/>-->
-            <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="control-group">-->
-            <!--<label class="control-label">Initial value</label>-->
-
-            <!--<div class="controls">-->
-            <!--<input type="text"-->
-            <!--ng-model="field.value"/>-->
-            <!--</div>-->
-            <!--</div>-->
-        </div>
-
 
     </form>
 </div>
