@@ -32,6 +32,7 @@
         </div>
         <div ng-init="$_noTabIndex = true" ng-include="field.$_templateUrl['canvas']"></div>
     </div>
-    <div data-febworms-canvas-field-properties data-field="field"
+    <div febworms-canvas-field-properties
+         data-field="field" data-schema="schema"
          ng-show="field.$_displayProperties"></div>
 </div>
