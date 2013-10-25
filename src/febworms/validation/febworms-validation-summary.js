@@ -8,10 +8,7 @@ angular.module('febworms').directive('febwormsValidationSummary', function(febwo
       schemaField: '=',
       validationMessages: '=?'
     },
-    link: function($scope) {
-      if(!$scope.formField) {
-        throw Error('No form field provided.');
-      }
+    link: function($scope, $element, $attrs) {
 
       $scope.messages = angular.extend($scope.messages || {}, febwormsConfig.validation.messages, $scope.validationMessages)
     }

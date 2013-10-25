@@ -1,44 +1,76 @@
 <h1>{{ title }}</h1>
 <div>
 
-    <form novalidate name="myForm" class="form-horizontal">
+    <div ng-if="!preview">
         <!-- Application specific form information -->
-        <fieldset>
-            <legend>General Information</legend>
-            <div class="control-group control-required">
-                <label class="control-label" for="formName">Name</label>
+        <form novalidate name="$parent.appForm" class="form-horizontal">
+            <fieldset>
+                <legend>General Information</legend>
+                <div class="control-group control-required">
+                    <label class="control-label" for="formName">Name</label>
 
-                <div class="controls">
-                    <input type="text"
-                           id="formName"
-                           name="formName"
-                           placeholder="The name of the form"
-                           ng-model="form.name"
-                           ng-required="true">
-                    <span ng-if="myForm.formName.$error.required && myForm.formName.$dirty" class="help-inline">This field is required.</span>
+                    <div class="controls">
+                        <input type="text"
+                               id="formName"
+                               name="formName"
+                               placeholder="The name of the form"
+                               ng-model="form.name"
+                               ng-required="true">
+                        <span ng-if="appForm.formName.$error.required && appForm.formName.$dirty" class="help-inline">This field is required.</span>
+                    </div>
                 </div>
+            </fieldset>
+        </form>
+
+        <!-- febworms canvas & palette -->
+        <div data-febworms-edit data-schema="form.schema"></div>
+
+        <!-- form actions -->
+        <div class="form-horizontal">
+
+            <div class="controls">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="displayDebugData"> Display debug information
+                </label>
             </div>
-        </fieldset>
-    </form>
 
-    <div data-febworms-edit data-schema="form.schema"></div>
+            <div ng-if="displayDebugData" data-jsonify="form"></div>
 
-    <div class="form-horizontal">
-
-        <div class="controls">
-            <label class="checkbox">
-                <input type="checkbox" ng-model="displayDebugData"> Display debug information
-            </label>
-        </div>
-
-        <div ng-if="displayDebugData" data-jsonify="form"></div>
-
-        <div class="form-actions">
-            <a class="btn btn-primary" ng-disabled="myForm.$invalid || form.schema.$_invalid" ng-click="save()">Save
-                changes</a>
-            <a class="btn" href="#/form">Cancel</a>
+            <div class="form-actions">
+                <a class="btn btn-primary" ng-disabled="!isFormValid()" ng-click="save()">Save
+                    changes</a>
+                <a class="btn" ng-disabled="!isFormValid()" ng-click="togglePreview()">Preview form</a>
+                <a class="btn" href="#/form">Cancel</a>
+            </div>
         </div>
     </div>
 
+    <div ng-if="preview">
+        <form novalidate name="previewForm" class="form-horizontal">
+            <fieldset>
+                <legend>{{ form.name }} <span class="febworms-legend-extra">- Preview</span></legend>
+
+                <div ng-form="febwormsForm">
+                    <div ng-repeat="field in preview.schema.fields">
+                        <div class="febworms-field febworms-field-{{ field.type }}"
+                             ng-class="{ 'error': field.$_invalid }">
+                            <div class="control-group">
+                                <div ng-include="field.$_templateUrl['default']"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+        <!-- form actions -->
+        <div class="form-horizontal">
+
+            <div class="form-actions">
+                <a class="btn btn-primary" ng-click="togglePreview()">Close preview</a>
+            </div>
+        </div>
+    </div>
 </div>
 

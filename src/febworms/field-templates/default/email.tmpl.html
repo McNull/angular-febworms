@@ -2,6 +2,7 @@
 <div class="controls" ng-switch="field.type">
     <input type="email"
            id="{{ field.id }}"
+           name="{{ field.name }}"
            tabindex="{{ $_noTabIndex ? '-1' : 'auto' }}"
            placeholder="{{ field.placeholder }}"
            ng-model="field.value"
@@ -10,5 +11,5 @@
            ng-maxlength="{{ field.validation.maxlength }}"
            ng-pattern="/{{ field.validation.pattern }}/"
            ng-disabled="isDisabled(field)">
-    <!--<div class="inline" ng-include="'input-validation-summary.html'"></div>-->
+    <div febworms-validation-summary data-form-field="febwormsForm[field.name]"></div>
 </div>

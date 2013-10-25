@@ -16,10 +16,7 @@
 
 .febworms-palette-categories {
     position: relative;
-    color: #999;
-    font-weight: lighter;
     cursor: pointer;
-    display: inline-block;
 }
 
 .febworms-palette-categories .caret {

@@ -1,9 +1,27 @@
 angular.module('myApp').controller('FormEditController', function ($scope, form, $location, notifications) {
 
+  // The form model
   $scope.form = form;
 
+  $scope.preview = null;
+
+  $scope.togglePreview = function() {
+    if($scope.isFormValid()) {
+      if($scope.preview) {
+        $scope.preview = null;
+      } else {
+        $scope.preview = angular.copy($scope.form);
+      }
+    }
+  };
+
+  $scope.isFormValid = function() {
+    return $scope.appForm && $scope.appForm.$valid &&
+           $scope.form.schema && !$scope.form.schema.$_invalid;
+  };
+
   $scope.save = function () {
-    if ($scope.myForm.$valid && !$scope.form.schema.$_invalid) {
+    if ($scope.isFormValid()) {
       var name = $scope.form.name;
 
       (function (name) {

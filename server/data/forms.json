@@ -350,5 +350,56 @@
     },
     "name": "Duymmy",
     "id": 1
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "text",
+          "id": "field1",
+          "displayName": "Name",
+          "name": "name",
+          "placeholder": "Please enter your name"
+        },
+        {
+          "type": "text",
+          "id": "field2",
+          "displayName": "Last name",
+          "name": "lastName",
+          "placeholder": "Please enter your last name"
+        },
+        {
+          "type": "email",
+          "id": "field3",
+          "displayName": "Email address",
+          "name": "emailAddress",
+          "placeholder": "Please enter your email address"
+        },
+        {
+          "type": "checkbox",
+          "id": "field1",
+          "displayName": "Receive newsletter",
+          "name": "spam",
+          "value": true
+        }
+      ]
+    },
+    "name": "Simple Form",
+    "id": 2
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "text",
+          "id": "field1",
+          "displayName": "Gedoe",
+          "name": "field1",
+          "placeholder": "in actie"
+        }
+      ]
+    },
+    "name": "Test",
+    "id": 3
   }
 ]

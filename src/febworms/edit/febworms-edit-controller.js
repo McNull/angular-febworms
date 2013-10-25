@@ -63,9 +63,9 @@ angular.module('febworms').controller('febwormsEditController', function ($scope
       throw Error('Field has no type.');
     }
 
-    var areas = [ 'palette', 'canvas', 'properties' ];
+    var areas = [ 'default', 'palette', 'canvas', 'properties' ];
 
-    field.$_templateUrl = field.$_templateUrl || [];
+    field.$_templateUrl = field.$_templateUrl || {};
 
     _.forEach(areas, function (area) {
       field.$_templateUrl[area] = field.$_templateUrl[area] || febwormsUtils.getTemplateUrl(field, area);
