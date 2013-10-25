@@ -12,6 +12,16 @@ febworms.Field = function (type, properties) {
 };
 
 angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfig', {
+  validation: {
+    messages: {
+      required: 'Field value is required.',
+      minlength: 'Field value does not match the minimum length.',
+      maxlength: 'Field value exceeds the maximum length.',
+      pattern: 'Field value does not match the required format.',
+      email: 'Field value should be an email address.',
+      unique: 'Field value is not unique.'
+    }
+  },
   fields: {
     templates: [
       new febworms.Field('text', {
@@ -41,17 +51,13 @@ angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfi
         value: '1'
       })
     ],
-//    aliases: {
-//      'email': 'text',
-//      'password': 'text'
-//    },
     categories: {
       'Text input fields': [ 'text', 'email', 'password', 'textarea' ],
       'Checkbox fields': [ 'checkbox', 'checkboxlist' ],
       'Select input fields': [ 'radiobuttonlist', 'selectlist' ]
     }
   }
-}).factory('febwormsUtils',function ($templateCache, $window, febwormsConfig) {
+}).factory('febwormsUtils', function ($templateCache, $window, febwormsConfig) {
     return {
       defaultArea: 'default',
       formatTemplateUrl: function (type, area) {
@@ -122,15 +128,12 @@ angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfi
         var x = 0, y = 0;
 
         if (!e) e = window.event;
-        if (e.pageX || e.pageY) 	{
+        if (e.pageX || e.pageY) {
           x = e.pageX;
           y = e.pageY;
-        }
-        else if (e.clientX || e.clientY) 	{
-          x = e.clientX + document.body.scrollLeft
-            + document.documentElement.scrollLeft;
-          y = e.clientY + document.body.scrollTop
-            + document.documentElement.scrollTop;
+        } else if (e.clientX || e.clientY) {
+          x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+          y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
         }
 
         return { x: x, y: y };
@@ -138,22 +141,22 @@ angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfi
         // posx and posy contain the mouse position relative to the document
         // Do something with this information
 
-//        if (!e) e = $window.event;
-//
-//        var x, y;
-//
-//        if (typeof e.clientX === 'undefined') {
-//          x = e.pageX;
-//          y = e.pageY;
-//        } else {
-//          x = e.clientX;
-//          y = e.clientY;
-//        }
+        //        if (!e) e = $window.event;
+        //
+        //        var x, y;
+        //
+        //        if (typeof e.clientX === 'undefined') {
+        //          x = e.pageX;
+        //          y = e.pageY;
+        //        } else {
+        //          x = e.clientX;
+        //          y = e.clientY;
+        //        }
 
         //var doc = $window.document.documentElement;
-//
-//        x += doc.scrollLeft;
-//        y += doc.scrollTop;
+        //
+        //        x += doc.scrollLeft;
+        //        y += doc.scrollTop;
 
 
         return { x: x, y: y };
