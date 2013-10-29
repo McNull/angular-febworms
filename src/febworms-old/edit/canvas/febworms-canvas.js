@@ -1,7 +1,7 @@
 angular.module('febworms').directive('febwormsCanvas',function () {
 
   return {
-    templateUrl: 'febworms/edit/canvas/febworms-canvas.tmpl.html',
+    templateUrl: 'febworms/edit/old/canvas/febworms-canvas.tmpl.html',
     controller: 'febwormsCanvasController'
   };
 }).controller('febwormsCanvasController',function ($scope, dqUtils, $timeout) {
@@ -69,7 +69,7 @@ angular.module('febworms').directive('febwormsCanvas',function () {
 
   }).directive('febwormsCanvasField',function () {
     return {
-      templateUrl: 'febworms/edit/canvas/febworms-canvas-field.tmpl.html',
+      templateUrl: 'febworms/edit/old/canvas/febworms-canvas-field.tmpl.html',
       replace: true
     };
   });

@@ -1,312 +1,101 @@
-describe('febworms-edit-controller', function() {
-
-  beforeEach(module('febworms'));
+describe('febworms-edit-controller', function () {
 
   var $controller, $scope;
 
-  beforeEach(inject(function(_$controller_, _$rootScope_) {
-    $controller = _$controller_;
-    $scope = _$rootScope_.$new();
+  beforeEach(function () {
 
-    $scope.schema = {};
-  }));
+    module('febworms');
 
-  it('should construct the controller', function() {
+    inject(function (_$controller_, _$rootScope_) {
 
-    // Act
+      $controller = _$controller_;
+      $scope = _$rootScope_.$new();
 
-    var controller = $controller('febwormsEditController', { $scope: $scope });
-
-    // Assert
-
-    expect(controller).toBeDefined();
-  });
-
-  describe('schema (in)valid', function() {
-
-    it('should set schema valid on empty field list', function() {
-
-      // Arrange
-
-      $controller('febwormsEditController', { $scope: $scope });
-
-      // Act
-
-      $scope.$digest();
-
-      // Assert
-
-      expect($scope.schema.$_invalid).toBeFalsy();
-    });
-
-    it('should set schema to invalid with invalid fields', function() {
-
-      // Arrange
-
-      $scope.schema.fields = [
-        { $_invalid: true }
-      ];
-
-      $controller('febwormsEditController', { $scope: $scope });
-
-      // Act
-
-      $scope.$digest();
-
-      // Assert
-
-      expect($scope.schema.$_invalid).toBeTruthy();
-    });
-
-    it('should set schema back to valid when field is valid again', function() {
-
-      // Arrange
-
-      $scope.schema.fields = [
-        { $_invalid: true }
-      ];
-
-      $controller('febwormsEditController', { $scope: $scope });
-      $scope.$digest();
-
-      // Act
-
-      var before = $scope.schema.$_invalid;
-      $scope.schema.fields[0].$_invalid = false;
-      $scope.$digest();
-      var after = $scope.schema.$_invalid;
-      // Assert
-
-      expect(before).toBeTruthy();
-      expect(after).toBeFalsy();
-    });
-  });
-
-  describe('addFieldToSchema', function() {
-
-    it('should create addFieldToSchema function on scope', function() {
-
-      // Act
-
-      $controller('febwormsEditController', { $scope: $scope });
-
-      // Assert
-
-      expect($scope.addFieldToSchema).toBeDefined();
-      expect(angular.isFunction($scope.addFieldToSchema)).toBeTruthy();
-    });
-
-    it('should create a field array if the schema does not have one yet', function() {
-
-      // Arrange
-
-      $scope.schema.fields = undefined;
-      $controller('febwormsEditController', { $scope: $scope });
-      var field = {};
-
-      // Act
-
-      $scope.addFieldToSchema(field);
-
-      // Assert
-
-      expect($scope.schema.fields).toBeDefined();
-      expect(angular.isArray($scope.schema.fields)).toBeTruthy();
-    });
-
-    it('should add field to schema', function() {
-
-      // Arrange
-
-      $controller('febwormsEditController', { $scope: $scope });
-      var displayName = 'Can you see me?';
-      var field = new febworms.Field(displayName);
-
-      // Act
-
-      $scope.addFieldToSchema(field);
-      var result = _.find($scope.schema.fields, { displayName: displayName });
-
-      // Assert
-
-      expect(result).toBeDefined();
-      expect(result.displayName).toBe(displayName);
-    });
-
-    it('should clone the provided field', function() {
-
-      // Arrange
-
-      $controller('febwormsEditController', { $scope: $scope });
-      var displayName = 'I am a clone';
-      var field = new febworms.Field(displayName);
-
-      // Act
-
-      $scope.addFieldToSchema(field);
-      var result = _.find($scope.schema.fields, { displayName: displayName });
-
-      // Assert
-
-      expect(result).toBeDefined();
-      expect(result).not.toBe(field);
-    });
-
-    it('should generate a unique id and name', function() {
-
-      // Arrange
-
-      $controller('febwormsEditController', { $scope: $scope });
-
-      var displayName1 = 'DisplayName1';
-      var field1 = new febworms.Field(displayName1);
-
-      var displayName2 = 'DisplayName2';
-      var field2 = new febworms.Field(displayName2);
-
-      // Act
-
-      $scope.addFieldToSchema(field1);
-      $scope.addFieldToSchema(field2);
-
-      var result1 = _.find($scope.schema.fields, { displayName: displayName1 });
-      var result2 = _.find($scope.schema.fields, { displayName: displayName2 });
-
-      // Assert
-
-      expect(result1).toBeDefined();
-      expect(result1.id).toBeDefined();
-      expect(result1.name).toBeDefined();
-
-      expect(result2).toBeDefined();
-      expect(result2.id).toBeDefined();
-      expect(result2.name).toBeDefined();
-
-      expect(result1.id).not.toBe(result2.id);
-      expect(result1.name).not.toBe(result2.name);
-    });
-
-    it('should generate a unique id and name after modification of list', function() {
-
-      // Arrange
-
-      $controller('febwormsEditController', { $scope: $scope });
-
-      var displayName1 = 'DisplayName1';
-      var field1 = new febworms.Field(displayName1);
-
-      var displayName2 = 'DisplayName2';
-      var field2 = new febworms.Field(displayName2);
-
-      var displayName3 = 'DisplayName3';
-      var field3 = new febworms.Field(displayName3);
-
-      $scope.addFieldToSchema(field1);
-      $scope.addFieldToSchema(field2);
-
-      // Act
-
-      $scope.removeFieldFromSchema(field1);
-      $scope.addFieldToSchema(field3);
-
-      var result1 = _.find($scope.schema.fields, { displayName: displayName1 });
-      var result2 = _.find($scope.schema.fields, { displayName: displayName2 });
-      var result3 = _.find($scope.schema.fields, { displayName: displayName3 });
-
-      // Assert
-
-      expect(result1).toBeUndefined();
-
-      expect(result3).toBeDefined();
-      expect(result3.id).toBeDefined();
-      expect(result3.name).toBeDefined();
-
-      expect(result2).toBeDefined();
-      expect(result2.id).toBeDefined();
-      expect(result2.name).toBeDefined();
-
-      expect(result3.id).not.toBe(result2.id);
-      expect(result3.name).not.toBe(result2.name);
     });
 
   });
 
-  describe('removeFieldFromSchema', function() {
-
-    it('should remove field by index', function() {
+  describe('schema', function () {
+    it('should construct the controller', function () {
 
       // Arrange
 
-      var index = 1;
-
-      $scope.schema.fields = [
-        { name: 'Ein' }, { name: 'Zwein' }, { name: 'Drein' }
-      ];
-
-      $controller('febwormsEditController', { $scope: $scope });
-
       // Act
 
-      $scope.removeFieldFromSchema(index);
+      var controller = $controller('febwormsEditController', { $scope: $scope });
 
       // Assert
 
-      expect($scope.schema.fields.length).toBe(2);
-      expect(_.find($scope.schema.fields, { name: 'Zwein' })).toBeFalsy();
+      expect(controller).toBeDefined();
+    });
+
+    it('should create schema object if none on scope', function () {
+
+      // Arrange
+
+      // Act
+
+      $controller('febwormsEditController', { $scope: $scope });
+
+      // Assert
+
+      expect($scope.schema).toBeDefined();
+    });
+
+    it('should use schema from scope if already exist', function () {
+
+      // Arrange
+
+      var schema = { exists: true };
+      $scope.schema = schema;
+
+      // Act
+
+      $controller('febwormsEditController', { $scope: $scope });
+
+      // Assert
+
+      expect($scope.schema).toBeDefined();
+      expect($scope.schema).toBe(schema);
     });
   });
 
-  describe('swapFieldsInSchema', function() {
+  describe('preview', function() {
 
-    it('should swap fields by indices', function() {
+    it('should set preview to false on init', function() {
 
       // Arrange
 
-      $scope.schema.fields = [
-        { name: 'Ein' }, { name: 'Zwein' }, { name: 'Drein' }
-      ];
-
-      $controller('febwormsEditController', { $scope: $scope });
+      $scope.preview = true;
 
       // Act
 
-      $scope.swapFieldsInSchema(0, 1);
+      $controller('febwormsEditController', { $scope: $scope });
 
       // Assert
 
-      expect($scope.schema.fields[0].name).toBe('Zwein');
-      expect($scope.schema.fields[1].name).toBe('Ein');
-      expect($scope.schema.fields[2].name).toBe('Drein');
-
+      expect($scope.preview).toBe(false);
     });
 
-    it('should NOT swap fields on array edges', function() {
+    it('should toggle the preview', function() {
 
       // Arrange
 
       $controller('febwormsEditController', { $scope: $scope });
+      $scope.preview = false;
 
-      function isUnchangedAfterSwap(idx1, idx2) {
+      // Act
 
-        $scope.schema.fields = [
-          { name: 'Ein' }, { name: 'Zwein' }, { name: 'Drein' }
-        ];
+      $scope.togglePreview();
+      var shouldBeTrue = $scope.preview;
 
-        $scope.swapFieldsInSchema(idx1, idx2);
+      $scope.togglePreview();
+      var shouldBeFalse = $scope.preview;
 
-        return $scope.schema.fields[0] && $scope.schema.fields[0].name === 'Ein' &&
-               $scope.schema.fields[1] && $scope.schema.fields[1].name === 'Zwein' &&
-               $scope.schema.fields[2] && $scope.schema.fields[2].name === 'Drein';
-      }
+      // Assert
 
-      // Act & Assert
-
-      expect(isUnchangedAfterSwap(-1,0)).toBeTruthy();
-      expect(isUnchangedAfterSwap(0,-1)).toBeTruthy();
-      expect(isUnchangedAfterSwap(3,0)).toBeTruthy();
-      expect(isUnchangedAfterSwap(0,3)).toBeTruthy();
-      expect(isUnchangedAfterSwap(-1,3)).toBeTruthy();
-      expect(isUnchangedAfterSwap(3,-1)).toBeTruthy();
+      expect(shouldBeTrue).toBe(true);
+      expect(shouldBeFalse).toBe(false);
     });
   });
 });

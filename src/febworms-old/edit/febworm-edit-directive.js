@@ -3,7 +3,7 @@ angular.module('febworms')
     return {
       restrict: 'AEC',
       controller: 'febwormsEditController',
-      templateUrl: 'febworms/edit/febworms-edit.tmpl.html',
+      templateUrl: 'febworms/edit/old/febworms-edit.tmpl.html',
       replace: true,
       scope: { schema: "=" }
     };
