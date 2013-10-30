@@ -1,3 +1,33 @@
 <div class="febworms-edit">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio doloremque eos, error eum ex facere laudantium nisi recusandae reprehenderit rerum sint temporibus voluptates. Eaque error necessitatibus obcaecati praesentium vitae voluptatum.</p>
+
+    <div ng-if="preview">
+        <div ng-include="'febworms/edit/febworms-edit-preview.tmpl.html'"></div>
+    </div>
+
+    <div ng-if="!preview">
+
+        <div febworms-edit-meta data-schema="schema" data-expose-form="setMetaForm(form)"></div>
+
+        <div ng-if="actionsEnabled" class="form-horizontal">
+
+            <div ng-if="debugInfoEnabled">
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="displayDebugData"> Display schema information
+                    </label>
+                </div>
+
+                <div ng-if="displayDebugData" data-jsonify="schema"></div>
+            </div>
+
+            <div class="form-actions">
+                <a ng-if="onSave.set" class="btn btn-primary" ng-disabled="schema.$_invalid" ng-click="handleSave()">Save
+                    changes</a>
+                <a ng-if="previewEnabled" class="btn" ng-disabled="schema.$_invalid" ng-click="togglePreview()">Preview
+                    form</a>
+                <a ng-if="onCancel.set" class="btn" ng-click="handleCancel()">Cancel</a>
+            </div>
+
+        </div>
+    </div>
 </div>

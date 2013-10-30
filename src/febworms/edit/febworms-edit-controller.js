@@ -1,10 +1,36 @@
-angular.module('febworms').controller('febwormsEditController', function($scope) {
+angular.module('febworms').controller('febwormsEditController', function($scope, febwormsConfig) {
 
   $scope.schema = $scope.schema || {};
+  $scope.metaForm = $scope.metaForm || {};
 
   $scope.preview = false;
 
+  $scope.debugInfoEnabled = febwormsConfig.enableDebugInfo;
+  $scope.previewEnabled = $scope.previewEnabled === undefined ? true : $scope.previewEnabled;
+  $scope.actionsEnabled = $scope.debugInfoEnabled || $scope.previewEnabled || $scope.onSave.set || $scope.onCancel.set;
+
   $scope.togglePreview = function() {
-    $scope.preview = !$scope.preview;
+    if(!$scope.schema.$_invalid) {
+      $scope.preview = !$scope.preview;
+    }
   };
+
+  $scope.handleSave = function() {
+    if(!$scope.schema.$_invalid) {
+      $scope.onSave();
+    }
+  };
+
+  $scope.handleCancel = function() {
+    $scope.onCancel();
+  };
+
+  $scope.$watch(function() {
+    $scope.schema.$_invalid = $scope.metaForm.$invalid;
+  });
+
+  $scope.setMetaForm = function(metaForm) {
+    $scope.metaForm = metaForm;
+  };
+
 });

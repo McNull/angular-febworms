@@ -1,4 +1,4 @@
-describe('febworms-edit-directive', function() {
+describe('febworms-edit-directive', function () {
 
   var $compile, $scope;
 
@@ -6,14 +6,14 @@ describe('febworms-edit-directive', function() {
 
     module('febworms');
 
-    inject(function(_$compile_, $rootScope) {
+    inject(function (_$compile_, $rootScope) {
       $compile = _$compile_;
       $scope = $rootScope.$new();
     });
 
   });
 
-  it('should compile the template', function() {
+  it('should compile the template', function () {
 
     // Arrange
 
@@ -30,47 +30,134 @@ describe('febworms-edit-directive', function() {
     expect(result.hasClass('febworms-edit')).toBe(true);
   });
 
-  it('should bind the schema object on scope', function() {
+  describe('onSave', function() {
 
-    // Arrange
+    it('should indicate if the onSave attribute has been supplied', function() {
+      // Arrange
 
-    $scope.form = {};
+      $scope.onSave = angular.noop;
+      var template = '<div febworms-edit data-on-save="onSave()"></div>';
+      var $element = angular.element(template);
 
-    var template = '<div febworms-edit data-schema="form.schema"></div>';
-    var $element = angular.element(template);
+      // Act
 
-    // Act
+      $compile($element)($scope);
+      $scope.$digest();
 
-    var result = $compile($element)($scope);
-    $scope.$digest();
+      $scope = $scope.$$childHead;
 
-    // Assert
+      // Assert
 
-    expect($scope.form.schema).toBeDefined();
+      expect($scope.onSave).toBeDefined();
+      expect($scope.onSave.set).toBe(true);
+    });
+
+    it('should indicate if the onSave attribute has not been supplied', function() {
+      // Arrange
+
+      var template = '<div febworms-edit></div>';
+      var $element = angular.element(template);
+
+      // Act
+
+      $compile($element)($scope);
+      $scope.$digest();
+
+      $scope = $scope.$$childHead;
+
+      // Assert
+
+      expect($scope.onSave).toBeDefined();
+      expect($scope.onSave.set).toBe(false);
+    });
+
   });
 
-  it('should reuse schema object from scope', function() {
+  describe('onCancel', function() {
 
-    // Arrange
+    it('should indicate if the onCancel attribute has been supplied', function() {
+      // Arrange
 
-    var schema = {
-      exists: true
-    };
+      var template = '<div febworms-edit data-on-cancel="onCancel()"></div>';
+      var $element = angular.element(template);
 
-    $scope.form = {
-      schema: schema
-    };
+      // Act
 
-    var template = '<div febworms-edit data-schema="form.schema"></div>';
-    var $element = angular.element(template);
+      $compile($element)($scope);
+      $scope.$digest();
 
-    // Act
+      $scope = $scope.$$childHead;
 
-    var result = $compile($element)($scope);
-    $scope.$digest();
+      // Assert
 
-    // Assert
+      expect($scope.onCancel).toBeDefined();
+      expect($scope.onCancel.set).toBe(true);
+    });
 
-    expect($scope.form.schema).toBe(schema);
+    it('should indicate if the onCancel attribute has not been supplied', function() {
+      // Arrange
+
+      var template = '<div febworms-edit></div>';
+      var $element = angular.element(template);
+
+      // Act
+
+      $compile($element)($scope);
+      $scope.$digest();
+
+      $scope = $scope.$$childHead;
+
+      // Assert
+
+      expect($scope.onCancel).toBeDefined();
+      expect($scope.onCancel.set).toBe(false);
+    });
+
+  });
+
+  describe('$scope.schema', function () {
+    it('should bind the schema object on scope', function () {
+
+      // Arrange
+
+      $scope.form = {};
+
+      var template = '<div febworms-edit data-schema="form.schema"></div>';
+      var $element = angular.element(template);
+
+      // Act
+
+      var result = $compile($element)($scope);
+      $scope.$digest();
+
+      // Assert
+
+      expect($scope.form.schema).toBeDefined();
+    });
+
+    it('should reuse schema object from scope', function () {
+
+      // Arrange
+
+      var schema = {
+        exists: true
+      };
+
+      $scope.form = {
+        schema: schema
+      };
+
+      var template = '<div febworms-edit data-schema="form.schema"></div>';
+      var $element = angular.element(template);
+
+      // Act
+
+      var result = $compile($element)($scope);
+      $scope.$digest();
+
+      // Assert
+
+      expect($scope.form.schema).toBe(schema);
+    });
   });
 });

@@ -12,6 +12,7 @@ febworms.Field = function (type, properties) {
 };
 
 angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfig', {
+  enableDebugInfo: true,
   validation: {
     messages: {
       required: 'Field value is required.',
