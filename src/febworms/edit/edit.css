@@ -1,0 +1,74 @@
+.febworms-canvas .febworms-field, .febworms-palette .febworms-field {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.febworms-canvas .febworms-field:hover, .febworms-palette .febworms-field:hover {
+    background-color: #f5f5f5;
+}
+
+.febworms-canvas-field .control-group, .febworms-palette .control-group {
+    margin-bottom: 0;
+}
+
+.febworms-field {
+    min-height: 25px;
+}
+
+.febworms-canvas .febworms-field.error {
+    background-color: #f2dede;
+    border-color: #b94a48;
+}
+
+
+.febworms-field-overlay {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    /*-moz-opacity: 0.0;*/
+    /*opacity:.0;*/
+
+    /* Needed by IE */
+    filter: alpha(opacity=0);
+    background: #FFF;
+    background-color: rgba(255,255,255,0.0);
+    cursor: move;
+}
+
+.febworms-field-overlay .btn-toolbar {
+    position: absolute;
+    margin: 0;
+    display: none;
+    top: -10px;
+}
+
+.febworms-field:hover .btn-toolbar {
+    display: block;
+}
+
+.febworms-field-overlay .btn-toolbar-right {
+    right: 5px;
+}
+
+.febworms-field-overlay .btn-toolbar-left {
+    left: 5px;
+}
+
+.febworms-field-overlay .btn-toolbar .btn[disabled] {
+    -moz-opacity: 1.0;
+    opacity:1.0;
+    filter: alpha(opacity=100);
+    color: #777;
+}

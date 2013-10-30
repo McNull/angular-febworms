@@ -9,7 +9,7 @@ angular.module('febworms').directive('febwormsEdit', function() {
     },
     replace: true,
     controller: 'febwormsEditController',
-    templateUrl: 'febworms/edit/febworms-edit.tmpl.html',
+    templateUrl: 'febworms/edit/edit.tmpl.html',
     link: function($scope, $element, $attrs) {
 
       $scope.onSave.set = $attrs.onSave !== undefined;

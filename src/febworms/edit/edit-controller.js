@@ -1,5 +1,7 @@
 angular.module('febworms').controller('febwormsEditController', function($scope, febwormsConfig) {
 
+  this.test = "dkdkdkdkd";
+
   $scope.schema = $scope.schema || {};
   $scope.metaForm = $scope.metaForm || {};
 

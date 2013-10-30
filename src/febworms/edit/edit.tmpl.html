@@ -1,0 +1,21 @@
+<div class="febworms-edit">
+
+    <div ng-if="preview">
+        <div ng-include="'febworms/edit/preview/preview.tmpl.html'"></div>
+    </div>
+
+    <div ng-if="!preview">
+        <div febworms-edit-meta data-schema="schema" data-expose-form="setMetaForm(form)"></div>
+
+        <div class="row-fluid">
+            <div class="span8">
+                <div data-febworms-canvas></div>
+            </div>
+            <div class="span4">
+                <div febworms-edit-palette></div>
+            </div>
+        </div>
+
+        <div febworms-edit-form-actions></div>
+    </div>
+</div>

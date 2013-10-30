@@ -1,0 +1,19 @@
+<div class="febworms-palette">
+    <form novalidate name="febwormsPalette" class="form-horizontal">
+        <fieldset>
+            <legend>Palette <span data-febworms-edit-palette-categories></span></legend>
+            <div ng-repeat="field in palette.fields | filter:palette.categoryFilter" class="febworms-field"
+                 dq-draggable="febworms-canvas" dq-drag-begin="{ source: 'palette', field: field }"
+                 ng-init="initField(field)">
+                <div class="febworms-field-overlay">
+                    <div class="btn-toolbar btn-toolbar-right">
+                        <button class="btn btn-mini" type="button" ng-click="addFieldToSchema(field)">Add</button>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div ng-init="$_noTabIndex = true" ng-include="field.$_templateUrl['palette']"></div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
