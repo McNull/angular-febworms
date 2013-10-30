@@ -3,8 +3,11 @@ angular.module('febworms').controller('febwormsEditPaletteController',function (
   var palette = $scope.palette = {};
 
   palette.fields = febwormsConfig.fields.templates;
-  palette.categoryKeys = _.keys(febwormsConfig.fields.categories);
-  palette.categoryKey = palette.categoryKeys[0];
+
+  palette.categories = febwormsConfig.fields.categories;
+
+//  palette.categoryKeys = _.keys(febwormsConfig.fields.categories);
+//  palette.categoryKey = palette.categoryKeys[0];
 
   $scope.$watch('palette.categoryKey', function (value) {
     palette.category = febwormsConfig.fields.categories[value];

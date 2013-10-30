@@ -1,9 +1,9 @@
 
-.febworms-palette .controls {
+.febworms-edit-palette .controls {
     margin-left: 0;
 }
 
-.febworms-palette .control-label {
+.febworms-edit-palette .control-label {
     float: none;
     width: auto;
     padding-top: 0;
@@ -14,25 +14,25 @@
     opacity: 0.8;
 }
 
-.febworms-palette-categories {
+.febworms-edit-palette-categories {
     position: relative;
     cursor: pointer;
 }
 
-.febworms-palette-categories .caret {
+.febworms-edit-palette-categories .caret {
     border-top: 4px solid #999;
     margin-top: 20px;
 }
 
-.febworms-palette-categories:hover {
+.febworms-edit-palette-categories:hover {
     color: #333;
 }
 
-.febworms-palette-categories:hover .caret {
+.febworms-edit-palette-categories:hover .caret {
     border-top: 4px solid #333;
 }
 
-.febworms-palette-categories .dropdown-menu {
+.febworms-edit-palette-categories .dropdown-menu {
     font-size: 14px;
     line-height: 20px;
     right: auto;

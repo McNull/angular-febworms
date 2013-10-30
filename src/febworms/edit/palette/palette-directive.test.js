@@ -1,7 +1,7 @@
 describe('febworms-edit-palette', function () {
 
   var $controller, $scope, febwormsConfigMock, $compile, $templateCache;
-
+return;
   beforeEach(function () {
 
     module('febworms');
@@ -27,7 +27,7 @@ describe('febworms-edit-palette', function () {
 
   describe('directive', function () {
 
-    var template = '<div data-febworms-palette></div>';
+    var template = '<div febworms-edit-palette></div>';
 
     it('should compile the template', function () {
 
@@ -42,7 +42,7 @@ describe('febworms-edit-palette', function () {
 
       // Assert
 
-      expect(result.find('.febworms-palette').length).toBe(1);
+      expect(result.find('.febworms-edit-palette').length).toBe(1);
     });
 
 

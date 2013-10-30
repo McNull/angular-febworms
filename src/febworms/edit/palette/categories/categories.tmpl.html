@@ -1,0 +1,15 @@
+<div class="febworms-legend-extra febworms-edit-palette-categories"
+     ng-class="{ 'open': paletteCategoriesMenuOpen }"
+     ng-click="paletteCategoriesMenuOpen = !paletteCategoriesMenuOpen">- {{ categoryName || 'All field types' }} <i class="caret"></i>
+    <ul class="dropdown-menu">
+        <li ng-repeat="(name, category) in categories" ng-class="{ 'active': categoryName === name }">
+            <a ng-click="setCategory(name, category)">
+                {{ name }}
+            </a>
+        </li>
+        <li class="divider"></li>
+        <li ng-class="{ 'active': !category }">
+            <a ng-click="setCategory(null)">All field types</a>
+        </li>
+    </ul>
+</div>

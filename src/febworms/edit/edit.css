@@ -1,4 +1,4 @@
-.febworms-canvas .febworms-field, .febworms-palette .febworms-field {
+.febworms-canvas .febworms-field, .febworms-edit-palette .febworms-field {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -16,11 +16,11 @@
     position: relative;
 }
 
-.febworms-canvas .febworms-field:hover, .febworms-palette .febworms-field:hover {
+.febworms-canvas .febworms-field:hover, .febworms-edit-palette .febworms-field:hover {
     background-color: #f5f5f5;
 }
 
-.febworms-canvas-field .control-group, .febworms-palette .control-group {
+.febworms-canvas-field .control-group, .febworms-edit-palette .control-group {
     margin-bottom: 0;
 }
 
