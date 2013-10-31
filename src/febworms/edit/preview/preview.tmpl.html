@@ -1,18 +1,1 @@
 preview
-
-<div ng-if="actionsEnabled" class="form-horizontal">
-
-    <div ng-if="debugInfoEnabled">
-        <div class="controls">
-            <label class="checkbox">
-                <input type="checkbox" ng-model="displayDebugData"> Display form data information
-            </label>
-        </div>
-
-        <div ng-if="displayDebugData" data-jsonify="formData"></div>
-    </div>
-
-    <div class="form-actions">
-        <a ng-if="previewEnabled" class="btn btn-primary" ng-click="togglePreview()">Close preview</a>
-    </div>
-</div>

@@ -3,9 +3,9 @@
     <label class="radio" ng-repeat="option in field.options">
         <input type="radio"
                name="{{ field.name }}[]"
-               tabindex="{{ $_noTabIndex ? '-1' : 'auto' }}"
+               tabindex="{{ tabIndex }}"
                value="{{ option.value }}"
-               ng-model="field.value">
+               ng-model="data">
         <span>{{option.text}}</span>
     </label>
 </div>

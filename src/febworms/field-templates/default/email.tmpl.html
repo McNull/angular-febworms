@@ -1,11 +1,11 @@
-<label class="control-label" for="{{ field.id }}">{{ field.displayName }}</label>
+<label class="control-label" for="field_{{ $id }}">{{ field.displayName }}</label>
 <div class="controls" ng-switch="field.type">
     <input type="email"
-           id="{{ field.id }}"
+           id="field_{{ $id }}"
            name="{{ field.name }}"
-           tabindex="{{ $_noTabIndex ? '-1' : 'auto' }}"
+           tabindex="{{ tabIndex }}"
            placeholder="{{ field.placeholder }}"
-           ng-model="field.value"
+           ng-model="data"
            ng-required="field.validation.required"
            ng-minlength="{{ field.validation.minlength }}"
            ng-maxlength="{{ field.validation.maxlength }}"

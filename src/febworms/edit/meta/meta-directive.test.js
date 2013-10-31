@@ -19,7 +19,10 @@ describe('febworms-edit-meta-directive', function() {
 
     // Arrange
 
-    var template = '<div febworms-edit-meta></div>';
+    var template =
+      //'<div febworms-edit>' +
+        '<div febworms-edit-meta></div>';
+      //'</div>';
     var $element = angular.element(template);
 
     // Act
@@ -39,7 +42,11 @@ describe('febworms-edit-meta-directive', function() {
     // Arrange
 
     $scope.exposeForm = jasmine.createSpy('exposeForm');
-    var template = '<div febworms-edit-meta data-expose-form="exposeForm(form)"></div>';
+    var template =
+    //  '<div febworms-edit>' +
+        '<div febworms-edit-meta data-expose-form="exposeForm(form)"></div>';
+    //  '</div>';
+
     var $element = angular.element(template);
 
     // Act

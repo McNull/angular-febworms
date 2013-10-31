@@ -5,9 +5,6 @@ angular.module('febworms').directive('febwormsEditMeta', function() {
       schema: '=?',
       exposeForm: '&'
     },
-    templateUrl: 'febworms/edit/meta/meta.tmpl.html',
-    link: function($scope, $element, $attrs) {
-
-    }
+    templateUrl: 'febworms/edit/meta/meta.tmpl.html'
   };
 });

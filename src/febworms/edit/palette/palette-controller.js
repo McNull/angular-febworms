@@ -1,20 +1,15 @@
-angular.module('febworms').controller('febwormsEditPaletteController',function ($scope, febwormsConfig) {
+angular.module('febworms').controller('febwormsEditPaletteController', function ($scope, febwormsConfig) {
 
-  var palette = $scope.palette = {};
+  $scope.templates = angular.copy(febwormsConfig.fields.templates);
 
-  palette.fields = febwormsConfig.fields.templates;
+  var count = 0;
 
-  palette.categories = febwormsConfig.fields.categories;
-
-//  palette.categoryKeys = _.keys(febwormsConfig.fields.categories);
-//  palette.categoryKey = palette.categoryKeys[0];
-
-  $scope.$watch('palette.categoryKey', function (value) {
-    palette.category = febwormsConfig.fields.categories[value];
+  angular.forEach($scope.templates, function (template) {
+    template.id = 'template' + ++count;
   });
 
-  palette.categoryFilter = function (field) {
-    return (!palette.category) || _.contains(palette.category, field.type);
+  $scope.templateFilter = function (template) {
+    return !$scope.selectedCategory || $scope.selectedCategory[template.type];
   };
 
 });

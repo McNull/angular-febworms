@@ -53,12 +53,17 @@ angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfi
       })
     ],
     categories: {
-      'Text input fields': [ 'text', 'email', 'password', 'textarea' ],
-      'Checkbox fields': [ 'checkbox', 'checkboxlist' ],
-      'Select input fields': [ 'radiobuttonlist', 'selectlist' ]
+      'Text input fields': {
+        'text': true, 'email': true, 'password': true, 'textarea': true
+      },
+      'Checkbox fields': { 'checkbox': true, 'checkboxlist': true },
+      'Select input fields': { 'radiobuttonlist': true, 'selectlist': true }
     }
   }
 }).factory('febwormsUtils', function ($templateCache, $window, febwormsConfig) {
+
+    var uniqueCounter = 0;
+
     return {
       defaultArea: 'default',
       formatTemplateUrl: function (type, area) {
@@ -89,19 +94,8 @@ angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfi
 
         return templateUrl;
       },
-      stopEvent: function (e) {
-
-        if (!e) e = $window.event;
-
-        // e.cancelBubble is supported by IE8 -
-        // this will kill the bubbling process.
-        e.cancelBubble = true;
-
-        // e.stopPropagation works in modern browsers
-        if (e.stopPropagation) e.stopPropagation();
-        if (e.preventDefault) e.preventDefault();
-
-        return false;
+      getUnique: function() {
+        return ++uniqueCounter;
       },
       findElementsByClass: function (root, className, recursive, buffer) {
         buffer = buffer || [];
@@ -123,44 +117,6 @@ angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfi
         }
 
         return buffer;
-      },
-      getCursorPosition: function (e) {
-
-        var x = 0, y = 0;
-
-        if (!e) e = window.event;
-        if (e.pageX || e.pageY) {
-          x = e.pageX;
-          y = e.pageY;
-        } else if (e.clientX || e.clientY) {
-          x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-          y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-        }
-
-        return { x: x, y: y };
-
-        // posx and posy contain the mouse position relative to the document
-        // Do something with this information
-
-        //        if (!e) e = $window.event;
-        //
-        //        var x, y;
-        //
-        //        if (typeof e.clientX === 'undefined') {
-        //          x = e.pageX;
-        //          y = e.pageY;
-        //        } else {
-        //          x = e.clientX;
-        //          y = e.clientY;
-        //        }
-
-        //var doc = $window.document.documentElement;
-        //
-        //        x += doc.scrollLeft;
-        //        y += doc.scrollTop;
-
-
-        return { x: x, y: y };
       }
     };
   });

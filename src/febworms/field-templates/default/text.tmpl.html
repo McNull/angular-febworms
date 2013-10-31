@@ -1,10 +1,10 @@
-<label class="control-label" for="{{ field.id }}">{{ field.displayName }}</label>
-<div class="controls" ng-switch="field.type">
+<label class="control-label" for="field_{{ $id }}">{{ field.displayName }}</label>
+<div class="controls">
     <input type="text"
-           id="{{ field.id }}"
-           tabindex="{{ $_noTabIndex ? '-1' : 'auto' }}"
+           id="field_{{ $id }}"
+           tabindex="{{ tabIndex }}"
            placeholder="{{ field.placeholder }}"
-           ng-model="field.value"
+           ng-model="data"
            ng-required="field.validation.required"
            ng-minlength="{{ field.validation.minlength }}"
            ng-maxlength="{{ field.validation.maxlength }}"

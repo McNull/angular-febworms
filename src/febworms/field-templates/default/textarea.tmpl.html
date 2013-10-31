@@ -1,8 +1,8 @@
-<label class="control-label" for="{{ field.id }}">{{ field.displayName }}</label>
+<label class="control-label" for="field_{{ $id }}">{{ field.displayName }}</label>
 <div class="controls">
-    <textarea id="{{ field.id }}"
-              tabindex="{{ $_noTabIndex ? '-1' : 'auto' }}"
-              ng-model="field.value"
+    <textarea id="field_{{ $id }}"
+              tabindex="{{ tabIndex }}"
+              ng-model="data"
               ng-required="field.validation.required"
               ng-minlength="{{ field.validation.minlength }}"
               ng-maxlength="{{ field.validation.maxlength }}"

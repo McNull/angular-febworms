@@ -1,7 +1,7 @@
 describe('febworms-edit-palette', function () {
 
-  var $controller, $scope, febwormsConfigMock, $compile, $templateCache;
-return;
+  var $controller, $scope, febwormsConfigMock, $compile, $templateCache, febwormsUtils;
+
   beforeEach(function () {
 
     module('febworms');
@@ -17,11 +17,12 @@ return;
       $provide.constant('febwormsConfig', febwormsConfigMock);
     });
 
-    inject(function (_$controller_, _$rootScope_, _$compile_, _$templateCache_) {
+    inject(function (_$controller_, _$rootScope_, _$compile_, _$templateCache_, _febwormsUtils_) {
       $controller = _$controller_;
       $scope = _$rootScope_.$new();
       $compile = _$compile_;
       $templateCache = _$templateCache_;
+      febwormsUtils = _febwormsUtils_;
     });
   });
 
@@ -45,28 +46,6 @@ return;
       expect(result.find('.febworms-edit-palette').length).toBe(1);
     });
 
-
-    it('should call the field init for each field template', function () {
-      // Arrange
-
-      $scope.initField = angular.noop;
-      spyOn($scope, 'initField');
-
-      febwormsConfigMock.fields.templates.push(new febworms.Field('Ein'));
-      febwormsConfigMock.fields.templates.push(new febworms.Field('Zwein'));
-      febwormsConfigMock.fields.templates.push(new febworms.Field('Drein'));
-
-      var fieldCount = febwormsConfigMock.fields.templates.length;
-      var $element = $compile($(template))($scope);
-
-      // Act
-
-      $scope.$digest();
-
-      // Assert
-
-      expect($scope.initField.calls.length).toBe(fieldCount);
-    });
 
     it('should render all field templates from config', function () {
 
@@ -95,30 +74,7 @@ return;
 
     });
 
-    //    it('should call the addFieldToSchema on overlay double click', function () {
-    //
-    //      // Arrange
-    //
-    //      var field = new febworms.Field('foo');
-    //      febwormsConfigMock.fields.templates.push(field);
-    //
-    //      $scope.addFieldToSchema = angular.noop;
-    //      spyOn($scope, 'addFieldToSchema');
-    //
-    //      var $element = $compile($(template))($scope);
-    //      $scope.$digest();
-    //
-    //      // Act
-    //
-    //      var $fieldOverlay = $element.find('.febworms-field-overlay').first();
-    //      $fieldOverlay.dblclick();
-    //
-    //      // Assert
-    //
-    //      expect($scope.addFieldToSchema).toHaveBeenCalledWith(field);
-    //    });
-
-    it('should call the addFieldToSchema on button click', function () {
+    xit('should call the addFieldToSchema on button click', function () {
 
       // Arrange
 
@@ -144,31 +100,48 @@ return;
 
       // Arrange
 
-      febwormsConfigMock.fields.templates = [
+      // -- construct 2 fake templates
+
+      var templates = febwormsConfigMock.fields.templates = [
         new febworms.Field('myType'), new febworms.Field('myOtherType')
       ];
 
-      febwormsConfigMock.fields.categories = {
-        'myCategory': ['myType'],
-        'myOtherCategory': ['myOtherType']
+      // -- create two categories and register each fake template
+
+      var categories = febwormsConfigMock.fields.categories = {
+        'myCategory': { 'myType': true },
+        'myOtherCategory': { 'myOtherType': true }
       };
 
-      _.forEach(febwormsConfigMock.fields.templates, function (field) {
-        $templateCache.put('template-' + field.type + '.tmpl.html', '<div class="render-result">' + field.type + '</div>')
+      // -- fake the template cache that we've got html entries
+
+      _.forEach(templates, function (template) {
+        var templateUrl = febwormsUtils.formatTemplateUrl(template.type);
+        $templateCache.put(templateUrl, '<div class="render-result">' + template.type + '</div>')
       });
 
-      $scope.initField = function (field) {
-        field.$_templateUrl = { palette: 'template-' + field.type + '.tmpl.html' };
-      };
+      // -- Set the initial selected category
+
+      $scope.selectedCategory = categories['myCategory'];
+
+      // -- Compile, link and grab the dom element
 
       var $element = $compile($(template))($scope);
-      $scope.$digest();
 
       // Act
 
+      // -- Swallow!
+
+      $scope.$digest();
+
       var before = $element.find('.render-result').text();
 
-      $scope.palette.categoryKey = 'myOtherCategory';
+      // -- Change the select category
+
+      $scope.selectedCategory = categories['myOtherCategory'];
+
+      // -- Swallow!
+
       $scope.$digest();
 
       var after = $element.find('.render-result').text();
