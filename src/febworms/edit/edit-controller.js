@@ -29,11 +29,16 @@ angular.module('febworms').controller('febwormsEditController', function($scope,
     $scope.schema.fields[idx1] = $scope.schema.fields.splice(idx2, 1, $scope.schema.fields[idx1])[0];
   };
 
-
+  this.moveField = function(fromIdx, toIdx) {
+    if(fromIdx >= 0 && toIdx <= $scope.schema.fields.length && fromIdx !== toIdx) {
+      var field = $scope.schema.fields.splice(fromIdx, 1)[0];
+      if(toIdx > fromIdx) --toIdx;
+      $scope.schema.fields.splice(toIdx, 0, field);
+    }
+  }
 
   $scope.$watch(function() {
     $scope.schema.$_invalid = self.metaForm ? self.metaForm.$invalid : false;
   });
-
 
 });

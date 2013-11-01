@@ -151,6 +151,33 @@ describe('febworms-edit-controller', function() {
       expect($scope.schema.fields[0]).not.toBe(field);
       expect($scope.schema.fields[0].type).toBe(field.type);
     });
+
+    it('should add field at specified index', function() {
+
+      // Arrange
+
+      $scope.schema.fields = [
+        new febworms.Field('Ein'),
+        new febworms.Field('Zwein'),
+        new febworms.Field('Drein')
+      ];
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      var field = new febworms.Field('myType');
+
+      // Act
+
+      controller.addField(field, 1);
+
+      // Assert
+
+      expect($scope.schema.fields.length).toBe(4);
+      expect($scope.schema.fields[1].type).toBe(field.type);
+    });
+
   });
 
   describe('removeField', function() {
@@ -245,4 +272,184 @@ describe('febworms-edit-controller', function() {
       expect(isUnchangedAfterSwap(3, -1)).toBeTruthy();
     });
   });
+
+  describe('moveField', function() {
+
+    it('should not move if target index is the same', function() {
+
+      // Arrange
+
+       $scope.schema.fields = [
+        new febworms.Field('Ein'),
+        new febworms.Field('Zwein'),
+        new febworms.Field('Drein')
+      ];
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      // Act
+
+      controller.moveField(2, 2);
+
+      // Assert
+      
+      expect($scope.schema.fields[0].type).toBe('Ein');
+      expect($scope.schema.fields[1].type).toBe('Zwein');
+      expect($scope.schema.fields[2].type).toBe('Drein');
+    });
+
+    it('should move field to new index (1/3)', function() {
+
+      // Arrange
+ 
+       $scope.schema.fields = [
+        new febworms.Field('Ein'),
+        new febworms.Field('Zwein'),
+        new febworms.Field('Drein')
+      ];
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      // Act
+
+      controller.moveField(0, 3);
+
+      // Assert
+      
+      expect($scope.schema.fields[0].type).toBe('Zwein');
+      expect($scope.schema.fields[1].type).toBe('Drein');
+      expect($scope.schema.fields[2].type).toBe('Ein');
+    });
+
+    it('should move field to new index (2/3)', function() {
+
+      // Arrange
+ 
+       $scope.schema.fields = [
+        new febworms.Field('Ein'),
+        new febworms.Field('Zwein'),
+        new febworms.Field('Drein')
+      ];
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      // Act
+
+      controller.moveField(0, 2);
+
+      // Assert
+      
+      expect($scope.schema.fields[0].type).toBe('Zwein');
+      expect($scope.schema.fields[1].type).toBe('Ein');
+      expect($scope.schema.fields[2].type).toBe('Drein');
+    });
+
+    it('should move field to new index (3/3)', function() {
+
+      // Arrange
+ 
+       $scope.schema.fields = [
+        new febworms.Field('Ein'),
+        new febworms.Field('Zwein'),
+        new febworms.Field('Drein')
+      ];
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      // Act
+
+      controller.moveField(1, 0);
+
+      // Assert
+      
+      expect($scope.schema.fields[0].type).toBe('Zwein');
+      expect($scope.schema.fields[1].type).toBe('Ein');
+      expect($scope.schema.fields[2].type).toBe('Drein');
+    });
+
+    it('should not move beyond array bounderies (1/2)', function() {
+
+      // Arrange
+ 
+       $scope.schema.fields = [
+        new febworms.Field('Ein'),
+        new febworms.Field('Zwein'),
+        new febworms.Field('Drein')
+      ];
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      // Act
+
+      controller.moveField(0, 10);
+
+      // Assert
+      
+      expect($scope.schema.fields[0].type).toBe('Ein');
+      expect($scope.schema.fields[1].type).toBe('Zwein');
+      expect($scope.schema.fields[2].type).toBe('Drein');
+    });
+
+    it('should not move beyond array bounderies (2/2)', function() {
+
+      // Arrange
+ 
+       $scope.schema.fields = [
+        new febworms.Field('Ein'),
+        new febworms.Field('Zwein'),
+        new febworms.Field('Drein')
+      ];
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      // Act
+
+      controller.moveField(-10, 0);
+
+      // Assert
+      
+      expect($scope.schema.fields[0].type).toBe('Ein');
+      expect($scope.schema.fields[1].type).toBe('Zwein');
+      expect($scope.schema.fields[2].type).toBe('Drein');
+    });
+
+    it('should move to edge boundery of array', function() {
+
+      // Arrange
+ 
+       $scope.schema.fields = [
+        new febworms.Field('Ein'),
+        new febworms.Field('Zwein'),
+        new febworms.Field('Drein')
+      ];
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      // Act
+
+      controller.moveField(0, 3);
+
+      // Assert
+      
+      expect($scope.schema.fields[0].type).toBe('Zwein');
+      expect($scope.schema.fields[1].type).toBe('Drein');
+      expect($scope.schema.fields[2].type).toBe('Ein');
+    });
+
+  });
+
 });

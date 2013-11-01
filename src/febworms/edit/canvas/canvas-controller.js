@@ -52,8 +52,9 @@ angular.module('febworms').controller('febwormsEditCanvasController', function (
       if (source == 'palette') {
         $scope.editCtrl.addField(field, $scope.dragPlaceholder.index);
       } else if (source == 'canvas') {
-        fields.splice(index, 1);
-        fields.splice($scope.dragPlaceholder.index, 0, field);
+        $scope.editCtrl.moveField(index, $scope.dragPlaceholder.index);
+        // fields.splice(index, 1);
+        // fields.splice($scope.dragPlaceholder.index, 0, field);
       }
 
       // IE fix: not calling dragEnd sometimes

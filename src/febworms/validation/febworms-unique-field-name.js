@@ -21,6 +21,10 @@ angular.module('febworms').directive('febwormsUniqueFieldName', function () {
     require: 'ngModel',
     link: function ($scope, $element, $attrs, ngModel) {
 
+      if(!$scope.schema) {
+        throw Error('No schema on scope');
+      }
+      
       var field = $scope.field;
       var fields = $scope.schema.fields;
 

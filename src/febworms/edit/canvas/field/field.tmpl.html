@@ -1,4 +1,3 @@
-
 <div class="febworms-field febworms-field-{{ field.type }} febworms-edit-canvas-field"
      ng-class="{ 'error': field.$_invalid, 'dragging': field.$_isDragging }"
      dq-draggable="febworms-edit-canvas"
@@ -34,5 +33,5 @@
     </div>
     <div febworms-edit-canvas-field-properties
          data-field="field" data-schema="schema"
-         ng-show="field.$_displayProperties"></div>
+         ng-if="field.$_displayProperties"></div>
 </div>

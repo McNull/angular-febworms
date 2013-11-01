@@ -1,0 +1,48 @@
+<div class="febworms-field-properties">
+    <form novalidate class="form-horizontal" name="fieldPropertiesForm">
+
+        <!-- displayName -->
+        <div class="control-group" ng-class="{ 'error': fieldPropertiesForm.displayName.$invalid }">
+            <label class="control-label">Display name</label>
+
+            <div class="controls">
+                <input type="text"
+                       name="displayName"
+                       ng-model="field.displayName"/>
+
+                <div febworms-validation-summary data-form-field="fieldPropertiesForm.displayName"></div>
+            </div>
+        </div>
+
+        <!-- fieldName -->
+        <div class="control-group" ng-class="{ 'error': fieldPropertiesForm.fieldName.$invalid }">
+            <label class="control-label">Name</label>
+
+            <div class="controls">
+                <input type="text"
+                       name="fieldName"
+                       ng-model="field.name"
+                       ng-required="true"
+                       ng-pattern="/^[a-zA-Z]([\w]+)?$/"
+                       febworms-unique-field-name/>
+
+                <div febworms-validation-summary data-form-field="fieldPropertiesForm.fieldName"></div>
+            </div>
+        </div>
+
+        <!-- Other properties -->
+        <div ng-include="field.$_templateUrl['properties']"></div>
+
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="field.$_displayPropertiesDebugData"> Display debug
+                    information
+                </label>
+            </div>
+        </div>
+
+        <div ng-if="field.$_displayPropertiesDebugData" data-jsonify="fieldPropertiesForm"></div>
+
+    </form>
+</div>
