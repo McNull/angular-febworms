@@ -2,7 +2,7 @@
 <div class="controls">
     <!--ng-options="option.value as option.text for option in field.options"-->
     <select id="field_{{ $id }}"
-            ng-model="data"
+            ng-model="ngModel"
             ng-required="field.validation.required"
             tabindex="{{ tabIndex }}">
         <option ng-repeat="option in field.options" value="option.value" ng-selected="field.value === option.value">{{ option.text }}</option>

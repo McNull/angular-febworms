@@ -2,7 +2,6 @@ var febworms = {};
 
 febworms.Field = function (type, properties) {
   this.type = type;
-  this.id = 'field.' + type;
 
   if (properties) {
     angular.extend(this, properties);
@@ -96,6 +95,11 @@ angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfi
       },
       getUnique: function() {
         return ++uniqueCounter;
+      },
+      copyField: function(field) {
+        var copy = angular.copy(field);
+        copy.name = 'field' + this.getUnique();
+        return copy;
       },
       findElementsByClass: function (root, className, recursive, buffer) {
         buffer = buffer || [];

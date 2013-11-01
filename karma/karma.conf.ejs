@@ -34,9 +34,9 @@ files = files.concat(helpers.getIncludes('test', ['vendor'], '.'))
     // list of files to exclude
     exclude: [],
 
-    // test results reporter to use‰‰
+    // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress'],
+    reporters: ['growl', 'dots'],
 
     // web server port
     port: 9876,
@@ -59,8 +59,7 @@ files = files.concat(helpers.getIncludes('test', ['vendor'], '.'))
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['Chrome' ],
-
+    browsers: ['PhantomJS' ],
 
     // If browser does not capture in given timeout [ms], kill it
     captureTimeout: 60000,

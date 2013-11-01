@@ -14,10 +14,14 @@
 
         <div class="row-fluid">
             <div class="span8">
-                <div data-febworms-canvas></div>
+                <div febworms-edit-canvas
+                     data-schema="schema">
+                </div>
             </div>
             <div class="span4">
-                <div febworms-edit-palette></div>
+                <div febworms-edit-palette
+                     data-add-field="editCtrl.addField(field)">
+                </div>
             </div>
         </div>
 

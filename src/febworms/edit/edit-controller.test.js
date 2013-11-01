@@ -1,12 +1,12 @@
-describe('febworms-edit-controller', function () {
+describe('febworms-edit-controller', function() {
 
   var $controller, $scope, febwormsConfig;
 
-  beforeEach(function () {
+  beforeEach(function() {
 
     module('febworms');
 
-    inject(function (_$controller_, _$rootScope_, _febwormsConfig_) {
+    inject(function(_$controller_, _$rootScope_, _febwormsConfig_) {
 
       $controller = _$controller_;
 
@@ -22,27 +22,31 @@ describe('febworms-edit-controller', function () {
 
   });
 
-  it('should construct the controller', function () {
+  it('should construct the controller', function() {
 
     // Arrange
 
 
     // Act
 
-    var controller = $controller('febwormsEditController', { $scope: $scope });
+    var controller = $controller('febwormsEditController', {
+      $scope: $scope
+    });
 
     // Assert
 
     expect(controller).toBeDefined();
   });
 
-  describe('schema.$_invalid', function () {
+  describe('schema.$_invalid', function() {
 
     it('should be invalid when metaForm is not available', function() {
 
       // Arrange
 
-      var controller = $controller('febwormsEditController', { $scope: $scope });
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
 
       // Act
 
@@ -58,8 +62,12 @@ describe('febworms-edit-controller', function () {
 
       // Arrange
 
-      var metaForm = { $invalid: true };
-      var controller = $controller('febwormsEditController', { $scope: $scope });
+      var metaForm = {
+        $invalid: true
+      };
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
       controller.setMetaForm(metaForm);
 
       // Act
@@ -76,8 +84,12 @@ describe('febworms-edit-controller', function () {
 
       // Arrange
 
-      var metaForm = { $invalid: false };
-      var controller = $controller('febwormsEditController', { $scope: $scope });
+      var metaForm = {
+        $invalid: false
+      };
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
       controller.setMetaForm(metaForm);
 
       // Act
@@ -89,8 +101,148 @@ describe('febworms-edit-controller', function () {
       expect($scope.schema.$_invalid).toBe(false);
 
     });
-
   });
 
+  describe('addField', function() {
 
+    it('should add field to the end of the fields array', function() {
+
+      // Arrange
+
+      $scope.schema.fields = [
+        new febworms.Field('Ein'),
+        new febworms.Field('Zwein'),
+        new febworms.Field('Drein')
+      ];
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      var field = new febworms.Field('myType');
+
+      // Act
+
+      controller.addField(field);
+
+      // Assert
+
+      expect($scope.schema.fields.length).toBe(4);
+      expect($scope.schema.fields[3].type).toBe(field.type);
+    });
+
+    it('should create a copy of the provided field', function() {
+
+      // Arrange
+
+      $scope.schema.fields = [];
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      var field = new febworms.Field('myType');
+
+      // Act
+
+      controller.addField(field);
+
+      // Assert
+
+      expect($scope.schema.fields[0]).not.toBe(field);
+      expect($scope.schema.fields[0].type).toBe(field.type);
+    });
+  });
+
+  describe('removeField', function() {
+
+    it('should remove field by index', function() {
+
+      // Arrange
+
+      var index = 1;
+
+      $scope.schema.fields = [
+        new febworms.Field('Ein'),
+        new febworms.Field('Zwein'),
+        new febworms.Field('Drein')
+      ];
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      // Act
+
+      controller.removeField(index);
+
+      // Assert
+
+      expect($scope.schema.fields.length).toBe(2);
+      expect(_.find($scope.schema.fields, {
+        name: 'Zwein'
+      })).toBeFalsy();
+    });
+  });
+
+  describe('swapFields', function() {
+
+    it('should swap fields by indices', function() {
+
+      // Arrange
+
+      $scope.schema.fields = [
+        new febworms.Field('Ein'),
+        new febworms.Field('Zwein'),
+        new febworms.Field('Drein')
+      ];
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      // Act
+
+      controller.swapFields(0, 1);
+
+      // Assert
+
+      expect($scope.schema.fields[0].type).toBe('Zwein');
+      expect($scope.schema.fields[1].type).toBe('Ein');
+      expect($scope.schema.fields[2].type).toBe('Drein');
+
+    });
+
+    it('should NOT swap fields on array edges', function() {
+
+      // Arrange
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      function isUnchangedAfterSwap(idx1, idx2) {
+
+        $scope.schema.fields = [
+          new febworms.Field('Ein'),
+          new febworms.Field('Zwein'),
+          new febworms.Field('Drein')
+        ];
+
+        controller.swapFields(idx1, idx2);
+
+        return $scope.schema.fields[0] && $scope.schema.fields[0].type === 'Ein' &&
+          $scope.schema.fields[1] && $scope.schema.fields[1].type === 'Zwein' &&
+          $scope.schema.fields[2] && $scope.schema.fields[2].type === 'Drein';
+      }
+
+      // Act & Assert
+
+      expect(isUnchangedAfterSwap(-1, 0)).toBeTruthy();
+      expect(isUnchangedAfterSwap(0, -1)).toBeTruthy();
+      expect(isUnchangedAfterSwap(3, 0)).toBeTruthy();
+      expect(isUnchangedAfterSwap(0, 3)).toBeTruthy();
+      expect(isUnchangedAfterSwap(-1, 3)).toBeTruthy();
+      expect(isUnchangedAfterSwap(3, -1)).toBeTruthy();
+    });
+  });
 });

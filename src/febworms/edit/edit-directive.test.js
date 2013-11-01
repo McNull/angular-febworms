@@ -74,6 +74,28 @@ describe('febworms-edit-directive', function () {
 
     });
 
+    it('should create fields array if needed', function () {
+
+      // Arrange
+
+      $scope.mySchema = {};
+
+      var template = '<div febworms-edit data-schema="mySchema"></div>';
+      var $element = angular.element(template);
+
+      // Act
+
+      $compile($element)($scope);
+      $scope.$digest();
+
+      var $childScope = $scope.$$childHead;
+
+      // Assert
+
+      expect(angular.isArray($scope.mySchema.fields)).toBe(true);
+
+    });
+
   });
 
   describe('$scope.actionsEnabled', function () {

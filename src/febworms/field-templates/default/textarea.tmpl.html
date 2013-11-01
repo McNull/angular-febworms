@@ -2,7 +2,7 @@
 <div class="controls">
     <textarea id="field_{{ $id }}"
               tabindex="{{ tabIndex }}"
-              ng-model="data"
+              ng-model="formModel[field.name]"
               ng-required="field.validation.required"
               ng-minlength="{{ field.validation.minlength }}"
               ng-maxlength="{{ field.validation.maxlength }}"

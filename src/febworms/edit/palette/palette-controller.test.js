@@ -61,23 +61,6 @@ describe('febworms-edit-palette', function () {
       });
     });
 
-    it('should should create an unique id for each template', function () {
-
-      // Arrange
-
-      var templates = febwormsConfigMock.fields.templates = [
-        new febworms.Field('myType'), new febworms.Field('myOtherType')
-      ];
-
-      // Act
-
-      $controller('febwormsEditPaletteController', { $scope: $scope, febwormsConfig: febwormsConfigMock });
-
-      // Assert
-
-      expect(_.uniq($scope.templates, 'id').length).toBe(templates.length);
-    });
-
     describe('templateFilter', function () {
 
       it('should include all templates when no category has been selected', function () {

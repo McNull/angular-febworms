@@ -74,18 +74,19 @@ describe('febworms-edit-palette', function () {
 
     });
 
-    xit('should call the addFieldToSchema on button click', function () {
+    it('should call the addField on button click', function () {
 
       // Arrange
 
       var field = new febworms.Field('foo');
       febwormsConfigMock.fields.templates.push(field);
 
-      $scope.addFieldToSchema = angular.noop;
-      spyOn($scope, 'addFieldToSchema');
-
       var $element = $compile($(template))($scope);
       $scope.$digest();
+
+      $scope = $scope.$$childHead;
+
+      spyOn($scope, 'addField');
 
       // Act
 
@@ -93,7 +94,10 @@ describe('febworms-edit-palette', function () {
 
       // Assert
 
-      expect($scope.addFieldToSchema).toHaveBeenCalledWith(field);
+      expect($scope.addField).toHaveBeenCalled();
+      expect($scope.addField.calls[0].args[0]).toBeDefined();
+      expect($scope.addField.calls[0].args[0].field).toBeDefined();
+      expect($scope.addField.calls[0].args[0].field.type).toBe('foo');
     });
 
     it('should only render fields of the selected category', function () {
@@ -127,6 +131,10 @@ describe('febworms-edit-palette', function () {
       // -- Compile, link and grab the dom element
 
       var $element = $compile($(template))($scope);
+
+      // -- Change scope to isolated child scope
+
+      $scope = $scope.$$childHead;
 
       // Act
 

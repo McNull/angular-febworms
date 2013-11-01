@@ -4,10 +4,6 @@ angular.module('febworms').controller('febwormsEditPaletteController', function 
 
   var count = 0;
 
-  angular.forEach($scope.templates, function (template) {
-    template.id = 'template' + ++count;
-  });
-
   $scope.templateFilter = function (template) {
     return !$scope.selectedCategory || $scope.selectedCategory[template.type];
   };

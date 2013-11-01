@@ -19,6 +19,7 @@ angular.module('febworms').directive('febwormsEdit', function() {
     link: function($scope) {
 
       $scope.schema = $scope.schema || {};
+      $scope.schema.fields = $scope.schema.fields || [];
 
       if($scope.actionsEnabled === undefined) {
         $scope.actionsEnabled = true;

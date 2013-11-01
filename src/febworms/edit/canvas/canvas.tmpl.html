@@ -1,0 +1,27 @@
+<div class="febworms-edit-canvas">
+    <div class="form-horizontal">
+        <fieldset>
+            <legend>Canvas</legend>
+            <div class="febworms-edit-canvas-area"
+                 dq-drag-area="febworms-edit-canvas"
+                 dq-drag-enter="canvasCtrl.dragEnter()"
+                 dq-drag-leave="canvasCtrl.dragLeave()"
+                 dq-drop="canvasCtrl.drop()">
+                <div ng-if="!(schema.fields.length)">
+                    <div ng-if="!dragPlaceholder.visible" class="febworms-edit-canvas-area-empty alert alert-info text-center">
+                        <p class="febworms-edit-canvas-area-empty-x">X</p>
+                        <p class="lead hidden-phone"><strong>Drag</strong> one of the available <strong>templates</strong> from the
+                            <strong>palette</strong> onto this <strong>canvas</strong>.</p>
+                    </div>
+                </div>
+                <div ng-repeat="field in schema.fields">
+                    <div ng-if="dragPlaceholder.visible && dragPlaceholder.index === $index"
+                         class="febworms-drag-placeholder"></div>
+                    <div febworms-edit-canvas-field></div>
+                </div>
+                <div ng-if="dragPlaceholder.visible && dragPlaceholder.index == schema.fields.length" class="febworms-drag-placeholder">
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

@@ -3,10 +3,10 @@
         <fieldset>
             <legend>Palette <span febworms-edit-palette-categories data-category="selectedCategory"></span></legend>
             <div ng-repeat="template in templates | filter:templateFilter" class="febworms-field"
-                 dq-draggable="febworms-canvas" dq-drag-begin="{ source: 'palette', field: template }">
+                 dq-draggable="febworms-edit-canvas" dq-drag-begin="{ source: 'palette', field: template }">
                 <div class="febworms-field-overlay">
                     <div class="btn-toolbar btn-toolbar-right">
-                        <button class="btn btn-mini" type="button" ng-click="">Add</button>
+                        <button class="btn btn-mini" type="button" ng-click="addField({ field: template })">Add</button>
                     </div>
                 </div>
                 <div class="control-group">

@@ -1,0 +1,80 @@
+
+.febworms-field-properties {
+    position: relative;
+    margin: 15px 0;
+    padding-top: 39px;
+    padding-bottom: 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.febworms-edit-canvas .febworms-field-properties .control-group {
+    margin-bottom: 10px;
+}
+
+.febworms-edit-canvas .febworms-field {
+    padding: 20px;
+}
+
+.febworms-edit-canvas-area {
+    min-height: 300px;
+    overflow: hidden;
+    position: relative;
+    /*padding-bottom: 100px;*/
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+.febworms-edit-canvas-area-empty {
+    position: absolute;
+    left: 20px; right: 20px; bottom: 20px; top: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.febworms-edit-canvas-area-empty-x {
+    font-size: 200px;
+    line-height: 200px;
+}
+
+.febworms-drag-placeholder {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: dashed 1px #ddd !important;
+    background-color: #f5f5f5 !important;
+    min-height: 50px !important;
+    margin-bottom: 20px;
+}
+
+.febworms-field-overlay-drag-top, .febworms-field-overlay-drag-bottom {
+    height: 50%;
+}
+
+.febworms-field-properties .febworms-field-not-in-cache {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+}
+
+.febworms-edit-canvas .febworms-field.dragging {
+    display: none;
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    .febworms-field-properties .control-group {
+        margin-left: 10px;
+    }
+
+    .febworms-edit-canvas {
+        /*padding-bottom: 0;*/
+        min-height: inherit;
+    }
+}
+
