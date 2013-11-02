@@ -2,7 +2,6 @@ angular.module('febworms').directive('febwormsValidationSummary', function(febwo
 
   return {
     templateUrl: 'febworms/validation/febworms-validation-summary.tmpl.html',
-    replace: true,
     scope: {
       formField: '=',
       schemaField: '=',

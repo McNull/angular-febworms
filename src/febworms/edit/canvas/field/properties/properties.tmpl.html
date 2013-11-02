@@ -31,18 +31,17 @@
         </div>
 
         <!-- Other properties -->
-        <div ng-include="field.$_templateUrl['properties']"></div>
+        <div ng-include="propertiesTemplateUrl"></div>
 
         <div class="control-group">
             <div class="controls">
                 <label class="checkbox">
-                    <input type="checkbox" ng-model="field.$_displayPropertiesDebugData"> Display debug
-                    information
+                    <input type="checkbox" ng-model="field.$_debug"> Display field debug information
                 </label>
             </div>
         </div>
 
-        <div ng-if="field.$_displayPropertiesDebugData" data-jsonify="fieldPropertiesForm"></div>
+        <div ng-if="field.$_debug" data-jsonify="field"></div>
 
     </form>
 </div>

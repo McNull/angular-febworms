@@ -38,7 +38,24 @@ angular.module('febworms').controller('febwormsEditController', function($scope,
   }
 
   $scope.$watch(function() {
-    $scope.schema.$_invalid = self.metaForm ? self.metaForm.$invalid : false;
+
+    var schema = $scope.schema;
+
+    schema.$_invalid = self.metaForm ? self.metaForm.$invalid : false;
+
+    if(!schema.$_invalid) {
+
+      var fields = schema.fields;
+
+      if(fields) {
+        
+        var i = fields.length;
+
+        while(--i >= 0 && !schema.$_invalid) {
+           schema.$_invalid = fields[i].$_invalid;
+        };
+      }
+    }
   });
 
 });

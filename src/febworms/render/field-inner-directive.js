@@ -2,11 +2,13 @@ angular.module('febworms').directive('febwormsRenderFieldInner', function(febwor
 
   return {
     replace: true,
-    template: '<div class="febworms-field-inner" ng-include="templateUrl"></div>',
+    templateUrl: 'febworms/render/field-inner.tmpl.html',
     scope: {
       field: '=',
       ngModel: '=?',
-      tabIndex: '=?'
+      tabIndex: '=?',
+      editMode: '=',
+      noValidationSummary: '='
     },
     link: function($scope, $element, $attrs) {
 
@@ -14,11 +16,15 @@ angular.module('febworms').directive('febwormsRenderFieldInner', function(febwor
         $scope.tabIndex = 'auto';
       }
 
-      if($scope.ngModel === undefined) {
+      if($scope.editMode) {
+        $scope.$watch('field.value', function(value) {
+          $scope.ngModel = value;
+        });
+      } else if($scope.ngModel === undefined) {
         $scope.ngModel = $scope.field.value;
       }
 
-      $scope.templateUrl = febwormsUtils.getTemplateUrl($scope.field);
+      $scope.renderInfo = febwormsUtils.getRenderInfo($scope.field);
     }
   };
 

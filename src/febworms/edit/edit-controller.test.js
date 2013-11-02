@@ -16,7 +16,11 @@ describe('febworms-edit-controller', function() {
 
       // Supplied by directive
 
-      $scope.schema = {};
+      $scope.schema = {
+        fields: []
+      };
+
+
 
     });
 
@@ -101,6 +105,35 @@ describe('febworms-edit-controller', function() {
       expect($scope.schema.$_invalid).toBe(false);
 
     });
+
+    it('should be invalid when any of the schema fields is invalid', function() {
+
+      // Arrange
+
+      var metaForm = {
+        $invalid: false
+      };
+
+      var controller = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      controller.setMetaForm(metaForm);
+
+      var myField = new febworms.Field('myType');
+      $scope.schema.fields.push(myField);
+      myField.$_invalid = true;
+      
+      // Act
+
+      $scope.$digest();
+
+      // Assert
+
+      expect($scope.schema.$_invalid).toBe(true);
+
+    });
+
   });
 
   describe('addField', function() {
@@ -279,7 +312,7 @@ describe('febworms-edit-controller', function() {
 
       // Arrange
 
-       $scope.schema.fields = [
+      $scope.schema.fields = [
         new febworms.Field('Ein'),
         new febworms.Field('Zwein'),
         new febworms.Field('Drein')
@@ -294,7 +327,7 @@ describe('febworms-edit-controller', function() {
       controller.moveField(2, 2);
 
       // Assert
-      
+
       expect($scope.schema.fields[0].type).toBe('Ein');
       expect($scope.schema.fields[1].type).toBe('Zwein');
       expect($scope.schema.fields[2].type).toBe('Drein');
@@ -303,8 +336,8 @@ describe('febworms-edit-controller', function() {
     it('should move field to new index (1/3)', function() {
 
       // Arrange
- 
-       $scope.schema.fields = [
+
+      $scope.schema.fields = [
         new febworms.Field('Ein'),
         new febworms.Field('Zwein'),
         new febworms.Field('Drein')
@@ -319,7 +352,7 @@ describe('febworms-edit-controller', function() {
       controller.moveField(0, 3);
 
       // Assert
-      
+
       expect($scope.schema.fields[0].type).toBe('Zwein');
       expect($scope.schema.fields[1].type).toBe('Drein');
       expect($scope.schema.fields[2].type).toBe('Ein');
@@ -328,8 +361,8 @@ describe('febworms-edit-controller', function() {
     it('should move field to new index (2/3)', function() {
 
       // Arrange
- 
-       $scope.schema.fields = [
+
+      $scope.schema.fields = [
         new febworms.Field('Ein'),
         new febworms.Field('Zwein'),
         new febworms.Field('Drein')
@@ -344,7 +377,7 @@ describe('febworms-edit-controller', function() {
       controller.moveField(0, 2);
 
       // Assert
-      
+
       expect($scope.schema.fields[0].type).toBe('Zwein');
       expect($scope.schema.fields[1].type).toBe('Ein');
       expect($scope.schema.fields[2].type).toBe('Drein');
@@ -353,8 +386,8 @@ describe('febworms-edit-controller', function() {
     it('should move field to new index (3/3)', function() {
 
       // Arrange
- 
-       $scope.schema.fields = [
+
+      $scope.schema.fields = [
         new febworms.Field('Ein'),
         new febworms.Field('Zwein'),
         new febworms.Field('Drein')
@@ -369,7 +402,7 @@ describe('febworms-edit-controller', function() {
       controller.moveField(1, 0);
 
       // Assert
-      
+
       expect($scope.schema.fields[0].type).toBe('Zwein');
       expect($scope.schema.fields[1].type).toBe('Ein');
       expect($scope.schema.fields[2].type).toBe('Drein');
@@ -378,8 +411,8 @@ describe('febworms-edit-controller', function() {
     it('should not move beyond array bounderies (1/2)', function() {
 
       // Arrange
- 
-       $scope.schema.fields = [
+
+      $scope.schema.fields = [
         new febworms.Field('Ein'),
         new febworms.Field('Zwein'),
         new febworms.Field('Drein')
@@ -394,7 +427,7 @@ describe('febworms-edit-controller', function() {
       controller.moveField(0, 10);
 
       // Assert
-      
+
       expect($scope.schema.fields[0].type).toBe('Ein');
       expect($scope.schema.fields[1].type).toBe('Zwein');
       expect($scope.schema.fields[2].type).toBe('Drein');
@@ -403,8 +436,8 @@ describe('febworms-edit-controller', function() {
     it('should not move beyond array bounderies (2/2)', function() {
 
       // Arrange
- 
-       $scope.schema.fields = [
+
+      $scope.schema.fields = [
         new febworms.Field('Ein'),
         new febworms.Field('Zwein'),
         new febworms.Field('Drein')
@@ -419,7 +452,7 @@ describe('febworms-edit-controller', function() {
       controller.moveField(-10, 0);
 
       // Assert
-      
+
       expect($scope.schema.fields[0].type).toBe('Ein');
       expect($scope.schema.fields[1].type).toBe('Zwein');
       expect($scope.schema.fields[2].type).toBe('Drein');
@@ -428,8 +461,8 @@ describe('febworms-edit-controller', function() {
     it('should move to edge boundery of array', function() {
 
       // Arrange
- 
-       $scope.schema.fields = [
+
+      $scope.schema.fields = [
         new febworms.Field('Ein'),
         new febworms.Field('Zwein'),
         new febworms.Field('Drein')
@@ -444,7 +477,7 @@ describe('febworms-edit-controller', function() {
       controller.moveField(0, 3);
 
       // Assert
-      
+
       expect($scope.schema.fields[0].type).toBe('Zwein');
       expect($scope.schema.fields[1].type).toBe('Drein');
       expect($scope.schema.fields[2].type).toBe('Ein');

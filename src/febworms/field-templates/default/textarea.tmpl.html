@@ -1,5 +1,5 @@
-<label class="control-label" for="field_{{ $id }}">{{ field.displayName }}</label>
-<div class="controls">
+<!-- <label class="control-label" for="field_{{ $id }}">{{ field.displayName }}</label>
+<div class="controls"> -->
     <textarea id="field_{{ $id }}"
               tabindex="{{ tabIndex }}"
               ng-model="formModel[field.name]"
@@ -8,4 +8,4 @@
               ng-maxlength="{{ field.validation.maxlength }}"
               ng-pattern="/{{ field.validation.pattern }}/">
     </textarea>
-</div>
+<!-- </div> -->

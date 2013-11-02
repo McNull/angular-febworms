@@ -389,21 +389,6 @@
   },
   {
     "schema": {
-      "fields": [
-        {
-          "type": "text",
-          "id": "field1",
-          "displayName": "Gedoe",
-          "name": "field1",
-          "placeholder": "in actie"
-        }
-      ]
-    },
-    "name": "Test",
-    "id": 3
-  },
-  {
-    "schema": {
       "name": "ddd"
     },
     "id": 4
@@ -413,5 +398,79 @@
       "name": "ddddasaa"
     },
     "id": 5
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "checkbox",
+          "displayName": "Checkbox",
+          "name": "field1"
+        },
+        {
+          "type": "checkboxlist",
+          "displayName": "Checkbox List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1",
+              "checked": true
+            },
+            {
+              "value": "2",
+              "text": "Option 2",
+              "checked": true
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "name": "field2"
+        },
+        {
+          "type": "radiobuttonlist",
+          "displayName": "Radiobutton List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1",
+          "name": "field3"
+        },
+        {
+          "type": "selectlist",
+          "displayName": "Select List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1",
+          "name": "field4"
+        }
+      ],
+      "name": "offset"
+    },
+    "id": 6
   }
 ]

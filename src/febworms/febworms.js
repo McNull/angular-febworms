@@ -1,6 +1,11 @@
 var febworms = {};
-
-febworms.Field = function (type, properties) {
+/**
+ * Constructor for febworm Field types.
+ * @param {string} type         Indicates the type of field
+ * @param {object} properties   [optional] Initial property values
+ * @param {object} renderInfo   [optional] Render information
+ */
+febworms.Field = function (type, properties, renderInfo) {
   this.type = type;
 
   if (properties) {
@@ -8,6 +13,7 @@ febworms.Field = function (type, properties) {
   }
 
   this.displayName = this.displayName || this.type.charAt(0).toUpperCase() + this.type.substring(1);
+  febworms.Field[type] = renderInfo || {};
 };
 
 angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfig', {
@@ -26,13 +32,21 @@ angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfi
     templates: [
       new febworms.Field('text', {
         displayName: 'Textbox'
-      }), new febworms.Field('email'), new febworms.Field('password'), new febworms.Field('textarea'), new febworms.Field('checkbox'), new febworms.Field('checkboxlist', {
+      }), 
+      new febworms.Field('email'), 
+      new febworms.Field('password'), 
+      new febworms.Field('textarea'), 
+      new febworms.Field('checkbox', {}, { hideLabel: true }), 
+      new febworms.Field('checkboxlist', {
         displayName: 'Checkbox List',
         options: [
-          { value: '1', text: 'Option 1', checked: true },
-          { value: '2', text: 'Option 2', checked: true },
+          { value: '1', text: 'Option 1' },
+          { value: '2', text: 'Option 2' },
           { value: '3', text: 'Option 3' }
-        ]
+        ],
+        value: {
+          '1': true, '2': true
+        }
       }), new febworms.Field('radiobuttonlist', {
         displayName: 'Radiobutton List',
         options: [
@@ -59,68 +73,4 @@ angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfi
       'Select input fields': { 'radiobuttonlist': true, 'selectlist': true }
     }
   }
-}).factory('febwormsUtils', function ($templateCache, $window, febwormsConfig) {
-
-    var uniqueCounter = 0;
-
-    return {
-      defaultArea: 'default',
-      formatTemplateUrl: function (type, area) {
-        return 'febworms/field-templates/' + (area || this.defaultArea) + '/' + type + '.tmpl.html';
-      },
-      getTemplateUrl: function (field, area) {
-
-        area = area || this.defaultArea;
-
-        // IE8 fix: Aliases removed
-        // var templateType = febwormsConfig.fields.aliases[field.type] || field.type;
-        var templateType = field.type;
-        var templateUrl = this.formatTemplateUrl(templateType, area);
-
-        var cached = $templateCache.get(templateUrl);
-
-        if (!cached) {
-
-          // Url is not in cache -- fallback to default area.
-          // Properties area will never fallback to default area.
-
-          if (area !== 'properties' && area !== this.defaultArea) {
-            templateUrl = this.getTemplateUrl(field, this.defaultArea);
-          } else {
-            return this.formatTemplateUrl('not-in-cache');
-          }
-        }
-
-        return templateUrl;
-      },
-      getUnique: function() {
-        return ++uniqueCounter;
-      },
-      copyField: function(field) {
-        var copy = angular.copy(field);
-        copy.name = 'field' + this.getUnique();
-        return copy;
-      },
-      findElementsByClass: function (root, className, recursive, buffer) {
-        buffer = buffer || [];
-
-        if (root.className === className) {
-          buffer.push(root);
-        }
-
-        if (root.hasChildNodes()) {
-          for (var i = 0; i < root.children.length; i++) {
-            var child = root.children[i];
-            if (child.className === className) {
-              buffer.push(child);
-            }
-            if (recursive) {
-              this.findElementsByClass(child, className, recursive, buffer);
-            }
-          }
-        }
-
-        return buffer;
-      }
-    };
-  });
+});

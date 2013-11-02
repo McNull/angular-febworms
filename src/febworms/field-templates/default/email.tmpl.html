@@ -1,5 +1,5 @@
-<label class="control-label" for="field_{{ $id }}">{{ field.displayName }}</label>
-<div class="controls" ng-switch="field.type">
+<!-- <label class="control-label" for="field_{{ $id }}">{{ field.displayName }}</label>
+<div class="controls"> -->
     <input type="email"
            id="field_{{ $id }}"
            name="{{ field.name }}"
@@ -11,5 +11,5 @@
            ng-maxlength="{{ field.validation.maxlength }}"
            ng-pattern="/{{ field.validation.pattern }}/"
            ng-disabled="isDisabled(field)">
-    <div febworms-validation-summary data-form-field="febwormsForm[field.name]"></div>
-</div>
+    <!-- <div febworms-validation-summary data-form-field="febwormsForm[field.name]"></div>
+</div> -->

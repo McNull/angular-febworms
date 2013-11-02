@@ -101,6 +101,7 @@ describe('febworms-render-field-inner-directive', function() {
 
       // Assert
 
+      expect($scope.ngModel).toBeDefined();
       expect($scope.ngModel).toBe($scope.$parent.field.value);
     });
 
@@ -121,8 +122,32 @@ describe('febworms-render-field-inner-directive', function() {
 
       // Assert
 
+      expect($scope.ngModel).toBeDefined();
       expect($scope.ngModel).toBe($scope.$parent.myFieldData);
     });
 
+    it('should copy the field.value to the ngModel when in edit mode', function() {
+
+      // Act
+
+      $scope.field = createFieldTemplate();
+      
+      var template = '<div><div febworms-render-field-inner data-field="field" data-edit-mode="true"></div></div>';
+
+      $compile(template)($scope);
+      $scope.$digest();
+
+      // Act
+
+      $scope.field.value = "should be copied to model";
+      $scope.$digest();
+
+      $scope = $scope.$$childHead;
+
+      // Assert
+
+      expect($scope.ngModel).toBeDefined();
+      expect($scope.ngModel).toBe($scope.field.value);
+    });
   });
 });

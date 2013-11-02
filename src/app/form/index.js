@@ -2,7 +2,7 @@ angular.module('myApp').controller('FormIndexController', function ($scope, Form
   $scope.items = Form.query();
 
   $scope.removeItem = function (item) {
-    var name = item.name;
+    var name = item.schema.name;
 
     (function (name) {
       if ($window.confirm("Remove schema '" + name + "' from list?")) {
