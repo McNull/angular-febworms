@@ -29,10 +29,18 @@ angular.module('febworms').directive('febwormsUniqueFieldName', function () {
       var fields = $scope.schema.fields;
 
       $scope.$watch('field.name', function () {
+        
+        // Every instance of this directive will increment changeTick
+        // whenever the name of the associated field is modified.
+
         ++changeTick;
       });
 
       $scope.$watch(function() { return changeTick; }, function() {
+
+        // Every instance of this directive will fire off the validation
+        // whenever the changeTick has been modifed.
+
         validate(ngModel, field, fields);
       });
 

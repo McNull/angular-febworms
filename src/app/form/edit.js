@@ -4,8 +4,9 @@ angular.module('myApp').controller('FormEditController', function ($scope, form,
   $scope.form = form;
 
   $scope.onSave = function() {
+    var schema = $scope.form.schema;
     $scope.form.$save().then(function () {
-      notifications.add("Schema for " + $scope.form.schema.name + " saved.", 'info', 1);
+      notifications.add("Schema for " + schema.name + " saved.", 'info', 1);
       $location.path('/form');
     });
   };

@@ -1,4 +1,3 @@
-
 angular.module('myApp').factory('notifications', function() {
 
   var messages = [];
@@ -20,7 +19,7 @@ angular.module('myApp').factory('notifications', function() {
   }
 
   function tick() {
-    if(messages.length) {
+    if (messages.length) {
       _.remove(messages, function(message) {
         return message.ttl-- <= 0;
       });
@@ -37,12 +36,14 @@ angular.module('myApp').factory('notifications', function() {
 });
 
 angular.module('myApp').config(function($provide) {
-  $provide.decorator("$exceptionHandler", [ '$delegate', 'notifications', function($delegate, notifications) {
-    return function(exception, cause) {
-      $delegate(exception, cause);
-      notifications.add(exception.toString(), 'error');
-    };
-  }]);
+  $provide.decorator("$exceptionHandler", ['$delegate', 'notifications',
+    function($delegate, notifications) {
+      return function(exception, cause) {
+        $delegate(exception, cause);
+        notifications.add(exception.toString(), 'error');
+      };
+    }
+  ]);
 });
 
 angular.module('myApp').controller('NotificationsController', function($scope, notifications) {
@@ -50,7 +51,6 @@ angular.module('myApp').controller('NotificationsController', function($scope, n
 });
 
 angular.module('myApp').directive('notifications', function() {
-
   return {
     templateUrl: 'app/notifications/notifications.tmpl.html',
     controller: 'NotificationsController',
@@ -59,32 +59,27 @@ angular.module('myApp').directive('notifications', function() {
   };
 });
 
-'use strict';
+angular.module('myApp').factory('errorHttpInterceptor',
+  function($q, notifications) {
+    return {
+      'responseError': function(rejection) {
+        // do something on error
+         var msg = 'Network error (' + response.status + '): ' + response.data;
+         notifications.add(msg, 'error');
+         return $q.reject(rejection);
+      }
+    };
+  });
 
-angular.module('myApp').factory('errorHttpInterceptor', function ($q, notifications) {
-
-  return function (promise) {
-    return promise.then(function (response) {
-      return response;
-    }, function (response) {
-
-      var msg = 'Network error (' + response.status + '): ' + response.data;
-
-      notifications.add(msg, 'error');
-
-      return $q.reject(response);
-    });
-  };
-});
-
-if(!window.jasmine) {
+if (!window.jasmine) {
   angular.module('myApp').run(function($rootScope, notifications) {
-    $rootScope.$on("$locationChangeStart", function ( /* event, nextLocation, currentLocation */) {
+    $rootScope.$on("$locationChangeStart", function( /* event, nextLocation, currentLocation */ ) {
       notifications.tick();
     });
   });
 
   angular.module('myApp').config(function ($httpProvider) {
-    $httpProvider.responseInterceptors.push('errorHttpInterceptor');
+     //$httpProvider.responseInterceptors.push('errorHttpInterceptor');
+     $httpProvider.interceptors.push('errorHttpInterceptor');
   });
 }

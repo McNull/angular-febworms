@@ -29,13 +29,14 @@
                 </button>
             </div>
         </div>
-        <div febworms-render-field-inner 
-             data-field="field" 
+        <div febworms-render-field-inner
+             data-form-model="formModel"
+             data-field-schema="field" 
              data-tab-index="-1" 
              data-edit-mode="true"
              data-no-validation-summary="true"></div>
     </div>
     <div febworms-edit-canvas-field-properties
          data-field="field" data-schema="schema"
-         ng-if="field.$_displayProperties"></div>
+         ng-show="field.$_displayProperties"></div>
 </div>

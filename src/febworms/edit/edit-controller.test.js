@@ -123,7 +123,7 @@ describe('febworms-edit-controller', function() {
       var myField = new febworms.Field('myType');
       $scope.schema.fields.push(myField);
       myField.$_invalid = true;
-      
+
       // Act
 
       $scope.$digest();
@@ -133,6 +133,124 @@ describe('febworms-edit-controller', function() {
       expect($scope.schema.$_invalid).toBe(true);
 
     });
+
+  });
+
+  describe('preview', function() {
+
+    it('should not set preview if not specified by route parameters', function() {
+
+      // Arrange
+
+      var routeParams = {};
+      var location = {
+        search: function() {
+          return routeParams;
+        }
+      };
+
+      // Act
+
+      $controller('febwormsEditController', {
+        $scope: $scope,
+        $location: location
+      });
+
+      // Assert
+
+      expect($scope.preview).toBeFalsy();
+
+    });
+
+    it('should set preview if specified by route parameters', function() {
+
+      // Arrange
+
+      var routeParams = {
+        preview: true
+      };
+      var location = {
+        search: function() {
+          return routeParams;
+        }
+      };
+
+      // Act
+
+      $controller('febwormsEditController', {
+        $scope: $scope,
+        $location: location
+      });
+
+      // Assert
+
+      expect($scope.preview).toBe(true);
+
+    });
+
+    it('should toggle preview scope value', function() {
+
+      // Arrange
+
+      var ctrl = $controller('febwormsEditController', {
+        $scope: $scope
+      });
+
+      $scope.preview = false;
+
+      // Act
+
+      ctrl.togglePreview();
+
+      var first = $scope.preview;
+
+      ctrl.togglePreview();
+
+      var second = $scope.preview;
+
+      // Assert
+
+      expect(first).toBe(true);
+      expect(second).toBe(false);
+    });
+
+    // it('should toggle preview location search value', function() {
+
+    //   // Arrange
+
+    //   var locationMock = {
+    //     search: function() {
+    //       return {};
+    //     }
+    //   };
+
+    //   var ctrl = $controller('febwormsEditController', {
+    //     $scope: $scope,
+    //     $location: locationMock
+    //   });
+
+    //   spyOn(locationMock, 'search').andCallThrough();
+    //   $scope.preview = false;
+
+    //   // Act
+
+    //   ctrl.togglePreview();
+    //   ctrl.togglePreview();
+
+    //   // Assert
+
+    //   expect(locationMock.search).toHaveBeenCalled();
+
+    //   var calls = locationMock.search.calls;
+
+    //   expect(calls).toBeDefined();
+    //   expect(calls.length).toBe(2);
+
+    //   if (calls && calls.length === 2) {
+    //     expect(calls[0].args).toEqual(['preview', true]);
+    //     expect(calls[1].args).toEqual(['preview', false]);
+    //   }
+    // });
 
   });
 

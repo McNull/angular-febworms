@@ -9,6 +9,8 @@ angular.module('febworms').directive('febwormsEditCanvas', function() {
     },
     link: function($scope, $element, $attrs, febwormsEditController) {
       $scope.editCtrl = febwormsEditController;
+
+      $scope.formModel = {}; // Dummy formModel for WYSIWYG pleasures
     }
   };
 });

@@ -1,11 +1,8 @@
-<!-- <label class="control-label" for="field_{{ $id }}">{{ field.displayName }}</label>
-<div class="controls"> -->
-    <textarea id="field_{{ $id }}"
-              tabindex="{{ tabIndex }}"
-              ng-model="formModel[field.name]"
-              ng-required="field.validation.required"
-              ng-minlength="{{ field.validation.minlength }}"
-              ng-maxlength="{{ field.validation.maxlength }}"
-              ng-pattern="/{{ field.validation.pattern }}/">
-    </textarea>
-<!-- </div> -->
+<textarea id="field_{{ $id }}"
+          tabindex="{{ tabIndex }}"
+          ng-model="form[fieldSchema.name]"
+          ng-required="fieldSchema.validation.required"
+          ng-minlength="{{ fieldSchema.validation.minlength }}"
+          ng-maxlength="{{ fieldSchema.validation.maxlength }}"
+          ng-pattern="/{{ fieldSchema.validation.pattern }}/">
+</textarea>

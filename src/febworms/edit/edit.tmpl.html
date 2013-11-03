@@ -1,8 +1,7 @@
 <div class="febworms-edit">
 
-    <div ng-if="preview">
-        <div ng-include="'febworms/edit/preview/preview.tmpl.html'"></div>
-
+    <div ng-if="preview" ng-init="formData = {}">
+        <div febworms-render data-schema="schema" ng-model="formData"></div>
         <div febworms-edit-form-actions></div>
     </div>
 

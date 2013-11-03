@@ -1,5 +1,5 @@
 <div class="febworms-edit-palette">
-    <form novalidate name="febwormsPalette" class="form-horizontal">
+    <div class="form-horizontal">
         <fieldset>
             <legend>Palette <span febworms-edit-palette-categories data-category="selectedCategory"></span></legend>
             <div ng-repeat="template in templates | filter:templateFilter" class="febworms-field"
@@ -10,9 +10,9 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <div febworms-render-field-inner data-field="template" data-tab-index="-1" data-no-validation-summary="true"></div>
+                    <div febworms-render-field-inner data-field-schema="template" data-tab-index="-1" data-no-validation-summary="true"></div>
                 </div>
             </div>
         </fieldset>
-    </form>
+    </div>
 </div>

@@ -6,7 +6,7 @@ var febworms = {};
  * @param {object} renderInfo   [optional] Render information
  */
 febworms.Field = function (type, properties, renderInfo) {
-  this.type = type;
+  this.name = this.type = type;
 
   if (properties) {
     angular.extend(this, properties);
@@ -16,7 +16,7 @@ febworms.Field = function (type, properties, renderInfo) {
   febworms.Field[type] = renderInfo || {};
 };
 
-angular.module('febworms', ['dq', 'templates-febworms']).constant('febwormsConfig', {
+angular.module('febworms', ['ngRoute', 'dq', 'templates-febworms']).constant('febwormsConfig', {
   enableDebugInfo: true,
   validation: {
     messages: {

@@ -1,10 +1,10 @@
 <div class="febworms-field-inner">
-	<label ng-if="!renderInfo.hideLabel" class="control-label" for="field_{{ $id }}">{{ field.displayName }}</label>
+	<label ng-if="!renderInfo.hideLabel" class="control-label" for="field_{{ $id }}">{{ fieldSchema.displayName }}</label>
 	<div class="controls">
 		<div ng-include="renderInfo.templateUrl"></div>
 		<div febworms-validation-summary 
 	         ng-if="!noValidationSummary" 
-	         data-form-field="febwormsForm[field.name]">
+	         data-field-name="{{ fieldSchema.name }}">
 		</div>
 	</div>
 </div>

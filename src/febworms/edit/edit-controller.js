@@ -1,6 +1,8 @@
-angular.module('febworms').controller('febwormsEditController', function($scope, febwormsUtils) {
+angular.module('febworms').controller('febwormsEditController', function($scope, febwormsUtils, $location) {
 
   var self = this;
+
+  $scope.preview = $location.search().preview;
 
   this.setMetaForm = function(metaForm) {
     self.metaForm = metaForm;
@@ -17,11 +19,11 @@ angular.module('febworms').controller('febwormsEditController', function($scope,
     $scope.schema.fields.splice(index, 0, copy);
   };
 
-  this.removeField = function (index) {
+  this.removeField = function(index) {
     $scope.schema.fields.splice(index, 1);
   };
 
-  this.swapFields = function (idx1, idx2) {
+  this.swapFields = function(idx1, idx2) {
     if (idx1 <= -1 || idx2 <= -1 || idx1 >= $scope.schema.fields.length || idx2 >= $scope.schema.fields.length) {
       return;
     }
@@ -30,9 +32,9 @@ angular.module('febworms').controller('febwormsEditController', function($scope,
   };
 
   this.moveField = function(fromIdx, toIdx) {
-    if(fromIdx >= 0 && toIdx <= $scope.schema.fields.length && fromIdx !== toIdx) {
+    if (fromIdx >= 0 && toIdx <= $scope.schema.fields.length && fromIdx !== toIdx) {
       var field = $scope.schema.fields.splice(fromIdx, 1)[0];
-      if(toIdx > fromIdx) --toIdx;
+      if (toIdx > fromIdx)--toIdx;
       $scope.schema.fields.splice(toIdx, 0, field);
     }
   }
@@ -41,19 +43,23 @@ angular.module('febworms').controller('febwormsEditController', function($scope,
 
     var schema = $scope.schema;
 
-    schema.$_invalid = self.metaForm ? self.metaForm.$invalid : false;
+    // Seems that this watch is sometimes fired after the scope has been destroyed(?)
+    
+    if (schema) { 
+      schema.$_invalid = self.metaForm ? self.metaForm.$invalid : false;
 
-    if(!schema.$_invalid) {
+      if (!schema.$_invalid) {
 
-      var fields = schema.fields;
+        var fields = schema.fields;
 
-      if(fields) {
-        
-        var i = fields.length;
+        if (fields) {
 
-        while(--i >= 0 && !schema.$_invalid) {
-           schema.$_invalid = fields[i].$_invalid;
-        };
+          var i = fields.length;
+
+          while (--i >= 0 && !schema.$_invalid) {
+            schema.$_invalid = fields[i].$_invalid;
+          };
+        }
       }
     }
   });

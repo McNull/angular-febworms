@@ -1,6 +1,6 @@
 describe('febworms-render-field-inner-directive', function() {
 
-  var $compile, $templateCache, $scope, febwormsUtils;
+  var $element, $compile, $templateCache, $scope, febwormsUtils, formModel = {}, formCtrlMock = {};
 
   beforeEach(function() {
 
@@ -12,6 +12,14 @@ describe('febworms-render-field-inner-directive', function() {
       $templateCache = _$templateCache_;
       $scope = _$rootScope_.$new();
       febwormsUtils = _febwormsUtils_;
+
+      $scope.formModel = formModel;
+
+
+      // Needed for the require directive flag
+      
+      $element = angular.element('<div></div>');
+      $element.data('$formController', formCtrlMock);
 
     });
   });
@@ -29,12 +37,12 @@ describe('febworms-render-field-inner-directive', function() {
 
     // Arrange
 
-    $scope.field = createFieldTemplate();
-    var template = '<div><div febworms-render-field-inner data-field="field"></div></div>';
+    $scope.fieldSchema = createFieldTemplate();
+    $element.append('<div><div febworms-render-field-inner data-form-model="formModel" data-field-schema="fieldSchema"></div></div>');
 
     // Act
 
-    var result = $compile(template)($scope);
+    var result = $compile($element)($scope);
     $scope.$digest();
 
     // Assert
@@ -47,12 +55,12 @@ describe('febworms-render-field-inner-directive', function() {
 
       // Act
 
-      $scope.field = createFieldTemplate();
-      var template = '<div><div febworms-render-field-inner data-field="field"></div></div>';
+      $scope.fieldSchema = createFieldTemplate();
+      $element.append('<div><div febworms-render-field-inner data-form-model="formModel" data-field-schema="fieldSchema"></div></div>');
 
       // Act
 
-      var result = $compile(template)($scope);
+      var result = $compile($element)($scope);
       $scope.$digest();
       $scope = $scope.$$childHead;
 
@@ -66,13 +74,14 @@ describe('febworms-render-field-inner-directive', function() {
 
       // Act
 
-      $scope.field = createFieldTemplate();
       $scope.myAutoIndex = 123;
-      var template = '<div><div febworms-render-field-inner data-field="field" data-tab-index="myAutoIndex"></div></div>';
+      $scope.fieldSchema = createFieldTemplate();
+      
+      $element.append('<div><div febworms-render-field-inner data-form-model="formModel" data-field-schema="fieldSchema" data-tab-index="myAutoIndex"></div></div>');
 
       // Act
 
-      var result = $compile(template)($scope);
+      var result = $compile($element)($scope);
       $scope.$digest();
       $scope = $scope.$$childHead;
 
@@ -83,71 +92,69 @@ describe('febworms-render-field-inner-directive', function() {
     });
   });
 
-  describe('ngModel', function() {
-    it('should use field schema value if no ngModel has been supplied', function() {
+  describe('form model', function() {
+    it('should use field schema value if form model does not contain a value', function() {
 
       // Act
 
-      $scope.field = createFieldTemplate();
-      $scope.field.value = 'My initial value';
-
-      var template = '<div><div febworms-render-field-inner data-field="field"></div></div>';
+      $scope.fieldSchema = createFieldTemplate();
+      $scope.fieldSchema.value = 'My initial value';
+      
+      $element.append('<div><div febworms-render-field-inner data-form-model="formModel" data-field-schema="fieldSchema"></div></div>');
 
       // Act
 
-      var result = $compile(template)($scope);
+      var result = $compile($element)($scope);
       $scope.$digest();
-      $scope = $scope.$$childHead;
-
+      
       // Assert
 
-      expect($scope.ngModel).toBeDefined();
-      expect($scope.ngModel).toBe($scope.$parent.field.value);
+      expect($scope.formModel[$scope.fieldSchema.name]).toBeDefined();
+      expect($scope.formModel[$scope.fieldSchema.name]).toBe($scope.fieldSchema.value);
     });
 
-    it('should use supplied ngModel value', function() {
+    it('should use supplied form model value', function() {
 
       // Act
 
-      $scope.field = createFieldTemplate();
-      $scope.myFieldData = "this is data";
+      $scope.fieldSchema = createFieldTemplate();
+      $scope.fieldSchema.value = 'My initial value';
 
-      var template = '<div><div febworms-render-field-inner data-field="field" ng-model="myFieldData"></div></div>';
+      var formModelValue = 'My form model value';
+
+      $scope.formModel[$scope.fieldSchema.name] = formModelValue;
+      
+      $element.append('<div><div febworms-render-field-inner data-form-model="formModel" data-field-schema="fieldSchema"></div></div>');
 
       // Act
 
-      var result = $compile(template)($scope);
+      var result = $compile($element)($scope);
       $scope.$digest();
-      $scope = $scope.$$childHead;
-
+      
       // Assert
 
-      expect($scope.ngModel).toBeDefined();
-      expect($scope.ngModel).toBe($scope.$parent.myFieldData);
+      expect($scope.formModel[$scope.fieldSchema.name]).toBe(formModelValue);
     });
 
     it('should copy the field.value to the ngModel when in edit mode', function() {
 
       // Act
 
-      $scope.field = createFieldTemplate();
-      
-      var template = '<div><div febworms-render-field-inner data-field="field" data-edit-mode="true"></div></div>';
+      $scope.fieldSchema = createFieldTemplate();
+      $element.append('<div><div febworms-render-field-inner data-form-model="formModel" data-field-schema="fieldSchema" data-edit-mode="true"></div></div>');
 
-      $compile(template)($scope);
+      $compile($element)($scope);
       $scope.$digest();
 
       // Act
 
-      $scope.field.value = "should be copied to model";
+      $scope.fieldSchema.value = "should be copied to model";
       $scope.$digest();
-
-      $scope = $scope.$$childHead;
 
       // Assert
 
-      expect($scope.ngModel).toBeDefined();
-      expect($scope.ngModel).toBe($scope.field.value);
+      expect($scope.formModel[$scope.fieldSchema.name]).toBeDefined();
+      expect($scope.formModel[$scope.fieldSchema.name]).toBe($scope.fieldSchema.value);
     });
   });
 });

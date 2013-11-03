@@ -1,11 +1,8 @@
-<!-- <label class="control-label">{{ field.displayName }}</label>
-<div class="controls"> -->
-    <label class="radio" ng-repeat="option in field.options">
-        <input type="radio"
-               name="{{ field.name }}[]"
-               tabindex="{{ tabIndex }}"
-               value="{{ option.value }}"
-               ng-model="ngModel">
-        <span>{{option.text}}</span>
-    </label>
-<!-- </div> -->
+<label class="radio" ng-repeat="option in fieldSchema.options">
+    <input type="radio"
+           name="{{ fieldSchema.name }}[]"
+           tabindex="{{ tabIndex }}"
+           value="{{ option.value }}"
+           ng-model="form[fieldSchema.name]">
+    <span>{{option.text}}</span>
+</label>

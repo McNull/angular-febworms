@@ -1,10 +1,7 @@
-<!-- <label class="control-label">{{ field.displayName }}</label>
-<div class="controls"> -->
-    <label class="checkbox" ng-repeat="option in field.options">
-        <input type="checkbox"
-               tabindex="{{ tabIndex }}"
-               name="{{ field.name }}[]" value="{{ option.value }}"
-               ng-model="ngModel[option.value]">
-        <span>{{option.text}}</span>
-    </label>
-<!-- </div> -->
+<label class="checkbox" ng-repeat="option in fieldSchema.options">
+    <input type="checkbox"
+           tabindex="{{ tabIndex }}"
+           name="{{ fieldSchema.name }}[]" value="{{ option.value }}"
+           ng-model="form[fieldSchema.name][option.value]">
+    <span>{{option.text}}</span>
+</label>

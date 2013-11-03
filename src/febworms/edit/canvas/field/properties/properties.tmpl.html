@@ -10,7 +10,7 @@
                        name="displayName"
                        ng-model="field.displayName"/>
 
-                <div febworms-validation-summary data-form-field="fieldPropertiesForm.displayName"></div>
+                <div febworms-validation-summary data-field-name="displayName"></div>
             </div>
         </div>
 
@@ -26,12 +26,12 @@
                        ng-pattern="/^[a-zA-Z]([\w]+)?$/"
                        febworms-unique-field-name/>
 
-                <div febworms-validation-summary data-form-field="fieldPropertiesForm.fieldName"></div>
+                <div febworms-validation-summary data-field-name="fieldName"></div>
             </div>
         </div>
 
         <!-- Other properties -->
-        <div ng-include="propertiesTemplateUrl"></div>
+        <div ng-include="renderInfo.propertiesTemplateUrl"></div>
 
         <div class="control-group">
             <div class="controls">

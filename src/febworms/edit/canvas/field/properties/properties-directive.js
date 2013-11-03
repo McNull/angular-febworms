@@ -11,7 +11,7 @@ angular.module('febworms').directive('febwormsEditCanvasFieldProperties', functi
         $scope.field.$_invalid = newValue;
       });
 
-      $scope.propertiesTemplateUrl = febwormsUtils.getTemplateUrl($scope.field, 'properties');
+      $scope.renderInfo = febwormsUtils.getRenderInfo($scope.field);
     }
   };
 });

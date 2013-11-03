@@ -1,6 +1,6 @@
 angular.module('febworms').factory('febwormsUtils', function ($templateCache, $window, febwormsConfig) {
 
-    var uniqueCounter = 0;
+    var uniqueCounter = Date.now() % 10000;
 
     return {
       defaultArea: 'default',
@@ -16,9 +16,9 @@ angular.module('febworms').factory('febwormsUtils', function ($templateCache, $w
           renderInfo.templateUrl = this.getTemplateUrl(field);
         }
 
-        // if(!renderInfo.propertiesTemplateUrl) {
-        //   renderInfo.propertiesTemplateUrl = this.getTemplateUrl(field, 'properties');
-        // }
+        if(!renderInfo.propertiesTemplateUrl) {
+          renderInfo.propertiesTemplateUrl = this.getTemplateUrl(field, 'properties');
+        }
 
         return renderInfo;
       },

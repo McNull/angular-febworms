@@ -1,0 +1,14 @@
+<div class="febworms-render">
+	<form novalidate name="myForm" class="form-horizontal">
+		<fieldset>
+          <legend>{{ schema.name }}<span class="form-required-fields">* Required field</span></legend>
+
+          <div ng-repeat="fieldSchema in schema.fields">
+            <div class="control-group">
+				<div febworms-render-field-inner data-form-model="form" data-field-schema="fieldSchema">
+            </div>
+          </div>
+
+		</fieldset>
+	</form>
+</div>
