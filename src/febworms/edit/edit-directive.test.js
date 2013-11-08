@@ -4,6 +4,8 @@ describe('febworms-edit-directive', function () {
 
   beforeEach(function () {
 
+    //febworms.mocks.controller('febwormsSchemaController');
+
     module('febworms');
 
     inject(function (_$compile_, $rootScope) {
@@ -17,7 +19,7 @@ describe('febworms-edit-directive', function () {
 
     // Arrange
 
-    var template = '<div febworms-edit></div>';
+    var template = '<div febworms-edit febworms-schema="mySchema"></div>';
     var $element = angular.element(template);
 
     // Act
@@ -30,81 +32,73 @@ describe('febworms-edit-directive', function () {
     expect(result.hasClass('febworms-edit')).toBe(true);
   });
 
-  describe('$scope.schema', function () {
 
-    it('should create a new schema object if none is provided', function () {
+  it('should expose schema controller', function() {
 
-      // Arrange
+    // Arrange
 
-      var template = '<div febworms-edit></div>';
-      var $element = angular.element(template);
+    var template = '<div febworms-edit febworms-schema="mySchema"></div>';
+    var $element = angular.element(template);
 
-      // Act
+    // Act
 
-      $compile($element)($scope);
-      $scope.$digest();
+    var result = $compile($element)($scope);
+    $scope.$digest();
 
-      var $childScope = $scope.$$childHead;
+    $scope = $scope.$$childHead;
 
-      // Assert
+    // Assert
 
-      expect($childScope.schema).toBeDefined();
-
-    });
-
-    it('should use the provided schema object', function () {
-
-      // Arrange
-
-      $scope.mySchema = { mySchema: true };
-
-      var template = '<div febworms-edit data-schema="mySchema"></div>';
-      var $element = angular.element(template);
-
-      // Act
-
-      $compile($element)($scope);
-      $scope.$digest();
-
-      var $childScope = $scope.$$childHead;
-
-      // Assert
-
-      expect($childScope.schema).toBe($scope.mySchema);
-
-    });
-
-    it('should create fields array if needed', function () {
-
-      // Arrange
-
-      $scope.mySchema = {};
-
-      var template = '<div febworms-edit data-schema="mySchema"></div>';
-      var $element = angular.element(template);
-
-      // Act
-
-      $compile($element)($scope);
-      $scope.$digest();
-
-      var $childScope = $scope.$$childHead;
-
-      // Assert
-
-      expect(angular.isArray($scope.mySchema.fields)).toBe(true);
-
-    });
+    expect($scope.schemaCtrl).toBeDefined();
 
   });
+  return;
 
+  it('should create schema object if none provided', function() {
+
+    // Arrange
+
+    var template = '<div febworms-edit febworms-schema="myNoneExistingSchema"></div>';
+    var $element = angular.element(template);
+
+    // Act
+
+    var result = $compile($element)($scope);
+    $scope.$digest();
+
+    // Assert
+
+    expect($scope.myNoneExistingSchema).toBeDefined();
+    
+  });
+
+  it('should set the schema model on the controller', function() {
+
+    // Arrange
+
+    $scope.mySchema = {};
+
+    var template = '<div febworms-edit febworms-schema="mySchema"></div>';
+    var $element = angular.element(template);
+
+    // Act
+
+    var result = $compile($element)($scope);
+    $scope.$digest();
+    $scope = $scope.$$childHead;
+
+    // Assert
+
+    expect($scope.schemaCtrl.model()).toBe($scope.mySchema);
+  });
+ 
   describe('$scope.actionsEnabled', function () {
 
     it('should default to true if no value is provided', function () {
 
       // Arrange
 
-      var template = '<div febworms-edit></div>';
+      var template = '<div febworms-edit febworms-schema="mySchema"></div>';
       var $element = angular.element(template);
 
       // Act
@@ -126,7 +120,7 @@ describe('febworms-edit-directive', function () {
 
       $scope.myActionsEnabled = false;
 
-      var template = '<div febworms-edit data-actions-enabled="myActionsEnabled"></div>';
+      var template = '<div febworms-edit febworms-schema="mySchema" data-actions-enabled="myActionsEnabled"></div>';
       var $element = angular.element(template);
 
       // Act
@@ -149,7 +143,7 @@ describe('febworms-edit-directive', function () {
 
       // Arrange
 
-      var template = '<div febworms-edit></div>';
+      var template = '<div febworms-edit febworms-schema="mySchema"></div>';
       var $element = angular.element(template);
 
       // Act
@@ -171,7 +165,7 @@ describe('febworms-edit-directive', function () {
 
       $scope.myPreview = true;
 
-      var template = '<div febworms-edit data-preview="myPreview"></div>';
+      var template = '<div febworms-edit febworms-schema="mySchema" data-preview="myPreview"></div>';
       var $element = angular.element(template);
 
       // Act

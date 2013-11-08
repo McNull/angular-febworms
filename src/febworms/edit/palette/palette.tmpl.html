@@ -6,11 +6,11 @@
                  dq-draggable="febworms-edit-canvas" dq-drag-begin="{ source: 'palette', field: template }">
                 <div class="febworms-field-overlay">
                     <div class="btn-toolbar btn-toolbar-right">
-                        <button class="btn btn-mini" type="button" ng-click="addField({ field: template })">Add</button>
+                        <button class="btn btn-mini" type="button" ng-click="schemaCtrl.addField(template)">Add</button>
                     </div>
                 </div>
                 <div class="control-group">
-                    <div febworms-render-field-inner data-field-schema="template" data-tab-index="-1" data-no-validation-summary="true"></div>
+                    <div febworms-field="template" febworms-tab-index="-1" febworms-no-validation-summary="true"></div>
                 </div>
             </div>
         </fieldset>

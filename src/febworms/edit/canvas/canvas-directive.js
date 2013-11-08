@@ -1,16 +1,14 @@
 angular.module('febworms').directive('febwormsEditCanvas', function() {
 
   return {
-    require: '^febwormsEdit',
+    require: ['^febwormsEdit', '^febwormsSchema'],
     templateUrl: 'febworms/edit/canvas/canvas.tmpl.html',
     controller: 'febwormsEditCanvasController as canvasCtrl',
-    scope: {
-      schema: "="
-    },
-    link: function($scope, $element, $attrs, febwormsEditController) {
-      $scope.editCtrl = febwormsEditController;
+    link: function($scope, $element, $attrs, ctrls) {
+      $scope.editCtrl = ctrls[0];
+      $scope.schemaCtrl = ctrls[1];
 
-      $scope.formModel = {}; // Dummy formModel for WYSIWYG pleasures
+      // $scope.formModel = {}; // Dummy formModel for WYSIWYG pleasures
     }
   };
 });

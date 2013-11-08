@@ -50,9 +50,9 @@ angular.module('febworms').controller('febwormsEditCanvasController', function (
       var fields = $scope.schema.fields;
 
       if (source == 'palette') {
-        $scope.editCtrl.addField(field, $scope.dragPlaceholder.index);
+        $scope.schemaCtrl.addField(field, $scope.dragPlaceholder.index);
       } else if (source == 'canvas') {
-        $scope.editCtrl.moveField(index, $scope.dragPlaceholder.index);
+        $scope.schemaCtrl.moveField(index, $scope.dragPlaceholder.index);
         // fields.splice(index, 1);
         // fields.splice($scope.dragPlaceholder.index, 0, field);
       }

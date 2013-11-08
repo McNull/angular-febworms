@@ -1,4 +1,4 @@
-var febworms = {};
+var febworms = febworms || {};
 /**
  * Constructor for febworm Field types.
  * @param {string} type         Indicates the type of field

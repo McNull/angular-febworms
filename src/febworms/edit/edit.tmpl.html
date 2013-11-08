@@ -1,21 +1,19 @@
 <div class="febworms-edit">
 
     <div ng-if="preview" ng-init="formData = {}">
-        <div febworms-render data-schema="schema" ng-model="formData"></div>
+        <div febworms-render febworms-form-data="formData"></div>
         <div febworms-edit-form-actions></div>
     </div>
 
     <div ng-if="!preview">
 
-        <div febworms-edit-meta data-schema="schema"
-             data-expose-form="editCtrl.setMetaForm(form)">
+        <div febworms-edit-meta>
         </div>
 
         <div class="row-fluid">
             <div class="span8">
-                <div febworms-edit-canvas
-                     data-schema="schema">
-                </div>
+                <div febworms-form 
+                     febworms-edit-canvas></div>
             </div>
             <div class="span4">
                 <div febworms-edit-palette

@@ -1,6 +1,6 @@
 describe('febworms-edit-palette', function () {
 
-  var $controller, $scope, febwormsConfigMock, $compile, $templateCache, febwormsUtils;
+  var $controller, $scope, febwormsConfigMock, $compile, $templateCache, febwormsUtils, $fixture, schemaCtrl = {};
 
   beforeEach(function () {
 
@@ -24,6 +24,10 @@ describe('febworms-edit-palette', function () {
       $templateCache = _$templateCache_;
       febwormsUtils = _febwormsUtils_;
     });
+
+    $fixture = angular.element('<div></div>');
+
+    $fixture.data('$febwormsSchemaController', schemaCtrl);
   });
 
   describe('directive', function () {
@@ -34,11 +38,11 @@ describe('febworms-edit-palette', function () {
 
       // Arrange
 
-      var element = angular.element(template);
+      $fixture.append(template);
 
       // Act
 
-      var result = $compile(element)($scope);
+      var result = $compile($fixture)($scope);
       $scope.$digest();
 
       // Assert
@@ -56,7 +60,9 @@ describe('febworms-edit-palette', function () {
       febwormsConfigMock.fields.templates.push(new febworms.Field('Drein'));
 
       var fieldCount = febwormsConfigMock.fields.templates.length;
-      var $element = $compile($(template))($scope);
+      
+      $fixture.append(template);
+      var $element = $compile($fixture)($scope);
 
       // Act
 
@@ -81,12 +87,14 @@ describe('febworms-edit-palette', function () {
       var field = new febworms.Field('foo');
       febwormsConfigMock.fields.templates.push(field);
 
-      var $element = $compile($(template))($scope);
+      $fixture.append(template);
+      var $element = $compile($fixture)($scope);
+
       $scope.$digest();
 
       $scope = $scope.$$childHead;
 
-      spyOn($scope, 'addField');
+      schemaCtrl.addField = jasmine.createSpy('addField');
 
       // Act
 
@@ -94,10 +102,11 @@ describe('febworms-edit-palette', function () {
 
       // Assert
 
-      expect($scope.addField).toHaveBeenCalled();
-      expect($scope.addField.calls[0].args[0]).toBeDefined();
-      expect($scope.addField.calls[0].args[0].field).toBeDefined();
-      expect($scope.addField.calls[0].args[0].field.type).toBe('foo');
+      // console.log(schemaCtrl.addField.calls);
+
+      expect(schemaCtrl.addField).toHaveBeenCalled();
+      expect(schemaCtrl.addField.calls[0].args[0]).toBeDefined();
+      expect(schemaCtrl.addField.calls[0].args[0].type).toBeDefined('foo');
     });
 
     it('should only render fields of the selected category', function () {
@@ -130,11 +139,8 @@ describe('febworms-edit-palette', function () {
 
       // -- Compile, link and grab the dom element
 
-      var $element = $compile($(template))($scope);
-
-      // -- Change scope to isolated child scope
-
-      $scope = $scope.$$childHead;
+      $fixture.append(template);
+      var $element = $compile($fixture)($scope);
 
       // Act
 

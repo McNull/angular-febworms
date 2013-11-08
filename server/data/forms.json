@@ -29,5 +29,33 @@
       "name": "Email only"
     },
     "id": 2
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "text",
+          "name": "field4471",
+          "displayName": "Textbox"
+        },
+        {
+          "type": "email",
+          "name": "field4472",
+          "displayName": "Email"
+        },
+        {
+          "type": "password",
+          "name": "field4473",
+          "displayName": "Password"
+        },
+        {
+          "type": "textarea",
+          "name": "field4474",
+          "displayName": "Textarea"
+        }
+      ],
+      "name": "test"
+    },
+    "id": 3
   }
 ]

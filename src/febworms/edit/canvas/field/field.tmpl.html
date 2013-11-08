@@ -15,28 +15,25 @@
             </div>
             <div class="btn-toolbar btn-toolbar-right">
                 <button class="btn btn-mini" type="button"
-                        ng-click="editCtrl.swapFields($index - 1, $index)"
+                        ng-click="schemaCtrl.swapFields($index - 1, $index)"
                         ng-disabled="$index === 0">
                     Up
                 </button>
                 <button class="btn btn-mini" type="button"
-                        ng-click="editCtrl.swapFields($index, $index + 1)"
+                        ng-click="schemaCtrl.swapFields($index, $index + 1)"
                         ng-disabled="$index === schema.fields.length - 1">
                     Down
                 </button>
-                <button class="btn btn-mini" type="button" ng-click="editCtrl.removeField($index)">
+                <button class="btn btn-mini" type="button" ng-click="schemaCtrl.removeField($index)">
                     Remove
                 </button>
             </div>
         </div>
-        <div febworms-render-field-inner
-             data-form-model="formModel"
-             data-field-schema="field" 
-             data-tab-index="-1" 
-             data-edit-mode="true"
-             data-no-validation-summary="true"></div>
+        <div febworms-field="field"
+             febworms-tab-index="-1" 
+             febworms-edit-mode="true"
+             febworms-no-validation-summary="true"></div>
     </div>
-    <div febworms-edit-canvas-field-properties
-         data-field="field" data-schema="schema"
+    <div febworms-edit-canvas-field-properties="field"
          ng-show="field.$_displayProperties"></div>
 </div>

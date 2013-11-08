@@ -1,9 +1,10 @@
 angular.module('febworms').directive('febwormsEdit', function() {
   return {
+    require: 'febwormsSchema',
     restrict: 'AE',
     scope: {
-      // The schema model to edit
-      schema: '=?',
+      // // The schema model to edit
+      schema: '=?febwormsSchema',
       // Boolean indicating wether to show the default form action buttons
       actionsEnabled: '=?',
       // Callback function when the user presses save -- any argument named 'schema' is set to the schema model.
@@ -13,13 +14,14 @@ angular.module('febworms').directive('febwormsEdit', function() {
       // Boolean indicating wether the edit is in preview mode or not
       preview: '=?'
     },
-    replace: true,
+    replace: true, 
     controller: 'febwormsEditController as editCtrl',
     templateUrl: 'febworms/edit/edit.tmpl.html',
-    link: function($scope) {
-
-      $scope.schema = $scope.schema || {};
-      $scope.schema.fields = $scope.schema.fields || [];
+    link: function($scope, $element, $attrs, schemaCtrl) {
+      
+      if($scope.schema === undefined) {
+        $scope.schema = {};
+      }
 
       if($scope.actionsEnabled === undefined) {
         $scope.actionsEnabled = true;
@@ -28,6 +30,9 @@ angular.module('febworms').directive('febwormsEdit', function() {
       if($scope.preview === undefined) {
         $scope.preview = false;
       }
+
+      schemaCtrl.model($scope.schema);
+      $scope.schemaCtrl = schemaCtrl;
     }
   }
 });

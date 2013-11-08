@@ -1,27 +1,31 @@
 angular.module('febworms').directive('febwormsValidationSummary', function(febwormsConfig) {
 
   return {
-    require: '^form',
+    require: ['^?febwormsField', '^?form'],
     templateUrl: 'febworms/validation/summary.tmpl.html',
     scope: {
-      fieldName: '@',
-      fieldState: '=?',
-      fieldSchema: '=?',
+      fieldName: '@?febwormsValidationSummary',
       validationMessages: '=?'
     },
-    link: function($scope, $element, $attrs, $formController) {
+    link: function($scope, $element, $attrs, ctrls) {
 
-      if (!$scope.fieldState) {
+      var febwormsFieldCtrl = ctrls[0];
+      var ngFormController = ctrls[1];
 
-        var fieldName = $scope.fieldSchema ? $scope.fieldSchema.name : $scope.fieldName;
-
-        if (fieldName) {
-          $scope.fieldState = $formController[fieldName];
-        } else {
-          throw Error('No field state available.');
-        }
+      if(febwormsFieldCtrl) {
+        var field = febwormsFieldCtrl.field();
+        $scope.fieldName = field.schema.name;
+        $scope.fieldState = field.state;
+      } else if(ngFormController) {
+        $scope.fieldState = ngFormController[$scope.fieldName];
+      } else {
+        throw Error('No febworms-field or form available');
       }
 
+      if(!$scope.fieldState) {
+        throw Error('No fieldState available for field "' + $scope.fieldName + "'");
+      }
+      
       $scope.messages = angular.extend({}, febwormsConfig.validation.messages, $scope.validationMessages)
     }
   };

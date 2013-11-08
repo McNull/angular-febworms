@@ -1,6 +1,8 @@
 describe('febworms-edit-canvas-directive', function() {
 
-  var editCtrlMock = {}, $compile, $scope;
+  var editCtrlMock = {}, schema = {}, schemaCtrlMock = {
+    model: function() { return schema; }
+  }, $compile, $scope;
 
   beforeEach(function() {
     
@@ -11,11 +13,18 @@ describe('febworms-edit-canvas-directive', function() {
       $compile = _$compile_;
 
       $scope = _$rootScope_.$new();
-    
+      
+      // This is not an isolated scope -- the directive requires
+      // the scope controller to be set, which sets the schema property
+      // on the scope.
+      
+      $scope.schema = schema;
+
       // Needed for the require directive flag
       
       $element = angular.element('<div></div>');
       $element.data('$febwormsEditController', editCtrlMock);
+      $element.data('$febwormsSchemaController', schemaCtrlMock);
       
     });
 
@@ -81,6 +90,26 @@ describe('febworms-edit-canvas-directive', function() {
     expect($canvasScope).toBeDefined();
     expect($canvasScope.formModel).toBeDefined();
     
+  });
+
+  it('should have schema on scope', function() {
+
+    // Arrange
+
+    var template = '<div febworms-edit-canvas></div>';
+
+    $element.append(template);
+    $compile($element)($scope);
+    $scope.$digest();
+    
+    // Act
+
+    var $canvasScope = $element.find('.febworms-edit-canvas').scope();
+
+    // Assert
+
+    expect($canvasScope).toBeDefined();
+    expect($canvasScope.schema).toBeDefined();
   });
 
 });

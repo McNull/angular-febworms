@@ -22,7 +22,7 @@ describe('febworms-render-directive', function() {
     
     $scope.form = form;
 
-    var template = '<div><div febworms-render data-schema="form.schema"></div></div>';
+    var template = '<div><div febworms-render febworms-schema="form.schema"></div></div>';
 
     // Act
 
@@ -47,7 +47,7 @@ describe('febworms-render-directive', function() {
 
       $scope.form = form;
 
-      var template = '<div><div febworms-render data-schema="form.schema" ng-model="form.data"></div></div>';
+      var template = '<div><div febworms-render febworms-schema="form.schema" febworms-form-data="form.data"></div></div>';
       $compile(template)($scope);
 
       // Act

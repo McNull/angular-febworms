@@ -11,7 +11,7 @@ angular.module('febworms').controller('febwormsEditController', function($scope,
   this.togglePreview = function() {
     $scope.preview = !$scope.preview;
   };
-
+/* moved to schema ctrl 
   this.addField = function(field, index) {
     var copy = febwormsUtils.copyField(field);
 
@@ -38,10 +38,11 @@ angular.module('febworms').controller('febwormsEditController', function($scope,
       $scope.schema.fields.splice(toIdx, 0, field);
     }
   }
+*/
 
   $scope.$watch(function() {
 
-    var schema = $scope.schema;
+    var schema = $scope.schemaCtrl.model();
 
     // Seems that this watch is sometimes fired after the scope has been destroyed(?)
     

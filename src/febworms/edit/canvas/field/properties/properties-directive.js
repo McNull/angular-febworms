@@ -3,10 +3,10 @@ angular.module('febworms').directive('febwormsEditCanvasFieldProperties', functi
     templateUrl: 'febworms/edit/canvas/field/properties/properties.tmpl.html',
     replace: true,
     scope: {
-      field: '=',
-      schema: '='
+      field: '=febwormsEditCanvasFieldProperties'
     },
-    link: function ($scope) {
+    link: function ($scope, $element, $attrs, ctrls) {
+
       $scope.$watch('fieldPropertiesForm.$invalid', function (newValue) {
         $scope.field.$_invalid = newValue;
       });
