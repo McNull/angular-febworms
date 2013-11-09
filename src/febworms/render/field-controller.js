@@ -30,6 +30,7 @@ angular.module('febworms').controller('febwormsFieldController', function($scope
       self.registerState(value);
     });
 
+    return _field;
   };
 
   this.initDefaultData = function(fieldSchema, editMode) {
@@ -52,9 +53,11 @@ angular.module('febworms').controller('febwormsFieldController', function($scope
         }
       });
 
-    } else if (formData && formData[fieldName] === undefined) {
+    } else if (formData && formData[fieldName] === undefined && fieldSchema.value !== undefined) {
       formData[fieldName] = fieldSchema.value;
     }
+
+    return formData;
   };
 
   this.setFieldState = function(state) {
@@ -74,6 +77,7 @@ angular.module('febworms').controller('febwormsFieldController', function($scope
     }
 
     _field.name = fieldName;
+
   };
 
   this.field = function() {

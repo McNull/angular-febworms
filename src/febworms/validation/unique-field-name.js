@@ -25,6 +25,7 @@ angular.module('febworms').directive('febwormsUniqueFieldName', function () {
   }
 
   return {
+    priority: 100,
     require: ['ngModel', '^febwormsSchema'],
     link: function ($scope, $element, $attrs, ctrls) {
 
@@ -52,8 +53,6 @@ angular.module('febworms').directive('febwormsUniqueFieldName', function () {
 
         validate(ngModelCtrl, schemaCtrl, field);
       });
-
-      validate(ngModelCtrl, schemaCtrl, field);
     }
   };
 });

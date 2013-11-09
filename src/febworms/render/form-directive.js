@@ -1,4 +1,4 @@
-angular.module('febworms').directive('febwormsForm', function() {
+angular.module('febworms').directive('febwormsForm', function(febwormsFormCompileFn) {
   return {
     restrict: 'AE',
     require: ['^?form', 'febwormsForm', '^febwormsSchema'],
@@ -6,34 +6,37 @@ angular.module('febworms').directive('febwormsForm', function() {
     scope: {
       formData: '=?febwormsFormData', // The form data
     },
-    compile: function($element, $attrs) {
+    compile: febwormsFormCompileFn
+  };
+}).factory('febwormsFormLinkFn', function() {
+    return function link($scope, $element, $attrs, ctrls) {
 
-      if($attrs.febwormsNoRender === undefined) {
-        var renderTemplate = '<div febworms-render></div>';
-        $element.append(renderTemplate);
-      }
+      var ngFormCtrl = ctrls[0];
+      var formCtrl = ctrls[1];
+      var schemaCtrl = ctrls[2];
 
-      return function link($scope, $element, $attrs, ctrls) {
+      $scope.$watch(function() {
+        return schemaCtrl.model();
+      }, function(value) {
+        $scope.schema = value;
+      });
 
-        var ngFormCtrl = ctrls[0];
-        var formCtrl = ctrls[1];
-        var schemaCtrl = ctrls[2];
+      $scope.$watchCollection('[form, formData, schema]', function(values) {
+        if (values) {
+          $scope.form = formCtrl.updateFormModel(ngFormCtrl);
+        }
+      });
 
-        $scope.$watch(function() {
-          return schemaCtrl.model();
-        }, function(value) {
-          $scope.schema = value;
-        });
+      $scope.form = formCtrl.updateFormModel(ngFormCtrl);
+    };
+}).factory('febwormsFormCompileFn', function(febwormsFormLinkFn) {
+  return function($element, $attrs) {
 
-        $scope.$watchCollection('[form, formData, schema]', function(values) {
-          if (values) {
-            $scope.form = formCtrl.updateFormModel(ngFormCtrl);
-          }
-        });
-
-        $scope.form = formCtrl.updateFormModel(ngFormCtrl);
-      };
+    if ($attrs.febwormsNoRender === undefined) {
+      var renderTemplate = '<div febworms-render></div>';
+      $element.append(renderTemplate);
     }
-    
+
+    return febwormsFormLinkFn;
   };
 });

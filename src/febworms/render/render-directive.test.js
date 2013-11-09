@@ -22,44 +22,17 @@ describe('febworms-render-directive', function() {
     
     $scope.form = form;
 
-    var template = '<div><div febworms-render febworms-schema="form.schema"></div></div>';
+    var $element = angular.element('<div><div febworms-render></div></div>');
+    $element.data('$febwormsFormController', {});
 
     // Act
 
-    var result = $compile(template)($scope);
+    var result = $compile($element)($scope);
     $scope.$digest();
 
     // Assert
 
     expect(result.find('.febworms-render').length).toBe(1);
-  });
-
-
-  describe('$scope.model', function() {
-
-    it('should create model if none is provided', function() {
-
-      // Arrange
-
-      var form = {
-        schema: {}
-      };
-
-      $scope.form = form;
-
-      var template = '<div><div febworms-render febworms-schema="form.schema" febworms-form-data="form.data"></div></div>';
-      $compile(template)($scope);
-
-      // Act
-
-      $scope.$digest();
-
-      // Assert
-
-      expect(form.data).toBeDefined();
-
-    });
-
   });
 
 });

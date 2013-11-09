@@ -4,7 +4,8 @@ angular.module('febworms').controller('febwormsFormController', function($scope)
   this.model = {};
 
   this.updateFormModel = function(ngFormCtrl) {
-
+    // Called by the directive
+    
     if (!$scope.formData) {
       $scope.formData = {};
     }

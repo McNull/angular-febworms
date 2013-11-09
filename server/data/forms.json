@@ -153,5 +153,56 @@
       "name": "Select list"
     },
     "id": 6
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "text",
+          "name": "field4610",
+          "displayName": "Textbox"
+        },
+        {
+          "type": "checkboxlist",
+          "name": "field4620",
+          "displayName": "Checkbox List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": {
+            "1": true,
+            "2": true
+          }
+        },
+        {
+          "type": "email",
+          "name": "field4612",
+          "displayName": "Email"
+        },
+        {
+          "type": "textarea",
+          "name": "field4614",
+          "displayName": "Textarea"
+        },
+        {
+          "type": "password",
+          "name": "field4616",
+          "displayName": "Password"
+        }
+      ],
+      "name": "jhgfjhgkfhgj"
+    },
+    "id": 7
   }
 ]

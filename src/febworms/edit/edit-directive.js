@@ -1,5 +1,6 @@
 angular.module('febworms').directive('febwormsEdit', function() {
   return {
+    priority: 100,
     require: 'febwormsSchema',
     restrict: 'AE',
     scope: {

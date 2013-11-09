@@ -71,27 +71,6 @@ describe('febworms-edit-canvas-directive', function() {
 
   });
 
-  it('should create dummy form model on scope', function() {
-
-    // Arrange
-
-    var template = '<div febworms-edit-canvas></div>';
-
-    $element.append(template);
-    $compile($element)($scope);
-    $scope.$digest();
-    
-    // Act
-
-    var $canvasScope = $element.find('.febworms-edit-canvas').scope();
-
-    // Assert
-
-    expect($canvasScope).toBeDefined();
-    expect($canvasScope.formModel).toBeDefined();
-    
-  });
-
   it('should have schema on scope', function() {
 
     // Arrange

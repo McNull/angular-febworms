@@ -1,4 +1,4 @@
-angular.module('febworms').directive('febwormsField', function(febwormsUtils) {
+angular.module('febworms').directive('febwormsField', function(febwormsFieldLinkFn) {
 
   return {
     require: ['^?febwormsForm', 'febwormsField'],
@@ -12,19 +12,21 @@ angular.module('febworms').directive('febwormsField', function(febwormsUtils) {
       noValidationSummary: '=febwormsNoValidationSummary' // If true hides the validation summary
     },
     controller: 'febwormsFieldController',
-    link: function($scope, $element, $attrs, ctrls) {
-
-      var febwormsFormCtrl = ctrls[0];
-      var febwormsFieldController = ctrls[1];
-
-      if ($scope.tabIndex === undefined) {
-        $scope.tabIndex = 'auto';
-      }
-
-      $scope.renderInfo = febwormsUtils.getRenderInfo($scope.fieldSchema);
-
-      febwormsFieldController.init(febwormsFormCtrl, $scope.fieldSchema, $scope.editMode);
-    }
+    link: febwormsFieldLinkFn
   };
 
+}).factory('febwormsFieldLinkFn', function(febwormsUtils) {
+  return function($scope, $element, $attrs, ctrls) {
+
+    var febwormsFormCtrl = ctrls[0];
+    var febwormsFieldCtrl = ctrls[1];
+
+    if ($scope.tabIndex === undefined) {
+      $scope.tabIndex = 'auto';
+    }
+
+    $scope.renderInfo = febwormsUtils.getRenderInfo($scope.fieldSchema);
+
+    febwormsFieldCtrl.init(febwormsFormCtrl, $scope.fieldSchema, $scope.editMode);
+  };
 });

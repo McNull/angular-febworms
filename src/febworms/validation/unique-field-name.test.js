@@ -3,25 +3,32 @@ describe('febworms-unique-field-name', function() {
   var $compile, $scope;
 
   var template =
-    '<form name="myForm" novalidate>' +
-      '<input type="text" name="fieldName" ng-model="field.name" febworms-unique-field-name>' +
-      '<input type="text" name="fieldName2" ng-model="field2.name" febworms-unique-field-name>' +
-      '</form>';
+    '<div febworms-schema="schema">' +
+      '<form name="myForm" novalidate>' +
+        '<input type="text" name="fieldName" ng-model="field.name" febworms-unique-field-name>' +
+        '<input type="text" name="fieldName2" ng-model="field2.name" febworms-unique-field-name>' +
+      '</form>' +
+    '</div>';
 
 
   beforeEach(function() {
     module('febworms')
 
-    inject(function (_$compile_, _$rootScope_) {
+    inject(function(_$compile_, _$rootScope_) {
 
       $compile = _$compile_;
       $scope = _$rootScope_.$new();
 
       $scope.schema = {
         fields: [
-          new febworms.Field('myType', { name: 'name1' }),
-          new febworms.Field('myType', { name: 'name2' })
-        ]};
+          new febworms.Field('myType', {
+            name: 'name1'
+          }),
+          new febworms.Field('myType', {
+            name: 'name2'
+          })
+        ]
+      };
 
       $scope.field = $scope.schema.fields[0];
       $scope.field2 = $scope.schema.fields[1];
@@ -35,7 +42,7 @@ describe('febworms-unique-field-name', function() {
       form[fieldName].$invalid && form[fieldName].$error[errorType] !== undefined;
   }
 
-  it('should set field error on init', function () {
+  it('should set field error', function() {
 
     // Arrange
 
@@ -47,13 +54,14 @@ describe('febworms-unique-field-name', function() {
     // Act
 
     $compile(element)($scope);
+    $scope.$digest();
 
     // Assert
 
     expect(isFieldError($scope.myForm, 'fieldName', 'unique')).toBe(true);
   });
 
-  it('should NOT set field error on init when unique field names', function () {
+  it('should NOT set field error when unique field names', function() {
 
     // Arrange
 
@@ -65,13 +73,14 @@ describe('febworms-unique-field-name', function() {
     // Act
 
     $compile(element)($scope);
+    $scope.$digest();
 
     // Assert
 
     expect(isFieldError($scope.myForm, 'fieldName', 'unique')).toBe(false);
   });
 
-  it('should set field error after change', function () {
+  it('should set field error after change', function() {
 
     // Arrange
 
@@ -80,6 +89,7 @@ describe('febworms-unique-field-name', function() {
 
     var element = $(template);
     $compile(element)($scope);
+    $scope.$digest();
 
     // Act
 
@@ -91,7 +101,7 @@ describe('febworms-unique-field-name', function() {
     expect(isFieldError($scope.myForm, 'fieldName', 'unique')).toBe(true);
   });
 
-  it('should set both conflicting fields to error after change', function () {
+  it('should set both conflicting fields to error after change', function() {
 
     // Arrange
 
@@ -100,6 +110,7 @@ describe('febworms-unique-field-name', function() {
 
     var element = $(template);
     $compile(element)($scope);
+    $scope.$digest();
 
     // Act
 
@@ -112,7 +123,7 @@ describe('febworms-unique-field-name', function() {
     expect(isFieldError($scope.myForm, 'fieldName2', 'unique')).toBe(true);
   });
 
-  it('should set both conflicting fields to valid after change', function () {
+  it('should set both conflicting fields to valid after change', function() {
 
     // Arrange
 
@@ -121,7 +132,8 @@ describe('febworms-unique-field-name', function() {
 
     var element = $(template);
     $compile(element)($scope);
-
+    $scope.$digest();
+    
     // Act
 
     $scope.schema.fields[0].name = 'no_conflict';

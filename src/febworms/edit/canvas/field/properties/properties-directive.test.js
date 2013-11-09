@@ -1,6 +1,8 @@
 describe('febworms-edit-canvas-field-properties-directive', function() {
 
-  var $compile, $scope;
+  var $compile, $scope, schema, schemaCtrl = {
+      model: function() { return schema; }
+    };
 
   beforeEach(function() {
 
@@ -23,13 +25,16 @@ describe('febworms-edit-canvas-field-properties-directive', function() {
     }
 
     $scope.myField = field;
-    $scope.mySchema = {
+    schema = {
       fields: fields
     };
 
-    template = template || '<div febworms-edit-canvas-field-properties data-field="myField" data-schema="mySchema"></div>';
+    var $fixture = angular.element('<div></div>');
+    $fixture.data('$febwormsSchemaController', schemaCtrl);
 
-    return angular.element(template);
+    template = template || '<div febworms-edit-canvas-field-properties="myField"></div>';
+
+    return $fixture.append(template);
   }
 
   it('should compile directive', function() {
@@ -40,17 +45,17 @@ describe('febworms-edit-canvas-field-properties-directive', function() {
 
     // Act
 
-    var result = $compile($element)($scope);
+    $compile($element)($scope);
     $scope.$digest();
+    var result = $element.find('.febworms-field-properties');
 
     // Assert
 
-    expect(result).toBeDefined();
-    expect(result.hasClass('febworms-field-properties')).toBe(true);
+    expect(result.length).toBe(1);
   });
 
   describe('field name validation', function() {
-    
+
     it('should set the field validation to invalid if the form validation fails', function() {
 
       // Arrange
@@ -113,8 +118,12 @@ describe('febworms-edit-canvas-field-properties-directive', function() {
 
       // Arrange
 
-      var field1 = new febworms.Field('myType1', { name: 'notUnique' });
-      var field2 = new febworms.Field('myType2', { name: 'notUnique' });
+      var field1 = new febworms.Field('myType1', {
+        name: 'notUnique'
+      });
+      var field2 = new febworms.Field('myType2', {
+        name: 'notUnique'
+      });
 
       var $element = setupElementAndScope(field1, [field1, field2]);
 
