@@ -1,6 +1,6 @@
-<select id="field_{{ $id }}"
-        ng-model="form[fieldSchema.name]"
-        ng-required="fieldSchema.validation.required"
+<select id="{{ field.$_id }}"
+        ng-model="form.data[field.schema.name]"
+        ng-required="field.schema.validation.required"
         tabindex="{{ tabIndex }}">
-    <option ng-repeat="option in fieldSchema.options" value="option.value" ng-selected="fieldSchema.value === option.value">{{ option.text }}</option>
+    <option ng-repeat="option in field.schema.options" value="{{ option.value }}" ng-selected="field.schema.value === option.value">{{ option.text }}</option>
 </select>

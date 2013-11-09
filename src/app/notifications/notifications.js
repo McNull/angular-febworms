@@ -39,6 +39,7 @@ angular.module('myApp').config(function($provide) {
   $provide.decorator("$exceptionHandler", ['$delegate', 'notifications',
     function($delegate, notifications) {
       return function(exception, cause) {
+        // debugger;
         $delegate(exception, cause);
         notifications.add(exception.toString(), 'error');
       };

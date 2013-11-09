@@ -1,4 +1,7 @@
 <label class="checkbox">
-    <input type="checkbox" tabindex="{{ tabIndex }}" ng-model="form[fieldSchema.name]">
-    <span>{{ fieldSchema.displayName }}</span>
+    <input type="checkbox" 
+    	   febworms-field-input
+    	   tabindex="{{ tabIndex }}" 
+    	   ng-model="form.data[field.schema.name]">
+    <span>{{ field.schema.displayName }}</span>
 </label>

@@ -1,6 +1,6 @@
 angular.module('febworms').factory('febwormsUtils', function ($templateCache, $window, febwormsConfig) {
 
-    var uniqueCounter = Date.now() % 10000;
+    var uniqueCounter = (+new Date) % 10000;
 
     return {
       defaultArea: 'default',

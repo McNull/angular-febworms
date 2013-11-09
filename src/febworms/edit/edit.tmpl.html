@@ -1,7 +1,13 @@
 <div class="febworms-edit">
 
     <div ng-if="preview" ng-init="formData = {}">
-        <div febworms-render febworms-form-data="formData"></div>
+
+        <form febworms-form 
+              febworms-form-data="formData"
+              class="form-horizontal"
+              novalidate>
+        </form>
+
         <div febworms-edit-form-actions></div>
     </div>
 
@@ -12,13 +18,14 @@
 
         <div class="row-fluid">
             <div class="span8">
-                <div febworms-form 
+                <div febworms-form
+                     febworms-no-render
                      febworms-edit-canvas></div>
             </div>
             <div class="span4">
                 <div febworms-edit-palette
-                     data-add-field="editCtrl.addField(field)">
-                </div>
+                     febworms-form
+                     febworms-no-render></div>
             </div>
         </div>
 

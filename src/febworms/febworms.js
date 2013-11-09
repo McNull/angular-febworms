@@ -23,9 +23,9 @@ angular.module('febworms', ['ngRoute', 'dq', 'templates-febworms']).constant('fe
       required: 'Field value is required.',
       minlength: 'Field value does not match the minimum length.',
       maxlength: 'Field value exceeds the maximum length.',
-      pattern: 'Field value does not match the required format.',
-      email: 'Field value should be an email address.',
-      unique: 'Field value is not unique.'
+      pattern: 'The value "{{ field.state.$viewValue }}" does not match the required format.',
+      email: 'The value "{{ field.state.$viewValue }}" is not a valid email address.',
+      unique: 'The value "{{ field.state.$viewValue }}" is already in use.'
     }
   },
   fields: {

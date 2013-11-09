@@ -35,27 +35,123 @@
       "fields": [
         {
           "type": "text",
-          "name": "field4471",
+          "name": "field7850",
           "displayName": "Textbox"
         },
         {
           "type": "email",
-          "name": "field4472",
+          "name": "field7851",
           "displayName": "Email"
         },
         {
           "type": "password",
-          "name": "field4473",
+          "name": "field7852",
           "displayName": "Password"
         },
         {
           "type": "textarea",
-          "name": "field4474",
+          "name": "field7853",
           "displayName": "Textarea"
+        },
+        {
+          "type": "radiobuttonlist",
+          "name": "field7854",
+          "displayName": "Radiobutton List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1"
+        },
+        {
+          "type": "selectlist",
+          "name": "field7855",
+          "displayName": "Select List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1"
+        },
+        {
+          "type": "checkbox",
+          "name": "field7856",
+          "displayName": "Checkbox"
+        },
+        {
+          "type": "checkboxlist",
+          "name": "field7857",
+          "displayName": "Checkbox List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": {
+            "1": true,
+            "2": true
+          }
         }
       ],
-      "name": "test"
+      "name": "All fields"
     },
-    "id": 3
+    "id": 5
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "selectlist",
+          "name": "field2005",
+          "displayName": "Select List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1"
+        }
+      ],
+      "name": "Select list"
+    },
+    "id": 6
   }
 ]

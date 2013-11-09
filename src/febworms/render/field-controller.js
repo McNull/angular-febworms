@@ -1,17 +1,17 @@
-angular.module('febworms').controller('febwormsFieldController', function($scope) {
+angular.module('febworms').controller('febwormsFieldController', function($scope, febwormsUtils) {
 
   var self = this;
   var _form, _field;
 
   this.init = function(febwormsFormCtrl, fieldSchema, editMode) {
     
-    self.initForm();
+    self.initForm(febwormsFormCtrl);
     self.initField(fieldSchema);
     self.initDefaultData(fieldSchema, editMode);
 
     $scope.form = _form;
     $scope.field = _field;
-
+    
   };
 
   this.initForm = function(febwormsFormCtrl) {
@@ -22,29 +22,43 @@ angular.module('febworms').controller('febwormsFieldController', function($scope
   this.initField = function(fieldSchema) {
 
     _field = {
+      $_id: 'id' + febwormsUtils.getUnique(),
       schema: fieldSchema
     };
 
     $scope.$watch('field.schema.name', function(value, oldValue) {
       self.registerState(value);
     });
+
   };
 
   this.initDefaultData = function(fieldSchema, editMode) {
 
     var fieldName = fieldSchema.name;
+
     var formData = _form.data || {};
 
     if (editMode) {
+      
       $scope.$watch('field.schema.value', function(value) {
-        formData[fieldName] = value;
+        formData[fieldSchema.name] = value;
       });
+
+      $scope.$watch('field.schema.name', function(value, oldValue) {
+        if(value !== oldValue) {
+          var data = formData[oldValue];
+          delete formData[oldValue];
+          formData[value] = data;
+        }
+      });
+
     } else if (formData && formData[fieldName] === undefined) {
       formData[fieldName] = fieldSchema.value;
     }
   };
 
   this.setFieldState = function(state) {
+    // Called by the field-input directive
     _field.state = state;
     self.registerState(_field.schema.name);
   };

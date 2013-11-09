@@ -1,11 +1,11 @@
-<input type="email"
-       id="field_{{ $id }}"
-       name="{{ fieldSchema.name }}"
+<input febworms-field-input
+       type="email"
+       id="{{ field.$_id }}"
        tabindex="{{ tabIndex }}"
-       placeholder="{{ fieldSchema.placeholder }}"
-       ng-model="form[fieldSchema.name]"
-       ng-required="fieldSchema.validation.required"
-       ng-minlength="{{ fieldSchema.validation.minlength }}"
-       ng-maxlength="{{ fieldSchema.validation.maxlength }}"
-       ng-pattern="/{{ fieldSchema.validation.pattern }}/"
-       ng-disabled="isDisabled(fieldSchema)">
+       placeholder="{{ field.schema.placeholder }}"
+       ng-model="form.data[field.schema.name]"
+       ng-required="field.schema.validation.required"
+       ng-minlength="{{ field.schema.validation.minlength }}"
+       ng-maxlength="{{ field.schema.validation.maxlength }}"
+       ng-pattern="/{{ field.schema.validation.pattern }}/"
+       ng-disabled="isDisabled(field.schema)">

@@ -6,13 +6,13 @@ angular.module('febworms').directive('febwormsEdit', function() {
       // // The schema model to edit
       schema: '=?febwormsSchema',
       // Boolean indicating wether to show the default form action buttons
-      actionsEnabled: '=?',
+      actionsEnabled: '=?febwormsActionsEnabled',
       // Callback function when the user presses save -- any argument named 'schema' is set to the schema model.
-      onSave: '&',
+      onSave: '&febwormsOnSave',
       // Callback function when the user presses cancel -- any argument named 'schema' is set to the schema model.
-      onCancel: '&',
+      onCancel: '&febwormsOnCancel',
       // Boolean indicating wether the edit is in preview mode or not
-      preview: '=?'
+      preview: '=?febwormsPreview'
     },
     replace: true, 
     controller: 'febwormsEditController as editCtrl',
