@@ -8,9 +8,9 @@ angular.module('febworms').directive('febwormsPropertyFieldCommon', function(feb
   return function($scope, $element, $attrs, ctrls) {
 
     $scope.fields = {
-      fieldName: true,
-      displayName: true,
-      placeHolder: true
+      fieldname: false,
+      displayname: false,
+      placeholder: false
     };
 
     $scope.$watch($attrs['febwormsPropertyFieldCommon'], function(value) {

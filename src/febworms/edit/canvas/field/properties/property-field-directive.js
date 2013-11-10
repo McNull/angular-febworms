@@ -13,10 +13,6 @@ angular.module('febworms').directive('febwormsPropertyField', function(febwormsP
     
     $attrs.$observe('febwormsPropertyField', function(value) {
       $scope.fieldName = value;
-
-      if(!$scope.displayName) {
-        $scope.fieldLabel = value;
-      }
     });
 
     $attrs.$observe('febwormsPropertyFieldLabel', function(value) {

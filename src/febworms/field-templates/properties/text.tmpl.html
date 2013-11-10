@@ -1,13 +1,8 @@
-<div ng-include="'febworms/field-templates/properties/_placeholder.tmpl.html'"></div>
-<div class="control-group" ng-class="{ 'error': fieldPropertiesForm.fieldValue.$invalid }">
-    <label class="control-label">Initial value</label>
-    <div class="controls">
-    	<div>
-    		<input type="text"
-               name="fieldValue"
-               ng-model="field.value"/>	
-    	</div>
-        
-        <div febworms-validation-summary="fieldValue"></div>
-    </div>
+<div febworms-tabs>
+	<div febworms-tabs-pane="Properties">
+		<div febworms-property-field-common="{ fieldname: true, displayname: true, placeholder: true }"></div>
+		<div febworms-property-field="fieldValue" febworms-property-field-label="Initial value">
+			<input type="text" name="fieldValue" ng-model="field.value" />
+		</div>		
+	</div>
 </div>

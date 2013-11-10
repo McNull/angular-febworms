@@ -7,32 +7,44 @@
 .febworms-field-properties {
     position: relative;
     margin: 15px 0;
-    padding-top: 39px;
-    padding-bottom: 14px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: #fff;
-    border: 1px solid #ddd;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
+    border: 1px solid transparent;
 }
 
+.febworms-field-properties form {
+	margin-bottom: 0;
+}
+
+.febworms-field:hover .febworms-field-properties {
+	border: 1px solid #ddd;
+}
 
 .table-field-options {
 	
 }
 
+.table-field-options td, .table-field-options th {
+	vertical-align: middle;
+	padding: 5px;
+}
+
 .table-field-options td {
 	border: 0;
+	line-height: 30px;
 }
 
 .table-field-options th {
-	width: 220px;
 }
 
-.table-field-options th.table-field-options-actions {
-	width: auto;
+.table-field-options input[type="checkbox"], 
+.table-field-options input[type="radio"] {
+	margin-top: 0;
 }
 
 .table-field-options th.table-field-options-padding {
@@ -48,6 +60,39 @@
 	margin-left: 130px;
 }
 
+.febworms-field-properties .febworms-tabs {
+	margin-bottom: 10px;
+}
+
+.febworms-field-properties .febworms-tabs .nav {
+	margin-bottom: 0px;
+}
+
+.febworms-field-properties .febworms-tabs .tab-content {
+	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: 1px solid #ddd;
+	border-top: none;
+	border-radius: 0px 0px 4px 4px;
+}
+
+.febworms-field-properties .febworms-tabs .nav-tabs a {
+	color: #999;
+	font-weight: 300;
+}
+
+.febworms-field-properties .febworms-tabs .nav-tabs a:hover {
+	background-color: inherit;
+	color: #333;
+}
+
+.febworms-field-properties .febworms-tabs .nav-tabs .active a {
+	color: #333;
+	font-weight: normal;
+	border-bottom: 1px solid #fff !important;
+}
 
 @media (min-width: 480px) and (max-width: 979px) {
 	

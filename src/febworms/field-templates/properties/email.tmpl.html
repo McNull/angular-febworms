@@ -1,6 +1,8 @@
-
-<div febworms-property-field-common="{ placeHolder: false }"></div>
-
-<div febworms-property-field="fieldValue" febworms-property-field-label="Initial value">
-	<input type="email" name="fieldValue" ng-model="field.value" />
+<div febworms-tabs>
+	<div febworms-tabs-pane="Properties">
+		<div febworms-property-field-common="{ fieldname: true, displayname: true, placeholder: true }"></div>
+		<div febworms-property-field="fieldValue" febworms-property-field-label="Initial value">
+			<input type="email" name="fieldValue" ng-model="field.value" />
+		</div>		
+	</div>
 </div>

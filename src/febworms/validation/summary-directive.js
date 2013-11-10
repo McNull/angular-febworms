@@ -16,26 +16,22 @@ angular.module('febworms').directive('febwormsValidationSummary', function(febwo
     var febwormsFieldCtrl = ctrls[0];
     var ngFormController = ctrls[1];
 
-    var field;
-
     if (febwormsFieldCtrl) {
       // Grab the whole field state from the field controller
-      field = febwormsFieldCtrl.field();
+      $scope.field = febwormsFieldCtrl.field();
     } else if (ngFormController) {
-      if($scope.fieldName === undefined) {
-        throw Error('No field name specified');
-      }
-      // No field controller available
-      // Get the state from the form controller
-      field = {
-        name: $scope.fieldName
-      };
-      field.state = ngFormController[$scope.fieldName];
+      
+      $scope.$watch('fieldName', function(value) {
+        $scope.field = {
+          name: value,
+          state: ngFormController[value]
+        };
+      });
+
     } else {
       throw Error('No febworms-field or form available');
     }
 
-    $scope.field = field;
     $scope.messages = angular.extend({}, febwormsConfig.validation.messages, $scope.validationMessages)
   };
 
