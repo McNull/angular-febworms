@@ -1,4 +1,4 @@
-describe('febworms-render-directive', function() {
+describe('febworms-form-fields-directive', function() {
 
   var $compile, $scope;
 
@@ -22,7 +22,7 @@ describe('febworms-render-directive', function() {
     
     $scope.form = form;
 
-    var $element = angular.element('<div><div febworms-render></div></div>');
+    var $element = angular.element('<div><div febworms-form-fields></div></div>');
     $element.data('$febwormsFormController', {});
 
     // Act
@@ -32,7 +32,7 @@ describe('febworms-render-directive', function() {
 
     // Assert
 
-    expect(result.find('.febworms-render').length).toBe(1);
+    expect(result.find('.febworms-form-fields').length).toBe(1);
   });
 
 });

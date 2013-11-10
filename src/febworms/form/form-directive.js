@@ -33,7 +33,7 @@ angular.module('febworms').directive('febwormsForm', function(febwormsFormCompil
   return function($element, $attrs) {
 
     if ($attrs.febwormsNoRender === undefined) {
-      var renderTemplate = '<div febworms-render></div>';
+      var renderTemplate = '<div febworms-form-fields></div>';
       $element.append(renderTemplate);
     }
 

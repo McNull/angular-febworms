@@ -1,0 +1,15 @@
+<!-- fieldName -->
+<div class="control-group" ng-class="{ 'error': fieldPropertiesForm.fieldName.$invalid }">
+    <label class="control-label">Name</label>
+
+    <div class="controls">
+        <input type="text"
+               name="fieldName"
+               ng-model="field.name"
+               ng-required="true"
+               ng-pattern="/^[a-zA-Z]([\w]+)?$/"
+               febworms-unique-field-name/>
+
+        <div febworms-validation-summary="fieldName"></div>
+    </div>
+</div>

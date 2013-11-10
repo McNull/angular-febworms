@@ -10,6 +10,7 @@ var files = {
     css: 'febworms/febworms.min.css',
     cssSrc: [
       'src/febworms/febworms.css',
+      'febworms/edit/edit.css',
       'src/febworms/**/*.css'
     ],
     test: [

@@ -18,7 +18,7 @@ module.exports = function (grunt, commonConfig) {
       },
       febworms: {
         src: ['src/febworms/**/*.tmpl.html'],
-        dest: 'tmp/febworms/templates-app.js'
+        dest: 'tmp/febworms/templates-febworms.js'
       }
     },
     ngmin: {

@@ -113,7 +113,6 @@ describe('febworms-edit-meta-directive', function() {
     $compile($element)($scope);
     $scope.$digest();
 
-    // console.log($element[0].outerHTML);
     // Assert
 
     expect(editCtrl.setMetaForm).toHaveBeenCalled();

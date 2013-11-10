@@ -28,7 +28,7 @@ describe('febworms-form-directive', function() {
       // Assert
 
       expect($element.children().length).toBe(1);
-      expect($element.children().attr('febworms-render')).toBeDefined();
+      expect($element.children().attr('febworms-form-fields')).toBeDefined();
     });
 
     it('should NOT append render element if specified', function() {

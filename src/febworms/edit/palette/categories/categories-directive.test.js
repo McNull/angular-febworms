@@ -29,7 +29,7 @@ describe('febworms-edit-palette-categories-directive', function() {
 
     // Assert
 
-    expect($element.hasClass('febworms-edit-palette-categories')).toBe(true);
+    expect($element.find('.febworms-edit-palette-categories').length).toBe(1);
   });
 
   it('should expose the selected category', function() {

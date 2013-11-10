@@ -3,7 +3,7 @@ angular.module('febworms').directive('febwormsField', function(febwormsFieldLink
   return {
     require: ['^?febwormsForm', 'febwormsField'],
     replace: true,
-    templateUrl: 'febworms/render/field.tmpl.html',
+    templateUrl: 'febworms/form/field/field.tmpl.html',
     scope: {
       fieldSchema: '=febwormsField', // The schema definition of the field
       tabIndex: '=?febwormsTabIndex', // Optional tab index -- used in overlay mode to disable focus

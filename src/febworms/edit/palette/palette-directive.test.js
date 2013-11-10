@@ -102,8 +102,6 @@ describe('febworms-edit-palette', function () {
 
       // Assert
 
-      // console.log(schemaCtrl.addField.calls);
-
       expect(schemaCtrl.addField).toHaveBeenCalled();
       expect(schemaCtrl.addField.calls[0].args[0]).toBeDefined();
       expect(schemaCtrl.addField.calls[0].args[0].type).toBeDefined('foo');

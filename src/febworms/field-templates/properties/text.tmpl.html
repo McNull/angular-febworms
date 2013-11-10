@@ -2,9 +2,12 @@
 <div class="control-group" ng-class="{ 'error': fieldPropertiesForm.fieldValue.$invalid }">
     <label class="control-label">Initial value</label>
     <div class="controls">
-        <input type="text"
+    	<div>
+    		<input type="text"
                name="fieldValue"
-               ng-model="field.value"/>
+               ng-model="field.value"/>	
+    	</div>
+        
         <div febworms-validation-summary="fieldValue"></div>
     </div>
 </div>

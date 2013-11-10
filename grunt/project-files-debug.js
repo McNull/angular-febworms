@@ -8,7 +8,7 @@ var files = {
     ],
     css: [
       'febworms/febworms.css',
-      'febworms/edit/febworms-edit.css',
+      'febworms/edit/edit.css',
       'febworms/**/*.css'
     ],
     test: [

@@ -1,7 +1,7 @@
 <div class="febworms-edit-palette">
     <div class="form-horizontal">
         <fieldset>
-            <legend>Palette <span febworms-edit-palette-categories data-category="selectedCategory"></span></legend>
+            <div febworms-edit-palette-categories data-category="selectedCategory"></div>
             <div ng-repeat="template in templates | filter:templateFilter" class="febworms-field"
                  dq-draggable="febworms-edit-canvas" dq-drag-begin="{ source: 'palette', field: template }">
                 <div class="febworms-field-overlay">

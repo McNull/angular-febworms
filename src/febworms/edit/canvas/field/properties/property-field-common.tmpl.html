@@ -1,0 +1,27 @@
+<!-- fieldName -->
+<div ng-if="field.fieldname">
+  <div febworms-property-field="fieldName" febworms-property-field-label="Name">
+    <input type="text"
+           name="fieldName"
+           ng-model="field.name"
+           ng-required="true"
+           ng-pattern="/^[a-zA-Z]([\w]+)?$/"
+           febworms-unique-field-name/>
+  </div>
+</div>
+
+<!-- displayName -->
+<div ng-if="fields.displayName">
+  <div febworms-property-field="displayName" febworms-property-field-label="Display name">
+    <input type="text" name="displayName" ng-model="field.displayName"/>
+  </div>
+</div>
+
+<!-- placeholder -->
+<div ng-if="fields.placeholder">
+  <div febworms-property-field="fieldPlaceholder" febworms-property-field-label="Placeholder text">
+    <input type="text"
+             name="fieldPlaceholder"
+             ng-model="field.placeholder"/>
+  </div>
+</div>

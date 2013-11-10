@@ -65,7 +65,7 @@ angular.module('myApp').factory('errorHttpInterceptor',
     return {
       'responseError': function(rejection) {
         // do something on error
-         var msg = 'Network error (' + response.status + '): ' + response.data;
+         var msg = 'Network error (' + rejection.status + '): ' + rejection.data;
          notifications.add(msg, 'error');
          return $q.reject(rejection);
       }
