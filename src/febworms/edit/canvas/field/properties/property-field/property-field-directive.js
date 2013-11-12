@@ -2,7 +2,7 @@ angular.module('febworms').directive('febwormsPropertyField', function(febwormsP
 
   return {
     restrict: 'AE',
-    templateUrl: 'febworms/edit/canvas/field/properties/property-field.tmpl.html',
+    templateUrl: 'febworms/edit/canvas/field/properties/property-field/property-field.tmpl.html',
     transclude: true,
     scope: true,
     link: febwormsPropertyFieldLinkFn

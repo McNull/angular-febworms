@@ -30,18 +30,20 @@ angular.module('dq').directive('dqDragEnter',function (dqDragTrack) {
         var dropEffect = 'none'; // Drop effect used in the dragover event
         var doingLeaveDoubleCheck = false; // Toggle that indicates the body has a dragover event to do.
 
-        var $body = $document.children('body');
+        var $body = $document.find('body');
 
-        function dragLeaveDoubleCheck(e) {
-          e = dqUtils.getEvent(e);
+        function dragLeaveDoubleCheck($e) {
+          var e = dqUtils.getEvent($e);
 
           // Check if the drag over element is a child of the this element
 
-          if (e.target !== element) {
+          var target = e.target || $e.target;
+
+          if (target !== element) {
 
             // TODO: we're not really checking if the target element is visually within the $element.
 
-            if (!element.contains(e.target)) {
+            if (!element.contains(target)) {
 
               // Drag over element is out of bounds
 
@@ -62,7 +64,7 @@ angular.module('dq').directive('dqDragEnter',function (dqDragTrack) {
 
           // Always cancel the dragover -- otherwise the dropEffect is not used.
 
-          return dqUtils.stopEvent(e);
+          return dqUtils.stopEvent($e);
         }
 
         function dragLeaveForSure(apply) {
@@ -123,10 +125,11 @@ angular.module('dq').directive('dqDragEnter',function (dqDragTrack) {
         });
 
         //noinspection FunctionWithInconsistentReturnsJS
-        $element.on('dragover', function (e) {
+        $element.on('dragover', function ($e) {
+
           if (trackingEnabled) {
 
-            e = dqUtils.getEvent(e);
+            var e = dqUtils.getEvent($e);
 
             var expression = $attrs.dqDragOver;
             var result;
@@ -148,15 +151,15 @@ angular.module('dq').directive('dqDragEnter',function (dqDragTrack) {
               // not be applied (and dropping is not allowed).
 
               e.dataTransfer.dropEffect = dropEffect;
-              return dqUtils.stopEvent(e);
+              return dqUtils.stopEvent($e);
             }
           }
         });
 
         //noinspection FunctionWithInconsistentReturnsJS
-        $element.on('drop', function(e) {
+        $element.on('drop', function($e) {
 
-          e = dqUtils.getEvent(e);
+          var e = dqUtils.getEvent($e);
 
           if(trackingEnabled) {
             var expression = $attrs.dqDrop;
@@ -166,7 +169,7 @@ angular.module('dq').directive('dqDragEnter',function (dqDragTrack) {
             }
           }
 
-          return dqUtils.stopEvent(e);
+          return dqUtils.stopEvent($e);
         });
 
         // Ensure that we only do all this magic stuff on this element for one time only.

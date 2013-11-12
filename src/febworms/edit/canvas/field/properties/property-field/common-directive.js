@@ -1,7 +1,7 @@
 angular.module('febworms').directive('febwormsPropertyFieldCommon', function(febwormsPropertyFieldCommonLinkFn) {
   return {
     restrict: 'AE',
-    templateUrl: 'febworms/edit/canvas/field/properties/property-field-common.tmpl.html',
+    templateUrl: 'febworms/edit/canvas/field/properties/property-field/common.tmpl.html',
     link: febwormsPropertyFieldCommonLinkFn
   };
 }).factory('febwormsPropertyFieldCommonLinkFn', function() {

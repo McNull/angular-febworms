@@ -241,6 +241,7 @@ describe('febworms-validation-summary', function() {
         // Act
 
         febwormsValidationSummaryLinkFn($scope, $element, $attrs, ctrls);
+        $scope.$digest();
 
         // Assert
 

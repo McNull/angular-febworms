@@ -5,7 +5,9 @@
      dq-drag-begin="canvasCtrl.dragBeginCanvasField($index, field)"
      dq-drag-end="canvasCtrl.dragEndCanvasField(field)">
     <div class="control-group">
-        <div class="febworms-field-overlay" ng-mouseenter="dragEnabled = true"  ng-mouseleave="dragEnabled = false">
+        <div class="febworms-field-overlay" 
+             ng-mouseenter="dragEnabled = true"  
+             ng-mouseleave="dragEnabled = false">
             <div class="febworms-field-overlay-drag-top" dq-drag-enter="dragPlaceholder.index = $index"></div>
             <div class="febworms-field-overlay-drag-bottom" dq-drag-enter="dragPlaceholder.index = ($index + 1)"></div>
             <div class="btn-toolbar btn-toolbar-left">

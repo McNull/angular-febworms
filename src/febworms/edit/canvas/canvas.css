@@ -42,8 +42,8 @@
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-    border: dashed 1px #ddd !important;
-    background-color: #f5f5f5 !important;
+    border: dashed 1px #3a87ad !important;
+    background-color: #d9edf7 !important;
     min-height: 50px !important;
     margin-bottom: 20px;
 }

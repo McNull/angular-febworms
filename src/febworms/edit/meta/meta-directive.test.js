@@ -116,7 +116,20 @@ describe('febworms-edit-meta-directive', function() {
     // Assert
 
     expect(editCtrl.setMetaForm).toHaveBeenCalled();
-    expect(editCtrl.setMetaForm.calls[0].args[0].constructor.name).toBe('FormController');
+
+    // F* IE !!
+
+    var arg = editCtrl.setMetaForm.calls[0].args[0];
+    var constructorName = arg.constructor.name;
+
+    if(constructorName) {
+
+      // If this realy needs to be tested under IE:
+      // http://stackoverflow.com/questions/332422/how-do-i-get-the-name-of-an-objects-type-in-javascript
+
+      expect(editCtrl.setMetaForm.calls[0].args[0].constructor.name).toBe('FormController');  
+    }
+    
   });
 
 });

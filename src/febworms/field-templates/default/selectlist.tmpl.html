@@ -2,5 +2,5 @@
         ng-model="form.data[field.schema.name]"
         ng-required="field.schema.validation.required"
         tabindex="{{ tabIndex }}">
-    <option ng-repeat="option in field.schema.options" value="{{ option.value }}" ng-selected="field.schema.value === option.value">{{ option.text }}</option>
+    <option ng-repeat="option in field.schema.options" value="{{ option.value }}" ng-selected="field.schema.value === option.value">{{ option.text || option.value }}</option>
 </select>

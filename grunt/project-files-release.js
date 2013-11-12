@@ -33,6 +33,7 @@ var files = {
       'vendor/lodash/dist/lodash.compat.min.js'
     ],
     test: [
+      'vendor/json3/lib/json3.js',
       'vendor/jquery/jquery.js',
       'vendor/angular/angular.js',
       'vendor/angular-resource/angular-resource.js',
@@ -45,6 +46,8 @@ var files = {
       'vendor/bootstrap-css/css/bootstrap-responsive.min.css'
     ],
     other: [
+      'vendor/json3/lib/json3.min.js',
+      'vendor/jquery/jquery.min.js',
       'vendor/**/*.png',
       'vendor/**/*.jpg'
     ]

@@ -16,7 +16,7 @@
     position: relative;
 }
 
-.febworms-edit-canvas .febworms-field:hover, .febworms-edit-palette .febworms-field:hover {
+.febworms-edit-canvas .febworms-field, .febworms-edit-palette .febworms-field:hover {
     background-color: #f5f5f5;
 }
 
@@ -50,14 +50,14 @@
 .febworms-field-overlay .btn-toolbar {
     position: absolute;
     margin: 0;
-    display: none;
+/*    display: none;*/
     top: -10px;
 }
 
-.febworms-field:hover .btn-toolbar {
+/*.febworms-field:hover .btn-toolbar {
     display: block;
 }
-
+*/
 .febworms-field-overlay .btn-toolbar-right {
     right: 5px;
 }

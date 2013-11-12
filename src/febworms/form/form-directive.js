@@ -4,7 +4,7 @@ angular.module('febworms').directive('febwormsForm', function(febwormsFormCompil
     require: ['^?form', 'febwormsForm', '^febwormsSchema'],
     controller: 'febwormsFormController',
     scope: {
-      formData: '=?febwormsFormData', // The form data
+      formData: '=?febwormsFormData',
     },
     compile: febwormsFormCompileFn
   };

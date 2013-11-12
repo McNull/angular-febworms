@@ -54,99 +54,100 @@ describe('febworms-edit-canvas-field-properties-directive', function() {
     expect(result.length).toBe(1);
   });
 
-  describe('field name validation', function() {
+  // Moved to common
+  // describe('field name validation', function() {
 
-    it('should set the field validation to invalid if the form validation fails', function() {
+  //   it('should set the field validation to invalid if the form validation fails', function() {
 
-      // Arrange
+  //     // Arrange
 
-      var $element = setupElementAndScope();
+  //     var $element = setupElementAndScope();
 
-      $scope.myField.name = "valid"; // Name is a required value
+  //     $scope.myField.name = "valid"; // Name is a required value
 
-      $compile($element)($scope);
+  //     $compile($element)($scope);
 
-      $scope.$digest();
+  //     $scope.$digest();
 
-      var before = $scope.myField.$_invalid;
+  //     var before = $scope.myField.$_invalid;
 
-      // Act
+  //     // Act
 
-      $scope.myField.name = "";
+  //     $scope.myField.name = "";
 
-      $scope.$digest();
+  //     $scope.$digest();
 
-      var after = $scope.myField.$_invalid;
+  //     var after = $scope.myField.$_invalid;
 
-      // Assert
+  //     // Assert
 
-      expect(before).toBeFalsy();
-      expect(after).toBeTruthy();
+  //     expect(before).toBeFalsy();
+  //     expect(after).toBeTruthy();
 
-    });
+  //   });
 
-    it('should set the field validation to valid if the form validation succeeds', function() {
+  //   it('should set the field validation to valid if the form validation succeeds', function() {
 
-      // Arrange
+  //     // Arrange
 
-      var $element = setupElementAndScope();
+  //     var $element = setupElementAndScope();
 
-      $scope.myField.name = ""; // Name is a required value
+  //     $scope.myField.name = ""; // Name is a required value
 
-      $compile($element)($scope);
+  //     $compile($element)($scope);
 
-      $scope.$digest();
+  //     $scope.$digest();
 
-      var before = $scope.myField.$_invalid;
+  //     var before = $scope.myField.$_invalid;
 
-      // Act
+  //     // Act
 
-      $scope.myField.name = "gedoe";
+  //     $scope.myField.name = "gedoe";
 
-      $scope.$digest();
+  //     $scope.$digest();
 
-      var after = $scope.myField.$_invalid;
+  //     var after = $scope.myField.$_invalid;
 
-      // Assert
+  //     // Assert
 
-      expect(before).toBeTruthy();
-      expect(after).toBeFalsy();
+  //     expect(before).toBeTruthy();
+  //     expect(after).toBeFalsy();
 
-    });
+  //   });
 
-    it('should not allow duplicate field names', function() {
+  //   it('should not allow duplicate field names', function() {
 
-      // Arrange
+  //     // Arrange
 
-      var field1 = new febworms.Field('myType1', {
-        name: 'notUnique'
-      });
-      var field2 = new febworms.Field('myType2', {
-        name: 'notUnique'
-      });
+  //     var field1 = new febworms.Field('myType1', {
+  //       name: 'notUnique'
+  //     });
+  //     var field2 = new febworms.Field('myType2', {
+  //       name: 'notUnique'
+  //     });
 
-      var $element = setupElementAndScope(field1, [field1, field2]);
+  //     var $element = setupElementAndScope(field1, [field1, field2]);
 
-      $compile($element)($scope);
+  //     $compile($element)($scope);
 
-      $scope.$digest();
+  //     $scope.$digest();
 
-      var before = $scope.myField.$_invalid;
+  //     var before = $scope.myField.$_invalid;
 
-      // Act
+  //     // Act
 
-      $scope.myField.name = "unique";
+  //     $scope.myField.name = "unique";
 
-      $scope.$digest();
+  //     $scope.$digest();
 
-      var after = $scope.myField.$_invalid;
+  //     var after = $scope.myField.$_invalid;
 
-      // Assert
+  //     // Assert
 
-      expect(before).toBeTruthy();
-      expect(after).toBeFalsy();
+  //     expect(before).toBeTruthy();
+  //     expect(after).toBeFalsy();
 
-    });
-  });
+  //   });
+  // });
 
 });

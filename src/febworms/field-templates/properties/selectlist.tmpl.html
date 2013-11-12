@@ -3,35 +3,6 @@
         <div febworms-property-field-common="{ fieldname: true, displayname: true }"></div>
     </div>
     <div febworms-tabs-pane="Options">
-        <table class="table table-field-options">
-            <thead>
-                <tr>
-                    <th>
-                    </th>
-                    <th>Text</th>
-                    <th>Value</th>
-                    <th>
-                        <a href="" class="btn btn-mini"><i class="icon-plus"></i></a>
-                    </th>
-                    <th class="table-field-options-padding"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-form="fieldOptionForm" ng-repeat="option in field.options" ng-class="{ 'error': fieldOptionForm.$invalid }">
-                    <td>
-                        <input type="radio" name="{{ field.name }}selection[]" value="{{ option.value }}" ng-model="field.value" />
-                    </td>
-                    <td>
-                        <input type="text" ng-model="option.text" />
-                    </td>
-                    <td>
-                        <input type="text" name="optionValue" ng-model="option.value" ng-required="true" />
-                    </td>
-                    <td>
-                        <a href="" class="btn btn-mini"><i class="icon-trash"></i></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div febworms-property-field-options></div>
     </div>
 </div>

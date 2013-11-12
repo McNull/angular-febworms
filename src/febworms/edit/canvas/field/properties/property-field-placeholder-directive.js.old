@@ -1,6 +1,0 @@
-angular.module('febworms').directive('febwormsPropertyFieldPlaceholder', function() {
-  return {
-    restrict: 'AE',
-    templateUrl: 'febworms/edit/canvas/field/properties/property-field-placeholder.tmpl.html'
-  };
-});

@@ -11,7 +11,8 @@ angular.module('dq', []).factory('dqUtils', function($window, $rootScope) {
       // e.cancelBubble is supported by IE8 -
       // this will kill the bubbling process.
       e.cancelBubble = true;
-
+      e.bubbles = false;
+      
       // e.stopPropagation works in modern browsers
       if (e.stopPropagation) e.stopPropagation();
       if (e.preventDefault) e.preventDefault();

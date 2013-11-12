@@ -37,6 +37,7 @@ angular.module('dq').directive('dqDraggable', function (dqUtils, $rootScope) {
           return dqUtils.stopEvent(e);
         }
       }).on('dragstart',function (e) {
+
           e = dqUtils.getEvent(e);
 
           if(disabled) {

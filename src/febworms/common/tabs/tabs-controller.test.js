@@ -41,7 +41,7 @@ describe('febworms-tabs-controller', function() {
       // Act
 
       controller.addPane(pane);
-      var result = controller.panes.indexOf(pane);
+      var result = _.indexOf(controller.panes, pane);
 
       // Assert
 

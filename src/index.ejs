@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html id="ng-app" ng-app="myApp">
+<html id="ng-app" ng-app="myApp" class="ng-app:myApp">
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width">
     <title></title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!--[if lt IE 8]>
-        <script>
-            window.hasOwnProperty = function(obj){
-                return (this[obj]) ? true : false;
-            }
-        </script>
+    <!--[if lte IE 8]>
+        <script type="text/javascript" src="vendor/json3/lib/json3.min.js"></script>
+        <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>    
     <![endif]-->
+
 <%
     var styles = helpers.getIncludes('css');
     _.forEach(styles, function(style) {
