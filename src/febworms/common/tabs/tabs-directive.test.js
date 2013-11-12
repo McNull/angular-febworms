@@ -51,8 +51,8 @@ describe('febworms-tabs-directive', function() {
       // Assert
 
       expect($li.length).toBe(2);
-      expect($.trim($li[0].innerText)).toBe('myFirstPane');
-      expect($.trim($li[1].innerText)).toBe('mySecondPane');
+      expect($.trim($($li[0]).text())).toBe('myFirstPane');
+      expect($.trim($($li[1]).text())).toBe('mySecondPane');
     });
 
     it('should add pane titles in headers', function() {
@@ -75,8 +75,8 @@ describe('febworms-tabs-directive', function() {
       // Assert
 
       expect($li.length).toBe(2);
-      expect($.trim($li[0].innerText)).toBe('myFirstPane');
-      expect($.trim($li[1].innerText)).toBe('mySecondPane');
+      expect($.trim($($li[0]).text())).toBe('myFirstPane');
+      expect($.trim($($li[1]).text())).toBe('mySecondPane');
     });
 
     it('should set pane active on click', function() {

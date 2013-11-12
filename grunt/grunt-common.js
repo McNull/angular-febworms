@@ -72,8 +72,9 @@ module.exports = function(grunt, projectFiles) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-ejs-render');
   grunt.loadNpmTasks('grunt-karma');
-  grunt.registerTask('ejs', [ 'clean:render', 'render:index', 'render:karmaConf' ]);
-  grunt.registerTask('test', [ 'render:karmaConf', 'karma:unit' ]);
+  grunt.registerTask('ejs', [ 'clean:render', 'render:index' ]);
+  grunt.registerTask('test-build', [ 'render:karmaConf', 'karma:unit' ]);
+  grunt.registerTask('test', [ 'build', 'render:karmaConf', 'karma:unit' ]);
 
   return gruntConfig;
 };

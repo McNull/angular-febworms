@@ -89,11 +89,7 @@ module.exports = function (grunt, commonConfig) {
   grunt.registerTask('app', [ 'clean:app', 'html2js:app', 'ngmin:app', 'uglify:app', 'cssmin:app', 'copy:app' ]);
   grunt.registerTask('febworms', [ 'clean:febworms', 'html2js:febworms', 'ngmin:febworms', 'uglify:febworms', 'cssmin:febworms', 'copy:febworms' ]);
 
-  //grunt.registerTask('febworms', [ 'clean:febworms', 'html2js:febworms', 'copy:febworms' ]);
-
-  //grunt.registerTask('build', [ 'vendor', 'app', 'febworms', 'render:index', 'render:karmaConf', 'clean:postBuild' ]);
-
-  grunt.registerTask('build', [ 'clean:tmp', 'vendor', 'app', 'febworms', 'ejs', 'clean:postBuild', 'test' ]);
+  grunt.registerTask('build', [ 'clean:tmp', 'vendor', 'app', 'febworms', 'ejs', 'clean:postBuild', 'test-build' ]);
   grunt.registerTask('default', 'build');
 
 };
