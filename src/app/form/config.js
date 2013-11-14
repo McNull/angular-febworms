@@ -22,5 +22,14 @@ angular.module('myApp').factory('Form',function ($resource) {
           return Form.get({ id: $route.current.params.id }).$promise;
         }]
       }
+    },
+    '/form/:id': {
+      templateUrl: 'app/form/display.tmpl.html',
+      controller: 'FormDisplayController',
+      resolve: {
+        form: ['$route', 'Form', function ($route, Form) {
+          return Form.get({ id: $route.current.params.id }).$promise;
+        }]
+      }
     }
   });

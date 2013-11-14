@@ -35,13 +35,13 @@ describe('febworms-form-controller', function() {
 
   describe('updateFormModel', function() {
 
-    it('should construct form model on scope', function() {
+    it('should construct form model', function() {
 
       // Arrange
 
-      var modelCtrl = {};
-      $scope.formData = {};
-      $scope.schema = {};
+      var data = {};
+      var schema = {};
+      var state = {};
 
       var controller = $controller('febwormsFormController', {
         $scope: $scope
@@ -49,14 +49,14 @@ describe('febworms-form-controller', function() {
 
       // Act
 
-      var result = controller.updateFormModel(modelCtrl);
+      var result = controller.updateFormModel(data, schema, state);
 
       // Assert
 
       expect(result).toBeDefined();
-      expect(result.data).toBe($scope.formData);
-      expect(result.schema).toBe($scope.schema);
-      expect(result.state).toBe(modelCtrl);
+      expect(result.data).toBe(data);
+      expect(result.schema).toBe(schema);
+      expect(result.state).toBe(state);
     });
     
   });

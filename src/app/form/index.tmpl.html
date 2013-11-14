@@ -13,7 +13,7 @@
         </div>
         <table class="table table-hover">
             <tr>
-                <th style="width:60px">
+                <th style="width:100px">
                     <a href="#/form/create" class="btn btn-mini"><i class="icon-plus"></i></a>
                 </th>
                 <th>Id</th>
@@ -21,8 +21,9 @@
             </tr>
             <tr ng-repeat="item in items">
                 <td>
-                    <a href="#/form/edit/{{ item.id }}" class="btn btn-mini"><i class="icon-edit"></i></a>
+                    <a class="btn btn-mini" href="#/form/edit/{{ item.id }}"><i class="icon-edit"></i></a>
                     <a class="btn btn-mini" ng-click="removeItem(item)"><i class="icon-trash"></i></a>
+                    <a class="btn btn-mini" href="#/form/{{ item.id }}"><i class="icon-eye-open"></i></a>
                 </td>
                 <td>{{ item.id }}</td>
                 <td>{{ item.name || item.schema.name }}</td>

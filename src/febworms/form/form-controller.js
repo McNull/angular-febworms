@@ -3,22 +3,14 @@ angular.module('febworms').controller('febwormsFormController', function($scope)
   var self = this;
   this.model = {};
 
-  this.updateFormModel = function(ngFormCtrl) {
+  this.updateFormModel = function(data, schema, state) {
     // Called by the directive
     
-    if (!$scope.formData) {
-      $scope.formData = {};
-    }
-
-    if (!$scope.schema) {
-      $scope.schema = {};
-    }
-
-    self.model.data = $scope.formData;
-    self.model.schema = $scope.schema;
-    self.model.state = ngFormCtrl;
-
+    self.model.data = data || {};
+    self.model.schema = schema || {};
+    self.model.state = state;
+    
     return self.model;
   };
-
+  
 });

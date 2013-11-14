@@ -1,7 +1,6 @@
 <div class="febworms-edit">
 
     <div ng-if="preview" ng-init="formData = {}">
-
         <form febworms-form 
               febworms-form-data="formData"
               class="form-horizontal"
@@ -19,13 +18,13 @@
         <div class="row-fluid">
             <div class="span8">
                 <div febworms-form
-                     febworms-no-render
+                     febworms-no-render="true"
                      febworms-edit-canvas></div>
             </div>
             <div class="span4">
                 <div febworms-edit-palette
                      febworms-form
-                     febworms-no-render></div>
+                     febworms-no-render="true"></div>
             </div>
         </div>
 

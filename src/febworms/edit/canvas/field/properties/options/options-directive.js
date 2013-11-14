@@ -7,5 +7,13 @@ angular.module('febworms').directive('febwormsPropertyFieldOptions', function(fe
   };
 }).factory('febwormsPropertyFieldOptionsLinkFn', function() {
   return function($scope, $element, $attrs, ctrls) {
+
+    $scope.multiple = false;
+
+    $attrs.$observe('febwormsPropertyFieldOptions', function(value) {
+      if(value === 'multiple') {
+        $scope.multiple = true;
+      }
+    });
   };
 });

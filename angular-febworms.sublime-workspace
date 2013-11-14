@@ -4,20 +4,192 @@
 		"selected_items":
 		[
 			[
-				"form",
-				"formData"
+				"schem",
+				"schemaCtrl"
+			],
+			[
+				"opti",
+				"optionCounter"
+			],
+			[
+				"new",
+				"newValue"
+			],
+			[
+				"con",
+				"constructorName"
 			],
 			[
 				"feb",
+				"febwormsPropertyFieldLinkFn"
+			],
+			[
+				"drop",
+				"dropEffect"
+			],
+			[
+				"marg",
+				"margin-top"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"border-",
+				"border-radius"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"when",
+				"whenActive"
+			],
+			[
+				"febworms",
+				"febwormsTabsPane"
+			],
+			[
+				"pane",
+				"paneCtrl"
+			],
+			[
+				"tabs",
+				"tabsCtrl"
+			],
+			[
+				"other",
+				"otherPanes"
+			],
+			[
+				"add",
+				"addPane"
+			],
+			[
+				"febworm",
 				"febwormsSchema"
+			],
+			[
+				"mes",
+				"messages"
 			],
 			[
 				"field",
 				"fieldName"
 			],
 			[
-				"febworm",
-				"febwormsFormData"
+				"my",
+				"myMessage"
+			],
+			[
+				"valid",
+				"validation"
+			],
+			[
+				"ngFo",
+				"ngFormCtrl"
+			],
+			[
+				"toB",
+				"toBe"
+			],
+			[
+				"ng",
+				"ngFormCtrl"
+			],
+			[
+				"exp",
+				"expectedCallCount"
+			],
+			[
+				"form",
+				"formData"
+			],
+			[
+				"model",
+				"modelCtrl"
+			],
+			[
+				"febwormsField",
+				"febwormsFieldCtrl"
+			],
+			[
+				"_feb",
+				"_febwormsFieldLinkFn_"
+			],
+			[
+				"fake",
+				"fakeRenderInfo"
+			],
+			[
+				"de",
+				"describe"
+			],
+			[
+				"reg",
+				"registerState"
+			],
+			[
+				"or",
+				"origName"
+			],
+			[
+				"orig",
+				"origFieldName"
+			],
+			[
+				"sec",
+				"secondValue"
+			],
+			[
+				"seond",
+				"secondValue"
+			],
+			[
+				"initF",
+				"initField"
+			],
+			[
+				"fir",
+				"firstValue"
+			],
+			[
+				"formC",
+				"formCtrl"
+			],
+			[
+				"re",
+				"registerState"
+			],
+			[
+				"mo",
+				"modifiedName"
+			],
+			[
+				"init",
+				"initialName"
+			],
+			[
+				"get",
+				"getUnique"
+			],
+			[
+				"old",
+				"oldValue"
+			],
+			[
+				"ngMo",
+				"ngModelCtrl"
+			],
+			[
+				"sche",
+				"schemaCtrl"
+			],
+			[
+				"fiel",
+				"fieldName"
 			],
 			[
 				"sch",
@@ -28,10 +200,6 @@
 				"template"
 			],
 			[
-				"sche",
-				"schema"
-			],
-			[
 				"edit",
 				"editCtrl"
 			],
@@ -40,24 +208,12 @@
 				"schemaCtrl"
 			],
 			[
-				"febworms",
-				"febworms-schema"
-			],
-			[
-				"con",
-				"constructors"
-			],
-			[
 				"febw",
 				"febwormsTest"
 			],
 			[
 				"set",
 				"setupControllerMock"
-			],
-			[
-				"schem",
-				"schemaCtrlMock"
 			],
 			[
 				"di",
@@ -108,20 +264,12 @@
 				"templateUrl"
 			],
 			[
-				"de",
-				"default"
-			],
-			[
 				"sc",
 				"schema"
 			],
 			[
 				"ma",
 				"margin-right"
-			],
-			[
-				"marg",
-				"margin-left"
 			],
 			[
 				"b",
@@ -159,9 +307,13 @@
 	"build_system": "Packages/User/Grunt.sublime-build",
 	"command_palette":
 	{
-		"height": 375.0,
+		"height": 115.0,
 		"selected_items":
 		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
 			[
 				"ja",
 				"Set Syntax: JavaScript"
@@ -192,10 +344,6 @@
 			],
 			[
 				"install",
-				"Package Control: Install Package"
-			],
-			[
-				"insta",
 				"Package Control: Install Package"
 			],
 			[
@@ -263,7 +411,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 435.0
+		"width": 561.0
 	},
 	"console":
 	{
@@ -298,134 +446,134 @@
 	},
 	"file_history":
 	[
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/field-inner.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/field-inner-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/field.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field/field-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field/field.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/canvas.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/edit-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/edit.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/canvas-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/form/form-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/render-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/text.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/render-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/form/field/field-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/form/field/field-controller.js",
 		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/form/form-controller.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field/field-controller.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/schema/schema-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/app/form/edit.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/edit-controller.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/edit-directive.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/schema/schema-directive.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/schema/schema-controller.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/palette/palette-directive.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/palette/palette.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/palette/palette-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/palette/palette-controller.js",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/Web Inspector 3/Default (OSX).sublime-keymap",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/Web Inspector 3/swi.sublime-settings",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/Web Inspector/swi.sublime-settings",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms-old/edit/febworms-edit.css",
-		"/Volumes/Data/Sites/projects/angular-febworms/node_modules/karma/node_modules/socket.io/node_modules/socket.io-client/test/socket.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/form/form-fields/form-fields.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/form/form-fields/form-fields-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/form/form-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/dist/febworms/validation/summary-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/dist/febworms/febworms.min.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/app/form/config.js",
 		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/canvas-controller.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/meta/meta-directive.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/meta/meta.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/meta/meta-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/canvas-directive.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/schema/schema-controller.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/edit-controller.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/dist/app/jsonify/jsonify.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/febworms.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/febworms.js",
-		"/Users/null/Desktop/ngModelFormStuff.js",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/JsFormat/Default (OSX).sublime-keymap",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/DocBlockr/Base File.sublime-settings",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/User/Base File.sublime-settings",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/Volumes/Data/Sites/projects/angular-febworms/karma/karma.conf.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/vendor/angular/angular.js",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/Volumes/Data/Sites/projects/angular-febworms/angular-febworms.sublime-project",
-		"/Volumes/Data/Sites/projects/angular-febworms/.gitignore",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/form-actions/form-actions.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/render.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/app/form/edit.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/app/notifications/notifications.tmpl.html",
 		"/Volumes/Data/Sites/projects/angular-febworms/src/app/notifications/notifications.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/febworms-utils.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/preview/preview.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/validation/febworms-unique-field-name.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/properties.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/properties-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/field-inner-directive.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/validation/summary.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/options/options.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/edit.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/selectlist.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/febworms.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/common/tabs/tabs-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/grunt/grunt-common.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/grunt/grunt-release.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/common/febworms-utils.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/options/options-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/selectlist.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/dist/febworms/validation/unique-field-name.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/options/options-controller.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/canvas.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/canvas.css",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/options/options-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/common/tabs/tabs-controller.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/meta/meta-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/property-field/property-field-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/property-field/property-field-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/property-field/common-directive.test.js",
 		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/validation/summary-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/_placeholder.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/checkbox.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/email.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/password.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/text.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/textarea.tmpl.html",
 		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/validation/summary-directive.test.js",
 		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/properties-directive.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/form-actions/form-actions-directive.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/form-actions/form-actions-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/checkbox.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/validation/febworms-validation-summary.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/checkboxlist.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/edit.css",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/property-field/common-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/property-field/property-field-placeholder.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/property-field/property-field-placeholder-directive.js.old",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/properties.css",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/field.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/index.ejs",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/drag/angular-drag-queen.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/drag/dq-draggable.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/drag/dq-drag-track.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/property-field-common-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/property-field-common.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/property-field-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/property-field.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/grunt/project-files-debug.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/grunt/project-files-release.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/properties.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/app/form/index.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/email.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/text.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/textarea.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/checkboxlist.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/radiobuttonlist.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/checkbox.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/password.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/_common.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/_displayname.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/_fieldname.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/properties/_placeholder.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/validation/summary.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/vendor/angular/angular.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/property-field-placeholder.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/property-field-placeholder-directive.js.old",
+		"/Users/null/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/Users/null/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/Users/null/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/Default (OSX).sublime-keymap",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/common/tabs/tabs-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/common/tabs/tabs.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/common/tabs/tabs-pane-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/common/tabs/tabs-pane.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/common/tabs/tabs-pane-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/palette/categories/categories-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/palette/palette-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/common/tabs/tabs-pane-controller.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/common/tabs/tabs-controller.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/palette/categories/categories-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/app/app.css",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/palette/categories/categories.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/radiobuttonlist.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/palette/palette.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/palette/palette.css",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/febworms-bind-expression.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/form/form-fields/form-fields-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/form/form-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/form/render-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/schema-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/edit-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/validation/unique-field-name.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/validation/unique-field-name.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/karma/karma-tmp.conf.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/render-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/form-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/form-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/field-input-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/field-input-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/form-controller.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/form-controller.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/field-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/field-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/field-controller.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/field-controller.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/canvas-directive.test.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/palette/palette-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/schema-controller.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/febworms-utils.js",
 		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/email.tmpl.html",
 		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/password.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/radiobuttonlist.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/selectlist.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/text.tmpl.html",
 		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/textarea.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/dist/febworms/render/field-controller.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/field.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/app/form/edit.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/app/form/edit.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/edit-controller.js",
 		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/not-in-cache.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/validation/febworms-validation-summary.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/validation/febworms-validation-summary.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/app/form/index.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/app/form/index.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/properties/properties.css",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/render.css",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/febworms-utils.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/dist/febworms/febworms-utils.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms-old/edit/canvas/febworms-canvas-field-properties.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/field/field-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms-old/edit/febworms-edit-controller.test.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/canvas-field.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/canvas-field-directive.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms-old/edit/febworms-edit-controller.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms-old/edit/canvas/febworms-canvas.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms-old/edit/canvas/febworms-canvas.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms-old/edit/canvas/febworms-canvas-field.tmpl.html",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/edit.css",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/SideBarEnhancements/CHANGELOG",
-		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/canvas/canvas.css",
-		"/Volumes/Data/Sites/projects/angular-febworms/karma/karma.conf.ejs",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/User/Grunt.sublime-build",
-		"/Volumes/Data/Sites/projects/angular-febworms/bower.json",
-		"/Volumes/Data/Sites/projects/angular-febworms/gruntfile.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/dist/febworms/edit/edit-controller.js",
-		"/Volumes/Data/Sites/projects/angular-febworms/dist/febworms/febworms.min.css",
-		"/Volumes/Data/Sites/temp/Bootstrap-Form-Builder-gh-pages/assets/js/views/my-form-snippet.js",
-		"/Volumes/Data/Sites/projects/SportingEvents/WebWrap/Mindef.SportingEvents.Web.UI/index.html",
-		"/Volumes/Data/Sites/temp/angular-app/server/server.js",
-		"/Volumes/Data/Sites/projects/angular-form/Gruntfile.js",
-		"/Volumes/Data/Sites/projects/angular-form/.travis.yml",
-		"/Users/null/Sites/projects/angular-form/package.json",
-		"/Volumes/Data/Sites/projects/angular-form/tasks/grunt-auto-grind.js",
-		"/Users/null/Sites/projects/angular-form/Grindfile.js",
-		"/Users/null/Sites/projects/angular-form/Gruntfile.js",
-		"/Volumes/Data/Sites/projects/angular-form/Gruntfile-app.js",
-		"/Users/null/Sites/projects/angular-form/Gruntfile-app.js",
-		"/Users/null/Sites/projects/angular-form/node_modules/grunt-contrib-watch/tasks/watch.js",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/Terminal/Default (OSX).sublime-keymap",
-		"/Volumes/Data/Sites/projects/fangular/client/src/fangular/fangular.js",
-		"/Users/null/Library/Application Support/Sublime Text 3/Packages/User/JavaScript.sublime-settings",
-		"/Volumes/Data/Sites/projects/fangular/server/server.js",
-		"/Volumes/Data/Sites/projects/fangular/server/lib/config.js",
-		"/Volumes/Data/Sites/temp/angular-app/client/gruntFile.js",
-		"/Volumes/Data/Sites/temp/angular-app/server/lib/mongo-proxy.js",
-		"/Volumes/Data/Sites/temp/angular-app/client/package.json"
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/render-directive.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/render.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/checkbox.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/field-templates/default/checkboxlist.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/validation/summary.css",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/edit/meta/meta.tmpl.html",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/render/field-input/field-input-controller.js",
+		"/Volumes/Data/Sites/projects/angular-febworms/src/febworms/schema/schema-controller.js"
 	],
 	"find":
 	{
@@ -452,6 +600,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"classDirective",
+			"ngClassDirective",
+			"console",
+			"fieldSchema",
+			"febwormsFieldCtrl",
 			"console.log",
 			"editCtrl",
 			"$scope.schema",
@@ -565,6 +718,94 @@
 		"selected_items":
 		[
 			[
+				"tabs-dire",
+				"src/febworms/common/tabs/tabs-directive.test.js"
+			],
+			[
+				"unique",
+				"dist/febworms/validation/unique-field-name.js"
+			],
+			[
+				"field-con",
+				"src/febworms/form/field/field-controller.js"
+			],
+			[
+				"febutils",
+				"src/febworms/common/febworms-utils.js"
+			],
+			[
+				"meta",
+				"src/febworms/edit/meta/meta-directive.test.js"
+			],
+			[
+				"tab",
+				"src/febworms/common/tabs/tabs-controller.test.js"
+			],
+			[
+				"form-dir",
+				"src/febworms/form/form-directive.js"
+			],
+			[
+				"properties",
+				"src/febworms/edit/canvas/field/properties/properties.css"
+			],
+			[
+				"edit.css",
+				"src/febworms/edit/edit.css"
+			],
+			[
+				"prope",
+				"src/febworms/edit/canvas/field/properties/properties.css"
+			],
+			[
+				"angular",
+				"vendor/angular/angular.js"
+			],
+			[
+				"palettecategtest",
+				"src/febworms/edit/palette/categories/categories-directive.test.js"
+			],
+			[
+				"palettetest",
+				"src/febworms/edit/palette/palette-directive.test.js"
+			],
+			[
+				"canvas.css",
+				"src/febworms/edit/canvas/canvas.css"
+			],
+			[
+				"app.css",
+				"src/app/app.css"
+			],
+			[
+				"properties.css",
+				"src/febworms/edit/canvas/field/properties/properties.css"
+			],
+			[
+				"form-",
+				"src/febworms/render/form-controller.js"
+			],
+			[
+				"properties-directive.test",
+				"src/febworms/edit/canvas/field/properties/properties-directive.test.js"
+			],
+			[
+				"canvas-directive.test.js",
+				"src/febworms/edit/canvas/canvas-directive.test.js"
+			],
+			[
+				"field",
+				"src/febworms/render/field.tmpl.html"
+			],
+			[
+				"febworms-uti",
+				"src/febworms/febworms-utils.js"
+			],
+			[
+				"schem",
+				"src/febworms/render/schema-controller.js"
+			],
+			[
 				"schema-dir",
 				"src/febworms/schema/schema-directive.js"
 			],
@@ -575,10 +816,6 @@
 			[
 				"jso",
 				"dist/app/jsonify/jsonify.js"
-			],
-			[
-				"angular",
-				"vendor/angular/angular.js"
 			],
 			[
 				"karma",
@@ -603,10 +840,6 @@
 			[
 				"srcfebwormutils",
 				"src/febworms/febworms-utils.js"
-			],
-			[
-				"febworms-uti",
-				"dist/febworms/febworms-utils.js"
 			],
 			[
 				"febworms.js",
@@ -674,7 +907,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 430.0,
+	"side_bar_width": 388.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

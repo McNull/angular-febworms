@@ -24,9 +24,16 @@ angular.module('febworms').controller('febwormsPropertyFieldOptionsController', 
     // Called by the watch collection
     // Ensure that when the selected value is changed, this
     // is synced to the field value.
-    
-    if(oldValue === $scope.field.value) {
-      $scope.field.value = newValue;
+
+    if (newValue !== oldValue) {
+      if ($scope.multiple) {
+        $scope.field.value[newValue] = $scope.field.value[oldValue];
+        delete $scope.field.value[oldValue];
+      } else {
+        if (oldValue === $scope.field.value) {
+          $scope.field.value = newValue;
+        }
+      }
     }
   }
 
@@ -44,7 +51,7 @@ angular.module('febworms').controller('febwormsPropertyFieldOptionsController', 
 
     var count = $scope.field.options.length;
 
-    if (count === 1) {
+    if(!$scope.multiple && count === 1) {
       $scope.field.value = option.value;
     }
 
@@ -53,16 +60,24 @@ angular.module('febworms').controller('febwormsPropertyFieldOptionsController', 
   this.removeOption = function(index) {
     var options = $scope.field.options.splice(index, 1);
 
-    if(options && options.length) {
+    if (options && options.length) {
+
       var option = options[0];
 
-      if(option.value === $scope.field.value && $scope.field.options.length) {
-        $scope.field.value = $scope.field.options[0].value;
-      }
+      if ($scope.multiple) {
 
-      option.$_valueWatchFn();
+        if($scope.field.value[option.value] !== undefined)
+          delete $scope.field.value[option.value];
+
+      } else {
+
+        if (option.value === $scope.field.value && $scope.field.options.length) {
+          $scope.field.value = $scope.field.options[0].value;
+        }
+
+        option.$_valueWatchFn();
+      }
     }
   };
-
 
 });

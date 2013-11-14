@@ -159,12 +159,87 @@
       "fields": [
         {
           "type": "text",
-          "name": "field4610",
-          "displayName": "Textbox"
+          "name": "firstName",
+          "displayName": "Voornaam",
+          "placeholder": "Vul hier uw voornaam in",
+          "value": ""
         },
         {
+          "type": "text",
+          "name": "lastName",
+          "displayName": "Achternaam",
+          "placeholder": "Vul hier uw achternaam in"
+        },
+        {
+          "type": "email",
+          "name": "emailAddress",
+          "displayName": "Email adres",
+          "placeholder": "Vul hier uw email adres in",
+          "value": ""
+        },
+        {
+          "type": "selectlist",
+          "name": "menu",
+          "displayName": "Menu keuze",
+          "options": [
+            {
+              "value": "Brood",
+              "text": "Brood met beleg"
+            },
+            {
+              "value": "Pannekoeken"
+            },
+            {
+              "value": "Geen"
+            }
+          ],
+          "value": "Brood"
+        },
+        {
+          "type": "textarea",
+          "name": "notes",
+          "displayName": "Opmerkingen",
+          "placeholder": "Vul hier eventuele opmerking in"
+        }
+      ],
+      "name": "Persoonsgegevens"
+    },
+    "id": 8
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "radiobuttonlist",
+          "name": "field8447",
+          "displayName": "Radiobutton List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1"
+        }
+      ],
+      "name": "Radiobutton List"
+    },
+    "id": 9
+  },
+  {
+    "schema": {
+      "fields": [
+        {
           "type": "checkboxlist",
-          "name": "field4620",
+          "name": "field6802",
           "displayName": "Checkbox List",
           "options": [
             {
@@ -184,25 +259,10 @@
             "1": true,
             "2": true
           }
-        },
-        {
-          "type": "email",
-          "name": "field4612",
-          "displayName": "Email"
-        },
-        {
-          "type": "textarea",
-          "name": "field4614",
-          "displayName": "Textarea"
-        },
-        {
-          "type": "password",
-          "name": "field4616",
-          "displayName": "Password"
         }
       ],
-      "name": "jhgfjhgkfhgj"
+      "name": "Checkboxlist"
     },
-    "id": 7
+    "id": 10
   }
 ]

@@ -11,6 +11,7 @@ var files = {
     cssSrc: [
       'src/febworms/febworms.css',
       'febworms/edit/edit.css',
+      'febworms/edit/canvas/canvas.css',
       'src/febworms/**/*.css'
     ],
     test: [

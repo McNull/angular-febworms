@@ -17,14 +17,7 @@ angular.module('myApp').controller('FormEditController', function ($scope, form,
 
 });
 
-angular.module('myApp').factory('FormEditResolver', function ($route, Form) {
-  return Form.get({ id: $route.current.params.id });
-});
+// angular.module('myApp').factory('FormEditResolver', function ($route, Form) {
+//   return Form.get({ id: $route.current.params.id });
+// });
 
-angular.module('myApp').directive('formEdit', function () {
-  return {
-    restrict: 'A',
-    templateUrl: 'app/form/edit/form-edit.tmpl.html',
-    controller: 'FormEditController'
-  };
-});

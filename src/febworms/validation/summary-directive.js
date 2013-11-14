@@ -28,8 +28,6 @@ angular.module('febworms').directive('febwormsValidationSummary', function(febwo
         };
       });
 
-    } else {
-      throw Error('No febworms-field or form available');
     }
 
     $scope.messages = angular.extend({}, febwormsConfig.validation.messages, $scope.validationMessages)

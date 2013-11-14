@@ -4,5 +4,5 @@
            tabindex="{{ tabIndex }}"
            value="{{ option.value }}"
            ng-model="form.data[field.schema.name]">
-    <span>{{option.text}}</span>
+    <span>{{option.text || option.value}}</span>
 </label>
