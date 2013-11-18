@@ -1,0 +1,17 @@
+<div febworms-tabs>
+  <div febworms-tabs-pane="Properties">
+    <div febworms-property-field-common="{ fieldname: true, displayname: true, placeholder: true }"></div>
+    <div febworms-property-field="fieldValue" febworms-property-field-label="Initial value">
+
+      <input febworms-input-number 
+      	     type="text" 
+      	     ng-model="field.value" 
+      	     ng-minlength="{{ field.schema.validation.minlength }}" 
+      	     ng-maxlength="{{ field.schema.validation.maxlength }}" 
+      	     ng-pattern="/{{ field.schema.validation.pattern }}/" />
+    </div>
+  </div>
+  <div febworms-tabs-pane="Validation">
+    <div febworms-property-field-validation="{ required: true, minlength: true }"></div>
+  </div>
+</div>

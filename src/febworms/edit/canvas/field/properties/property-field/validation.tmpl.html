@@ -1,0 +1,49 @@
+<!-- 
+  input fields marked as febworms-field-redraw will cause the initial value input to redraw
+-->
+
+<!-- required -->
+<div ng-if="fields.required">
+  
+  <div febworms-property-field="required">
+    <label class="checkbox" title="Indicates if a value is required for this field.">
+      <input type="checkbox" ng-model="field.validation.required" />Required
+    </label>
+  </div>
+  
+  <div ng-if="field.validation.required">
+  	<div febworms-edit-validation-message="required"
+  			 febworms-edit-validation-tooltip="Enter a error message here that will be shown if this validation fails. If this field is empty a default message will be used.">
+    </div>
+  </div>
+
+  <hr/>
+
+</div>
+
+<!-- minlength -->
+<div ng-if="fields.minlength">  
+  <div febworms-property-field="minlength" febworms-property-field-label="Minimum length">
+    <input type="text"
+           febworms-field-redraw
+           febworms-input-number
+       		 name="minlength"
+       		 ng-model="field.validation.minlength"/>
+  </div>
+
+  <div ng-if="field.validation.minlength >= 1" >
+    <div febworms-property-field="minlengthMessage" 
+    		 febworms-property-field-label="Message">
+      <input febworms-field-redraw
+             type="text" 
+      			 title="Enter a error message here that will be shown if this validation fails. If this field is empty a default message will be used." 
+      			 name="minlengthMessage" 
+      			 placeholder="Optional message" 
+      			 ng-model="field.validation.messages.minlength" />
+    </div>
+  </div>
+
+  <hr/>
+
+</div>
+

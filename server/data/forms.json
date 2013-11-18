@@ -269,47 +269,6 @@
     "schema": {
       "fields": [
         {
-          "type": "checkboxlist",
-          "name": "field7457",
-          "displayName": "Checkbox List",
-          "options": [
-            {
-              "value": "1",
-              "text": "Option 1"
-            },
-            {
-              "value": "2",
-              "text": "Option 2"
-            },
-            {
-              "value": "3",
-              "text": "Option 3"
-            }
-          ],
-          "value": {
-            "1": true,
-            "2": true
-          }
-        },
-        {
-          "type": "checkbox",
-          "name": "field7459",
-          "displayName": "Checkbox"
-        },
-        {
-          "type": "textarea",
-          "name": "field7465",
-          "displayName": "Textarea"
-        }
-      ],
-      "name": "test"
-    },
-    "id": 11
-  },
-  {
-    "schema": {
-      "fields": [
-        {
           "type": "text",
           "name": "firstName",
           "displayName": "First name",
@@ -426,12 +385,32 @@
       "fields": [
         {
           "type": "text",
-          "name": "field4675",
-          "displayName": "Textbox"
+          "name": "field7924",
+          "displayName": "Textbox",
+          "validation": {
+            "required": false
+          }
         }
       ],
-      "name": "jhkgjhkgjkh"
+      "name": "Textbox"
     },
     "id": 101
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "number",
+          "name": "myNumberField",
+          "displayName": "Number",
+          "validation": {
+            "messages": {},
+            "required": false
+          }
+        }
+      ],
+      "name": "Number"
+    },
+    "id": 102
   }
 ]

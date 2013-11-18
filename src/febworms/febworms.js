@@ -25,7 +25,8 @@ angular.module('febworms', ['ngRoute', 'dq', 'templates-febworms']).constant('fe
       maxlength: 'Field value exceeds the maximum length.',
       pattern: 'The value "{{ field.state.$viewValue }}" does not match the required format.',
       email: 'The value "{{ field.state.$viewValue }}" is not a valid email address.',
-      unique: 'The value "{{ field.state.$viewValue }}" is already in use.'
+      unique: 'The value "{{ field.state.$viewValue }}" is already in use.',
+      number: 'The value "{{ field.state.$viewValue }}" is not a number.'
     }
   },
   fields: {
@@ -34,6 +35,7 @@ angular.module('febworms', ['ngRoute', 'dq', 'templates-febworms']).constant('fe
         displayName: 'Textbox'
       }), 
       new febworms.Field('email'), 
+      new febworms.Field('number'), 
       new febworms.Field('password'), 
       new febworms.Field('textarea'), 
       new febworms.Field('checkbox', {}, { hideLabel: true }), 
@@ -67,7 +69,7 @@ angular.module('febworms', ['ngRoute', 'dq', 'templates-febworms']).constant('fe
     ],
     categories: {
       'Text input fields': {
-        'text': true, 'email': true, 'password': true, 'textarea': true
+        'text': true, 'number': true, 'email': true, 'password': true, 'textarea': true
       },
       'Checkbox fields': { 'checkbox': true, 'checkboxlist': true },
       'Select input fields': { 'radiobuttonlist': true, 'selectlist': true }

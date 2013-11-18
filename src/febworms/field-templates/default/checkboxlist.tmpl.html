@@ -1,5 +1,6 @@
 <label class="checkbox" ng-repeat="option in field.schema.options">
-    <input type="checkbox"
+    <input febworms-field-input
+    	   type="checkbox"
            tabindex="{{ tabIndex }}"
            name="{{ field.schema.name }}[]" value="{{ option.value }}"
            ng-model="form.data[field.schema.name][option.value]">

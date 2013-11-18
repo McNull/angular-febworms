@@ -27,10 +27,20 @@ angular.module('febworms').directive('febwormsValidationSummary', function(febwo
           state: ngFormController[value]
         };
       });
-
     }
 
-    $scope.messages = angular.extend({}, febwormsConfig.validation.messages, $scope.validationMessages)
+    // Whenever the form designer edits a custom message but decides to delete it later a "" is leftover.
+    // I don't feel like setting all kinds of watchers so we'll fix that here
+
+    if($scope.validationMessages) {
+      angular.forEach($scope.validationMessages, function(value, key) {
+        if(!value) {
+          delete $scope.validationMessages[key];
+        }
+      });
+    }
+
+    $scope.messages = angular.extend({}, febwormsConfig.validation.messages, $scope.validationMessages);
   };
 
 });
