@@ -71,6 +71,8 @@ describe('febworms-form-directive', function() {
       inject(function(_$rootScope_) {
         $scope = _$rootScope_.$new();
       });
+
+      $attrs = {};
     });
 
     describe('updateFormModel', function() {
@@ -81,11 +83,11 @@ describe('febworms-form-directive', function() {
         $element.scope = function() { return $scope; }
       });
 
-      it('should call updateFormModel on the form controller before digest', function() {
+      it('should call init on the form controller before digest', function() {
 
         // Arrange
 
-        formCtrl.updateFormModel = jasmine.createSpy('updateFormModel');
+        formCtrl.init = jasmine.createSpy('init');
 
         // Act
 
@@ -93,7 +95,7 @@ describe('febworms-form-directive', function() {
 
         // Assert
 
-        expect(formCtrl.updateFormModel).toHaveBeenCalled();
+        expect(formCtrl.init).toHaveBeenCalled();
       });
 
       // Probably not needed anymore

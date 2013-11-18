@@ -39,9 +39,11 @@ describe('febworms-form-controller', function() {
 
       // Arrange
 
-      var data = {};
+      $scope.data = {};
       var schema = {};
       var state = {};
+
+      var schemaCtrl = { model: function() { return schema }};
 
       var controller = $controller('febwormsFormController', {
         $scope: $scope
@@ -49,14 +51,15 @@ describe('febworms-form-controller', function() {
 
       // Act
 
-      var result = controller.updateFormModel(data, schema, state);
-
+      controller.init('data', schemaCtrl, state);
+      $scope.$digest();
+      
       // Assert
 
-      expect(result).toBeDefined();
-      expect(result.data).toBe(data);
-      expect(result.schema).toBe(schema);
-      expect(result.state).toBe(state);
+      expect(controller.model).toBeDefined();
+      expect(controller.model.data).toBe($scope.data);
+      expect(controller.model.schema).toBe(schema);
+      expect(controller.model.state).toBe(state);
     });
     
   });

@@ -38,6 +38,7 @@ angular.module('febworms').controller('febwormsFieldController', function($scope
 
     var fieldName = fieldSchema.name;
 
+    _form.data = _form.data || {};
     
     if (editMode) {
       

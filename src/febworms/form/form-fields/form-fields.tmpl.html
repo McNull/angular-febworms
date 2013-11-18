@@ -1,6 +1,6 @@
 <div class="febworms-form-fields">
 	<fieldset>
-      <legend>{{ form.schema.name }}<span class="form-required-fields">* Required field</span></legend>
+      <legend>{{ form.schema.name }}</legend>
 
       <div ng-repeat="field in form.schema.fields">
         <div class="control-group" ng-class="{ 'error': form.state[field.name].$invalid }">
