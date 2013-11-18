@@ -1,8 +1,9 @@
 <div class="febworms-edit">
 
-    <div ng-if="preview" ng-init="formData = {}">
-        <form febworms-form 
-              febworms-form-data="formData"
+    <div ng-if="preview" ng-init="previewForm = { data: {} }">
+        <form name="previewForm.state"
+              febworms-form 
+              febworms-form-data="previewForm.data"
               class="form-horizontal"
               novalidate>
         </form>

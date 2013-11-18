@@ -1,328 +1,437 @@
-[{
+[
+  {
     "schema": {
-      "fields": [{
-        "type": "text",
-        "name": "field1",
-        "displayName": "Textbox"
-      }, {
-        "type": "email",
-        "name": "field7222",
-        "displayName": "Email"
-      }],
+      "fields": [
+        {
+          "type": "text",
+          "name": "field1",
+          "displayName": "Textbox"
+        },
+        {
+          "type": "email",
+          "name": "field7222",
+          "displayName": "Email"
+        }
+      ],
       "name": "Simple form"
     },
     "id": 1
-  }, {
+  },
+  {
     "schema": {
-      "fields": [{
-        "type": "email",
-        "name": "field4442",
-        "displayName": "Email"
-      }],
+      "fields": [
+        {
+          "type": "email",
+          "name": "field4442",
+          "displayName": "Email"
+        }
+      ],
       "name": "Email only"
     },
     "id": 2
-  }, {
+  },
+  {
     "schema": {
-      "fields": [{
-        "type": "text",
-        "name": "field7850",
-        "displayName": "Textbox"
-      }, {
-        "type": "email",
-        "name": "field7851",
-        "displayName": "Email"
-      }, {
-        "type": "password",
-        "name": "field7852",
-        "displayName": "Password"
-      }, {
-        "type": "textarea",
-        "name": "field7853",
-        "displayName": "Textarea"
-      }, {
-        "type": "radiobuttonlist",
-        "name": "field7854",
-        "displayName": "Radiobutton List",
-        "options": [{
-          "value": "1",
-          "text": "Option 1"
-        }, {
-          "value": "2",
-          "text": "Option 2"
-        }, {
-          "value": "3",
-          "text": "Option 3"
-        }],
-        "value": "1"
-      }, {
-        "type": "selectlist",
-        "name": "field7855",
-        "displayName": "Select List",
-        "options": [{
-          "value": "1",
-          "text": "Option 1"
-        }, {
-          "value": "2",
-          "text": "Option 2"
-        }, {
-          "value": "3",
-          "text": "Option 3"
-        }],
-        "value": "1"
-      }, {
-        "type": "checkbox",
-        "name": "field7856",
-        "displayName": "Checkbox"
-      }, {
-        "type": "checkboxlist",
-        "name": "field7857",
-        "displayName": "Checkbox List",
-        "options": [{
-          "value": "1",
-          "text": "Option 1"
-        }, {
-          "value": "2",
-          "text": "Option 2"
-        }, {
-          "value": "3",
-          "text": "Option 3"
-        }],
-        "value": {
-          "1": true,
-          "2": true
+      "fields": [
+        {
+          "type": "text",
+          "name": "field7850",
+          "displayName": "Textbox"
+        },
+        {
+          "type": "email",
+          "name": "field7851",
+          "displayName": "Email"
+        },
+        {
+          "type": "password",
+          "name": "field7852",
+          "displayName": "Password"
+        },
+        {
+          "type": "textarea",
+          "name": "field7853",
+          "displayName": "Textarea"
+        },
+        {
+          "type": "radiobuttonlist",
+          "name": "field7854",
+          "displayName": "Radiobutton List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1"
+        },
+        {
+          "type": "selectlist",
+          "name": "field7855",
+          "displayName": "Select List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1"
+        },
+        {
+          "type": "checkbox",
+          "name": "field7856",
+          "displayName": "Checkbox"
+        },
+        {
+          "type": "checkboxlist",
+          "name": "field7857",
+          "displayName": "Checkbox List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": {
+            "1": true,
+            "2": true
+          }
         }
-      }],
+      ],
       "name": "All fields"
     },
     "id": 5
-  }, {
+  },
+  {
     "schema": {
-      "fields": [{
-        "type": "selectlist",
-        "name": "field2005",
-        "displayName": "Select List",
-        "options": [{
-          "value": "1",
-          "text": "Option 1"
-        }, {
-          "value": "2",
-          "text": "Option 2"
-        }, {
-          "value": "3",
-          "text": "Option 3"
-        }],
-        "value": "1"
-      }],
+      "fields": [
+        {
+          "type": "selectlist",
+          "name": "field2005",
+          "displayName": "Select List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1"
+        }
+      ],
       "name": "Select list"
     },
     "id": 6
-  }, {
+  },
+  {
     "schema": {
-      "fields": [{
-        "type": "text",
-        "name": "firstName",
-        "displayName": "Voornaam",
-        "placeholder": "Vul hier uw voornaam in",
-        "value": ""
-      }, {
-        "type": "text",
-        "name": "lastName",
-        "displayName": "Achternaam",
-        "placeholder": "Vul hier uw achternaam in"
-      }, {
-        "type": "email",
-        "name": "emailAddress",
-        "displayName": "Email adres",
-        "placeholder": "Vul hier uw email adres in",
-        "value": ""
-      }, {
-        "type": "selectlist",
-        "name": "menu",
-        "displayName": "Menu keuze",
-        "options": [{
-          "value": "Brood",
-          "text": "Brood met beleg"
-        }, {
-          "value": "Pannekoeken"
-        }, {
-          "value": "Geen"
-        }],
-        "value": "Brood"
-      }, {
-        "type": "textarea",
-        "name": "notes",
-        "displayName": "Opmerkingen",
-        "placeholder": "Vul hier eventuele opmerking in"
-      }],
+      "fields": [
+        {
+          "type": "text",
+          "name": "firstName",
+          "displayName": "Voornaam",
+          "placeholder": "Vul hier uw voornaam in",
+          "value": ""
+        },
+        {
+          "type": "text",
+          "name": "lastName",
+          "displayName": "Achternaam",
+          "placeholder": "Vul hier uw achternaam in"
+        },
+        {
+          "type": "email",
+          "name": "emailAddress",
+          "displayName": "Email adres",
+          "placeholder": "Vul hier uw email adres in",
+          "value": ""
+        },
+        {
+          "type": "selectlist",
+          "name": "menu",
+          "displayName": "Menu keuze",
+          "options": [
+            {
+              "value": "Brood",
+              "text": "Brood met beleg"
+            },
+            {
+              "value": "Pannekoeken"
+            },
+            {
+              "value": "Geen"
+            }
+          ],
+          "value": "Brood"
+        },
+        {
+          "type": "textarea",
+          "name": "notes",
+          "displayName": "Opmerkingen",
+          "placeholder": "Vul hier eventuele opmerking in"
+        }
+      ],
       "name": "Persoonsgegevens"
     },
     "id": 8
-  }, {
+  },
+  {
     "schema": {
-      "fields": [{
-        "type": "radiobuttonlist",
-        "name": "field8447",
-        "displayName": "Radiobutton List",
-        "options": [{
-          "value": "1",
-          "text": "Option 1"
-        }, {
-          "value": "2",
-          "text": "Option 2"
-        }, {
-          "value": "3",
-          "text": "Option 3"
-        }],
-        "value": "1"
-      }],
+      "fields": [
+        {
+          "type": "radiobuttonlist",
+          "name": "field8447",
+          "displayName": "Radiobutton List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1"
+        }
+      ],
       "name": "Radiobutton List"
     },
     "id": 9
-  }, {
+  },
+  {
     "schema": {
-      "fields": [{
-        "type": "checkboxlist",
-        "name": "field6802",
-        "displayName": "Checkbox List",
-        "options": [{
-          "value": "1",
-          "text": "Option 1"
-        }, {
-          "value": "2",
-          "text": "Option 2"
-        }, {
-          "value": "3",
-          "text": "Option 3"
-        }],
-        "value": {
-          "1": true,
-          "2": true
+      "fields": [
+        {
+          "type": "checkboxlist",
+          "name": "field6802",
+          "displayName": "Checkbox List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": {
+            "1": true,
+            "2": true
+          }
         }
-      }],
+      ],
       "name": "Checkboxlist"
     },
     "id": 10
-  }, {
+  },
+  {
     "schema": {
-      "fields": [{
-        "type": "checkboxlist",
-        "name": "field7457",
-        "displayName": "Checkbox List",
-        "options": [{
-          "value": "1",
-          "text": "Option 1"
-        }, {
-          "value": "2",
-          "text": "Option 2"
-        }, {
-          "value": "3",
-          "text": "Option 3"
-        }],
-        "value": {
-          "1": true,
-          "2": true
+      "fields": [
+        {
+          "type": "checkboxlist",
+          "name": "field7457",
+          "displayName": "Checkbox List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": {
+            "1": true,
+            "2": true
+          }
+        },
+        {
+          "type": "checkbox",
+          "name": "field7459",
+          "displayName": "Checkbox"
+        },
+        {
+          "type": "textarea",
+          "name": "field7465",
+          "displayName": "Textarea"
         }
-      }, {
-        "type": "checkbox",
-        "name": "field7459",
-        "displayName": "Checkbox"
-      }, {
-        "type": "textarea",
-        "name": "field7465",
-        "displayName": "Textarea"
-      }],
+      ],
       "name": "test"
     },
     "id": 11
-  }, {
+  },
+  {
     "schema": {
-      "fields": [{
-        "type": "text",
-        "name": "firstName",
-        "displayName": "First name",
-        "placeholder": "Please enter your first name"
-      }, {
-        "type": "text",
-        "name": "lastName",
-        "displayName": "Last name",
-        "placeholder": "Please enter your last name"
-      }, {
-        "type": "email",
-        "name": "emailAddress",
-        "displayName": "Email address",
-        "placeholder": "Please enter an email address"
-      }, {
-        "type": "checkbox",
-        "name": "spam",
-        "displayName": "Receive spam?",
-        "value": true
-      }, {
-        "type": "checkboxlist",
-        "name": "foundUsBy",
-        "displayName": "How did you find this website?",
-        "options": [{
-          "value": "Google"
-        }, {
-          "value": "Bing"
-        }, {
-          "value": "Stupidity"
-        }, {
-          "value": "Plunker",
-          "text": "Fiddler"
-        }],
-        "value": {
-          "Google": false,
-          "Stupidity": false,
-          "Plunker": true
+      "fields": [
+        {
+          "type": "text",
+          "name": "firstName",
+          "displayName": "First name",
+          "placeholder": "Please enter your first name"
+        },
+        {
+          "type": "text",
+          "name": "lastName",
+          "displayName": "Last name",
+          "placeholder": "Please enter your last name"
+        },
+        {
+          "type": "email",
+          "name": "emailAddress",
+          "displayName": "Email address",
+          "placeholder": "Please enter an email address"
+        },
+        {
+          "type": "checkbox",
+          "name": "spam",
+          "displayName": "Receive spam?",
+          "value": true
+        },
+        {
+          "type": "checkboxlist",
+          "name": "foundUsBy",
+          "displayName": "How did you find this website?",
+          "options": [
+            {
+              "value": "Google"
+            },
+            {
+              "value": "Bing"
+            },
+            {
+              "value": "Stupidity"
+            },
+            {
+              "value": "Plunker",
+              "text": "Fiddler"
+            }
+          ],
+          "value": {
+            "Google": false,
+            "Stupidity": false,
+            "Plunker": true
+          }
+        },
+        {
+          "type": "radiobuttonlist",
+          "name": "color",
+          "displayName": "In which color would you like the product?",
+          "options": [
+            {
+              "value": "red",
+              "text": "Red"
+            },
+            {
+              "value": "green",
+              "text": "Green"
+            },
+            {
+              "value": "blue",
+              "text": "Blue"
+            }
+          ],
+          "value": "red"
+        },
+        {
+          "type": "selectlist",
+          "name": "size",
+          "displayName": "What is the size?",
+          "options": [
+            {
+              "value": "xs",
+              "text": "Extra small"
+            },
+            {
+              "value": "s",
+              "text": "Small"
+            },
+            {
+              "value": "sm",
+              "text": "Small medium"
+            },
+            {
+              "value": "ml",
+              "text": "Medium large"
+            },
+            {
+              "value": "l",
+              "text": "Large"
+            },
+            {
+              "value": "xl",
+              "text": "Extra large"
+            }
+          ],
+          "value": "xs"
+        },
+        {
+          "type": "textarea",
+          "name": "comments",
+          "displayName": "Comments",
+          "placeholder": "Leave any comments here"
         }
-      }, {
-        "type": "radiobuttonlist",
-        "name": "color",
-        "displayName": "In which color would you like the product?",
-        "options": [{
-          "value": "red",
-          "text": "Red"
-        }, {
-          "value": "green",
-          "text": "Green"
-        }, {
-          "value": "blue",
-          "text": "Blue"
-        }],
-        "value": "red"
-      }, {
-        "type": "selectlist",
-        "name": "size",
-        "displayName": "What is the size?",
-        "options": [{
-          "value": "xs",
-          "text": "Extra small"
-        }, {
-          "value": "s",
-          "text": "Small"
-        }, {
-          "value": "sm",
-          "text": "Small medium"
-        }, {
-          "value": "ml",
-          "text": "Medium large"
-        }, {
-          "value": "l",
-          "text": "Large"
-        }, {
-          "value": "xl",
-          "text": "Extra large"
-        }],
-        "value": "xs"
-      }, {
-        "type": "textarea",
-        "name": "comments",
-        "displayName": "Comments",
-        "placeholder": "Leave any comments here"
-      }],
+      ],
       "name": "My Demo Form"
     },
     "id": 100
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "text",
+          "name": "field4675",
+          "displayName": "Textbox"
+        }
+      ],
+      "name": "jhkgjhkgjkh"
+    },
+    "id": 101
   }
 ]

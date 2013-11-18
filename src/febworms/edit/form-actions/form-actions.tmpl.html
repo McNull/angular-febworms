@@ -23,13 +23,23 @@
     <div ng-if="preview">
 
         <div ng-if="debugInfoEnabled">
-            <div class="controls">
-                <label class="checkbox">
-                    <input type="checkbox" ng-model="debugFormData"> Display form data information
-                </label>
+            <div class="control-group">
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="debugFormData"> Display form data information
+                    </label>
+                </div>    
             </div>
 
-            <div ng-if="debugFormData" data-jsonify="formData"></div>
+            <div ng-if="debugFormData" febworms-tabs>
+                <div febworms-tabs-pane="Form data">
+                    <div jsonify="previewForm.data"></div>
+                </div>
+                <div febworms-tabs-pane="Form status">
+                    <div jsonify="previewForm.state" jsonify-display-hidden="true"></div>
+                </div>
+            </div>
+
         </div>
 
         <div class="form-actions">
