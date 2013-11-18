@@ -1,14 +1,38 @@
-angular.module('febworms').controller('febwormsFormController', function($scope) {
+angular.module('febworms').controller('febwormsFormController', function($scope, $parse) {
 
-  var self = this;
   this.model = {};
+  var self = this;
 
-  this.updateFormModel = function(data, schema, state) {
+  this.init = function(dataExpression, schema, state) {
     // Called by the directive
     
-    self.model.data = data || {};
-    self.model.schema = schema || {};
+    var dataGetter = $parse(dataExpression);
+    var dataSetter = dataGetter.assign;
+
+    $scope.$watch(dataGetter, function(value) {
+      if(value === undefined) {
+        value = {};
+
+        if(dataSetter) {
+          dataSetter($scope, value);
+        }
+      }
+
+      self.model.data = value;
+    });
+
+    $scope.$watch(function() {
+      return schema.model();
+    }, function(value) {
+      if(value === undefined) {
+        schema.model({});
+      } else {
+        self.model.schema = value;
+      }
+    });
+
     self.model.state = state;
+
     
     return self.model;
   };

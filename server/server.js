@@ -26,6 +26,7 @@ app.use(function noCache(req, res, next){
 
 require('./lib/routes/quotes').addRoutes(app, config);
 require('./lib/routes/forms').addRoutes(app, config);
+require('./lib/routes/formdata').addRoutes(app, config);
 require('./lib/routes/static').addRoutes(app, config);
 
 app.listen(config.server.listenPort);

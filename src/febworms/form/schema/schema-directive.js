@@ -3,8 +3,7 @@ angular.module('febworms').directive('febwormsSchema', function(febwormsSchemaLi
   return {
     require: ['febwormsSchema'],
     controller: 'febwormsSchemaController',
-    link: febwormsSchemaLinkFn,
-    priority: 10
+    link: febwormsSchemaLinkFn
   };
 
 }).factory('febwormsSchemaLinkFn' , function($parse) {

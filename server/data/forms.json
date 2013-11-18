@@ -264,5 +264,46 @@
       "name": "Checkboxlist"
     },
     "id": 10
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "checkboxlist",
+          "name": "field7457",
+          "displayName": "Checkbox List",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": {
+            "1": true,
+            "2": true
+          }
+        },
+        {
+          "type": "checkbox",
+          "name": "field7459",
+          "displayName": "Checkbox"
+        },
+        {
+          "type": "textarea",
+          "name": "field7465",
+          "displayName": "Textarea"
+        }
+      ],
+      "name": "test"
+    },
+    "id": 11
   }
 ]

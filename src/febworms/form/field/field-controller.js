@@ -16,6 +16,7 @@ angular.module('febworms').controller('febwormsFieldController', function($scope
 
   this.initForm = function(febwormsFormCtrl) {
     _form = febwormsFormCtrl ? febwormsFormCtrl.model : {};
+
     return _form;
   };
 
@@ -37,27 +38,26 @@ angular.module('febworms').controller('febwormsFieldController', function($scope
 
     var fieldName = fieldSchema.name;
 
-    var formData = _form.data || {};
-
+    
     if (editMode) {
       
       $scope.$watch('field.schema.value', function(value) {
-        formData[fieldSchema.name] = value;
+        _form.data[fieldSchema.name] = value;
       });
 
       $scope.$watch('field.schema.name', function(value, oldValue) {
         if(value !== oldValue) {
-          var data = formData[oldValue];
-          delete formData[oldValue];
-          formData[value] = data;
+          var data = _form.data[oldValue];
+          delete _form.data[oldValue];
+          _form.data[value] = data;
         }
       });
 
-    } else if (formData && formData[fieldName] === undefined && fieldSchema.value !== undefined) {
-      formData[fieldName] = fieldSchema.value;
+    } else if (_form.data && _form.data[fieldName] === undefined && fieldSchema.value !== undefined) {
+      _form.data[fieldName] = fieldSchema.value;
     }
 
-    return formData;
+    return _form.data;
   };
 
   this.setFieldState = function(state) {

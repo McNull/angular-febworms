@@ -1,0 +1,26 @@
+<form class="form-horizontal" name="form.state" novalidate>
+    
+    <div febworms-form febworms-schema="form.schema" febworms-form-data="form.data">
+    </div>
+
+    <div class="controls">
+        <label class="checkbox">
+            <input type="checkbox" ng-model="debugData"> Display debug information
+        </label>
+	</div>
+
+    <div class="form-actions">
+        <a class="btn btn-primary" ng-disabled="form.state.$invalid" ng-click="onSave()">Save changes</a>
+        <a class="btn" ng-click="onCancel()">Cancel</a>
+    </div>
+
+    <div ng-if="debugData" febworms-tabs>
+        <div febworms-tabs-pane="Form data">
+            <div jsonify="form.data"></div>
+        </div>
+        <div febworms-tabs-pane="Form status">
+            <div jsonify="form.state" jsonify-display-hidden="true"></div>
+        </div>
+    </div>
+
+</form>

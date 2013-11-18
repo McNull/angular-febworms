@@ -4,7 +4,17 @@ angular.module('febworms').directive('febwormsFormFields', function() {
     require: ['^febwormsForm'],
     restrict: 'AE',
     templateUrl: 'febworms/form/form-fields/form-fields.tmpl.html',
-    link: function($scope, $element, $attrs, ctrls) {}
+    scope: {},
+    link: function($scope, $element, $attrs, ctrls) {
+
+      var febwormsForm = ctrls[0];
+
+      $scope.$watch(function() {
+        return febwormsForm.model;
+      }, function(value) {
+        $scope.form = value;
+      });
+    }
   };
 
 });
