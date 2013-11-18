@@ -1680,9 +1680,10 @@ angular.module("febworms/edit/edit.tmpl.html", []).run(["$templateCache", functi
   $templateCache.put("febworms/edit/edit.tmpl.html",
     "<div class=\"febworms-edit\">\n" +
     "\n" +
-    "    <div ng-if=\"preview\" ng-init=\"formData = {}\">\n" +
-    "        <form febworms-form \n" +
-    "              febworms-form-data=\"formData\"\n" +
+    "    <div ng-if=\"preview\" ng-init=\"previewForm = { data: {} }\">\n" +
+    "        <form name=\"previewForm.state\"\n" +
+    "              febworms-form \n" +
+    "              febworms-form-data=\"previewForm.data\"\n" +
     "              class=\"form-horizontal\"\n" +
     "              novalidate>\n" +
     "        </form>\n" +
@@ -1740,13 +1741,23 @@ angular.module("febworms/edit/form-actions/form-actions.tmpl.html", []).run(["$t
     "    <div ng-if=\"preview\">\n" +
     "\n" +
     "        <div ng-if=\"debugInfoEnabled\">\n" +
-    "            <div class=\"controls\">\n" +
-    "                <label class=\"checkbox\">\n" +
-    "                    <input type=\"checkbox\" ng-model=\"debugFormData\"> Display form data information\n" +
-    "                </label>\n" +
+    "            <div class=\"control-group\">\n" +
+    "                <div class=\"controls\">\n" +
+    "                    <label class=\"checkbox\">\n" +
+    "                        <input type=\"checkbox\" ng-model=\"debugFormData\"> Display form data information\n" +
+    "                    </label>\n" +
+    "                </div>    \n" +
     "            </div>\n" +
     "\n" +
-    "            <div ng-if=\"debugFormData\" data-jsonify=\"formData\"></div>\n" +
+    "            <div ng-if=\"debugFormData\" febworms-tabs>\n" +
+    "                <div febworms-tabs-pane=\"Form data\">\n" +
+    "                    <div jsonify=\"previewForm.data\"></div>\n" +
+    "                </div>\n" +
+    "                <div febworms-tabs-pane=\"Form status\">\n" +
+    "                    <div jsonify=\"previewForm.state\" jsonify-display-hidden=\"true\"></div>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "\n" +
     "        </div>\n" +
     "\n" +
     "        <div class=\"form-actions\">\n" +

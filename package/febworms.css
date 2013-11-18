@@ -206,6 +206,33 @@
 }
 
 
+.febworms-tabs > .nav-tabs {
+	margin-bottom: 0px;
+}
+
+.febworms-tabs .tab-content {
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-top: none;
+	border-radius: 0px 0px 4px 4px;
+}
+
+.febworms-tabs > .nav-tabs a {
+	color: #999;
+	font-weight: 300;
+}
+
+.febworms-tabs > .nav-tabs a:hover {
+	background-color: inherit;
+	color: #333;
+}
+
+.febworms-tabs > .nav-tabs .active a {
+	color: #333;
+	font-weight: normal;
+	border-bottom: 1px solid #fff !important;
+}
+
 /*.febworms-field-properties .jsonify {
 	margin-left: 20px;
 	margin-right: 20px;
@@ -274,11 +301,11 @@
 	margin-bottom: 10px;
 }
 
-.febworms-field-properties .febworms-tabs .nav {
-	margin-bottom: 0px;
+.febworms-field-properties .febworms-tabs-pane {
+	margin-top: 10px;
 }
 
-.febworms-field-properties .febworms-tabs .tab-content {
+/*.febworms-field-properties .febworms-tabs .tab-content {
 	padding-top: 20px;
 	padding-bottom: 10px;
 	padding-left: 10px;
@@ -286,9 +313,9 @@
 	border: 1px solid #ddd;
 	border-top: none;
 	border-radius: 0px 0px 4px 4px;
-}
+}*/
 
-.febworms-field-properties .febworms-tabs .nav-tabs a {
+/*.febworms-field-properties .febworms-tabs .nav-tabs a {
 	color: #999;
 	font-weight: 300;
 }
@@ -303,7 +330,7 @@
 	font-weight: normal;
 	border-bottom: 1px solid #fff !important;
 }
-
+*/
 @media (min-width: 480px) and (max-width: 979px) {
 	
 	.table-field-options input[type="text"] {
