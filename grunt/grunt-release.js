@@ -77,11 +77,16 @@ module.exports = function (grunt, commonConfig) {
             dest: 'dist/'
           }
         ]
+      },
+      febwormsPackage: {
+        files: [
+          { expand: true, flatten: true, src: ['dist/febworms/**/*'], dest: 'package/' }
+        ]
       }
     }
   };
 
-  gruntConfig = _.extend({}, commonConfig, gruntConfig);
+  gruntConfig = _.merge({}, commonConfig, gruntConfig);
 
   grunt.config.init(gruntConfig);
 
@@ -89,7 +94,8 @@ module.exports = function (grunt, commonConfig) {
   grunt.registerTask('app', [ 'clean:app', 'html2js:app', 'ngmin:app', 'uglify:app', 'cssmin:app', 'copy:app' ]);
   grunt.registerTask('febworms', [ 'clean:febworms', 'html2js:febworms', 'ngmin:febworms', 'uglify:febworms', 'cssmin:febworms', 'copy:febworms' ]);
 
-  grunt.registerTask('build', [ 'clean:tmp', 'vendor', 'app', 'febworms', 'ejs', 'clean:postBuild', 'test-build' ]);
+  grunt.registerTask('package', ['build', 'copy:febwormsPackage']);
+  grunt.registerTask('build', [ 'clean:tmp', 'vendor', 'app', 'febworms', 'ejs', 'clean:postBuild', 'test-single' ]);
   grunt.registerTask('default', 'build');
 
 };

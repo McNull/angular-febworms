@@ -1,9 +1,13 @@
-angular.module('myApp').controller('FormDataEditController', function ($scope, form, formData, $location, notifications) {
+angular.module('myApp').controller('FormDataEditController', function ($scope, form, formData, $location, notifications, febwormsConfig) {
 
   // The form model
   $scope.form = form;
   $scope.form.data = formData;
 
+  $scope.debug = {
+    allowed: febwormsConfig.enableDebugInfo
+  };
+  
   $scope.onSave = function() {
 
     if($scope.form.state.$valid) {

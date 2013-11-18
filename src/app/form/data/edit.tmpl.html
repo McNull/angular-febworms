@@ -3,9 +3,9 @@
     <div febworms-form febworms-schema="form.schema" febworms-form-data="form.data">
     </div>
 
-    <div class="controls">
+    <div ng-if="debug.allowed" class="controls">
         <label class="checkbox">
-            <input type="checkbox" ng-model="debugData"> Display debug information
+            <input type="checkbox" ng-model="debug.display"> Display debug information
         </label>
 	</div>
 
@@ -14,7 +14,7 @@
         <a class="btn" ng-click="onCancel()">Cancel</a>
     </div>
 
-    <div ng-if="debugData" febworms-tabs>
+    <div ng-if="debug.display" febworms-tabs>
         <div febworms-tabs-pane="Form data">
             <div jsonify="form.data"></div>
         </div>
