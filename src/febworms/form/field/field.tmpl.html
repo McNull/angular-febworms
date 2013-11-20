@@ -1,4 +1,4 @@
-<div class="febworms-field-inner">
+<div class="febworms-field-inner" ng-class="{ 'febworms-field-required': fieldSchema.validation.required }">
 	<label ng-if="!renderInfo.hideLabel" class="control-label" for="{{ field.$_id }}">{{ fieldSchema.displayName }}</label>
 	<div class="controls">
 		<div ng-include="renderInfo.templateUrl"></div>

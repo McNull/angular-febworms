@@ -1,4 +1,4 @@
-.control-required .control-label:after {
+.febworms-field-required .control-label:after {
     content: ' *';
     color: #888;
 }

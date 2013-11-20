@@ -1,0 +1,9 @@
+.febworms-dropdown.open {
+  position: absolute;
+}
+
+.febworms-dropdown .dropdown-menu {
+  position: static;
+  top: 0; left: 0;
+  float: none;
+}

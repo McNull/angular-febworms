@@ -3,6 +3,35 @@ angular.module('febworms').factory('febwormsUtils', function ($templateCache, $w
     var uniqueCounter = (+new Date) % 10000;
 
     return {
+      getScrollOffset: function() {
+
+        // the pageYOffset property of the window object is supported in all browsers except 
+        // in Internet Explorer before version 9, and always returns the scroll amount regardless of the doctype
+        
+        // the scrollY property of the window object is supported by Firefox, Google Chrome and Safari, and always
+        // returns the scroll amount regardless of the doctype
+        
+        // if a doctype is specified in the document, the scrollTop property of the html element returns the scroll
+        // amount in Internet Explorer, Firefox and Opera, but always returns zero in Google Chrome and Safari
+        
+        // if no doctype is specified in the document, the scrollTop property of the html element always returns zero
+
+        // if no doctype is specified in the document, the scrollTop property of the body element returns the 
+        // scroll amount in Internet Explorer, Firefox, Opera, Google Chrome and Safari.
+
+        var offset = {};
+
+        if($window.pageYOffset !== undefined) {
+          offset.x = $window.pageXOffset;
+          offset.y = $window.pageYOffset;
+        } else {
+          var de = $window.document.documentElement;
+          offset.x = de.scrollLeft;
+          offset.y = de.scrollTop;
+        }
+
+        return offset;
+      },
       defaultArea: 'default',
       getRenderInfo: function(field) {
         var renderInfo = febworms.Field[field.type];

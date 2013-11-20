@@ -36,7 +36,12 @@
         {
           "type": "text",
           "name": "field7850",
-          "displayName": "Textbox"
+          "displayName": "Textbox",
+          "validation": {
+            "messages": {},
+            "pattern": "",
+            "required": true
+          }
         },
         {
           "type": "email",
@@ -388,7 +393,8 @@
           "name": "field7924",
           "displayName": "Textbox",
           "validation": {
-            "required": false
+            "required": true,
+            "messages": {}
           }
         }
       ],
@@ -412,5 +418,33 @@
       "name": "Number"
     },
     "id": 102
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "text",
+          "name": "voornaam",
+          "displayName": "Voornaam",
+          "validation": {
+            "messages": {}
+          },
+          "placeholder": "Vul hier uw voornaam in",
+          "value": "Henk"
+        },
+        {
+          "type": "text",
+          "name": "achternaam",
+          "displayName": "Achternaam",
+          "validation": {
+            "messages": {}
+          },
+          "placeholder": "Vul hier uw achternaam in",
+          "value": ""
+        }
+      ],
+      "name": "Mijn Geweldige Formulier"
+    },
+    "id": 103
   }
 ]
