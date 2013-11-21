@@ -34,11 +34,13 @@ angular.module('febworms').factory('febwormsUtils', function ($templateCache, $w
       },
       defaultArea: 'default',
       getRenderInfo: function(field) {
-        var renderInfo = febworms.Field[field.type];
+        //var renderInfo = febworms.Field[field.type];
+        var renderInfo = febwormsConfig.fields.renderInfo[field.type];
 
         if(!renderInfo) {
           renderInfo = {};
-          febworms.Field[field.type] = renderInfo;
+          // febworms.Field[field.type] = renderInfo;
+          febwormsConfig.fields.renderInfo[field.type] = renderInfo;
         }
 
         if(!renderInfo.templateUrl) {

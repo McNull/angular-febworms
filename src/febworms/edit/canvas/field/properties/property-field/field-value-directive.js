@@ -65,8 +65,13 @@ angular.module('febworms').directive('febwormsPropertyFieldValue', function(febw
     require: ['ngModel'],
     link: function($scope, $element, $attrs, ctrls) {
 
+      var oldValue = $scope.$eval($attrs.ngModel);
+
       $scope.$watch($attrs.ngModel, function(value) {
-        $scope.field.$_redraw = true;
+        if(value != oldValue) {
+          $scope.field.$_redraw = true;
+          oldValue = value;
+        }
       });
     }
   };

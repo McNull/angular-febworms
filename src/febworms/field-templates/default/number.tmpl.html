@@ -4,6 +4,8 @@
        id="{{ field.$_id }}"
        tabindex="{{ tabIndex }}"
        placeholder="{{ field.schema.placeholder }}"
+       min="{{ field.schema.validation.minvalue }}"
+       max="{{ field.schema.validation.maxvalue }}" 
        ng-model="form.data[field.schema.name]"
        ng-required="field.schema.validation.required"
        ng-minlength="{{ field.schema.validation.minlength }}"

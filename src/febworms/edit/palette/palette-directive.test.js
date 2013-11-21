@@ -9,7 +9,8 @@ describe('febworms-edit-palette', function () {
     febwormsConfigMock = {
       fields: {
         templates: [],
-        categories: []
+        categories: {},
+        renderInfo: {}
       }
     };
 

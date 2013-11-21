@@ -446,5 +446,79 @@
       "name": "Mijn Geweldige Formulier"
     },
     "id": 103
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "password",
+          "name": "field609",
+          "displayName": "Password",
+          "validation": {
+            "messages": {
+              "pattern": "The password should contain at least 1 number, 1 lowercase character, 1 uppercase character and 1 special character."
+            },
+            "minlength": 8,
+            "maxlength": 25,
+            "required": true,
+            "pattern": "(?=.*\\d)(?=.*[!@#$%^&*\\-=()|?.\"';:]+)(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+          }
+        }
+      ],
+      "name": "Password"
+    },
+    "id": 104
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "textarea",
+          "name": "field6438",
+          "displayName": "Textarea",
+          "validation": {
+            "messages": {
+              "minlength": ""
+            },
+            "minlength": 10,
+            "maxlength": 20,
+            "required": true
+          }
+        }
+      ],
+      "name": "Textbox"
+    },
+    "id": 105
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "dropdownlist",
+          "name": "field2695",
+          "options": [
+            {
+              "value": "1",
+              "text": "Option 1"
+            },
+            {
+              "value": "2",
+              "text": "Option 2"
+            },
+            {
+              "value": "3",
+              "text": "Option 3"
+            }
+          ],
+          "value": "1",
+          "displayName": "Dropdownlist",
+          "validation": {
+            "messages": {}
+          }
+        }
+      ],
+      "name": "dropdownlist"
+    },
+    "id": 106
   }
 ]

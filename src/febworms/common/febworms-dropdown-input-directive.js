@@ -5,7 +5,7 @@ angular.module('febworms').directive('febwormsDropdownInput', function($compile,
     var template = '<div class="febworms-dropdown-input input-append">' +
       '<input type="text"/>' +
       '<div class="btn-group">' +
-      '<a href="" class="btn dropdown-toggle" ng-click="dropdownVisible = !dropdownVisible">' +
+      '<a href="" class="btn dropdown-toggle" ng-click="dropdownToggle()">' +
       '<span class="caret"></span>' +
       '</a>' +
       '</div>' +
@@ -19,16 +19,18 @@ angular.module('febworms').directive('febwormsDropdownInput', function($compile,
     var attributes = $element.prop("attributes");
 
     angular.forEach(attributes, function(a) {
-
-      if (a.name !== 'febworms-dropdown-input' &&
-        a.name !== 'class') {
-
+      if (a.name !== 'febworms-dropdown-input' && a.name !== 'class') {
         $input.attr(a.name, a.value);
       }
     });
 
     var $button = $template.find('a');
     var closeTimeout;
+
+    $scope.dropdownToggle = function() {
+      $button[0].focus(); // force focus for chrome  
+      $scope.dropdownVisible = !$scope.dropdownVisible
+    };
 
     $button.on('blur', function() {
       closeTimeout = $timeout(function() {
