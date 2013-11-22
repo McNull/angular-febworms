@@ -1350,7 +1350,8 @@ angular.module('febworms').directive('febwormsPropertyFieldCommon', function(feb
     $scope.fields = {
       fieldname: false,
       displayname: false,
-      placeholder: false
+      placeholder: false,
+      tooltip: false
     };
 
     $scope.$watch($attrs['febwormsPropertyFieldCommon'], function(value) {
@@ -2330,6 +2331,15 @@ angular.module("febworms/edit/canvas/field/properties/property-field/common.tmpl
     "             ng-model=\"field.placeholder\"/>\n" +
     "  </div>\n" +
     "</div>\n" +
+    "\n" +
+    "<!-- tooltip -->\n" +
+    "<div ng-if=\"fields.tooltip\">\n" +
+    "  <div febworms-property-field=\"fieldTooltip\" febworms-property-field-label=\"Tooltip\">\n" +
+    "    <input type=\"text\"\n" +
+    "          name=\"fieldTooltip\"\n" +
+    "          ng-model=\"field.tooltip\"/>\n" +
+    "  </div>\n" +
+    "</div>\n" +
     "");
 }]);
 
@@ -2601,7 +2611,7 @@ angular.module("febworms/edit/palette/palette.tmpl.html", []).run(["$templateCac
 
 angular.module("febworms/field-templates/default/checkbox.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/default/checkbox.tmpl.html",
-    "<label class=\"checkbox\">\n" +
+    "<label class=\"checkbox\" title=\"{{ field.schema.tooltip }}\">\n" +
     "    <input febworms-field-input\n" +
     "    	   id=\"{{ field.$_id }}\"\n" +
     "    	   type=\"checkbox\"\n" +
@@ -2614,7 +2624,7 @@ angular.module("febworms/field-templates/default/checkbox.tmpl.html", []).run(["
 
 angular.module("febworms/field-templates/default/checkboxlist.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/default/checkboxlist.tmpl.html",
-    "<label class=\"checkbox\" ng-repeat=\"option in field.schema.options\">\n" +
+    "<label class=\"checkbox\" ng-repeat=\"option in field.schema.options\" title=\"{{ field.schema.tooltip }}\">\n" +
     "    <input febworms-field-input\n" +
     "    	   type=\"checkbox\"\n" +
     "           tabindex=\"{{ tabIndex }}\"\n" +
@@ -2629,6 +2639,7 @@ angular.module("febworms/field-templates/default/dropdownlist.tmpl.html", []).ru
   $templateCache.put("febworms/field-templates/default/dropdownlist.tmpl.html",
     "<div febworms-field-input \n" +
     "	 febworms-dropdown-input=\"field.schema.options\"\n" +
+    "	 title=\"{{ field.schema.tooltip }}\"\n" +
     "	 id=\"{{ field.$_id }}\"\n" +
     "	 ng-model=\"form.data[field.schema.name]\"\n" +
     "	 ng-required=\"field.schema.validation.required\"\n" +
@@ -2647,6 +2658,7 @@ angular.module("febworms/field-templates/default/email.tmpl.html", []).run(["$te
     "<input febworms-field-input\n" +
     "       type=\"email\"\n" +
     "       id=\"{{ field.$_id }}\"\n" +
+    "       title=\"{{ field.schema.tooltip }}\"\n" +
     "       tabindex=\"{{ tabIndex }}\"\n" +
     "       placeholder=\"{{ field.schema.placeholder }}\"\n" +
     "       ng-model=\"form.data[field.schema.name]\"\n" +
@@ -2670,6 +2682,7 @@ angular.module("febworms/field-templates/default/number.tmpl.html", []).run(["$t
     "       febworms-input-number\n" +
     "       type=\"text\"\n" +
     "       id=\"{{ field.$_id }}\"\n" +
+    "       title=\"{{ field.schema.tooltip }}\"\n" +
     "       tabindex=\"{{ tabIndex }}\"\n" +
     "       placeholder=\"{{ field.schema.placeholder }}\"\n" +
     "       min=\"{{ field.schema.validation.min }}\"\n" +
@@ -2687,6 +2700,7 @@ angular.module("febworms/field-templates/default/password.tmpl.html", []).run(["
     "<input febworms-field-input\n" +
     "	   type=\"password\"\n" +
     "       id=\"{{ field.$_id }}\"\n" +
+    "       title=\"{{ field.schema.tooltip }}\"\n" +
     "       tabindex=\"{{ tabIndex }}\"\n" +
     "       placeholder=\"{{ field.schema.placeholder }}\"\n" +
     "       ng-model=\"form.data[field.schema.name]\"\n" +
@@ -2699,7 +2713,7 @@ angular.module("febworms/field-templates/default/password.tmpl.html", []).run(["
 
 angular.module("febworms/field-templates/default/radiobuttonlist.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/default/radiobuttonlist.tmpl.html",
-    "<label class=\"radio\" ng-repeat=\"option in field.schema.options\">\n" +
+    "<label class=\"radio\" ng-repeat=\"option in field.schema.options\" title=\"{{ field.schema.tooltip }}\">\n" +
     "    <input febworms-field-input\n" +
     "    	   type=\"radio\"\n" +
     "           name=\"{{ field.schema.name }}[]\"\n" +
@@ -2714,6 +2728,7 @@ angular.module("febworms/field-templates/default/selectlist.tmpl.html", []).run(
   $templateCache.put("febworms/field-templates/default/selectlist.tmpl.html",
     "<select febworms-field-input\n" +
     "		id=\"{{ field.$_id }}\"\n" +
+    "		title=\"{{ field.schema.tooltip }}\"\n" +
     "        ng-model=\"form.data[field.schema.name]\"\n" +
     "        ng-required=\"field.schema.validation.required\"\n" +
     "        tabindex=\"{{ tabIndex }}\">\n" +
@@ -2729,6 +2744,7 @@ angular.module("febworms/field-templates/default/text.tmpl.html", []).run(["$tem
     "<input febworms-field-input\n" +
     "       type=\"text\"\n" +
     "       id=\"{{ field.$_id }}\"\n" +
+    "       title=\"{{ field.schema.tooltip }}\"\n" +
     "       tabindex=\"{{ tabIndex }}\"\n" +
     "       placeholder=\"{{ field.schema.placeholder }}\"\n" +
     "       ng-model=\"form.data[field.schema.name]\"\n" +
@@ -2745,6 +2761,7 @@ angular.module("febworms/field-templates/default/textarea.tmpl.html", []).run(["
     "		  febworms-placeholder=\"field.schema.placeholder\"\n" +
     "		  ng-model=\"form.data[field.schema.name]\"\n" +
     "		  id=\"{{ field.$_id }}\"\n" +
+    "		  title=\"{{ field.schema.tooltip }}\"\n" +
     "		  tabindex=\"{{ tabIndex }}\"\n" +
     "		  ng-required=\"field.schema.validation.required\"\n" +
     "		  ng-minlength=\"{{ field.schema.validation.minlength }}\"\n" +
@@ -2757,7 +2774,7 @@ angular.module("febworms/field-templates/properties/checkbox.tmpl.html", []).run
   $templateCache.put("febworms/field-templates/properties/checkbox.tmpl.html",
     "<div febworms-tabs>\n" +
     "	<div febworms-tabs-pane=\"Properties\">\n" +
-    "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true }\"></div>\n" +
+    "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, tooltip: true }\"></div>\n" +
     "		<div febworms-property-field=\"fieldValue\">\n" +
     "			<label class=\"checkbox\">\n" +
     "            	<input type=\"checkbox\" name=\"fieldValue\" ng-model=\"field.value\">\n" +
@@ -2772,7 +2789,7 @@ angular.module("febworms/field-templates/properties/checkboxlist.tmpl.html", [])
   $templateCache.put("febworms/field-templates/properties/checkboxlist.tmpl.html",
     "<div febworms-tabs>\n" +
     "    <div febworms-tabs-pane=\"Properties\">\n" +
-    "        <div febworms-property-field-common=\"{ fieldname: true, displayname: true }\"></div>\n" +
+    "        <div febworms-property-field-common=\"{ fieldname: true, displayname: true, tooltip: true }\"></div>\n" +
     "    </div>\n" +
     "    <div febworms-tabs-pane=\"Options\">\n" +
     "        <div febworms-property-field-options=\"multiple\"></div>\n" +
@@ -2785,7 +2802,7 @@ angular.module("febworms/field-templates/properties/dropdownlist.tmpl.html", [])
   $templateCache.put("febworms/field-templates/properties/dropdownlist.tmpl.html",
     "<div febworms-tabs>\n" +
     "	<div febworms-tabs-pane=\"Properties\">\n" +
-    "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
+    "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true, tooltip: true }\"></div>\n" +
     "		<div febworms-property-field-value>\n" +
     "			<div febworms-field-input \n" +
     "				 febworms-dropdown-input=\"field.options\"\n" +
@@ -2807,7 +2824,7 @@ angular.module("febworms/field-templates/properties/email.tmpl.html", []).run(["
   $templateCache.put("febworms/field-templates/properties/email.tmpl.html",
     "<div febworms-tabs>\n" +
     "	<div febworms-tabs-pane=\"Properties\">\n" +
-    "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
+    "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true, tooltip: true }\"></div>\n" +
     "		<div febworms-property-field-value>\n" +
     "			<input type=\"email\" \n" +
     "				   name=\"fieldValue\" \n" +
@@ -2827,7 +2844,7 @@ angular.module("febworms/field-templates/properties/number.tmpl.html", []).run([
   $templateCache.put("febworms/field-templates/properties/number.tmpl.html",
     "<div febworms-tabs>\n" +
     "  <div febworms-tabs-pane=\"Properties\">\n" +
-    "    <div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
+    "    <div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true, tooltip: true }\"></div>\n" +
     "\n" +
     "    <div febworms-property-field-value>\n" +
     "      <input febworms-input-number \n" +
@@ -2888,7 +2905,7 @@ angular.module("febworms/field-templates/properties/password.tmpl.html", []).run
   $templateCache.put("febworms/field-templates/properties/password.tmpl.html",
     "<div febworms-tabs>\n" +
     "  <div febworms-tabs-pane=\"Properties\">\n" +
-    "    <div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
+    "    <div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true, tooltip: true }\"></div>\n" +
     "    <div febworms-property-field-value>\n" +
     "      <input febworms-input-number type=\"password\" name=\"fieldValue\" ng-model=\"field.value\" ng-minlength=\"{{ field.validation.minlength }}\" ng-maxlength=\"{{ field.validation.maxlength }}\" ng-pattern=\"/{{ field.validation.pattern }}/\" />\n" +
     "    </div>\n" +
@@ -2905,7 +2922,7 @@ angular.module("febworms/field-templates/properties/radiobuttonlist.tmpl.html", 
   $templateCache.put("febworms/field-templates/properties/radiobuttonlist.tmpl.html",
     "<div febworms-tabs>\n" +
     "    <div febworms-tabs-pane=\"Properties\">\n" +
-    "        <div febworms-property-field-common=\"{ fieldname: true, displayname: true }\"></div>\n" +
+    "        <div febworms-property-field-common=\"{ fieldname: true, displayname: true, tooltip: true }\"></div>\n" +
     "    </div>\n" +
     "    <div febworms-tabs-pane=\"Options\">\n" +
     "        <div febworms-property-field-options></div>\n" +
@@ -2918,7 +2935,7 @@ angular.module("febworms/field-templates/properties/selectlist.tmpl.html", []).r
   $templateCache.put("febworms/field-templates/properties/selectlist.tmpl.html",
     "<div febworms-tabs>\n" +
     "    <div febworms-tabs-pane=\"Properties\">\n" +
-    "        <div febworms-property-field-common=\"{ fieldname: true, displayname: true }\"></div>\n" +
+    "        <div febworms-property-field-common=\"{ fieldname: true, displayname: true, tooltip: true }\"></div>\n" +
     "    </div>\n" +
     "    <div febworms-tabs-pane=\"Options\">\n" +
     "        <div febworms-property-field-options></div>\n" +
@@ -2931,7 +2948,7 @@ angular.module("febworms/field-templates/properties/text.tmpl.html", []).run(["$
   $templateCache.put("febworms/field-templates/properties/text.tmpl.html",
     "<div febworms-tabs>\n" +
     "	<div febworms-tabs-pane=\"Properties\">\n" +
-    "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
+    "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true, tooltip: true }\"></div>\n" +
     "		<!-- \n" +
     "			\n" +
     "			The field-value directive will re-render itself when certain validation values are modified.\n" +
@@ -2961,7 +2978,7 @@ angular.module("febworms/field-templates/properties/textarea.tmpl.html", []).run
   $templateCache.put("febworms/field-templates/properties/textarea.tmpl.html",
     "<div febworms-tabs>\n" +
     "	<div febworms-tabs-pane=\"Properties\">\n" +
-    "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
+    "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true, tooltip: true }\"></div>\n" +
     "		<div febworms-property-field-value>\n" +
     "			<textarea name=\"fieldValue\" \n" +
     "				   ng-model=\"field.value\" \n" +
