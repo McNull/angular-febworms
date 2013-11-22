@@ -489,5 +489,19 @@
       "name": "Textbox"
     },
     "id": 105
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "checkbox",
+          "name": "field9337",
+          "nolabel": true,
+          "displayName": "Checkbox"
+        }
+      ],
+      "name": "Checkbox"
+    },
+    "id": 106
   }
 ]

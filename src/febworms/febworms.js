@@ -3,9 +3,8 @@ var febworms = febworms || {};
  * Constructor for febworm Field types.
  * @param {string} type         Indicates the type of field
  * @param {object} properties   [optional] Initial property values
- * @param {object} renderInfo   [optional] Render information
  */
-febworms.Field = function(type, properties, renderInfo) {
+febworms.Field = function(type, properties) {
   this.name = this.type = type;
 
   if (properties) {
@@ -13,7 +12,6 @@ febworms.Field = function(type, properties, renderInfo) {
   }
 
   this.displayName = this.displayName || this.type.charAt(0).toUpperCase() + this.type.substring(1);
-  febworms.Field[type] = renderInfo || {};
 };
 
 angular.module('febworms', ['ngRoute', 'dq', 'templates-febworms']);
@@ -173,7 +171,7 @@ angular.module('febworms').config(function(febwormsConfigProvider) {
       new febworms.Field('textarea')
     ],
     'Checkbox fields': [
-      new febworms.Field('checkbox'),
+      new febworms.Field('checkbox', { nolabel: true }),
       new febworms.Field('checkboxlist', {
         displayName: 'Checkbox List',
         options: [{
