@@ -152,8 +152,8 @@ angular.module('febworms').config(function(febwormsConfigProvider) {
     email: 'The value "{{ field.state.$viewValue }}" is not a valid email address.',
     unique: 'The value "{{ field.state.$viewValue }}" is already in use.',
     number: 'The value "{{ field.state.$viewValue }}" is not a number.',
-    min: 'The value {{ field.schema && ("should be at least " + field.schema.validation.minvalue) || field.state.$viewValue + " is too low" }}',
-    max: 'The value {{ field.schema && ("should be less than " + field.schema.validation.minvalue) || field.state.$viewValue + " is too high" }}'
+    min: 'The value {{ field.schema && ("should be at least " + field.schema.validation.min) || field.state.$viewValue + " is too low" }}',
+    max: 'The value {{ field.schema && ("should be less than " + field.schema.validation.max) || field.state.$viewValue + " is too high" }}'
   });
 
   // - - - - - - - - - - - - - - - - - - - - - -

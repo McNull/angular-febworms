@@ -427,7 +427,9 @@
           "name": "voornaam",
           "displayName": "Voornaam",
           "validation": {
-            "messages": {}
+            "messages": {},
+            "minlength": 4,
+            "required": true
           },
           "placeholder": "Vul hier uw voornaam in",
           "value": "Henk"
@@ -503,5 +505,51 @@
       "name": "Checkbox"
     },
     "id": 106
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "text",
+          "name": "firstname",
+          "displayName": "First name",
+          "validation": {
+            "messages": {},
+            "required": true
+          }
+        },
+        {
+          "type": "text",
+          "name": "lastname",
+          "displayName": "Last name",
+          "validation": {
+            "messages": {
+              "pattern": "A name should always start with a uppercase letter."
+            },
+            "pattern": "^[A-Z]",
+            "required": true
+          }
+        },
+        {
+          "type": "number",
+          "name": "field6677",
+          "displayName": "Number",
+          "validation": {
+            "messages": {
+              "minvalue": "Sorry {{ form.data.firstname }}, but you're way too young!",
+              "maxvalue": "Sorry {{ form.data.firstname }}, but you're way too old!",
+              "min": "Sorry {{ form.data.firstname }}, but you're way too young!",
+              "max": "Sorry {{ form.data.firstname }}, but you're way too old!"
+            },
+            "minvalue": 20,
+            "maxvalue": 50,
+            "min": 20,
+            "max": 30
+          }
+        }
+      ],
+      "name": "Validation Summary"
+    },
+    "id": 107
   }
 ]

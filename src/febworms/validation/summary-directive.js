@@ -19,8 +19,14 @@ angular.module('febworms').directive('febwormsValidationSummary', function(febwo
     if (febwormsFieldCtrl) {
       // Grab the whole field state from the field controller
       $scope.field = febwormsFieldCtrl.field();
+      $scope.form = febwormsFieldCtrl.form();
+
     } else if (ngFormController) {
       
+      $scope.form = {
+        state: ngFormController
+      };
+
       $scope.$watch('fieldName', function(value) {
         $scope.field = {
           name: value,

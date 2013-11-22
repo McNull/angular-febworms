@@ -7,8 +7,8 @@
              type="text" 
              name="fieldValue" 
              ng-model="field.value" 
-             min="{{ field.validation.minvalue }}"
-             max="{{ field.validation.maxvalue }}"
+             min="{{ field.validation.min }}"
+             max="{{ field.validation.max }}"
              ng-minlength="{{ field.validation.minlength }}"
              ng-maxlength="{{ field.validation.maxlength }}"
              ng-pattern="/{{ field.validation.pattern }}/"/>
@@ -17,37 +17,37 @@
     
   <div febworms-tabs-pane="Validation">
 
-    <!-- minvalue -->
+    <!-- min -->
     <div class="febworms-property-field-validation">  
-      <div febworms-property-field="minvalue" 
+      <div febworms-property-field="min" 
            febworms-property-field-label="Minimum value">
            <input febworms-input-number
                   febworms-field-redraw
                   type="text"
-                  name="minvalue"
+                  name="min"
                   title="The minimum value that should be entered"
-                  ng-model="field.validation.minvalue"/>
+                  ng-model="field.validation.min"/>
       </div>
 
-      <div ng-if="field.validation.minvalue >= 0" >
-        <div febworms-edit-validation-message="minvalue"></div>
+      <div ng-if="field.validation.min >= 0" >
+        <div febworms-edit-validation-message="min"></div>
       </div>
     </div>
 
-    <!-- maxvalue -->
+    <!-- max -->
     <div class="febworms-property-field-validation">  
-      <div febworms-property-field="maxvalue" 
+      <div febworms-property-field="max" 
            febworms-property-field-label="Maximum value">
            <input febworms-input-number
                   febworms-field-redraw
                   type="text"
-                  name="maxvalue"
+                  name="max"
                   title="The maximum value that should be entered"
-                  ng-model="field.validation.maxvalue"/>
+                  ng-model="field.validation.max"/>
       </div>
 
-      <div ng-if="field.validation.maxvalue >= 0" >
-        <div febworms-edit-validation-message="maxvalue"></div>
+      <div ng-if="field.validation.max >= 0" >
+        <div febworms-edit-validation-message="max"></div>
       </div>
     </div>
 
