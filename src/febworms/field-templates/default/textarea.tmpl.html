@@ -2,6 +2,7 @@
 		  febworms-placeholder="field.schema.placeholder"
 		  ng-model="form.data[field.schema.name]"
 		  id="{{ field.$_id }}"
+		  title="{{ field.schema.tooltip }}"
 		  tabindex="{{ tabIndex }}"
 		  ng-required="field.schema.validation.required"
 		  ng-minlength="{{ field.schema.validation.minlength }}"
