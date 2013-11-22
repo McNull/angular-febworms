@@ -407,12 +407,12 @@
       "fields": [
         {
           "type": "number",
-          "name": "myNumberField",
-          "displayName": "Number",
+          "name": "field8104",
           "validation": {
-            "messages": {},
-            "required": false
-          }
+            "maxlength": 15,
+            "messages": {}
+          },
+          "displayName": "Number"
         }
       ],
       "name": "Number"
@@ -546,6 +546,23 @@
             "min": 20,
             "max": 30
           }
+        },
+        {
+          "type": "radiobuttonlist",
+          "name": "field7707",
+          "displayName": "Radiobutton List",
+          "options": [
+            {
+              "value": "Option 1"
+            },
+            {
+              "value": "Option 2"
+            },
+            {
+              "value": "Option 3"
+            }
+          ],
+          "value": "Option 1"
         }
       ],
       "name": "Validation Summary"

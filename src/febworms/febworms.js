@@ -166,7 +166,9 @@ angular.module('febworms').config(function(febwormsConfigProvider) {
         displayName: 'Textbox'
       }),
       new febworms.Field('email'),
-      new febworms.Field('number'),
+      new febworms.Field('number', { 
+        validation: { maxlength: 15 /* to prevent > Number.MAX_VALUE */ }  
+      }),
       new febworms.Field('password'),
       new febworms.Field('textarea')
     ],
