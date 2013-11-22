@@ -489,36 +489,5 @@
       "name": "Textbox"
     },
     "id": 105
-  },
-  {
-    "schema": {
-      "fields": [
-        {
-          "type": "dropdownlist",
-          "name": "field2695",
-          "options": [
-            {
-              "value": "1",
-              "text": "Option 1"
-            },
-            {
-              "value": "2",
-              "text": "Option 2"
-            },
-            {
-              "value": "3",
-              "text": "Option 3"
-            }
-          ],
-          "value": "1",
-          "displayName": "Dropdownlist",
-          "validation": {
-            "messages": {}
-          }
-        }
-      ],
-      "name": "dropdownlist"
-    },
-    "id": 106
   }
 ]

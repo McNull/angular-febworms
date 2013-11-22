@@ -5,7 +5,7 @@ var febworms = febworms || {};
  * @param {object} properties   [optional] Initial property values
  * @param {object} renderInfo   [optional] Render information
  */
-febworms.Field = function (type, properties, renderInfo) {
+febworms.Field = function(type, properties, renderInfo) {
   this.name = this.type = type;
 
   if (properties) {
@@ -16,64 +16,254 @@ febworms.Field = function (type, properties, renderInfo) {
   febworms.Field[type] = renderInfo || {};
 };
 
-angular.module('febworms', ['ngRoute', 'dq', 'templates-febworms']).constant('febwormsConfig', {
-  enableDebugInfo: true,
-  validation: {
-    messages: {
-      required: 'Field value is required.',
-      minlength: 'Field value does not match the minimum length.',
-      maxlength: 'Field value exceeds the maximum length.',
-      pattern: 'The value "{{ field.state.$viewValue }}" does not match the required format.',
-      email: 'The value "{{ field.state.$viewValue }}" is not a valid email address.',
-      unique: 'The value "{{ field.state.$viewValue }}" is already in use.'
+angular.module('febworms', ['ngRoute', 'dq', 'templates-febworms']);
+
+angular.module('febworms').config(function($provide) {
+
+  $provide.provider('febwormsConfig', function() {
+
+    var config = {
+      enableDebugInfo: true,
+      validation: {
+        messages: {},
+        patterns: {}
+      },
+      fields: {
+        templates: [],
+        categories: {},
+        renderInfo: {}
+      }
+    };
+
+    var templates = config.fields.templates;
+
+    function indexOfTemplate(type) {
+      var idx = templates.length;
+
+      while (idx--) {
+        if (templates[idx].type === type) {
+          break;
+        }
+      }
+
+      return idx;
     }
-  },
-  fields: {
-    templates: [
+
+    return {
+      debug: function(value) {
+        config.enableDebugInfo = value;
+      },
+      fields: {
+        add: function(objectTemplate, categories, templateUrl, propertiesTemplateUrl) {
+          
+          if (!objectTemplate || !objectTemplate.type || !categories || !categories.length) {
+            throw new Error('Need a valid objectTemplate and at least one category');
+          }
+
+          var idx = indexOfTemplate(objectTemplate.type);
+
+          if (idx !== -1) {
+            templates[idx] = objectTemplate;
+          } else {
+            templates.push(objectTemplate);
+          }
+
+          this.category(objectTemplate.type, categories);
+          this.renderInfo(objectTemplate.type, templateUrl, propertiesTemplateUrl);
+        },
+        remove: function(type) {
+          var idx = indexOfTemplate(type);
+
+          if(idx !== -1) {
+            templates.splice(idx, 1);
+          }
+
+          this.category(type);
+          this.renderInfo(type);
+        },
+        renderInfo: function(fieldType, templateUrl, propertiesTemplateUrl) {
+          var renderInfo = {
+            templateUrl: templateUrl,
+            propertiesTemplateUrl: propertiesTemplateUrl
+          };
+
+          config.fields.renderInfo[fieldType] = renderInfo;
+        },
+        category: function(fieldType, categories) {
+          if (!angular.isArray(categories)) {
+            categories = [categories];
+          }
+
+          angular.forEach(config.fields.categories, function(category) {
+            delete category[fieldType];
+          });
+
+          angular.forEach(categories, function(category) {
+            if (config.fields.categories[category] === undefined) {
+              config.fields.categories[category] = {};
+            }
+
+            config.fields.categories[category][fieldType] = true;
+          });          
+        }
+      },
+      validation: {
+        message: function(typeOrObject, message) {
+
+          var messages = config.validation.messages;
+
+          if (angular.isString(typeOrObject)) {
+
+            if (!message) {
+              throw new Error('No message specified for ' + typeOrObject);
+            }
+
+            messages[typeOrObject] = message;
+          } else {
+            angular.extend(messages, typeOrObject);
+          }
+        },
+        pattern: function(nameOrObject, pattern) {
+
+          if(angular.isString(nameOrObject)) {
+            config.validation.patterns[name] = pattern;
+          } else {
+            angular.extend(config.validation.patterns, nameOrObject);
+          }
+        }
+      },
+      $get: function() {
+        return config;
+      }
+    };
+  });
+
+});
+
+angular.module('febworms').config(function(febwormsConfigProvider) {
+
+  // - - - - - - - - - - - - - - - - - - - - - -
+  // Messages
+  // - - - - - - - - - - - - - - - - - - - - - -
+
+  febwormsConfigProvider.validation.message({
+    required: 'A value is required for this field.',
+    minlength: 'The value does not match the minimum length{{ field.schema && (" of " + field.schema.validation.minlength + " characters" || "")}}.',
+    maxlength: 'The value exceeds the maximum length{{ field.schema && (" of " + field.schema.validation.maxlength + " characters" || "")}}.',
+    pattern: 'The value "{{ field.state.$viewValue }}" does not match the required format.',
+    email: 'The value "{{ field.state.$viewValue }}" is not a valid email address.',
+    unique: 'The value "{{ field.state.$viewValue }}" is already in use.',
+    number: 'The value "{{ field.state.$viewValue }}" is not a number.',
+    min: 'The value {{ field.schema && ("should be at least " + field.schema.validation.minvalue) || field.state.$viewValue + " is too low" }}',
+    max: 'The value {{ field.schema && ("should be less than " + field.schema.validation.minvalue) || field.state.$viewValue + " is too high" }}'
+  });
+
+  // - - - - - - - - - - - - - - - - - - - - - -
+  // Fields
+  // - - - - - - - - - - - - - - - - - - - - - -
+
+  var categories = {
+    'Text input fields': [
       new febworms.Field('text', {
         displayName: 'Textbox'
-      }), 
-      new febworms.Field('email'), 
-      new febworms.Field('password'), 
-      new febworms.Field('textarea'), 
-      new febworms.Field('checkbox', {}, { hideLabel: true }), 
+      }),
+      new febworms.Field('email'),
+      new febworms.Field('number'),
+      new febworms.Field('password'),
+      new febworms.Field('textarea')
+    ],
+    'Checkbox fields': [
+      new febworms.Field('checkbox'),
       new febworms.Field('checkboxlist', {
         displayName: 'Checkbox List',
-        options: [
-          { value: '1', text: 'Option 1' },
-          { value: '2', text: 'Option 2' },
-          { value: '3', text: 'Option 3' }
-        ],
+        options: [{
+          value: '1',
+          text: 'Option 1'
+        }, {
+          value: '2',
+          text: 'Option 2'
+        }, {
+          value: '3',
+          text: 'Option 3'
+        }],
         value: {
-          '1': true, '2': true
+          '1': true,
+          '2': true
         }
-      }), new febworms.Field('radiobuttonlist', {
-        displayName: 'Radiobutton List',
-        options: [
-          { value: '1', text: 'Option 1' },
-          { value: '2', text: 'Option 2' },
-          { value: '3', text: 'Option 3' }
-        ],
-        value: '1'
-      }), new febworms.Field('selectlist', {
-        displayName: 'Select List',
-        options: [
-          { value: '1', text: 'Option 1' },
-          { value: '2', text: 'Option 2' },
-          { value: '3', text: 'Option 3' }
-        ],
-        value: '1'
       })
     ],
-    categories: {
-      'Text input fields': {
-        'text': true, 'email': true, 'password': true, 'textarea': true
-      },
-      'Checkbox fields': { 'checkbox': true, 'checkboxlist': true },
-      'Select input fields': { 'radiobuttonlist': true, 'selectlist': true }
-    }
-  }
+    'Select input fields': [
+      new febworms.Field('radiobuttonlist', {
+        displayName: 'Radiobutton List',
+        options: [{
+          value: '1',
+          text: 'Option 1'
+        }, {
+          value: '2',
+          text: 'Option 2'
+        }, {
+          value: '3',
+          text: 'Option 3'
+        }],
+        value: '1'
+      }),
+      new febworms.Field('selectlist', {
+        displayName: 'Select List',
+        options: [{
+          value: '1',
+          text: 'Option 1'
+        }, {
+          value: '2',
+          text: 'Option 2'
+        }, {
+          value: '3',
+          text: 'Option 3'
+        }],
+        value: '1'
+      }) // ,
+      // new febworms.Field('dropdownlist', {
+      //   options: [{
+      //     value: '1',
+      //     text: 'Option 1'
+      //   }, {
+      //     value: '2',
+      //     text: 'Option 2'
+      //   }, {
+      //     value: '3',
+      //     text: 'Option 3'
+      //   }],
+      //   value: '1'
+      // })
+    ]
+  };
+
+  angular.forEach(categories, function(fields, category) {
+    angular.forEach(fields, function(field) {
+      febwormsConfigProvider.fields.add(field, category /*, templateUrl, propertiesTemplateUrl */ );
+    });
+  });
+
+  // - - - - - - - - - - - - - - - - - - - - - -
+  // Patterns
+  // - - - - - - - - - - - - - - - - - - - - - -
+
+  febwormsConfigProvider.validation.pattern({
+    'None': undefined,
+    'Url': '^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$',
+    'Domain': '^([a-z][a-z0-9\-]+(\\.|\\-*\\.))+[a-z]{2,6}$',
+    'IPv4 Address': '^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$',
+    'Email Address': '^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$',
+    'Integer': '^-{0,1}\\d+$',
+    'Positive Integers': '^\\d+$',
+    'Negative Integers': '^-\\d+$',
+    'Number': '^-{0,1}\\d*\\.{0,1}\d+$',
+    'Positive Number': '^\\d*\\.{0,1}\\d+$',
+    'Negative Number': '^-\\d*\\.{0,1}\\d+$',
+    'Year (1920-2099)': '^(19|20)[\\d]{2,2}$',
+    'Password': '(?=.*\\d)(?=.*[!@#$%^&*\\-=()|?.\"\';:]+)(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$'
+  });
 });
+
 angular.module('febworms').directive('febwormsBindExpression', function ($interpolate) {
 
   function buildWatchExpression(interpolateFn) {
@@ -134,18 +324,310 @@ angular.module('febworms').directive('febwormsBindExpression', function ($interp
   };
 });
 
+angular.module('febworms').directive('febwormsDropdownInput', function($compile, $document, $timeout, $parse, febwormsUtils) {
+
+  function createInput($scope, $element, $attrs) {
+
+    var template = '<div class="febworms-dropdown-input input-append">' +
+      '<input type="text"/>' +
+      '<div class="btn-group">' +
+      '<a href="" class="btn dropdown-toggle" ng-click="dropdownToggle()">' +
+      '<span class="caret"></span>' +
+      '</a>' +
+      '</div>' +
+      '</div>';
+
+    var $template = angular.element(template);
+    var $input = $template.find('input');
+
+    // Copy the original attributes to the input element
+
+    var attributes = $element.prop("attributes");
+
+    angular.forEach(attributes, function(a) {
+      if (a.name !== 'febworms-dropdown-input' && a.name !== 'class') {
+        $input.attr(a.name, a.value);
+      }
+    });
+
+    var $button = $template.find('a');
+    var closeTimeout;
+
+    $scope.dropdownToggle = function() {
+      $button[0].focus(); // force focus for chrome  
+      $scope.dropdownVisible = !$scope.dropdownVisible
+    };
+
+    $button.on('blur', function() {
+      closeTimeout = $timeout(function() {
+        $scope.dropdownVisible = false;
+      }, 100);
+    });
+
+    $scope.$on('$destroy', function() {
+      if (closeTimeout) $timeout.cancel(closeTimeout);
+      closeTimeout = undefined;
+    });
+
+    return $template;
+  }
+
+  function createDropdown($scope, $element, $attrs, ngModelCtrl, $input) {
+
+    var modelGetter = $parse($attrs.ngModel);
+    var modelSetter = modelGetter.assign;
+
+    var template = '<div class="febworms-dropdown" ng-class="{ \'open\': dropdownVisible }">' +
+      '<ul ng-if="items && items.length" class="dropdown-menu">' +
+      '<li ng-repeat="item in items" ng-class="{ active: item.value === getModelValue() }">' +
+      '<a href="" ng-click="setModelValue(item.value)">{{ item.text || item.value }}</a>' +
+      '</li>' +
+      '</ul>' +
+      '</div>';
+
+    var $template = angular.element(template);
+
+    $scope.setModelValue = function(value) {
+
+      $scope.dropdownVisible = false;
+
+      // Convert to a string
+
+      var viewValue = value || '';
+
+      var idx = ngModelCtrl.$formatters.length;
+
+      while (idx--) {
+        var fn = ngModelCtrl.$formatters[idx];
+        var viewValue = fn(viewValue);
+
+        if (viewValue === undefined) {
+          break;
+        }
+      };
+
+      // Parse the viewValue
+
+      idx = ngModelCtrl.$parsers.length;
+      var pv = viewValue;
+
+      while (idx--) {
+        var fn = ngModelCtrl.$parsers[idx];
+        pv = fn(pv);
+
+        if (pv === undefined) {
+          break;
+        }
+      }
+
+      if (pv === undefined) {
+        // Failed to parse.
+        // Set the formatted string in the input, which will retrigger the parsing and display the correct error message.
+
+        ngModelCtrl.$setViewValue(viewValue);
+        ngModelCtrl.$render();
+
+      } else {
+        modelSetter($scope, value);
+      }
+    };
+
+    $scope.getModelValue = function() {
+      return modelGetter($scope);
+    };
+
+    var input = $input[0];
+
+    $scope.$watch('dropdownVisible', function(value) {
+      if (value) {
+
+        var rect = input.getBoundingClientRect();
+        var scroll = febwormsUtils.getScrollOffset();
+
+        $template.css({
+          left: (scroll.x + rect.left) + 'px',
+          top: (scroll.y + rect.top + input.clientHeight) + 'px',
+          width: input.clientWidth + 'px'
+        });
+      }
+    });
+
+    $scope.$watchCollection($attrs.febwormsDropdownInput, function(value) {
+      $scope.items = value;
+    });
+
+    $scope.$on('$destroy', function() {
+      $template.remove();
+    });
+
+    return $template;
+  }
+
+  return {
+    priority: 1000,
+    restrict: 'A',
+    terminal: true,
+    scope: true,
+    compile: function(tElement, tAttrs) {
+
+      return function link($scope, $element, $attrs, ctrls) {
+
+        var $input = createInput($scope, $element, $attrs);
+
+        $element.append($input);
+        $compile($input)($scope);
+
+        var $inputText = $input.find('input');
+        var ngModelCtrl = $inputText.controller('ngModel');
+
+        ////////////////////////////////////////
+
+        var $dropdown = createDropdown($scope, $element, $attrs, ngModelCtrl, $input);
+        var dropdownCompileFn = $compile($dropdown);
+
+        var $body = $document.find('body');
+
+        $body.append($dropdown);
+
+        dropdownCompileFn($scope);
+
+        ////////////////////////////////////////
+      };
+    }
+  };
+});
+
+angular.module('febworms').directive('febwormsInputNumber', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attr, ctrl) {
+      
+      ctrl.$parsers.push(function(inputValue) {
+        // this next if is necessary for when using ng-required on your input. 
+        // In such cases, when a letter is typed first, this parser will be called
+        // again, and the 2nd time, the value will be undefined
+        if (inputValue == undefined) {
+          return '';
+        }
+
+        var transformedInput = inputValue.replace(/[^0-9]/g, '');
+
+        var value = parseInt(transformedInput);
+        value === NaN ? undefined : value;
+
+        if (transformedInput != inputValue) {
+          ctrl.$setViewValue(transformedInput);
+          ctrl.$render();
+        }
+
+        return value;
+
+      });
+
+      ctrl.$parsers.push(function(value) {
+        var empty = ctrl.$isEmpty(value);
+        if (empty || /^\s*(\-|\+)?(\d+|(\d*(\.\d*)))\s*$/.test(value)) {
+          ctrl.$setValidity('number', true);
+          return value === '' ? null : (empty ? value : parseFloat(value));
+        } else {
+          ctrl.$setValidity('number', false);
+          return undefined;
+        }
+      });
+
+      ctrl.$formatters.push(function(value) {
+        return ctrl.$isEmpty(value) ? undefined : value;
+      });
+
+      if (attr.min) {
+        var minValidator = function(value) {
+          var min = parseFloat(attr.min);
+          if (!ctrl.$isEmpty(value) && value < min) {
+            ctrl.$setValidity('min', false);
+            return undefined;
+          } else {
+            ctrl.$setValidity('min', true);
+            return value;
+          }
+        };
+
+        ctrl.$parsers.push(minValidator);
+        ctrl.$formatters.push(minValidator);
+      }
+
+      if (attr.max) {
+        var maxValidator = function(value) {
+          var max = parseFloat(attr.max);
+          if (!ctrl.$isEmpty(value) && value > max) {
+            ctrl.$setValidity('max', false);
+            return undefined;
+          } else {
+            ctrl.$setValidity('max', true);
+            return value;
+          }
+        };
+
+        ctrl.$parsers.push(maxValidator);
+        ctrl.$formatters.push(maxValidator);
+      }
+
+      ctrl.$formatters.push(function(value) {
+
+        if (ctrl.$isEmpty(value) || angular.isNumber(value)) {
+          ctrl.$setValidity('number', true);
+          return value;
+        } else {
+          ctrl.$setValidity('number', false);
+          return undefined;
+        }
+      });
+    }
+  };
+});
+
 angular.module('febworms').factory('febwormsUtils', function ($templateCache, $window, febwormsConfig) {
 
     var uniqueCounter = (+new Date) % 10000;
 
     return {
+      getScrollOffset: function() {
+
+        // the pageYOffset property of the window object is supported in all browsers except 
+        // in Internet Explorer before version 9, and always returns the scroll amount regardless of the doctype
+        
+        // the scrollY property of the window object is supported by Firefox, Google Chrome and Safari, and always
+        // returns the scroll amount regardless of the doctype
+        
+        // if a doctype is specified in the document, the scrollTop property of the html element returns the scroll
+        // amount in Internet Explorer, Firefox and Opera, but always returns zero in Google Chrome and Safari
+        
+        // if no doctype is specified in the document, the scrollTop property of the html element always returns zero
+
+        // if no doctype is specified in the document, the scrollTop property of the body element returns the 
+        // scroll amount in Internet Explorer, Firefox, Opera, Google Chrome and Safari.
+
+        var offset = {};
+
+        if($window.pageYOffset !== undefined) {
+          offset.x = $window.pageXOffset;
+          offset.y = $window.pageYOffset;
+        } else {
+          var de = $window.document.documentElement;
+          offset.x = de.scrollLeft;
+          offset.y = de.scrollTop;
+        }
+
+        return offset;
+      },
       defaultArea: 'default',
       getRenderInfo: function(field) {
-        var renderInfo = febworms.Field[field.type];
+        //var renderInfo = febworms.Field[field.type];
+        var renderInfo = febwormsConfig.fields.renderInfo[field.type];
 
         if(!renderInfo) {
           renderInfo = {};
-          febworms.Field[field.type] = renderInfo;
+          // febworms.Field[field.type] = renderInfo;
+          febwormsConfig.fields.renderInfo[field.type] = renderInfo;
         }
 
         if(!renderInfo.templateUrl) {
@@ -862,6 +1344,85 @@ angular.module('febworms').directive('febwormsPropertyFieldCommon', function(feb
     });
   };
 });
+/*
+      The field-value directive will re-render itself when certain validation values are modified.
+      This is needed because angular does not watch or observe the values of certain attributes and allows
+      an invalid initial value to be saved in the form schema.
+
+      Important: the transcluded form field must be name fieldValue!
+
+      <div febworms-property-field-value>
+        <input type="text" 
+               name="fieldValue" 
+               ng-model="field.value" 
+               ng-minlength="{{ field.validation.minlength }}"
+               ng-maxlength="{{ field.validation.maxlength }}"
+               ng-pattern="/{{ field.validation.pattern }}/"/>
+      </div>
+
+      The febworms-field-redraw directive will trigger, on model change, the field-value to re-render itself.
+ */
+
+angular.module('febworms').directive('febwormsPropertyFieldValue', function(febwormsPropertyFieldValueLinkFn) {
+
+  return {
+    require: ['^form'],
+    templateUrl: 'febworms/edit/canvas/field/properties/property-field/field-value.tmpl.html',
+    transclude: true,
+    link: febwormsPropertyFieldValueLinkFn
+  };
+
+}).factory('febwormsPropertyFieldValueLinkFn', function($parse) {
+
+  return function($scope, $element, $attrs, ctrls) {
+
+    $scope.draw = true;
+    var frmCtrl = ctrls[0];
+    var oldViewValue;
+
+    $scope.$watch('field.$_redraw', function(value) {
+
+      if (value) {
+
+        var ngModelCtrl = frmCtrl['fieldValue'];
+
+        if(ngModelCtrl) {
+          oldViewValue = ngModelCtrl.$viewValue;
+        }
+
+        $scope.draw = false;
+        $scope.field.$_redraw = false;
+      } else {
+        $scope.draw = true;
+        $element = $element;
+      }
+    });
+
+    $scope.$watch(function() { return frmCtrl['fieldValue']; }, function(ngModelCtrl) {
+      if(ngModelCtrl && oldViewValue) {
+        ngModelCtrl.$setViewValue(oldViewValue);
+        ngModelCtrl.$render();
+        oldViewValue = undefined;
+      }
+    });
+  };
+}).directive('febwormsFieldRedraw', function() {
+  return {
+    require: ['ngModel'],
+    link: function($scope, $element, $attrs, ctrls) {
+
+      var oldValue = $scope.$eval($attrs.ngModel);
+
+      $scope.$watch($attrs.ngModel, function(value) {
+        if(value != oldValue) {
+          $scope.field.$_redraw = true;
+          oldValue = value;
+        }
+      });
+    }
+  };
+});
+
 angular.module('febworms').directive('febwormsPropertyField', function(febwormsPropertyFieldLinkFn) {
 
   return {
@@ -885,6 +1446,84 @@ angular.module('febworms').directive('febwormsPropertyField', function(febwormsP
       }
     });
 
+  };
+});
+angular.module('febworms').directive('febwormsParsePattern', function() {
+
+  return {
+    require: ['ngModel'],
+    link: function($scope, $element, $attrs, ctrls) {
+      var ngModelCtrl = ctrls[0];
+
+      ngModelCtrl.$parsers.push(validate);
+      
+      function validate(value) {
+        try {
+          new RegExp(value);
+        } catch(e) {
+          ngModelCtrl.$setValidity('pattern', false);
+          return undefined;
+        }
+
+        ngModelCtrl.$setValidity('pattern', true);
+        return value;
+      }
+    }
+  };
+});
+angular.module('febworms').directive('febwormsPropertyFieldValidation', function(febwormsPropertyFieldValidationLinkFn) {
+  return {
+    restrict: 'A',
+    templateUrl: 'febworms/edit/canvas/field/properties/validation/validation.tmpl.html',
+    link: febwormsPropertyFieldValidationLinkFn
+  };
+}).factory('febwormsPropertyFieldValidationLinkFn', function(febwormsConfig) {
+
+  var patternOptions = [];
+  var patternConfig = febwormsConfig.validation.patterns;
+
+  angular.forEach(patternConfig, function(value, text) {
+    patternOptions.push({ value: value, text: text });
+  });
+
+  return function($scope, $element, $attrs, ctrls) {
+
+    $scope.patternOptions = patternOptions;
+
+    $scope.field.validation = $scope.field.validation || {};
+    $scope.field.validation.messages = $scope.field.validation.messages || {};
+
+    $scope.fields = {
+      required: false,
+      minlength: false,
+      maxlength: false,
+      pattern: false
+    };
+
+    $scope.$watch($attrs['febwormsPropertyFieldValidation'], function(value) {
+      $scope.fields = angular.extend($scope.fields, value);
+    });
+  };
+});
+angular.module('febworms').directive('febwormsEditValidationMessage', function(febwormsEditValidationMessageLinkFn) {
+  return {
+    templateUrl: 'febworms/edit/canvas/field/properties/validation/validation-message.tmpl.html',
+    link: febwormsEditValidationMessageLinkFn,
+    scope: true
+  };
+}).factory('febwormsEditValidationMessageLinkFn', function() {
+
+  var DEFAULT_TOOLTIP = "Enter a error message here that will be shown if this validation fails. If this field is empty a default message will be used.";
+  
+  return function($scope, $element, $attrs, ctrls) {
+    $attrs.$observe('febwormsEditValidationMessage', function(value) {
+      $scope.validationType = value;
+    });
+
+    $attrs.$observe('febwormsEditValidationTooltip', function(value) {
+      value = value || DEFAULT_TOOLTIP;
+      $scope.tooltip = value;
+    });
   };
 });
 angular.module('febworms').controller('febwormsEditController', function($scope, febwormsUtils, $location) {
@@ -1394,10 +2033,20 @@ angular.module('febworms').directive('febwormsValidationSummary', function(febwo
           state: ngFormController[value]
         };
       });
-
     }
 
-    $scope.messages = angular.extend({}, febwormsConfig.validation.messages, $scope.validationMessages)
+    // Whenever the form designer edits a custom message but decides to delete it later a "" is leftover.
+    // I don't feel like setting all kinds of watchers so we'll fix that here
+
+    if($scope.validationMessages) {
+      angular.forEach($scope.validationMessages, function(value, key) {
+        if(!value) {
+          delete $scope.validationMessages[key];
+        }
+      });
+    }
+
+    $scope.messages = angular.extend({}, febwormsConfig.validation.messages, $scope.validationMessages);
   };
 
 });
@@ -1460,7 +2109,7 @@ angular.module('febworms').directive('febwormsUniqueFieldName', function () {
   };
 });
 
-angular.module('templates-febworms', ['febworms/common/jsonify/jsonify.tmpl.html', 'febworms/common/tabs/tabs-pane.tmpl.html', 'febworms/common/tabs/tabs.tmpl.html', 'febworms/edit/canvas/canvas.tmpl.html', 'febworms/edit/canvas/field/field.tmpl.html', 'febworms/edit/canvas/field/properties/options/options.tmpl.html', 'febworms/edit/canvas/field/properties/properties.tmpl.html', 'febworms/edit/canvas/field/properties/property-field/common.tmpl.html', 'febworms/edit/canvas/field/properties/property-field/property-field.tmpl.html', 'febworms/edit/edit.tmpl.html', 'febworms/edit/form-actions/form-actions.tmpl.html', 'febworms/edit/meta/meta.tmpl.html', 'febworms/edit/palette/categories/categories.tmpl.html', 'febworms/edit/palette/palette.tmpl.html', 'febworms/field-templates/default/checkbox.tmpl.html', 'febworms/field-templates/default/checkboxlist.tmpl.html', 'febworms/field-templates/default/email.tmpl.html', 'febworms/field-templates/default/not-in-cache.tmpl.html', 'febworms/field-templates/default/password.tmpl.html', 'febworms/field-templates/default/radiobuttonlist.tmpl.html', 'febworms/field-templates/default/selectlist.tmpl.html', 'febworms/field-templates/default/text.tmpl.html', 'febworms/field-templates/default/textarea.tmpl.html', 'febworms/field-templates/properties/checkbox.tmpl.html', 'febworms/field-templates/properties/checkboxlist.tmpl.html', 'febworms/field-templates/properties/email.tmpl.html', 'febworms/field-templates/properties/password.tmpl.html', 'febworms/field-templates/properties/radiobuttonlist.tmpl.html', 'febworms/field-templates/properties/selectlist.tmpl.html', 'febworms/field-templates/properties/text.tmpl.html', 'febworms/field-templates/properties/textarea.tmpl.html', 'febworms/form/field/field.tmpl.html', 'febworms/form/form-fields/form-fields.tmpl.html', 'febworms/validation/summary.tmpl.html']);
+angular.module('templates-febworms', ['febworms/common/jsonify/jsonify.tmpl.html', 'febworms/common/tabs/tabs-pane.tmpl.html', 'febworms/common/tabs/tabs.tmpl.html', 'febworms/edit/canvas/canvas.tmpl.html', 'febworms/edit/canvas/field/field.tmpl.html', 'febworms/edit/canvas/field/properties/options/options.tmpl.html', 'febworms/edit/canvas/field/properties/properties.tmpl.html', 'febworms/edit/canvas/field/properties/property-field/common.tmpl.html', 'febworms/edit/canvas/field/properties/property-field/field-value.tmpl.html', 'febworms/edit/canvas/field/properties/property-field/property-field.tmpl.html', 'febworms/edit/canvas/field/properties/validation/validation-message.tmpl.html', 'febworms/edit/canvas/field/properties/validation/validation.tmpl.html', 'febworms/edit/edit.tmpl.html', 'febworms/edit/form-actions/form-actions.tmpl.html', 'febworms/edit/meta/meta.tmpl.html', 'febworms/edit/palette/categories/categories.tmpl.html', 'febworms/edit/palette/palette.tmpl.html', 'febworms/field-templates/default/checkbox.tmpl.html', 'febworms/field-templates/default/checkboxlist.tmpl.html', 'febworms/field-templates/default/dropdownlist.tmpl.html', 'febworms/field-templates/default/email.tmpl.html', 'febworms/field-templates/default/not-in-cache.tmpl.html', 'febworms/field-templates/default/number.tmpl.html', 'febworms/field-templates/default/password.tmpl.html', 'febworms/field-templates/default/radiobuttonlist.tmpl.html', 'febworms/field-templates/default/selectlist.tmpl.html', 'febworms/field-templates/default/text.tmpl.html', 'febworms/field-templates/default/textarea.tmpl.html', 'febworms/field-templates/properties/checkbox.tmpl.html', 'febworms/field-templates/properties/checkboxlist.tmpl.html', 'febworms/field-templates/properties/dropdownlist.tmpl.html', 'febworms/field-templates/properties/email.tmpl.html', 'febworms/field-templates/properties/number.tmpl.html', 'febworms/field-templates/properties/password.tmpl.html', 'febworms/field-templates/properties/radiobuttonlist.tmpl.html', 'febworms/field-templates/properties/selectlist.tmpl.html', 'febworms/field-templates/properties/text.tmpl.html', 'febworms/field-templates/properties/textarea.tmpl.html', 'febworms/form/field/field.tmpl.html', 'febworms/form/form-fields/form-fields.tmpl.html', 'febworms/validation/summary.tmpl.html']);
 
 angular.module("febworms/common/jsonify/jsonify.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/common/jsonify/jsonify.tmpl.html",
@@ -1664,6 +2313,15 @@ angular.module("febworms/edit/canvas/field/properties/property-field/common.tmpl
     "");
 }]);
 
+angular.module("febworms/edit/canvas/field/properties/property-field/field-value.tmpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("febworms/edit/canvas/field/properties/property-field/field-value.tmpl.html",
+    "<div ng-if=\"draw\">\n" +
+    "	<div febworms-property-field=\"fieldValue\" febworms-property-field-label=\"Initial value\">\n" +
+    "		<div ng-transclude></div>\n" +
+    "	</div>\n" +
+    "</div>");
+}]);
+
 angular.module("febworms/edit/canvas/field/properties/property-field/property-field.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/edit/canvas/field/properties/property-field/property-field.tmpl.html",
     "<div class=\"control-group\" ng-class=\"{ 'error': fieldPropertiesForm[fieldName].$invalid }\">\n" +
@@ -1672,6 +2330,91 @@ angular.module("febworms/edit/canvas/field/properties/property-field/property-fi
     "        <div ng-transclude></div>\n" +
     "        <div febworms-validation-summary=\"{{ fieldName }}\"></div>\n" +
     "    </div>\n" +
+    "</div>");
+}]);
+
+angular.module("febworms/edit/canvas/field/properties/validation/validation-message.tmpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("febworms/edit/canvas/field/properties/validation/validation-message.tmpl.html",
+    "<div ng-form=\"valMsgForm\">\n" +
+    "	<div febworms-property-field=\"message\" \n" +
+    "	     febworms-property-field-label=\"Message\">\n" +
+    "	  <input type=\"text\"\n" +
+    "	  		 name=\"message\" \n" +
+    "	  		 title=\"{{ tooltip }}\" \n" +
+    "	  		 placeholder=\"Optional message\" \n" +
+    "	  		 ng-model=\"field.validation.messages[validationType]\" />\n" +
+    "	</div>\n" +
+    "</div>");
+}]);
+
+angular.module("febworms/edit/canvas/field/properties/validation/validation.tmpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("febworms/edit/canvas/field/properties/validation/validation.tmpl.html",
+    "<!-- \n" +
+    "  input fields marked as febworms-field-redraw will cause the initial value input to redraw\n" +
+    "-->\n" +
+    "\n" +
+    "<!-- minlength -->\n" +
+    "<div ng-if=\"fields.minlength\" class=\"febworms-property-field-validation\">  \n" +
+    "  <div febworms-property-field=\"minlength\" \n" +
+    "       febworms-property-field-label=\"Minimum length\">\n" +
+    "    <input type=\"text\"\n" +
+    "           febworms-field-redraw\n" +
+    "           febworms-input-number\n" +
+    "           title=\"The minimum length of characters that should be entered.\"\n" +
+    "       		 name=\"minlength\"\n" +
+    "       		 ng-model=\"field.validation.minlength\"/>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div ng-if=\"field.validation.minlength >= 1\" >\n" +
+    "    <div febworms-edit-validation-message=\"minlength\"></div>\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    "\n" +
+    "<!-- maxlength -->\n" +
+    "<div ng-if=\"fields.maxlength\" class=\"febworms-property-field-validation\">  \n" +
+    "  <div febworms-property-field=\"maxlength\" \n" +
+    "       febworms-property-field-label=\"Maximum length\">\n" +
+    "    <input type=\"text\"\n" +
+    "           febworms-field-redraw\n" +
+    "           febworms-input-number\n" +
+    "           title=\"The maximum length of characters that should be entered.\"\n" +
+    "           name=\"maxlength\"\n" +
+    "           ng-model=\"field.validation.maxlength\"/>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div ng-if=\"field.validation.maxlength >= 1\" >\n" +
+    "    <div febworms-edit-validation-message=\"maxlength\"></div>\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    "\n" +
+    "<!-- pattern -->\n" +
+    "<div ng-if=\"fields.pattern\" class=\"febworms-property-field-validation\">  \n" +
+    "  <div febworms-property-field=\"pattern\" \n" +
+    "       febworms-property-field-label=\"Pattern\">\n" +
+    "    <div febworms-dropdown-input=\"patternOptions\"\n" +
+    "         name=\"pattern\"\n" +
+    "         title=\"The pattern that should match with the input value.\"\n" +
+    "         febworms-parse-pattern\n" +
+    "         febworms-field-redraw\n" +
+    "         ng-model=\"field.validation.pattern\"></div>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div ng-if=\"field.validation.pattern.length > 0\" >\n" +
+    "    <div febworms-edit-validation-message=\"pattern\"></div>\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    "\n" +
+    "<!-- required -->\n" +
+    "<div ng-if=\"fields.required\" class=\"febworms-property-field-validation\">\n" +
+    "  <div febworms-property-field=\"required\">\n" +
+    "    <label class=\"checkbox\" title=\"Indicates if a value is required for this field.\">\n" +
+    "      <input type=\"checkbox\" ng-model=\"field.validation.required\" />Required\n" +
+    "    </label>\n" +
+    "  </div>\n" +
+    "  \n" +
+    "  <div ng-if=\"field.validation.required\">\n" +
+    "    <div febworms-edit-validation-message=\"required\"></div>\n" +
+    "  </div>\n" +
     "</div>\n" +
     "");
 }]);
@@ -1839,8 +2582,8 @@ angular.module("febworms/edit/palette/palette.tmpl.html", []).run(["$templateCac
 angular.module("febworms/field-templates/default/checkbox.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/default/checkbox.tmpl.html",
     "<label class=\"checkbox\">\n" +
-    "    <input type=\"checkbox\" \n" +
-    "    	   febworms-field-input\n" +
+    "    <input febworms-field-input\n" +
+    "    	   type=\"checkbox\"\n" +
     "    	   tabindex=\"{{ tabIndex }}\" \n" +
     "    	   ng-model=\"form.data[field.schema.name]\">\n" +
     "    <span>{{ field.schema.displayName }}</span>\n" +
@@ -1851,12 +2594,30 @@ angular.module("febworms/field-templates/default/checkbox.tmpl.html", []).run(["
 angular.module("febworms/field-templates/default/checkboxlist.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/default/checkboxlist.tmpl.html",
     "<label class=\"checkbox\" ng-repeat=\"option in field.schema.options\">\n" +
-    "    <input type=\"checkbox\"\n" +
+    "    <input febworms-field-input\n" +
+    "    	   type=\"checkbox\"\n" +
     "           tabindex=\"{{ tabIndex }}\"\n" +
     "           name=\"{{ field.schema.name }}[]\" value=\"{{ option.value }}\"\n" +
     "           ng-model=\"form.data[field.schema.name][option.value]\">\n" +
     "    <span>{{option.text || option.value}}</span>\n" +
     "</label>\n" +
+    "");
+}]);
+
+angular.module("febworms/field-templates/default/dropdownlist.tmpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("febworms/field-templates/default/dropdownlist.tmpl.html",
+    "<div febworms-field-input \n" +
+    "	 febworms-dropdown-input=\"field.schema.options\"\n" +
+    "	 id=\"{{ field.$_id }}\"\n" +
+    "	 ng-model=\"form.data[field.schema.name]\"\n" +
+    "	 ng-required=\"field.schema.validation.required\"\n" +
+    "	 tabindex=\"{{ tabIndex }}\"\n" +
+    "	 placeholder=\"{{ field.schema.placeholder }}\"\n" +
+    "	 ng-minlength=\"{{ field.schema.validation.minlength }}\"\n" +
+    "	 ng-maxlength=\"{{ field.schema.validation.maxlength }}\"\n" +
+    "	 ng-pattern=\"/{{ field.schema.validation.pattern }}/\"\n" +
+    "	 ng-disabled=\"isDisabled(field.schema)\">\n" +
+    "</div>\n" +
     "");
 }]);
 
@@ -1882,9 +2643,28 @@ angular.module("febworms/field-templates/default/not-in-cache.tmpl.html", []).ru
     "</div>");
 }]);
 
+angular.module("febworms/field-templates/default/number.tmpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("febworms/field-templates/default/number.tmpl.html",
+    "<input febworms-field-input\n" +
+    "       febworms-input-number\n" +
+    "       type=\"text\"\n" +
+    "       id=\"{{ field.$_id }}\"\n" +
+    "       tabindex=\"{{ tabIndex }}\"\n" +
+    "       placeholder=\"{{ field.schema.placeholder }}\"\n" +
+    "       min=\"{{ field.schema.validation.minvalue }}\"\n" +
+    "       max=\"{{ field.schema.validation.maxvalue }}\" \n" +
+    "       ng-model=\"form.data[field.schema.name]\"\n" +
+    "       ng-required=\"field.schema.validation.required\"\n" +
+    "       ng-minlength=\"{{ field.schema.validation.minlength }}\"\n" +
+    "       ng-maxlength=\"{{ field.schema.validation.maxlength }}\"\n" +
+    "       ng-pattern=\"/{{ field.schema.validation.pattern }}/\"\n" +
+    "       ng-disabled=\"isDisabled(field.schema)\">");
+}]);
+
 angular.module("febworms/field-templates/default/password.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/default/password.tmpl.html",
-    "<input type=\"password\"\n" +
+    "<input febworms-field-input\n" +
+    "	   type=\"password\"\n" +
     "       id=\"{{ field.$_id }}\"\n" +
     "       tabindex=\"{{ tabIndex }}\"\n" +
     "       placeholder=\"{{ field.schema.placeholder }}\"\n" +
@@ -1899,7 +2679,8 @@ angular.module("febworms/field-templates/default/password.tmpl.html", []).run(["
 angular.module("febworms/field-templates/default/radiobuttonlist.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/default/radiobuttonlist.tmpl.html",
     "<label class=\"radio\" ng-repeat=\"option in field.schema.options\">\n" +
-    "    <input type=\"radio\"\n" +
+    "    <input febworms-field-input\n" +
+    "    	   type=\"radio\"\n" +
     "           name=\"{{ field.schema.name }}[]\"\n" +
     "           tabindex=\"{{ tabIndex }}\"\n" +
     "           value=\"{{ option.value }}\"\n" +
@@ -1910,18 +2691,22 @@ angular.module("febworms/field-templates/default/radiobuttonlist.tmpl.html", [])
 
 angular.module("febworms/field-templates/default/selectlist.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/default/selectlist.tmpl.html",
-    "<select id=\"{{ field.$_id }}\"\n" +
+    "<select febworms-field-input\n" +
+    "		id=\"{{ field.$_id }}\"\n" +
     "        ng-model=\"form.data[field.schema.name]\"\n" +
     "        ng-required=\"field.schema.validation.required\"\n" +
     "        tabindex=\"{{ tabIndex }}\">\n" +
-    "    <option ng-repeat=\"option in field.schema.options\" value=\"{{ option.value }}\" ng-selected=\"form.data[field.schema.name] === option.value\">{{ option.text || option.value }}</option>\n" +
+    "    <option ng-repeat=\"option in field.schema.options\" \n" +
+    "    		value=\"{{ option.value }}\" \n" +
+    "    		ng-selected=\"form.data[field.schema.name] === option.value\">{{ option.text || option.value }}</option>\n" +
     "</select>\n" +
     "");
 }]);
 
 angular.module("febworms/field-templates/default/text.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/default/text.tmpl.html",
-    "<input type=\"text\"\n" +
+    "<input febworms-field-input\n" +
+    "       type=\"text\"\n" +
     "       id=\"{{ field.$_id }}\"\n" +
     "       tabindex=\"{{ tabIndex }}\"\n" +
     "       placeholder=\"{{ field.schema.placeholder }}\"\n" +
@@ -1935,7 +2720,8 @@ angular.module("febworms/field-templates/default/text.tmpl.html", []).run(["$tem
 
 angular.module("febworms/field-templates/default/textarea.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/default/textarea.tmpl.html",
-    "<textarea id=\"{{ field.$_id }}\"1\n" +
+    "<textarea febworms-field-input\n" +
+    "		  id=\"{{ field.$_id }}\"1\n" +
     "          tabindex=\"{{ tabIndex }}\"\n" +
     "          placeholder=\"{{ field.schema.placeholder }}\"\n" +
     "          ng-model=\"form.data[field.schema.name]\"\n" +
@@ -1974,28 +2760,124 @@ angular.module("febworms/field-templates/properties/checkboxlist.tmpl.html", [])
     "");
 }]);
 
+angular.module("febworms/field-templates/properties/dropdownlist.tmpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("febworms/field-templates/properties/dropdownlist.tmpl.html",
+    "<div febworms-tabs>\n" +
+    "	<div febworms-tabs-pane=\"Properties\">\n" +
+    "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
+    "		<div febworms-property-field-value>\n" +
+    "			<div febworms-field-input \n" +
+    "				 febworms-dropdown-input=\"field.options\"\n" +
+    "				 ng-model=\"field.value\"\n" +
+    "				 ng-minlength=\"{{ field.schema.validation.minlength }}\"\n" +
+    "				 ng-maxlength=\"{{ field.schema.validation.maxlength }}\"\n" +
+    "				 ng-pattern=\"/{{ field.schema.validation.pattern }}/\">\n" +
+    "			</div>\n" +
+    "		</div>\n" +
+    "	</div>\n" +
+    "	<div febworms-tabs-pane=\"Validation\">\n" +
+    "		<div febworms-property-field-validation=\"{ required: true, minlength: true, maxlength: true, pattern: true }\"></div>\n" +
+    "	</div>\n" +
+    "</div>\n" +
+    "");
+}]);
+
 angular.module("febworms/field-templates/properties/email.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/properties/email.tmpl.html",
     "<div febworms-tabs>\n" +
     "	<div febworms-tabs-pane=\"Properties\">\n" +
     "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
-    "		<div febworms-property-field=\"fieldValue\" febworms-property-field-label=\"Initial value\">\n" +
-    "			<input type=\"email\" name=\"fieldValue\" ng-model=\"field.value\" />\n" +
-    "		</div>		\n" +
+    "		<div febworms-property-field-value>\n" +
+    "			<input type=\"email\" \n" +
+    "				   name=\"fieldValue\" \n" +
+    "				   ng-model=\"field.value\" \n" +
+    "				   ng-minlength=\"{{ field.validation.minlength }}\"\n" +
+    "       			   ng-maxlength=\"{{ field.validation.maxlength }}\"\n" +
+    "       			   ng-pattern=\"/{{ field.validation.pattern }}/\"/>\n" +
+    "		</div>\n" +
+    "	</div>\n" +
+    "	<div febworms-tabs-pane=\"Validation\">\n" +
+    "		<div febworms-property-field-validation=\"{ required: true, minlength: true, maxlength: true, pattern: true }\"></div>\n" +
     "	</div>\n" +
     "</div>");
+}]);
+
+angular.module("febworms/field-templates/properties/number.tmpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("febworms/field-templates/properties/number.tmpl.html",
+    "<div febworms-tabs>\n" +
+    "  <div febworms-tabs-pane=\"Properties\">\n" +
+    "    <div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
+    "\n" +
+    "    <div febworms-property-field-value>\n" +
+    "      <input febworms-input-number \n" +
+    "             type=\"text\" \n" +
+    "             name=\"fieldValue\" \n" +
+    "             ng-model=\"field.value\" \n" +
+    "             min=\"{{ field.validation.minvalue }}\"\n" +
+    "             max=\"{{ field.validation.maxvalue }}\"\n" +
+    "             ng-minlength=\"{{ field.validation.minlength }}\"\n" +
+    "             ng-maxlength=\"{{ field.validation.maxlength }}\"\n" +
+    "             ng-pattern=\"/{{ field.validation.pattern }}/\"/>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "    \n" +
+    "  <div febworms-tabs-pane=\"Validation\">\n" +
+    "\n" +
+    "    <!-- minvalue -->\n" +
+    "    <div class=\"febworms-property-field-validation\">  \n" +
+    "      <div febworms-property-field=\"minvalue\" \n" +
+    "           febworms-property-field-label=\"Minimum value\">\n" +
+    "           <input febworms-input-number\n" +
+    "                  febworms-field-redraw\n" +
+    "                  type=\"text\"\n" +
+    "                  name=\"minvalue\"\n" +
+    "                  title=\"The minimum value that should be entered\"\n" +
+    "                  ng-model=\"field.validation.minvalue\"/>\n" +
+    "      </div>\n" +
+    "\n" +
+    "      <div ng-if=\"field.validation.minvalue >= 0\" >\n" +
+    "        <div febworms-edit-validation-message=\"minvalue\"></div>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <!-- maxvalue -->\n" +
+    "    <div class=\"febworms-property-field-validation\">  \n" +
+    "      <div febworms-property-field=\"maxvalue\" \n" +
+    "           febworms-property-field-label=\"Maximum value\">\n" +
+    "           <input febworms-input-number\n" +
+    "                  febworms-field-redraw\n" +
+    "                  type=\"text\"\n" +
+    "                  name=\"maxvalue\"\n" +
+    "                  title=\"The maximum value that should be entered\"\n" +
+    "                  ng-model=\"field.validation.maxvalue\"/>\n" +
+    "      </div>\n" +
+    "\n" +
+    "      <div ng-if=\"field.validation.maxvalue >= 0\" >\n" +
+    "        <div febworms-edit-validation-message=\"maxvalue\"></div>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div febworms-property-field-validation=\"{ required: true, minlength: true, maxlength: true, pattern: true }\"></div>\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("febworms/field-templates/properties/password.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/properties/password.tmpl.html",
     "<div febworms-tabs>\n" +
-    "	<div febworms-tabs-pane=\"Properties\">\n" +
-    "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
-    "		<div febworms-property-field=\"fieldValue\" febworms-property-field-label=\"Initial value\">\n" +
-    "			<input type=\"password\" name=\"fieldValue\" ng-model=\"field.value\" />\n" +
-    "		</div>		\n" +
-    "	</div>\n" +
-    "</div>");
+    "  <div febworms-tabs-pane=\"Properties\">\n" +
+    "    <div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
+    "    <div febworms-property-field-value>\n" +
+    "      <input febworms-input-number type=\"password\" name=\"fieldValue\" ng-model=\"field.value\" ng-minlength=\"{{ field.validation.minlength }}\" ng-maxlength=\"{{ field.validation.maxlength }}\" ng-pattern=\"/{{ field.validation.pattern }}/\" />\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "\n" +
+    "  <div febworms-tabs-pane=\"Validation\">\n" +
+    "    <div febworms-property-field-validation=\"{ required: true, minlength: true, maxlength: true, pattern: true }\"></div>\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("febworms/field-templates/properties/radiobuttonlist.tmpl.html", []).run(["$templateCache", function($templateCache) {
@@ -2029,9 +2911,26 @@ angular.module("febworms/field-templates/properties/text.tmpl.html", []).run(["$
     "<div febworms-tabs>\n" +
     "	<div febworms-tabs-pane=\"Properties\">\n" +
     "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
-    "		<div febworms-property-field=\"fieldValue\" febworms-property-field-label=\"Initial value\">\n" +
-    "			<input type=\"text\" name=\"fieldValue\" ng-model=\"field.value\" />\n" +
-    "		</div>		\n" +
+    "		<!-- \n" +
+    "			\n" +
+    "			The field-value directive will re-render itself when certain validation values are modified.\n" +
+    "			This is needed because angular does not watch or observe the values of certain attributes and allows\n" +
+    "			an invalid initial value to be saved in the form schema.\n" +
+    "\n" +
+    "			Important: the transcluded form field must be name fieldValue!\n" +
+    "\n" +
+    "		-->\n" +
+    "		<div febworms-property-field-value>\n" +
+    "			<input type=\"text\" \n" +
+    "				   name=\"fieldValue\" \n" +
+    "				   ng-model=\"field.value\" \n" +
+    "				   ng-minlength=\"{{ field.validation.minlength }}\"\n" +
+    "       			   ng-maxlength=\"{{ field.validation.maxlength }}\"\n" +
+    "       			   ng-pattern=\"/{{ field.validation.pattern }}/\"/>\n" +
+    "		</div>\n" +
+    "	</div>\n" +
+    "	<div febworms-tabs-pane=\"Validation\">\n" +
+    "		<div febworms-property-field-validation=\"{ required: true, minlength: true, maxlength: true, pattern: true }\"></div>\n" +
     "	</div>\n" +
     "</div>\n" +
     "");
@@ -2042,20 +2941,28 @@ angular.module("febworms/field-templates/properties/textarea.tmpl.html", []).run
     "<div febworms-tabs>\n" +
     "	<div febworms-tabs-pane=\"Properties\">\n" +
     "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true, placeholder: true }\"></div>\n" +
-    "		<div febworms-property-field=\"fieldValue\" febworms-property-field-label=\"Initial value\">\n" +
-    "			<textarea name=\"fieldValue\" ng-model=\"field.value\"></textarea>\n" +
-    "		</div>		\n" +
+    "		<div febworms-property-field-value>\n" +
+    "			<textarea name=\"fieldValue\" \n" +
+    "				   ng-model=\"field.value\" \n" +
+    "				   ng-minlength=\"{{ field.validation.minlength }}\"\n" +
+    "       			   ng-maxlength=\"{{ field.validation.maxlength }}\"\n" +
+    "       			   ng-pattern=\"/{{ field.validation.pattern }}/\"/>\n" +
+    "			</textarea>\n" +
+    "		</div>\n" +
+    "	</div>\n" +
+    "	<div febworms-tabs-pane=\"Validation\">\n" +
+    "		<div febworms-property-field-validation=\"{ required: true, minlength: true, maxlength: true, pattern: true }\"></div>\n" +
     "	</div>\n" +
     "</div>");
 }]);
 
 angular.module("febworms/form/field/field.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/form/field/field.tmpl.html",
-    "<div class=\"febworms-field-inner\">\n" +
+    "<div class=\"febworms-field-inner\" ng-class=\"{ 'febworms-field-required': fieldSchema.validation.required }\">\n" +
     "	<label ng-if=\"!renderInfo.hideLabel\" class=\"control-label\" for=\"{{ field.$_id }}\">{{ fieldSchema.displayName }}</label>\n" +
     "	<div class=\"controls\">\n" +
     "		<div ng-include=\"renderInfo.templateUrl\"></div>\n" +
-    "		<div febworms-validation-summary ng-if=\"!noValidationSummary\"></div>\n" +
+    "		<div febworms-validation-summary febworms-validation-messages=\"fieldSchema.validation.messages\" ng-if=\"!noValidationSummary\"></div>\n" +
     "	</div>\n" +
     "</div>");
 }]);

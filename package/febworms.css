@@ -1,4 +1,4 @@
-.control-required .control-label:after {
+.febworms-field-required .control-label:after {
     content: ' *';
     color: #888;
 }
@@ -169,6 +169,17 @@
     .febworms-edit-canvas-area-empty {
         position: static;
     }
+}
+.febworms-dropdown.open {
+  position: absolute;
+}
+
+.febworms-dropdown .dropdown-menu {
+  position: static;
+  top: 0; left: 0;
+  float: none;
+  max-height: 250px;
+  overflow-y: auto;
 }
 .jsonify {
     position: relative;
@@ -366,6 +377,11 @@
 
 
 
+.febworms-property-field-validation + .febworms-property-field-validation,
+.febworms-property-field-validation + div > .febworms-property-field-validation {
+	border-top: 1px solid #cccccc;
+	padding-top: 10px;
+}
 
 .febworms-edit-palette .controls {
     margin-left: 0;
