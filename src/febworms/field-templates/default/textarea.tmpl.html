@@ -1,10 +1,10 @@
 <textarea febworms-field-input
-		  id="{{ field.$_id }}"1
-          tabindex="{{ tabIndex }}"
-          placeholder="{{ field.schema.placeholder }}"
-          ng-model="form.data[field.schema.name]"
-          ng-required="field.schema.validation.required"
-          ng-minlength="{{ field.schema.validation.minlength }}"
+		  febworms-placeholder="field.schema.placeholder"
+		  ng-model="form.data[field.schema.name]"
+		  id="{{ field.$_id }}"
+		  tabindex="{{ tabIndex }}"
+		  ng-required="field.schema.validation.required"
+		  ng-minlength="{{ field.schema.validation.minlength }}"
           ng-maxlength="{{ field.schema.validation.maxlength }}"
           ng-pattern="/{{ field.schema.validation.pattern }}/">
 </textarea>

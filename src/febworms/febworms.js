@@ -236,6 +236,7 @@ angular.module('febworms').config(function(febwormsConfigProvider) {
       // })
     ]
   };
+  
 
   angular.forEach(categories, function(fields, category) {
     angular.forEach(fields, function(field) {

@@ -3,9 +3,8 @@ var febworms = febworms || {};
  * Constructor for febworm Field types.
  * @param {string} type         Indicates the type of field
  * @param {object} properties   [optional] Initial property values
- * @param {object} renderInfo   [optional] Render information
  */
-febworms.Field = function(type, properties, renderInfo) {
+febworms.Field = function(type, properties) {
   this.name = this.type = type;
 
   if (properties) {
@@ -13,7 +12,6 @@ febworms.Field = function(type, properties, renderInfo) {
   }
 
   this.displayName = this.displayName || this.type.charAt(0).toUpperCase() + this.type.substring(1);
-  febworms.Field[type] = renderInfo || {};
 };
 
 angular.module('febworms', ['ngRoute', 'dq', 'templates-febworms']);
@@ -154,8 +152,8 @@ angular.module('febworms').config(function(febwormsConfigProvider) {
     email: 'The value "{{ field.state.$viewValue }}" is not a valid email address.',
     unique: 'The value "{{ field.state.$viewValue }}" is already in use.',
     number: 'The value "{{ field.state.$viewValue }}" is not a number.',
-    min: 'The value {{ field.schema && ("should be at least " + field.schema.validation.minvalue) || field.state.$viewValue + " is too low" }}',
-    max: 'The value {{ field.schema && ("should be less than " + field.schema.validation.minvalue) || field.state.$viewValue + " is too high" }}'
+    min: 'The value {{ field.schema && ("should be at least " + field.schema.validation.min) || field.state.$viewValue + " is too low" }}',
+    max: 'The value {{ field.schema && ("should be less than " + field.schema.validation.max) || field.state.$viewValue + " is too high" }}'
   });
 
   // - - - - - - - - - - - - - - - - - - - - - -
@@ -168,12 +166,14 @@ angular.module('febworms').config(function(febwormsConfigProvider) {
         displayName: 'Textbox'
       }),
       new febworms.Field('email'),
-      new febworms.Field('number'),
+      new febworms.Field('number', { 
+        validation: { maxlength: 15 /* to prevent > Number.MAX_VALUE */ }  
+      }),
       new febworms.Field('password'),
       new febworms.Field('textarea')
     ],
     'Checkbox fields': [
-      new febworms.Field('checkbox'),
+      new febworms.Field('checkbox', { nolabel: true }),
       new febworms.Field('checkboxlist', {
         displayName: 'Checkbox List',
         options: [{
@@ -236,6 +236,7 @@ angular.module('febworms').config(function(febwormsConfigProvider) {
       // })
     ]
   };
+  
 
   angular.forEach(categories, function(fields, category) {
     angular.forEach(fields, function(field) {
@@ -585,6 +586,19 @@ angular.module('febworms').directive('febwormsInputNumber', function() {
   };
 });
 
+angular.module('febworms').directive('febwormsPlaceholder', function() {
+  /*
+    This attribute is only required on TEXTAREA elements. 
+    Angular in combination with IE doesn't like placeholder="{{ myExpression }}".
+   */
+  return { 
+    link: function($scope, $element, $attrs) {
+      $scope.$watch($attrs.febwormsPlaceholder, function(value) {
+        $element.attr('placeholder', value);
+      });
+    }
+  };
+});
 angular.module('febworms').factory('febwormsUtils', function ($templateCache, $window, febwormsConfig) {
 
     var uniqueCounter = (+new Date) % 10000;
@@ -2025,8 +2039,14 @@ angular.module('febworms').directive('febwormsValidationSummary', function(febwo
     if (febwormsFieldCtrl) {
       // Grab the whole field state from the field controller
       $scope.field = febwormsFieldCtrl.field();
+      $scope.form = febwormsFieldCtrl.form();
+
     } else if (ngFormController) {
       
+      $scope.form = {
+        state: ngFormController
+      };
+
       $scope.$watch('fieldName', function(value) {
         $scope.field = {
           name: value,
@@ -2583,10 +2603,11 @@ angular.module("febworms/field-templates/default/checkbox.tmpl.html", []).run(["
   $templateCache.put("febworms/field-templates/default/checkbox.tmpl.html",
     "<label class=\"checkbox\">\n" +
     "    <input febworms-field-input\n" +
+    "    	   id=\"{{ field.$_id }}\"\n" +
     "    	   type=\"checkbox\"\n" +
     "    	   tabindex=\"{{ tabIndex }}\" \n" +
     "    	   ng-model=\"form.data[field.schema.name]\">\n" +
-    "    <span>{{ field.schema.displayName }}</span>\n" +
+    "    <span ng-if=\"field.schema.nolabel\">{{ field.schema.displayName }}</span>\n" +
     "</label>\n" +
     "");
 }]);
@@ -2651,8 +2672,8 @@ angular.module("febworms/field-templates/default/number.tmpl.html", []).run(["$t
     "       id=\"{{ field.$_id }}\"\n" +
     "       tabindex=\"{{ tabIndex }}\"\n" +
     "       placeholder=\"{{ field.schema.placeholder }}\"\n" +
-    "       min=\"{{ field.schema.validation.minvalue }}\"\n" +
-    "       max=\"{{ field.schema.validation.maxvalue }}\" \n" +
+    "       min=\"{{ field.schema.validation.min }}\"\n" +
+    "       max=\"{{ field.schema.validation.max }}\" \n" +
     "       ng-model=\"form.data[field.schema.name]\"\n" +
     "       ng-required=\"field.schema.validation.required\"\n" +
     "       ng-minlength=\"{{ field.schema.validation.minlength }}\"\n" +
@@ -2721,12 +2742,12 @@ angular.module("febworms/field-templates/default/text.tmpl.html", []).run(["$tem
 angular.module("febworms/field-templates/default/textarea.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/field-templates/default/textarea.tmpl.html",
     "<textarea febworms-field-input\n" +
-    "		  id=\"{{ field.$_id }}\"1\n" +
-    "          tabindex=\"{{ tabIndex }}\"\n" +
-    "          placeholder=\"{{ field.schema.placeholder }}\"\n" +
-    "          ng-model=\"form.data[field.schema.name]\"\n" +
-    "          ng-required=\"field.schema.validation.required\"\n" +
-    "          ng-minlength=\"{{ field.schema.validation.minlength }}\"\n" +
+    "		  febworms-placeholder=\"field.schema.placeholder\"\n" +
+    "		  ng-model=\"form.data[field.schema.name]\"\n" +
+    "		  id=\"{{ field.$_id }}\"\n" +
+    "		  tabindex=\"{{ tabIndex }}\"\n" +
+    "		  ng-required=\"field.schema.validation.required\"\n" +
+    "		  ng-minlength=\"{{ field.schema.validation.minlength }}\"\n" +
     "          ng-maxlength=\"{{ field.schema.validation.maxlength }}\"\n" +
     "          ng-pattern=\"/{{ field.schema.validation.pattern }}/\">\n" +
     "</textarea>");
@@ -2739,10 +2760,10 @@ angular.module("febworms/field-templates/properties/checkbox.tmpl.html", []).run
     "		<div febworms-property-field-common=\"{ fieldname: true, displayname: true }\"></div>\n" +
     "		<div febworms-property-field=\"fieldValue\">\n" +
     "			<label class=\"checkbox\">\n" +
-    "            	<input type=\"checkbox\" ng-model=\"field.value\">\n" +
+    "            	<input type=\"checkbox\" name=\"fieldValue\" ng-model=\"field.value\">\n" +
     "            	<span>Initial value</span>\n" +
     "        	</label>\n" +
-    "		</div>		\n" +
+    "		</div>\n" +
     "	</div>\n" +
     "</div>");
 }]);
@@ -2813,8 +2834,8 @@ angular.module("febworms/field-templates/properties/number.tmpl.html", []).run([
     "             type=\"text\" \n" +
     "             name=\"fieldValue\" \n" +
     "             ng-model=\"field.value\" \n" +
-    "             min=\"{{ field.validation.minvalue }}\"\n" +
-    "             max=\"{{ field.validation.maxvalue }}\"\n" +
+    "             min=\"{{ field.validation.min }}\"\n" +
+    "             max=\"{{ field.validation.max }}\"\n" +
     "             ng-minlength=\"{{ field.validation.minlength }}\"\n" +
     "             ng-maxlength=\"{{ field.validation.maxlength }}\"\n" +
     "             ng-pattern=\"/{{ field.validation.pattern }}/\"/>\n" +
@@ -2823,37 +2844,37 @@ angular.module("febworms/field-templates/properties/number.tmpl.html", []).run([
     "    \n" +
     "  <div febworms-tabs-pane=\"Validation\">\n" +
     "\n" +
-    "    <!-- minvalue -->\n" +
+    "    <!-- min -->\n" +
     "    <div class=\"febworms-property-field-validation\">  \n" +
-    "      <div febworms-property-field=\"minvalue\" \n" +
+    "      <div febworms-property-field=\"min\" \n" +
     "           febworms-property-field-label=\"Minimum value\">\n" +
     "           <input febworms-input-number\n" +
     "                  febworms-field-redraw\n" +
     "                  type=\"text\"\n" +
-    "                  name=\"minvalue\"\n" +
+    "                  name=\"min\"\n" +
     "                  title=\"The minimum value that should be entered\"\n" +
-    "                  ng-model=\"field.validation.minvalue\"/>\n" +
+    "                  ng-model=\"field.validation.min\"/>\n" +
     "      </div>\n" +
     "\n" +
-    "      <div ng-if=\"field.validation.minvalue >= 0\" >\n" +
-    "        <div febworms-edit-validation-message=\"minvalue\"></div>\n" +
+    "      <div ng-if=\"field.validation.min >= 0\" >\n" +
+    "        <div febworms-edit-validation-message=\"min\"></div>\n" +
     "      </div>\n" +
     "    </div>\n" +
     "\n" +
-    "    <!-- maxvalue -->\n" +
+    "    <!-- max -->\n" +
     "    <div class=\"febworms-property-field-validation\">  \n" +
-    "      <div febworms-property-field=\"maxvalue\" \n" +
+    "      <div febworms-property-field=\"max\" \n" +
     "           febworms-property-field-label=\"Maximum value\">\n" +
     "           <input febworms-input-number\n" +
     "                  febworms-field-redraw\n" +
     "                  type=\"text\"\n" +
-    "                  name=\"maxvalue\"\n" +
+    "                  name=\"max\"\n" +
     "                  title=\"The maximum value that should be entered\"\n" +
-    "                  ng-model=\"field.validation.maxvalue\"/>\n" +
+    "                  ng-model=\"field.validation.max\"/>\n" +
     "      </div>\n" +
     "\n" +
-    "      <div ng-if=\"field.validation.maxvalue >= 0\" >\n" +
-    "        <div febworms-edit-validation-message=\"maxvalue\"></div>\n" +
+    "      <div ng-if=\"field.validation.max >= 0\" >\n" +
+    "        <div febworms-edit-validation-message=\"max\"></div>\n" +
     "      </div>\n" +
     "    </div>\n" +
     "\n" +
@@ -2959,7 +2980,7 @@ angular.module("febworms/field-templates/properties/textarea.tmpl.html", []).run
 angular.module("febworms/form/field/field.tmpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("febworms/form/field/field.tmpl.html",
     "<div class=\"febworms-field-inner\" ng-class=\"{ 'febworms-field-required': fieldSchema.validation.required }\">\n" +
-    "	<label ng-if=\"!renderInfo.hideLabel\" class=\"control-label\" for=\"{{ field.$_id }}\">{{ fieldSchema.displayName }}</label>\n" +
+    "	<label ng-if=\"!field.schema.nolabel\" class=\"control-label\" for=\"{{ field.$_id }}\">{{ fieldSchema.displayName }}</label>\n" +
     "	<div class=\"controls\">\n" +
     "		<div ng-include=\"renderInfo.templateUrl\"></div>\n" +
     "		<div febworms-validation-summary febworms-validation-messages=\"fieldSchema.validation.messages\" ng-if=\"!noValidationSummary\"></div>\n" +
