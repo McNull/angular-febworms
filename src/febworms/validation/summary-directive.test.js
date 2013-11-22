@@ -135,9 +135,14 @@ describe('febworms-validation-summary', function() {
           }
         };
 
+        setup.form = {};
+
         setup.fieldCtrl = {
           field: function() {
             return setup.field;
+          },
+          form: function() {
+            return setup.form;
           }
         };
 
@@ -197,9 +202,14 @@ describe('febworms-validation-summary', function() {
         // Arrange
 
         var field = {};
+        var form = {};
+
         var fieldCtrl = {
           field: function() {
             return field;
+          },
+          form: function() {
+            return form;
           }
         };
 
@@ -259,10 +269,13 @@ describe('febworms-validation-summary', function() {
 
         // Arrange
 
-        var field = {};
+        var field = {}; var form = {};
         var fieldCtrl = {
           field: function() {
             return field;
+          },
+          form: function() {
+            return form;
           }
         };
 
@@ -285,9 +298,14 @@ describe('febworms-validation-summary', function() {
         // Arrange
 
         var field = {};
+        var form = {};
+
         var fieldCtrl = {
           field: function() {
             return field;
+          },
+          form: function() {
+            return form;
           }
         };
 
