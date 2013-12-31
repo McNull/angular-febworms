@@ -13,7 +13,9 @@ angular.module('febworms').directive('febwormsForm', function(febwormsFormCompil
       var formCtrl = ctrls[1];
       var schemaCtrl = ctrls[2];
 
-      formCtrl.init($attrs.febwormsFormData, schemaCtrl, ngFormCtrl);
+      var editMode = $attrs.febwormsNoRender === 'true';
+
+      formCtrl.init($attrs.febwormsFormData, schemaCtrl, ngFormCtrl, editMode);
       
     };
 }).factory('febwormsFormCompileFn', function(febwormsFormLinkFn) {
