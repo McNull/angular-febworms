@@ -3,9 +3,11 @@ angular.module('febworms').controller('febwormsFormController', function($scope,
   this.model = {};
   var self = this;
 
-  this.init = function(dataExpression, schema, state) {
+  this.init = function(dataExpression, schema, state, editMode) {
     // Called by the directive
     
+    self.editMode = editMode;
+
     var dataGetter = $parse(dataExpression);
     var dataSetter = dataGetter.assign;
 
@@ -36,5 +38,11 @@ angular.module('febworms').controller('febwormsFormController', function($scope,
     
     return self.model;
   };
-  
+
+  this.clearFocusOnFields = function() {
+    angular.forEach(self.model.schema.fields, function(field) {
+      field.focus = false;
+    });
+  };
+
 });

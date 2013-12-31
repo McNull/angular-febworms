@@ -568,5 +568,88 @@
       "name": "Validation Summary"
     },
     "id": 107
+  },
+  {
+    "schema": {
+      "fields": [
+        {
+          "type": "text",
+          "name": "required",
+          "displayName": "Required",
+          "validation": {
+            "messages": {},
+            "required": true
+          }
+        },
+        {
+          "type": "text",
+          "name": "minLength",
+          "displayName": "Min length: 5",
+          "validation": {
+            "messages": {},
+            "minlength": 5,
+            "maxlength": null
+          },
+          "placeholder": ""
+        },
+        {
+          "type": "text",
+          "name": "maxLength",
+          "displayName": "Max length: 10",
+          "validation": {
+            "messages": {},
+            "maxlength": 10
+          }
+        },
+        {
+          "type": "text",
+          "name": "pattern",
+          "displayName": "Pattern",
+          "validation": {
+            "messages": {},
+            "pattern": "(?=.*\\d)(?=.*[!@#$%^&*\\-=()|?.\"';:]+)(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+          }
+        },
+        {
+          "type": "email",
+          "name": "email",
+          "displayName": "Email",
+          "validation": {
+            "messages": {}
+          }
+        },
+        {
+          "type": "number",
+          "name": "numberInput",
+          "validation": {
+            "maxlength": 15,
+            "messages": {}
+          },
+          "displayName": "Number"
+        },
+        {
+          "type": "number",
+          "name": "numberAtLeast100",
+          "validation": {
+            "maxlength": 15,
+            "messages": {},
+            "min": 100
+          },
+          "displayName": "Number > 100"
+        },
+        {
+          "type": "number",
+          "name": "numberLessThan1000",
+          "validation": {
+            "maxlength": 15,
+            "messages": {},
+            "max": 1000
+          },
+          "displayName": "Number < 1000"
+        }
+      ],
+      "name": "Validation Messages"
+    },
+    "id": 108
   }
 ]

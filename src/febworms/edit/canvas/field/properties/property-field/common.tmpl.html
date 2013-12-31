@@ -34,3 +34,10 @@
           ng-model="field.tooltip"/>
   </div>
 </div>
+
+<!-- focus -->
+<div ng-if="fields.focus">
+  <div febworms-property-field="fieldFocus" febworms-property-field-label="Initial focus">
+    <input type="checkbox" ng-model="field.focus" title="Set the initial focus to this field."/>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 <select febworms-field-input
-		id="{{ field.$_id }}"
-		title="{{ field.schema.tooltip }}"
+        febworms-field-focus="field.schema.focus"
+		    id="{{ field.$_id }}"
+		    title="{{ field.schema.tooltip }}"
         ng-model="form.data[field.schema.name]"
         ng-required="field.schema.validation.required"
         tabindex="{{ tabIndex }}">

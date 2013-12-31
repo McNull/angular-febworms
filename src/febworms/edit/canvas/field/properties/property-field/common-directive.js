@@ -11,7 +11,8 @@ angular.module('febworms').directive('febwormsPropertyFieldCommon', function(feb
       fieldname: false,
       displayname: false,
       placeholder: false,
-      tooltip: false
+      tooltip: false,
+      focus: false
     };
 
     $scope.$watch($attrs['febwormsPropertyFieldCommon'], function(value) {
