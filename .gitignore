@@ -4,4 +4,4 @@ node_modules/*
 vendor/*
 karma/karma.conf.js
 .idea/*
-*.sublime-project
+*.sublime-*
