@@ -1,12 +1,10 @@
 <div class="febworms-form-fields">
-	<fieldset>
-      <legend>{{ form.schema.name }}</legend>
-
-      <div ng-repeat="field in form.schema.fields">
-        <div class="control-group" ng-class="{ 'error': form.state[field.name].$invalid }">
-			<div febworms-field="field"></div>
-        </div>
+  <fieldset>
+    <legend>{{ form.schema.name }}</legend>
+    <div ng-repeat="field in form.schema.fields">
+      <div class="control-group" ng-class="{ 'error': form.state[field.name].$invalid }">
+        <div febworms-field="field"></div>
       </div>
-
-	</fieldset>
+    </div>
+  </fieldset>
 </div>

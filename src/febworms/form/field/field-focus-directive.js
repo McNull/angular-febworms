@@ -15,14 +15,23 @@ angular.module('febworms').directive('febwormsFieldFocus', function($parse) {
       var setModel = getModel.assign;
 
       $scope.$watch(getModel, function(value) {
+
         if (value) {
           if(formCtrl) {
             formCtrl.clearFocusOnFields();
             setModel($scope, true);
+
+            if(formCtrl.editMode) {
+              return;
+            }
           }
+
           e.focus();
-        } else {
+
+        } else if(formCtrl && !formCtrl.editMode) {
+
           e.blur();
+
         }
       });
 

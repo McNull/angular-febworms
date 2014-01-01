@@ -1,3 +1,13 @@
+<!-- focus -->
+<div ng-if="fields.focus">
+  <div febworms-property-field="fieldFocus">
+    <label class="checkbox" title="Set the initial focus to this field.">
+      <input type="checkbox" ng-model="field.focus"/>
+      Set input focus
+    </label>
+  </div>
+</div>
+
 <!-- fieldName -->
 <div ng-if="fields.fieldname">
   <div febworms-property-field="fieldName" febworms-property-field-label="Name">
@@ -35,9 +45,3 @@
   </div>
 </div>
 
-<!-- focus -->
-<div ng-if="fields.focus">
-  <div febworms-property-field="fieldFocus" febworms-property-field-label="Initial focus">
-    <input type="checkbox" ng-model="field.focus" title="Set the initial focus to this field."/>
-  </div>
-</div>
