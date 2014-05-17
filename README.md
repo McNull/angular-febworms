@@ -14,8 +14,8 @@ This module was primarily written for the ministery of defense -- and they are d
 
 ## Demos
 
-[Edit/Design form schema](http://plnkr.co/edit/L0n4qi?p=preview)
-[Render form schema](http://plnkr.co/edit/3XRy8S?p=preview)
-[Custom validation messages](http://plnkr.co/edit/zLBUw5?p=preview)
+* [Edit/Design form schema](http://plnkr.co/edit/L0n4qi?p=preview)
+* [Render form schema](http://plnkr.co/edit/3XRy8S?p=preview)
+* [Custom validation messages](http://plnkr.co/edit/zLBUw5?p=preview)
 
 
