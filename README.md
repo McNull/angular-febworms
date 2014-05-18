@@ -10,7 +10,7 @@ Field components can be dragged from a _pallette_ onto a _canvas_ where details 
 Developers can extend the editor by adding _magic_ like custom field components and _validation patterns_.
 
 
-This module was primarily written for the _ministry of defense_ -- and they are _true_ die hards when it comes to forms.
+This module was primarily written for the _ministry of defense_ -- and they are _true_ die hards when it comes to forms (or ponies).
 
 ## Demos
 
