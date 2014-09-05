@@ -1,28 +1,36 @@
 {
   "name": "angular-febworms",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": [
     "Null McNull <no@spam.org>"
   ],
   "license": "MIT",
-  "private": true,
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "vendor",
+    "gruntfile.js",
+    "package.json",
+    "*.sublime*",
+    "tmp",
+    "src",
+    "server",
+    "karma",
+    "grunt",
+    "dist"
   ],
-  "dependencies": {
+  "main": [
+    "package/febworms.css", "package/febworms.js"
+  ],
+  "devDependencies": {
     "bootstrap-css": "2.3.2",
     "lodash": "~2.2.1",
     "json3": "~3.2.5",
     "jquery": "1.10.2",
     "angular": "1.2.0",
     "angular-resource": "1.2.0",
-    "angular-route": "1.2.0"
-  },
-  "devDependencies": {
+    "angular-route": "1.2.0",
     "angular-mocks": "1.2.0"
   }
 }
