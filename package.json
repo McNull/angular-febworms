@@ -1,7 +1,7 @@
 {
-  "name": "angular-project-template",
+  "name": "angular-febworms",
   "version": "0.0.1",
-  "description": "Boilerplate template for domain driven angularjs applications.",
+  "description": "",
   "homepage": "https://github.com/McNull/angular-project-template",
   "main": "gulp",
   "scripts": {

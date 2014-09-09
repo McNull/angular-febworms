@@ -1,0 +1,3 @@
+<ul class="febworms-validation-summary help-block unstyled" ng-if="field.state.$invalid && field.state.$dirty">
+	<li ng-repeat="(key, error) in field.state.$error" ng-if="error" febworms-bind-expression="messages[key]"></li>
+</ul>

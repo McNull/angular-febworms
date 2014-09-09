@@ -21,6 +21,10 @@ var config = {
 
   modules: [
     {
+      name: 'angular-febworms',
+      alias: 'febworms'
+    },
+    {
       name: 'angular-logo',
       alias: 'ngLogo'
     },
@@ -28,7 +32,9 @@ var config = {
       name: 'app'
     }
   ],
-
+  bower: {
+    includeDev: true
+  },
   header: _.template([
     '/*!',
     '   <%= pkg.name %> v<%= pkg.version %>',

@@ -1,0 +1,54 @@
+
+.febworms-edit-palette .controls {
+    margin-left: 0;
+}
+
+.febworms-edit-palette .control-label {
+    float: none;
+    width: auto;
+    padding-top: 0;
+    text-align: left;
+}
+
+.febworms-field-drag {
+    opacity: 0.8;
+}
+
+.febworms-edit-palette legend {
+    position: relative;
+    cursor: pointer;
+}
+
+.febworms-edit-palette legend .caret {
+    border-top: 4px solid #999;
+    margin-top: 20px;
+}
+
+.febworms-edit-palette legend:hover {
+    color: #333;
+}
+
+.febworms-edit-palette legend:hover .caret {
+    border-top: 4px solid #333;
+}
+
+.febworms-edit-palette legend .dropdown-menu {
+    font-size: 14px;
+    line-height: 20px;
+    right: auto;
+    left: auto;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {    
+    .febworms-edit-palette select,
+    .febworms-edit-palette input,
+    .febworms-edit-palette textarea {
+        width: 190px;
+    }
+
+    .febworms-edit-palette input[type="checkbox"],
+    .febworms-edit-palette input[type="button"],
+    .febworms-edit-palette input[type="radio"] {
+        width: auto;
+    }
+}
