@@ -1,0 +1,103 @@
+[
+  {
+    "field1": "dddd",
+    "id": 1
+  },
+  {
+    "field1": "dddd",
+    "id": 2
+  },
+  {
+    "field1": "ddddd",
+    "id": 3,
+    "formId": "1"
+  },
+  {
+    "field1": "dddddd",
+    "id": 4,
+    "formId": 1
+  },
+  {
+    "field7854": "2",
+    "field7855": "3",
+    "field7857": {
+      "1": true,
+      "2": true
+    },
+    "field7850": "Gedoe",
+    "field7851": "dkdkdk@ddldldl.nl",
+    "field7852": "geheim",
+    "field7853": "Blahahahahahahaaaaa",
+    "field7856": true,
+    "id": 5,
+    "formId": 5
+  },
+  {
+    "firstName": "Henk",
+    "emailAddress": "henk@bagaal.nl",
+    "menu": "Brood",
+    "lastName": "Bagaal",
+    "notes": "Geen",
+    "id": 6,
+    "formId": 8
+  },
+  {
+    "firstName": "Gradus",
+    "emailAddress": "g1928@dus.com",
+    "menu": "Geen",
+    "lastName": "Spekvet",
+    "id": 7,
+    "formId": 8
+  },
+  {
+    "field6802": {
+      "1": true,
+      "2": true
+    },
+    "id": 8,
+    "formId": 10
+  },
+  {
+    "field7457": {
+      "1": true,
+      "2": true,
+      "3": true
+    },
+    "field7459": true,
+    "id": 9,
+    "formId": 11
+  },
+  {
+    "field4442": "ddddd@fff.nl",
+    "id": 10,
+    "formId": 2
+  },
+  {
+    "spam": true,
+    "foundUsBy": {
+      "Google": true,
+      "Stupidity": true,
+      "Plunker": false,
+      "Bing": true
+    },
+    "color": "green",
+    "size": "ml",
+    "firstName": "Harry",
+    "lastName": "Potter",
+    "emailAddress": "h.potter@somewizardcastle.net",
+    "comments": "Erhm what?",
+    "id": 11,
+    "formId": 100
+  },
+  {
+    "firstName": "hjghjghjgjh",
+    "emailAddress": "",
+    "menu": "Brood",
+    "id": 12,
+    "formId": 8
+  },
+  {
+    "id": 13,
+    "formId": 1
+  }
+]

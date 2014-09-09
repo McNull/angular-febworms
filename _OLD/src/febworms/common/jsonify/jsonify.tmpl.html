@@ -1,0 +1,8 @@
+<div class="jsonify">
+    <div class="jsonify-label">
+    	{{ expression }}:
+    	<i class="jsonify-button icon-share" ng-click="copy()"></i>
+    	<i class="jsonify-button {{ displayHidden && 'icon-eye-open' || 'icon-eye-close' }}" ng-click="displayHidden = !displayHidden"></i>
+	</div>
+    <pre>{{ jsonify | j$on:displayHidden }}</pre>
+</div>

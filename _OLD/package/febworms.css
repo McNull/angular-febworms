@@ -1,0 +1,446 @@
+.febworms-field-required .control-label:after {
+    content: ' *';
+    color: #888;
+}
+
+.febworms-legend-extra {
+    color: #999;
+    font-weight: lighter;
+    display: inline-block;
+}
+
+.febworms-edit-canvas .febworms-field, .febworms-edit-palette .febworms-field {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.febworms-edit-canvas .febworms-field, .febworms-edit-palette .febworms-field:hover {
+    background-color: #f5f5f5;
+}
+
+.febworms-edit-canvas-field .control-group, .febworms-edit-palette .control-group {
+    margin-bottom: 0;
+}
+
+.febworms-field {
+    min-height: 25px;
+}
+
+.febworms-edit-canvas .febworms-field.error {
+    background-color: #f2dede;
+    border-color: #b94a48;
+}
+
+
+.febworms-field-overlay {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    /*-moz-opacity: 0.0;*/
+    /*opacity:.0;*/
+
+    /* Needed by IE */
+    filter: alpha(opacity=0);
+    background: #FFF;
+    background-color: rgba(255,255,255,0.0);
+    cursor: move;
+}
+
+.febworms-field-overlay .btn-toolbar {
+    position: absolute;
+    margin: 0;
+/*    display: none;*/
+    top: -10px;
+}
+
+/*.febworms-field:hover .btn-toolbar {
+    display: block;
+}
+*/
+.febworms-field-overlay .btn-toolbar-right {
+    right: 5px;
+}
+
+.febworms-field-overlay .btn-toolbar-left {
+    left: 5px;
+}
+
+.febworms-field-overlay .btn-toolbar .btn[disabled] {
+    -moz-opacity: 1.0;
+    opacity:1.0;
+    filter: alpha(opacity=100);
+    color: #777;
+}
+
+
+.febworms-edit-canvas .febworms-field-properties .control-group {
+    margin-bottom: 10px;
+}
+
+.febworms-edit-canvas .febworms-field.febworms-edit-canvas-field {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.febworms-edit-canvas .control-label {
+    width: 130px;
+}
+
+.febworms-edit-canvas .controls {
+    margin-left: 150px;
+}
+
+.febworms-edit-canvas-area {
+    min-height: 300px;
+    position: relative;
+    /*padding-bottom: 100px;*/
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+.febworms-edit-canvas-area-empty {
+    position: absolute;
+    left: 20px; right: 20px; bottom: 20px; top: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.febworms-edit-canvas-area-empty-x {
+    font-size: 200px;
+    line-height: 200px;
+}
+
+.febworms-drag-placeholder {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: dashed 1px #3a87ad !important;
+    background-color: #d9edf7 !important;
+    min-height: 50px !important;
+    margin-bottom: 20px;
+}
+
+.febworms-field-overlay-drag-top, .febworms-field-overlay-drag-bottom {
+    height: 50%;
+}
+
+.febworms-field-properties .febworms-field-not-in-cache {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+}
+
+.febworms-edit-canvas .febworms-field.dragging {
+    display: none;
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+   
+    .febworms-edit-canvas .controls {
+        margin-left: 0px;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+    .febworms-edit-canvas-area {
+        /*padding-bottom: 0;*/
+        min-height: inherit;
+        padding: 0px;
+        border: none;
+     
+    }
+
+    .febworms-edit-canvas-area-empty {
+        position: static;
+    }
+}
+.febworms-dropdown.open {
+  position: absolute;
+}
+
+.febworms-dropdown .dropdown-menu {
+  position: static;
+  top: 0; left: 0;
+  float: none;
+  max-height: 250px;
+  overflow-y: auto;
+}
+.jsonify {
+    position: relative;
+    margin: 15px 0;
+    padding: 39px 19px 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.jsonify-label {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #9da0a4;
+    -webkit-border-radius: 4px 0 4px 0;
+    -moz-border-radius: 4px 0 4px 0;
+    border-radius: 4px 0 4px 0;
+}
+
+.jsonify-button {
+    display: none;
+    cursor: pointer;
+}
+
+.jsonify:hover .jsonify-button {
+    display: inline-block;
+}
+
+
+.febworms-tabs > .nav-tabs {
+	margin-bottom: 0px;
+}
+
+.febworms-tabs .tab-content {
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-top: none;
+	border-radius: 0px 0px 4px 4px;
+}
+
+.febworms-tabs > .nav-tabs a {
+	color: #999;
+	font-weight: 300;
+}
+
+.febworms-tabs > .nav-tabs a:hover {
+	background-color: inherit;
+	color: #333;
+}
+
+.febworms-tabs > .nav-tabs .active a {
+	color: #333;
+	font-weight: normal;
+	border-bottom: 1px solid #fff !important;
+}
+
+/*.febworms-field-properties .jsonify {
+	margin-left: 20px;
+	margin-right: 20px;
+}*/
+
+
+.febworms-field-properties {
+    position: relative;
+    margin: 15px 0;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #fff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    -webkit-touch-callout: initial;
+	-webkit-user-select: initial;
+	-khtml-user-select: initial;
+	-moz-user-select: text;
+	-ms-user-select: initial;
+	user-select: initial;
+}
+
+.febworms-field-properties form {
+	margin-bottom: 0;
+}
+
+.table-field-options {
+	
+}
+
+.table-field-options td, .table-field-options th {
+	vertical-align: middle;
+	padding: 5px;
+}
+
+.table-field-options td {
+	border: 0;
+	line-height: 30px;
+}
+
+.table-field-options th {
+}
+
+.table-field-options input[type="checkbox"], 
+.table-field-options input[type="radio"] {
+	margin-top: 0;
+}
+
+.table-field-options th.table-field-options-padding {
+	width: 100%;
+}
+
+
+.febworms-field-properties .control-label {
+	width: 110px;
+}
+
+.febworms-field-properties .controls {
+	margin-left: 130px;
+}
+
+.febworms-field-properties .febworms-tabs {
+	margin-bottom: 10px;
+}
+
+.febworms-field-properties .febworms-tabs-pane {
+	margin-top: 10px;
+}
+
+/*.febworms-field-properties .febworms-tabs .tab-content {
+	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: 1px solid #ddd;
+	border-top: none;
+	border-radius: 0px 0px 4px 4px;
+}*/
+
+/*.febworms-field-properties .febworms-tabs .nav-tabs a {
+	color: #999;
+	font-weight: 300;
+}
+
+.febworms-field-properties .febworms-tabs .nav-tabs a:hover {
+	background-color: inherit;
+	color: #333;
+}
+
+.febworms-field-properties .febworms-tabs .nav-tabs .active a {
+	color: #333;
+	font-weight: normal;
+	border-bottom: 1px solid #fff !important;
+}
+*/
+@media (min-width: 480px) and (max-width: 979px) {
+	
+	.table-field-options input[type="text"] {
+		width: 130px;
+	}
+}
+
+/*@media (max-width: 767px) { 
+	.table-field-options input[type="text"] {
+		width: 90px;
+	}	
+}*/
+
+@media (max-width: 480px) {  
+
+	.table-field-options input[type="text"] {
+		width: 90px;
+	}
+
+	.febworms-field-properties .controls {
+		margin-left: 0px;
+	}
+
+	.febworms-field-properties {
+		padding: 10px;
+	}
+
+	.febworms-field-properties form {
+		margin: 0;
+	}
+}
+
+
+
+
+.febworms-property-field-validation + .febworms-property-field-validation,
+.febworms-property-field-validation + div > .febworms-property-field-validation {
+	border-top: 1px solid #cccccc;
+	padding-top: 10px;
+}
+
+.febworms-edit-palette .controls {
+    margin-left: 0;
+}
+
+.febworms-edit-palette .control-label {
+    float: none;
+    width: auto;
+    padding-top: 0;
+    text-align: left;
+}
+
+.febworms-field-drag {
+    opacity: 0.8;
+}
+
+.febworms-edit-palette legend {
+    position: relative;
+    cursor: pointer;
+}
+
+.febworms-edit-palette legend .caret {
+    border-top: 4px solid #999;
+    margin-top: 20px;
+}
+
+.febworms-edit-palette legend:hover {
+    color: #333;
+}
+
+.febworms-edit-palette legend:hover .caret {
+    border-top: 4px solid #333;
+}
+
+.febworms-edit-palette legend .dropdown-menu {
+    font-size: 14px;
+    line-height: 20px;
+    right: auto;
+    left: auto;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {    
+    .febworms-edit-palette select,
+    .febworms-edit-palette input,
+    .febworms-edit-palette textarea {
+        width: 190px;
+    }
+
+    .febworms-edit-palette input[type="checkbox"],
+    .febworms-edit-palette input[type="button"],
+    .febworms-edit-palette input[type="radio"] {
+        width: auto;
+    }
+}
+
+.febworms-field-inner .controls > div > .radio:first-child,
+.febworms-field-inner .controls > div > .checkbox:first-child {
+  padding-top: 5px;
+}
+.febworms-validation-summary {
+	margin-top: 10px;
+}

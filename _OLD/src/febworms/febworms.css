@@ -1,0 +1,10 @@
+.febworms-field-required .control-label:after {
+    content: ' *';
+    color: #888;
+}
+
+.febworms-legend-extra {
+    color: #999;
+    font-weight: lighter;
+    display: inline-block;
+}
