@@ -25,16 +25,21 @@
     "angular": "~1.2.21"
   },
   "devDependencies": {
-  	"angular-route": "~1.2.21",
+    "angular-route": "~1.2.21",
+    "angular-mocks": "~1.2.21",
     "jquery": "1.*",
     "respond": "~1.4.2",
-    "html5shiv": "~3.7.2"
+    "html5shiv": "~3.7.2",
+    "lodash": "~2.4.1"
   },
   "overrides": {
-    "respond" : {
+    "respond": {
       "main": "dest/respond.min.js"
     },
     "angular-mocks": {
+      "ignore": true
+    },
+    "lodash": {
       "ignore": true
     }
   }

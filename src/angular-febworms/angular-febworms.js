@@ -14,7 +14,7 @@ febworms.Field = function(type, properties) {
   this.displayName = this.displayName || this.type.charAt(0).toUpperCase() + this.type.substring(1);
 };
 
-angular.module('febworms', ['ngRoute', 'dq', 'templates-febworms']);
+angular.module('febworms', ['dq']);
 
 angular.module('febworms').config(function($provide) {
 
@@ -251,13 +251,13 @@ angular.module('febworms').config(function(febwormsConfigProvider) {
   febwormsConfigProvider.validation.pattern({
     'None': undefined,
     'Url': '^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$',
-    'Domain': '^([a-z][a-z0-9\-]+(\\.|\\-*\\.))+[a-z]{2,6}$',
+    'Domain': '^([a-z][a-z0-9\\-]+(\\.|\\-*\\.))+[a-z]{2,6}$',
     'IPv4 Address': '^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$',
     'Email Address': '^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$',
     'Integer': '^-{0,1}\\d+$',
     'Positive Integers': '^\\d+$',
     'Negative Integers': '^-\\d+$',
-    'Number': '^-{0,1}\\d*\\.{0,1}\d+$',
+    'Number': '^-{0,1}\\d*\\.{0,1}\\d+$',
     'Positive Number': '^\\d*\\.{0,1}\\d+$',
     'Negative Number': '^-\\d*\\.{0,1}\\d+$',
     'Year (1920-2099)': '^(19|20)[\\d]{2,2}$',
