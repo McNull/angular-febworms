@@ -16,7 +16,7 @@ app.route = {
       name: 'About'
     },
     {
-      name: 'Contact'
+      name: 'Forms'
     }
   ],
   setup: function ($routeProvider, routeItems) {

@@ -24,13 +24,13 @@
 <body>
 
 <header>
-  <div app-navbar></div>
+  <div app-navbar items="menuItems"></div>
 </header>
 
 <section ng-view></section>
 
-  <script src="vendor/angular/angular.min.js"></script>
-  <script src="vendor/angular-route/angular-route.min.js"></script>
+  <script src="vendor/angular/angular.js"></script>
+  <script src="vendor/angular-route/angular-route.js"></script>
   <% _.forEach(js, function(include) { %>
   <script src="<%-include%>"></script><%
   }); %>

@@ -1,0 +1,4 @@
+
+table.app-table-form-list > tbody > tr > td, table.app-table-form-list > tbody > tr > th {
+  vertical-align: middle;
+}

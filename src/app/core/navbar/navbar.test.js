@@ -1,156 +1,273 @@
-describe('navbar', function () {
+describe('mindef-navbar-directive', function () {
 
-  var $controller, $scope, routeMock, $timeout;
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  beforeEach(module('app'));
+  beforeEach(module('mindef'));
+
+  var $rootScope, $scope, $timeout, locationMock = {
+    path: function (v) {
+
+      if (v !== undefined) {
+        locationMock._path = v;
+      }
+
+      return locationMock._path;
+    }
+  };
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   beforeEach(function () {
 
-    inject(function (_$controller_, _$rootScope_, _$timeout_) {
+    module(function ($provide) {
+      $provide.value('$location', locationMock);
+    });
 
-      $controller = _$controller_;
+    inject(function (_$rootScope_, _$timeout_, $location) {
+
+      $rootScope = _$rootScope_;
       $scope = _$rootScope_.$new();
       $timeout = _$timeout_;
 
     });
 
-    routeMock = {
-      routes: []
-    };
-
   });
 
-  function createController() {
-    return $controller('AppNavBarCtrl', {
-      $scope: $scope,
-      $route: routeMock,
-      $timeout: $timeout
-    });
-  }
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  it('should construct the AppNavBarCtrl', function () {
-    expect(createController()).toBeDefined();
-  });
+  describe('linkFn', function () {
 
-  it('should add the routes to the scope', function () {
+    var linkFn;
 
-    // Arrange
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    routeMock.routes.push({
-      name: 'route1'
-    }, {
-      name: 'route2'
+    beforeEach(function () {
+
+      inject(function (mindefNavbarLinkFn) {
+        linkFn = mindefNavbarLinkFn;
+      });
+
     });
 
-    // Act
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    var ctrl = createController();
+    it('should inject the link function', function () {
 
-    // Assert
+      expect(linkFn).toBeDefined();
+      expect(angular.isFunction(linkFn)).toBeTruthy();
 
-    expect($scope.routes).toBeDefined();
-    expect($scope.routes.length).toBe(routeMock.routes.length);
-    expect($scope.routes.indexOf(routeMock.routes[0])).not.toBe(-1);
-    expect($scope.routes.indexOf(routeMock.routes[1])).not.toBe(-1);
-
-  });
-
-  it('should not add the routes to the scope which don\'t have a name', function () {
-
-    // Arrange
-
-    routeMock.routes.push({
-      name: 'route1'
-    }, {
-      name: 'route2'
-    }, {
-      noName: 'should not be added'
     });
 
-    // Act
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    createController();
+    describe('collapse', function () {
 
-    // Assert
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    expect($scope.routes).toBeDefined();
-    expect($scope.routes.length).toBe(routeMock.routes.length - 1);
-    expect($scope.routes.indexOf(routeMock.routes[0])).not.toBe(-1);
-    expect($scope.routes.indexOf(routeMock.routes[1])).not.toBe(-1);
-    expect($scope.routes.indexOf(routeMock.routes[2])).toBe(-1);
+      it('should be collapsed by default', function () {
 
-  });
+        expect($scope.collapsed).toBeFalsy();
 
-  it('should set the currentRoute on the scope whenever the route has changed', function () {
+        linkFn($scope);
 
-    // Arrange
+        expect($scope.collapsed).toBeTruthy();
 
-    var expected = {
-      name: 'this one'
-    };
+      });
 
-    routeMock.current = {
-      $$route: expected
-    };
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    createController();
+      it('should toggle collapse value', function () {
 
-    // Act
+        linkFn($scope);
 
-    $scope.$emit('$routeChangeSuccess');
+        expect($scope.collapsed).toBeTruthy();
 
-    // Assert
+        $scope.toggleCollapsed();
 
-    expect($scope.currentRoute).toBe(expected);
+        expect($scope.collapsed).toBeFalsy();
 
-  });
+      });
 
-  it('should be collapsed by default', function () {
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    // Arrange
+      it('should collapse after a timeout', function () {
 
-    // Act
+        linkFn($scope);
 
-    createController();
+        $scope.collapsed = false;
 
-    // Act
+        $scope.collapse();
 
-    expect($scope.collapsed).toBe(true);
+        expect($scope.collapsed).toBeFalsy();
 
-  });
+        $timeout.flush();
 
-  it('should be collapsed by default', function () {
+        expect($scope.collapsed).toBeTruthy();
 
-    // Arrange
+      });
 
-    // Act
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    createController();
+    });
 
-    // Act
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    expect($scope.collapsed).toBe(true);
+    describe('visible', function () {
 
-  });
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  it('should collapsed after delay', function () {
+      beforeEach(function () {
+        linkFn($scope);
+      });
 
-    // Delay is to allow the anchors to handle the click event
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    // Arrange
+      it('should return true if no value specified', function () {
 
-    createController();
-    $scope.collapsed = false;
+        expect($scope.isVisible({})).toBeTruthy();
 
-    // Act
+      });
 
-    $scope.collapse();
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    // Assert
+      it('should return the visibility value', function () {
 
-    expect($scope.collapsed).toBe(false);
-    $timeout.flush();
-    expect($scope.collapsed).toBe(true);
+        expect($scope.isVisible({ visible: true })).toBeTruthy();
+        expect($scope.isVisible({ visible: false })).toBeFalsy();
+        expect($scope.isVisible({ visible: null })).toBeFalsy();
+
+      });
+
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+      it('should return the value of the function', function () {
+
+        expect($scope.isVisible({ visible: function () {
+          return true;
+        } })).toBeTruthy();
+        expect($scope.isVisible({ visible: function () {
+          return 1;
+        } })).toBeTruthy();
+        expect($scope.isVisible({ visible: function () {
+          return false;
+        } })).toBeFalsy();
+        expect($scope.isVisible({ visible: function () {
+          return 0;
+        } })).toBeFalsy();
+        expect($scope.isVisible({ visible: function () {
+        } })).toBeFalsy();
+
+      });
+
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    });
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    describe('active item', function () {
+
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+      beforeEach(function () {
+        linkFn($scope);
+      });
+
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+      it('should set exact match to active', function () {
+
+        $scope.items = [
+          { url: '/a' },
+          { url: '/b' },
+          { url: '/c' }
+        ];
+
+        locationMock.path('/a');
+        $scope.$digest();
+
+        expect($scope.items[0].$_active).toBeTruthy();
+        expect($scope.items[1].$_active).toBeFalsy();
+        expect($scope.items[2].$_active).toBeFalsy();
+
+        locationMock.path('/b');
+        $scope.$digest();
+
+        expect($scope.items[0].$_active).toBeFalsy();
+        expect($scope.items[1].$_active).toBeTruthy();
+        expect($scope.items[2].$_active).toBeFalsy();
+
+      });
+
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+      it('should set partial match to active', function () {
+
+        $scope.items = [
+          { url: '/a' },
+          { url: '/b' },
+          { url: '/c' }
+        ];
+
+        locationMock.path('/a/sub');
+        $scope.$digest();
+
+        expect($scope.items[0].$_active).toBeTruthy();
+        expect($scope.items[1].$_active).toBeFalsy();
+        expect($scope.items[2].$_active).toBeFalsy();
+
+        locationMock.path('/b/sub');
+        $scope.$digest();
+
+        expect($scope.items[0].$_active).toBeFalsy();
+        expect($scope.items[1].$_active).toBeTruthy();
+        expect($scope.items[2].$_active).toBeFalsy();
+
+      });
+
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+      it('should set item to active by pattern', function () {
+
+        $scope.items = [
+          { url: '/a', pattern: '/some-folder(/.*)?' },
+          { url: '/b' },
+          { url: '/c' }
+        ];
+
+        locationMock.path('/a');
+        $scope.$digest();
+
+        expect($scope.items[0].$_active).toBeFalsy();
+        expect($scope.items[1].$_active).toBeFalsy();
+        expect($scope.items[2].$_active).toBeFalsy();
+
+        locationMock.path('/b');
+        $scope.$digest();
+
+        expect($scope.items[0].$_active).toBeFalsy();
+        expect($scope.items[1].$_active).toBeTruthy();
+        expect($scope.items[2].$_active).toBeFalsy();
+
+        locationMock.path('/some-folder');
+        $scope.$digest();
+
+        expect($scope.items[0].$_active).toBeTruthy();
+        expect($scope.items[1].$_active).toBeFalsy();
+        expect($scope.items[2].$_active).toBeFalsy();
+
+        locationMock.path('/some-folder/1/2/3');
+        $scope.$digest();
+
+        expect($scope.items[0].$_active).toBeTruthy();
+        expect($scope.items[1].$_active).toBeFalsy();
+        expect($scope.items[2].$_active).toBeFalsy();
+
+      });
+
+    });
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   });
 

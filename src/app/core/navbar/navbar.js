@@ -1,40 +1,98 @@
+/*
 
-app.directive('appNavbar', function() {
+ The app-navbar directive accepts an array of navitems:
 
+ [{
+ name:             name of the item.
+ url:              url of the item.
+ [visible]:        boolean or function which indicates if the item is visible.
+ [pattern]:        regular expression used to indicate if the current item is active in the navigation bar.
+ }]
+
+ */
+
+app.directive('appNavbar', function (appNavbarLinkFn) {
   return {
-    scope: true,
+    scope: {
+      items: '='
+    },
     templateUrl: 'app/core/navbar/navbar.ng.html',
-    controller: 'AppNavBarCtrl'
+    link: appNavbarLinkFn
   };
-
 });
 
-app.controller('AppNavBarCtrl', function($scope, $route, $timeout) {
+app.factory('appNavbarLinkFn', function ($location, $timeout) {
 
-  $scope.routes = [];
+  function appNavbarLinkFn($scope) {
 
-  // Not all routes in the service are from the application.
+    $scope.collapsed = true;
 
-  angular.forEach($route.routes, function(route) {
-    if(route.name) {
-      $scope.routes.push(route);
+    $scope.toggleCollapsed = function () {
+      $scope.collapsed = !$scope.collapsed;
+    };
+
+    $scope.collapse = function () {
+
+      // The timeout is to ensure that any click event is handled.
+
+      $timeout(function () {
+        $scope.collapsed = true;
+      }, 200);
+    };
+
+    // - - 8-< - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    $scope.isVisible = function (item) {
+      if (item.visible !== undefined) {
+        if (angular.isFunction(item.visible)) {
+          return item.visible(item) == true;
+        } else {
+          return item.visible;
+        }
+      }
+
+      return true;
+    };
+
+    // - - 8-< - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    function setActive(url) {
+      if($scope.items) {
+        for (var i = 0; i < $scope.items.length; i++) {
+
+          var navItem = $scope.items[i];
+          var regexp = navItem.$_regexp;
+
+          if (!regexp) {
+            var pattern = navItem.pattern;
+
+            if (!pattern) {
+              pattern = navItem.url || '/';
+              pattern = pattern.replace(/^#/, '');
+              pattern = '^' + pattern;
+
+              if(pattern == '^/') {
+                pattern += '$';
+              }
+            }
+
+            regexp = new RegExp(pattern, 'i');
+            navItem.$_regexp = regexp;
+          }
+
+          navItem.$_active = regexp.test(url);
+        }
+      }
     }
-  });
 
-  $scope.$on("$routeChangeSuccess", function () {
-    $scope.currentRoute = $route.current.$$route;
-  });
+    $scope.$watch(function () {
+      return $location.path();
+    }, setActive);
 
-  $scope.collapsed = true;
+    // - - 8-< - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  $scope.collapse = function() {
+  }
 
-    // Hide the menu on mobile devices when the button loses focus. The timeout is to ensure that any click event
-    // is handled.
-
-    $timeout(function() {
-      $scope.collapsed = true;
-    }, 200);
-  };
+  return appNavbarLinkFn;
 
 });
