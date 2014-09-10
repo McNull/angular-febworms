@@ -3,31 +3,27 @@
 app.route = {
   items: [
     /* {
-     name:             name of the route,
+     [name]:           name of the route,
      [url]:            url to map the route to. defaults to /{{name-dash-cased}}
      [templateUrl]:    url to template. defaults to /app/{{url}}/index.html
      } */
     {
       url: '/',
-      name: 'Home',
       templateUrl: 'app/home/index.html'
     },
     {
       name: 'About'
-    },
-    {
-      name: 'Forms'
     }
   ],
   setup: function ($routeProvider, routeItems) {
 
     angular.forEach(routeItems, function (routeItem) {
-
-      if (!routeItem.name) {
-        throw new Error('Route is missing name property. ' + JSON.stringify(routeItem))
-      }
-
       if (!routeItem.url) {
+
+        if (!routeItem.name) {
+          throw new Error('Route is missing name and url property. ' + JSON.stringify(routeItem))
+        }
+
         routeItem.url = '/' + app.utils.toDashCased(routeItem.name);
       }
 
