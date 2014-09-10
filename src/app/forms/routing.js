@@ -12,7 +12,7 @@ app.route.items = app.route.items.concat([
     templateUrl: '/forms/edit.html'
   },
   {
-    url: '/forms/data/:id',
-    templateUrl: '/forms/data.html'
+    url: '/forms/:id',
+    templateUrl: '/forms/display.html'
   }
 ]);
