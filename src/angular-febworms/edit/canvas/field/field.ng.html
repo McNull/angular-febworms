@@ -11,22 +11,22 @@
             <div class="febworms-field-overlay-drag-top" dq-drag-enter="dragPlaceholder.index = $index"></div>
             <div class="febworms-field-overlay-drag-bottom" dq-drag-enter="dragPlaceholder.index = ($index + 1)"></div>
             <div class="btn-toolbar btn-toolbar-left">
-                <button class="btn btn-mini" type="button"
+                <button class="btn btn-default btn-xs" type="button"
                         ng-click="field.$_displayProperties = !field.$_displayProperties">Properties
                 </button>
             </div>
             <div class="btn-toolbar btn-toolbar-right">
-                <button class="btn btn-mini" type="button"
+                <button class="btn btn-default btn-xs" type="button"
                         ng-click="schemaCtrl.swapFields($index - 1, $index)"
                         ng-disabled="$index === 0">
                     Up
                 </button>
-                <button class="btn btn-mini" type="button"
+                <button class="btn btn-default btn-xs" type="button"
                         ng-click="schemaCtrl.swapFields($index, $index + 1)"
                         ng-disabled="$index === schema.fields.length - 1">
                     Down
                 </button>
-                <button class="btn btn-mini" type="button" ng-click="schemaCtrl.removeField($index)">
+                <button class="btn btn-default btn-xs" type="button" ng-click="schemaCtrl.removeField($index)">
                     Remove
                 </button>
             </div>

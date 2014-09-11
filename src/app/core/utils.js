@@ -24,6 +24,10 @@
       }
 
       return -1;
+    },
+    singleOrDefault: function(arr, predicate) {
+      var idx = app.utils.indexOfMatch(arr, predicate);
+      return idx === -1 ? null : arr[idx];
     }
   };
 })(app);

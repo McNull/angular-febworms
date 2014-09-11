@@ -1,50 +1,51 @@
-<div ng-if="actionsEnabled" class="febworms-edit-form-actions form-horizontal">
+<div ng-if="actionsEnabled" class="febworms-edit-form-actions">
 
-    <div ng-if="!preview">
-        <div ng-if="debugInfoEnabled">
-            <div class="controls">
-                <label class="checkbox">
-                    <input type="checkbox" ng-model="debugSchema"> Display schema information
-                </label>
-            </div>
+  <div ng-if="!preview" class="container-fluid">
+    <div ng-if="debugInfoEnabled">
 
-            <div ng-if="debugSchema" data-jsonify="schema"></div>
-        </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="debugSchema"> Display schema information
+        </label>
+      </div>
 
-        <div class="form-actions">
-            <a class="btn btn-primary" ng-disabled="schema.$_invalid" ng-click="handleSave()">Save
-                changes</a>
-            <a class="btn" ng-disabled="schema.$_invalid" ng-click="togglePreview()">Preview
-                form</a>
-            <a class="btn" ng-click="handleCancel()">Cancel</a>
-        </div>
+      <div ng-if="debugSchema" data-jsonify="schema"></div>
     </div>
 
-    <div ng-if="preview">
+    <div>
+      <a class="btn btn-primary" ng-disabled="schema.$_invalid" ng-click="handleSave()">Save
+        changes</a>
+      <a class="btn btn-default" ng-disabled="schema.$_invalid" ng-click="togglePreview()">Preview
+        form</a>
+      <a class="btn btn-default" ng-click="handleCancel()">Cancel</a>
+    </div>
+  </div>
 
-        <div ng-if="debugInfoEnabled">
-            <div class="control-group">
-                <div class="controls">
-                    <label class="checkbox">
-                        <input type="checkbox" ng-model="debugFormData"> Display form data information
-                    </label>
-                </div>    
-            </div>
+  <div ng-if="preview">
 
-            <div ng-if="debugFormData" febworms-tabs>
-                <div febworms-tabs-pane="Form data">
-                    <div jsonify="previewForm.data"></div>
-                </div>
-                <div febworms-tabs-pane="Form status">
-                    <div jsonify="previewForm.state" jsonify-display-hidden="true"></div>
-                </div>
-            </div>
-
+    <div ng-if="debugInfoEnabled">
+      <div class="control-group">
+        <div class="form-group">
+          <label class="checkbox">
+            <input type="checkbox" ng-model="debugFormData"> Display form data information
+          </label>
         </div>
+      </div>
 
-        <div class="form-actions">
-            <a class="btn btn-primary" ng-click="togglePreview()">Close preview</a>
+      <div ng-if="debugFormData" febworms-tabs>
+        <div febworms-tabs-pane="Form data">
+          <div jsonify="previewForm.data"></div>
         </div>
+        <div febworms-tabs-pane="Form status">
+          <div jsonify="previewForm.state" jsonify-display-hidden="true"></div>
+        </div>
+      </div>
 
     </div>
+
+    <div class="form-actions">
+      <a class="btn btn-primary" ng-click="togglePreview()">Close preview</a>
+    </div>
+
+  </div>
 </div>

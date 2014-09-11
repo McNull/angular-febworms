@@ -1,6 +1,9 @@
 app.controller('FormEditCtrl', function ($scope, $location, forms, $routeParams, inform) {
 
-  var form = $routeParams.id ? forms[$routeParams.id] : {};
+  var form = app.utils.singleOrDefault(forms, function(x) {
+    return x.id == $routeParams.id;
+  }) || {};
+
   $scope.form = angular.copy(form);
 
   $scope.onSave = function() {
