@@ -10,6 +10,7 @@
   <title><%- pkg.name %></title>
 
   <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/angular-inform/dist/angular-inform.min.css">
   <% _.forEach(css, function(include) { %>
   <link rel="stylesheet" href="<%-include%>"><%
   }); %>
@@ -24,6 +25,7 @@
 <body>
 
 <header>
+  <div inform class="inform-fixed"></div>
   <div app-navbar items="menuItems"></div>
 </header>
 
@@ -31,6 +33,7 @@
 
   <script src="vendor/angular/angular.js"></script>
   <script src="vendor/angular-route/angular-route.js"></script>
+  <script src="vendor/angular-inform/dist/angular-inform.js"></script>
   <% _.forEach(js, function(include) { %>
   <script src="<%-include%>"></script><%
   }); %>

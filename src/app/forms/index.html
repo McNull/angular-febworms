@@ -3,24 +3,24 @@
   <h1>Forms</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam earum ex ipsam maxime nulla provident sint suscipit. Accusamus animi eos expedita facere fugit harum minus, necessitatibus quos vero voluptatum.</p>
 
-  <table class="table table-responsive table-hover table-bordered app-table-form-list">
+  <table class="table table-responsive table-hover table-bordered app-table-form-list" ng-controller="FormListCtrl">
     <tr>
       <th>Id</th>
       <th>Name</th>
       <th>
         <div class="btn-group btn-group-sm pull-right">
-          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>&nbsp;New</button>
+          <button ng-click="newForm()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>&nbsp;New</button>
         </div>
       </th>
     </tr>
-    <tr ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]">
-      <td>{{ i }}</td>
-      <td>My Form {{ i }}</td>
+    <tr ng-repeat="form in forms">
+      <td>{{ form.id }}</td>
+      <td><a ng-href="#/app/form/{{ form.id }}">{{ form.name }}</a></td>
       <td>
         <div class="btn-group btn-group-sm pull-right">
-          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</button>
-          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
-          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-list"></span>&nbsp;Data</button>
+          <button ng-click="editForm(form)" type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</button>
+          <button ng-click="removeForm(form)" type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+          <button ng-click="displayDataEntries(form)" type="button" class="btn btn-default"><span class="glyphicon glyphicon-list"></span>&nbsp;Data</button>
         </div>
       </td>
     </tr>

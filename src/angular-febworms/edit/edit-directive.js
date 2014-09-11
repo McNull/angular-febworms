@@ -1,4 +1,4 @@
-angular.module('febworms').directive('febwormsEdit', function() {
+angular.module('febworms').directive('febwormsEdit', function () {
   return {
     priority: 100,
     require: 'febwormsSchema',
@@ -15,20 +15,20 @@ angular.module('febworms').directive('febwormsEdit', function() {
       // Boolean indicating wether the edit is in preview mode or not
       preview: '=?febwormsPreview'
     },
-    replace: true, 
+    replace: true,
     controller: 'febwormsEditController as editCtrl',
     templateUrl: 'angular-febworms/edit/edit.ng.html',
-    link: function($scope, $element, $attrs, schemaCtrl) {
-      
-      if($scope.schema === undefined) {
+    link: function ($scope, $element, $attrs, schemaCtrl) {
+
+      if ($scope.schema === undefined) {
         $scope.schema = {};
       }
 
-      if($scope.actionsEnabled === undefined) {
+      if ($scope.actionsEnabled === undefined) {
         $scope.actionsEnabled = true;
       }
 
-      if($scope.preview === undefined) {
+      if ($scope.preview === undefined) {
         $scope.preview = false;
       }
 

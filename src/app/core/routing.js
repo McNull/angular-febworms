@@ -1,35 +1,42 @@
-// Simple routing example.
+
 
 app.route = {
-  items: [
-    /* {
-     [name]:           name of the route,
-     [url]:            url to map the route to. defaults to /{{name-dash-cased}}
-     [templateUrl]:    url to template. defaults to /app/{{url}}/index.html
-     } */
-    {
-      url: '/',
-      templateUrl: 'app/home/index.html'
-    },
-    {
-      name: 'About'
+  /* {
+   [name]:           name of the route,
+   [url]:            url to map the route to. defaults to /{{name-dash-cased}}
+   [templateUrl]:    url to template. defaults to /app/{{url}}/index.html
+   } */
+  home: {
+    url: '/',
+    templateUrl: 'app/home/index.html'
+  },
+  about: {
+      url: '/about'
+  }
+};
+
+app.config(function ($routeProvider) {
+
+  angular.forEach(app.route, function(routes, key) {
+
+    if(!angular.isArray(routes)) {
+      routes.name = routes.name || key[0].toUpperCase() + key.slice(1);
+      routes = [routes];
     }
-  ],
-  setup: function ($routeProvider, routeItems) {
 
-    angular.forEach(routeItems, function (routeItem) {
-      if (!routeItem.url) {
+    angular.forEach(routes, function (route) {
+      if (!route.url) {
 
-        if (!routeItem.name) {
-          throw new Error('Route is missing name and url property. ' + JSON.stringify(routeItem))
+        if (!route.name) {
+          throw new Error('Route is missing name and url property. ' + JSON.stringify(route))
         }
 
-        routeItem.url = '/' + app.utils.toDashCased(routeItem.name);
+        route.url = '/' + app.utils.toDashCased(route.name);
       }
 
-      if (!routeItem.templateUrl) {
+      if (!route.templateUrl) {
 
-        var url = routeItem.url;
+        var url = route.url;
 
         if (url[0] != '/') {
           url = url + '/';
@@ -39,22 +46,16 @@ app.route = {
           url += '/';
         }
 
-        routeItem.templateUrl = 'app' + url + 'index.html';
+        route.templateUrl = 'app' + url + 'index.html';
       }
 
-      $routeProvider.when(routeItem.url, routeItem);
+      $routeProvider.when(route.url, route);
 
     });
 
     $routeProvider.otherwise({
       redirectTo: '/'
     });
-  }
-};
-
-app.config(function ($routeProvider) {
-
-  app.route.setup($routeProvider, app.route.items);
-
+  });
 });
 
