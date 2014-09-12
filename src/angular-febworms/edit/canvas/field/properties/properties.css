@@ -24,9 +24,9 @@
   z-index: 20; /* above .febworms-field-overlay */
 }
 
-.febworms-field-properties form {
-  margin-bottom: 0;
-}
+/*.febworms-field-properties form {*/
+  /*margin-bottom: 0;*/
+/*}*/
 
 .table-field-options {
 
@@ -123,9 +123,9 @@
     padding: 10px;
   }
 
-  .febworms-field-properties form {
-    margin: 0;
-  }
+  /*.febworms-field-properties form {*/
+    /*margin: 0;*/
+  /*}*/
 }
 
 
