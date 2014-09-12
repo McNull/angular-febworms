@@ -7,13 +7,13 @@
     padding-top: 15px;
     padding-bottom: 15px;
 }
-.febworms-edit-canvas .control-label {
-    width: 130px;
-}
+/*.febworms-edit-canvas .control-label {*/
+    /*width: 130px;*/
+/*}*/
 
-.febworms-edit-canvas .controls {
-    margin-left: 150px;
-}
+/*.febworms-edit-canvas .controls {*/
+    /*margin-left: 150px;*/
+/*}*/
 
 .febworms-edit-canvas-area {
     min-height: 300px;
@@ -62,13 +62,13 @@
 }
 
 /* Landscape phones and down */
-@media (max-width: 480px) {
+/*@media (max-width: 480px) {*/
 
-   
-    .febworms-edit-canvas .controls {
-        margin-left: 0px;
-    }
-}
+   /**/
+    /*.febworms-edit-canvas .controls {*/
+        /*margin-left: 0px;*/
+    /*}*/
+/*}*/
 
 @media (min-width: 480px) and (max-width: 768px) {
     .febworms-edit-canvas-area {

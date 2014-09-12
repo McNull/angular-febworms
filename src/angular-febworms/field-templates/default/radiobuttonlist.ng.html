@@ -1,9 +1,11 @@
-<label class="radio" ng-repeat="option in field.schema.options" title="{{ field.schema.tooltip }}">
+<div class="radio" ng-repeat="option in field.schema.options">
+  <label class="radio"  title="{{ field.schema.tooltip }}">
     <input febworms-field-input
-    	   type="radio"
+           type="radio"
            name="{{ field.schema.name }}[]"
            tabindex="{{ tabIndex }}"
            value="{{ option.value }}"
            ng-model="form.data[field.schema.name]">
     <span>{{option.text || option.value}}</span>
-</label>
+  </label>
+</div>
