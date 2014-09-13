@@ -1,6 +1,6 @@
 <legend ng-click="paletteCategoriesMenuOpen = !paletteCategoriesMenuOpen"
         ng-class="{ 'open': paletteCategoriesMenuOpen }">Palette 
-    <span class="febworms-legend-extra febworms-edit-palette-categories hidden-tablet">- {{ categoryName || 'All field types' }}</span> <i class="caret"></i>
+    <span class="febworms-legend-extra febworms-edit-palette-categories visible-xs-inline visible-md-inline visible-lg-inline">- {{ categoryName || 'All field types' }}</span> <i class="caret"></i>
     <ul class="dropdown-menu">
         <li ng-repeat="(name, category) in categories" ng-class="{ 'active': categoryName === name }">
             <a ng-click="setCategory(name, category)">

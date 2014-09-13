@@ -9,7 +9,16 @@ angular.module('febworms').controller('febwormsEditCanvasController', function (
   // Drag & drop
   // - - - 8-< - - - - - - - - - - - - - - - - - - - - -
 
+  $scope.$on('dqDragBegin', function() {
+    $scope.dragging = true;
+  });
+
+  $scope.$on('dqDragEnd', function() {
+    $scope.dragging = false;
+  });
+
   this.dragEnter = function () {
+//    $scope.dragging = true;
     $scope.dragPlaceholder.visible = true;
     $scope.dragPlaceholder.index = $scope.schema.fields.length;
   };
@@ -35,7 +44,9 @@ angular.module('febworms').controller('febwormsEditCanvasController', function (
 
     $timeout(function () {
       field.$_isDragging = false;
+//      $scope.dragging = false;
     }, 10);
+
   };
 
   this.drop = function () {

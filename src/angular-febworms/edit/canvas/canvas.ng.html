@@ -1,4 +1,4 @@
-<div class="febworms-edit-canvas">
+<div class="febworms-edit-canvas" ng-class="{ 'febworms-edit-canvas-dragging': dragging }">
     <div class="form-horizontal">
         <fieldset>
             <legend>Canvas</legend>
@@ -15,11 +15,14 @@
                     </div>
                 </div>
                 <div ng-repeat="field in schema.fields">
-                    <div ng-if="dragPlaceholder.visible && dragPlaceholder.index === $index"
+                  <!--ng-if="dragPlaceholder.visible && dragPlaceholder.index === $index"-->
+                    <div ng-class="{ 'febworms-drag-placeholder-visible' : dragPlaceholder.visible && dragPlaceholder.index === $index }"
                          class="febworms-drag-placeholder"></div>
                     <div febworms-edit-canvas-field></div>
                 </div>
-                <div ng-if="dragPlaceholder.visible && dragPlaceholder.index == schema.fields.length" class="febworms-drag-placeholder">
+                <!--<div class="febworms-drag-placeholder">-->
+                <!--<div ng-if="dragPlaceholder.visible && dragPlaceholder.index == schema.fields.length" class="febworms-drag-placeholder">-->
+                <div ng-class="{ 'febworms-drag-placeholder-visible': dragPlaceholder.visible && dragPlaceholder.index == schema.fields.length }" class="febworms-drag-placeholder">
                 </div>
             </div>
         </fieldset>

@@ -1,10 +1,12 @@
 <!-- focus -->
 <div ng-if="fields.focus">
   <div febworms-property-field="fieldFocus">
-    <label class="checkbox" title="Set the initial focus to this field.">
-      <input type="checkbox" ng-model="field.focus"/>
-      Set input focus
-    </label>
+    <div class="checkbox">
+      <label title="Set the initial focus to this field.">
+        <input type="checkbox" ng-model="field.focus"/>
+        Set input focus
+      </label>
+    </div>
   </div>
 </div>
 
@@ -12,6 +14,7 @@
 <div ng-if="fields.fieldname">
   <div febworms-property-field="fieldName" febworms-property-field-label="Name">
     <input type="text"
+           class="form-control"
            name="fieldName"
            ng-model="field.name"
            ng-required="true"
@@ -23,7 +26,7 @@
 <!-- displayName -->
 <div ng-if="fields.displayname">
   <div febworms-property-field="displayName" febworms-property-field-label="Display name">
-    <input type="text" name="displayName" ng-model="field.displayName"/>
+    <input type="text" class="form-control" name="displayName" ng-model="field.displayName"/>
   </div>
 </div>
 
@@ -31,8 +34,9 @@
 <div ng-if="fields.placeholder">
   <div febworms-property-field="fieldPlaceholder" febworms-property-field-label="Placeholder text">
     <input type="text"
-             name="fieldPlaceholder"
-             ng-model="field.placeholder"/>
+           class="form-control"
+           name="fieldPlaceholder"
+           ng-model="field.placeholder"/>
   </div>
 </div>
 
@@ -40,8 +44,9 @@
 <div ng-if="fields.tooltip">
   <div febworms-property-field="fieldTooltip" febworms-property-field-label="Tooltip">
     <input type="text"
-          name="fieldTooltip"
-          ng-model="field.tooltip"/>
+           class="form-control"
+           name="fieldTooltip"
+           ng-model="field.tooltip"/>
   </div>
 </div>
 

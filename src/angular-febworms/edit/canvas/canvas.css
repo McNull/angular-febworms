@@ -1,85 +1,109 @@
 
 .febworms-edit-canvas .febworms-field-properties .control-group {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .febworms-edit-canvas .febworms-field.febworms-edit-canvas-field {
-    padding-top: 15px;
-    padding-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
+
 /*.febworms-edit-canvas .control-label {*/
-    /*width: 130px;*/
+/*width: 130px;*/
 /*}*/
 
 /*.febworms-edit-canvas .controls {*/
-    /*margin-left: 150px;*/
+/*margin-left: 150px;*/
 /*}*/
 
 .febworms-edit-canvas-area {
-    min-height: 300px;
-    /*position: relative;*/
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    padding: 20px;
+  min-height: 340px;
+  /*position: relative;*/
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 20px;
 }
 
 .febworms-edit-canvas-area-empty {
-    /*position: absolute;*/
-    left: 20px; right: 20px; bottom: 20px; top: 20px;
-    margin: 0;
-    padding: 0;
+  /*position: absolute;*/
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  top: 20px;
+  margin: 0;
+  /*padding: 0;*/
 }
 
 .febworms-edit-canvas-area-empty-x {
-    font-size: 200px;
-    line-height: 200px;
+  font-size: 200px;
+  line-height: 200px;
 }
 
+
 .febworms-drag-placeholder {
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    border: dashed 1px #3a87ad !important;
-    background-color: #d9edf7 !important;
-    min-height: 50px !important;
-    margin-bottom: 20px;
+  margin-bottom: 0;
+  opacity: 0.0;
+  filter: aplha(opacity(0));
+  transition: height 0ms linear, opacity 0ms;
+  height: 0px;
+  display: none;
+}
+
+.febworms-edit-canvas-dragging {
+  /*background-color: teal;*/
+}
+.febworms-edit-canvas-dragging .febworms-drag-placeholder {
+  display: block;
+  transition: height 100ms linear, opacity 500ms, margin-bottom 100ms;
+}
+
+.febworms-drag-placeholder-visible {
+
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: dashed 1px #3a87ad;
+  background-color: #d9edf7;
+  height: 74px;
+  opacity: 1.0;
+  filter: aplha(opacity(100));
 }
 
 .febworms-field-overlay-drag-top, .febworms-field-overlay-drag-bottom {
-    height: 50%;
+  height: 50%;
 }
 
 .febworms-field-properties .febworms-field-not-in-cache {
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 0px;
 }
 
 .febworms-edit-canvas .febworms-field.dragging {
-    display: none;
+  display: none;
 }
 
 /* Landscape phones and down */
 /*@media (max-width: 480px) {*/
 
-   /**/
-    /*.febworms-edit-canvas .controls {*/
-        /*margin-left: 0px;*/
-    /*}*/
+/**/
+/*.febworms-edit-canvas .controls {*/
+/*margin-left: 0px;*/
+/*}*/
 /*}*/
 
-@media (min-width: 480px) and (max-width: 768px) {
-    .febworms-edit-canvas-area {
-        /*padding-bottom: 0;*/
-        min-height: inherit;
-        padding: 0px;
-        border: none;
-     
-    }
+@media (max-width: 768px) {
+  .febworms-edit-canvas-area {
+    /*padding-bottom: 0;*/
+    min-height: inherit;
+    padding: 0px;
+    border: none;
 
-    .febworms-edit-canvas-area-empty {
-        position: static;
-    }
+  }
+
+  .febworms-edit-canvas-area-empty {
+    position: static;
+    margin-bottom: 20px;
+  }
 }

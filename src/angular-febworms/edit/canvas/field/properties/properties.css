@@ -58,10 +58,6 @@
 /*width: 110px;*/
 /*}*/
 
-.febworms-field-properties .controls {
-  margin-left: 130px;
-}
-
 .febworms-field-properties .febworms-tabs {
   margin-bottom: 10px;
 }
@@ -113,10 +109,6 @@
 
   .table-field-options input[type="text"] {
     width: 90px;
-  }
-
-  .febworms-field-properties .controls {
-    margin-left: 0px;
   }
 
   .febworms-field-properties {
