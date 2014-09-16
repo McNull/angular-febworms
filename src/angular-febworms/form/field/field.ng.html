@@ -1,6 +1,6 @@
 <div class="febworms-field-inner form-group" ng-class="{ 'febworms-field-required': fieldSchema.validation.required }">
 	<label ng-if="!field.schema.nolabel" class="col-sm-2 control-label" for="{{ field.$_id }}">{{ fieldSchema.displayName }}</label>
-	<div class="col-sm-10 controls">
+	<div class="col-sm-10 controls" ng-class="{ 'col-sm-offset-2': field.schema.nolabel }">
 		<div ng-include="renderInfo.templateUrl"></div>
 		<div febworms-validation-summary febworms-validation-messages="fieldSchema.validation.messages" ng-if="!noValidationSummary"></div>
 	</div>

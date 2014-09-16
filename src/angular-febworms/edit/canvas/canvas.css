@@ -51,9 +51,10 @@
   display: none;
 }
 
-.febworms-edit-canvas-dragging {
+/*.febworms-edit-canvas-dragging {*/
   /*background-color: teal;*/
-}
+/*}*/
+
 .febworms-edit-canvas-dragging .febworms-drag-placeholder {
   display: block;
   transition: height 100ms linear, opacity 500ms, margin-bottom 100ms;
