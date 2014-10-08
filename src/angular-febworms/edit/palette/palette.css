@@ -39,6 +39,9 @@
   left: auto;
 }
 
+.febworms-edit-palette .febworms-field-inner > div {
+  margin-left: 0;
+}
 /*@media (min-width: 768px) and (max-width: 979px) {*/
   /*.febworms-edit-palette select,*/
   /*.febworms-edit-palette input,*/

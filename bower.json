@@ -31,7 +31,8 @@
     "respond": "~1.4.2",
     "html5shiv": "~3.7.2",
     "lodash": "~2.4.1",
-    "angular-inform": "~0.0.12"
+    "angular-inform": "~0.0.12",
+    "angular-block-ui": "~0.1.0"
   },
   "overrides": {
     "respond": {

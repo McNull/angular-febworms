@@ -6,7 +6,7 @@ angular.module('febworms').directive('febwormsEditMeta', function() {
     templateUrl: 'angular-febworms/edit/meta/meta.ng.html',
     link: function($scope, $element, $attrs, ctrls) {
 
-      editCtrl = ctrls[0];
+      var editCtrl = ctrls[0];
 
       var formController = $element.find('form').controller('form');
       editCtrl.setMetaForm(formController);
