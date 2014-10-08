@@ -1,5 +1,13 @@
-.febworms-property-field-validation + .febworms-property-field-validation,
-.febworms-property-field-validation + div > .febworms-property-field-validation {
-	border-top: 1px solid #cccccc;
-	padding-top: 10px;
+/*.febworms-property-field-validation + .febworms-property-field-validation,*/
+/*.febworms-property-field-validation + div > .febworms-property-field-validation {*/
+	/*border-top: 1px solid #cccccc;*/
+	/*padding-top: 10px;*/
+/*}*/
+
+.febworms-property-field-validation {
+  padding: 5px 0;
+}
+
+.febworms-property-field-validation div.checkbox {
+  padding-top: 0;
 }

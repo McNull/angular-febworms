@@ -1,3 +1,7 @@
+.febworms-dropdown {
+  z-index: 50;
+}
+
 .febworms-dropdown.open {
   position: absolute;
 }

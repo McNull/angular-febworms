@@ -1,14 +1,14 @@
-angular.module('febworms').directive('febwormsDropdownInput', function($compile, $document, $timeout, $parse, febwormsUtils) {
+angular.module('febworms').directive('febwormsDropdownInput', function ($compile, $document, $timeout, $parse, febwormsUtils) {
 
   function createInput($scope, $element, $attrs) {
 
-    var template = '<div class="febworms-dropdown-input input-append">' +
-      '<input type="text"/>' +
-      '<div class="btn-group">' +
-      '<a href="" class="btn dropdown-toggle" ng-click="dropdownToggle()">' +
+    var template = '<div class="febworms-dropdown-input input-group">' +
+      '<input type="text" class="form-control"/>' +
+      '<span class="input-group-btn">' +
+      '<button class="btn btn-default" type="button" ng-click="dropdownToggle()">' +
       '<span class="caret"></span>' +
-      '</a>' +
-      '</div>' +
+      '</button>' +
+      '</span>' +
       '</div>';
 
     var $template = angular.element(template);
@@ -18,27 +18,27 @@ angular.module('febworms').directive('febwormsDropdownInput', function($compile,
 
     var attributes = $element.prop("attributes");
 
-    angular.forEach(attributes, function(a) {
+    angular.forEach(attributes, function (a) {
       if (a.name !== 'febworms-dropdown-input' && a.name !== 'class') {
         $input.attr(a.name, a.value);
       }
     });
 
-    var $button = $template.find('a');
+    var $button = $template.find('button');
     var closeTimeout;
 
-    $scope.dropdownToggle = function() {
-      $button[0].focus(); // force focus for chrome  
-      $scope.dropdownVisible = !$scope.dropdownVisible
+    $scope.dropdownToggle = function () {
+//      $button[0].focus(); // force focus for chrome
+      $scope.dropdownVisible = !$scope.dropdownVisible;
     };
 
-    $button.on('blur', function() {
-      closeTimeout = $timeout(function() {
-        $scope.dropdownVisible = false;
-      }, 100);
-    });
+//    $button.on('blur', function () {
+//      closeTimeout = $timeout(function () {
+//        $scope.dropdownVisible = false;
+//      }, 100);
+//    });
 
-    $scope.$on('$destroy', function() {
+    $scope.$on('$destroy', function () {
       if (closeTimeout) $timeout.cancel(closeTimeout);
       closeTimeout = undefined;
     });
@@ -61,7 +61,7 @@ angular.module('febworms').directive('febwormsDropdownInput', function($compile,
 
     var $template = angular.element(template);
 
-    $scope.setModelValue = function(value) {
+    $scope.setModelValue = function (value) {
 
       $scope.dropdownVisible = false;
 
@@ -78,7 +78,8 @@ angular.module('febworms').directive('febwormsDropdownInput', function($compile,
         if (viewValue === undefined) {
           break;
         }
-      };
+      }
+
 
       // Parse the viewValue
 
@@ -106,13 +107,13 @@ angular.module('febworms').directive('febwormsDropdownInput', function($compile,
       }
     };
 
-    $scope.getModelValue = function() {
+    $scope.getModelValue = function () {
       return modelGetter($scope);
     };
 
     var input = $input[0];
 
-    $scope.$watch('dropdownVisible', function(value) {
+    $scope.$watch('dropdownVisible', function (value) {
       if (value) {
 
         var rect = input.getBoundingClientRect();
@@ -126,11 +127,11 @@ angular.module('febworms').directive('febwormsDropdownInput', function($compile,
       }
     });
 
-    $scope.$watchCollection($attrs.febwormsDropdownInput, function(value) {
+    $scope.$watchCollection($attrs.febwormsDropdownInput, function (value) {
       $scope.items = value;
     });
 
-    $scope.$on('$destroy', function() {
+    $scope.$on('$destroy', function () {
       $template.remove();
     });
 
@@ -142,7 +143,7 @@ angular.module('febworms').directive('febwormsDropdownInput', function($compile,
     restrict: 'A',
     terminal: true,
     scope: true,
-    compile: function(tElement, tAttrs) {
+    compile: function (tElement, tAttrs) {
 
       return function link($scope, $element, $attrs, ctrls) {
 
