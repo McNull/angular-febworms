@@ -1,18 +1,18 @@
-<!--<form novalidate name="metaForm" class="form-horizontal">-->
-    <!--<fieldset>-->
-        <!--<legend>General Information</legend>-->
-        <!--<div class="form-group" ng-class="{ 'has-error': metaForm.formName.$invalid }">-->
-            <!--<label class="col-sm-2 control-label" for="formName">Name</label>-->
-            <!--<div class="col-sm-10">-->
-                <!--<input type="text"-->
-                       <!--class="form-control"-->
-                       <!--id="formName"-->
-                       <!--name="formName"-->
-                       <!--placeholder="The name of the form"-->
-                       <!--ng-model="schema.name"-->
-                       <!--ng-required="true">-->
-                <!--<div febworms-validation-summary="formName"></div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</fieldset>-->
-<!--</form>-->
+<form novalidate name="metaForm" class="form-horizontal">
+    <fieldset>
+        <legend>General Information</legend>
+        <div class="form-group" ng-class="{ 'has-error': metaForm.formName.$invalid }">
+            <label class="col-sm-2 control-label" for="formName">Name</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       class="form-control"
+                       id="formName"
+                       name="formName"
+                       placeholder="The name of the form"
+                       ng-model="schema.name"
+                       ng-required="true">
+                <div febworms-validation-summary="formName"></div>
+            </div>
+        </div>
+    </fieldset>
+</form>

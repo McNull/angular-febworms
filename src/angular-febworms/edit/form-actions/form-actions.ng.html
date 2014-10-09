@@ -24,12 +24,12 @@
   <div ng-if="preview">
 
     <div ng-if="debugInfoEnabled">
-      <div class="control-group">
-        <div class="form-group">
-          <label class="checkbox">
-            <input type="checkbox" ng-model="debugFormData"> Display form data information
-          </label>
-        </div>
+      <div class="checkbox">
+
+        <label>
+          <input type="checkbox" ng-model="debugFormData"> Display form data information
+        </label>
+
       </div>
 
       <div ng-if="debugFormData" febworms-tabs>

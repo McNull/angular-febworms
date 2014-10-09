@@ -2,8 +2,27 @@ app.factory('forms', function () {
 
   var forms = [
     {
+      name: 'Validation',
+      schema: {
+        "fields": [
+          {
+            "type": "text",
+            "name": "field471",
+            "displayName": "Textbox",
+            "validation": {
+              "messages": {},
+              "pattern": "^test 123$"
+            },
+            "placeholder": "Should match \"test 123\""
+          }
+        ],
+        "name": "Validation"
+      }
+    },
+    {
       name: 'Textboxes',
       schema: {
+        "name": 'Textboxes', // TODO: Kill me
         "fields": [
           {
             "type": "text",
@@ -51,6 +70,7 @@ app.factory('forms', function () {
     },
     {
       schema: {
+        "name": "All Fields", // TODO: killme
         "fields": [
           {
             "type": "text",
