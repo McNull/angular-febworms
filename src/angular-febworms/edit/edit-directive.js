@@ -5,15 +5,15 @@ angular.module('febworms').directive('febwormsEdit', function () {
     restrict: 'AE',
     scope: {
       // // The schema model to edit
-      schema: '=?febwormsSchema',
-      // Boolean indicating wether to show the default form action buttons
-      actionsEnabled: '=?febwormsActionsEnabled',
-      // Callback function when the user presses save -- any argument named 'schema' is set to the schema model.
-      onSave: '&febwormsOnSave',
-      // Callback function when the user presses cancel -- any argument named 'schema' is set to the schema model.
-      onCancel: '&febwormsOnCancel',
-      // Boolean indicating wether the edit is in preview mode or not
-      preview: '=?febwormsPreview'
+      schema: '=?febwormsSchema'
+//      // Boolean indicating wether to show the default form action buttons
+//      actionsEnabled: '=?febwormsActionsEnabled',
+//      // Callback function when the user presses save -- any argument named 'schema' is set to the schema model.
+//      onSave: '&febwormsOnSave',
+//      // Callback function when the user presses cancel -- any argument named 'schema' is set to the schema model.
+//      onCancel: '&febwormsOnCancel',
+//      // Boolean indicating wether the edit is in preview mode or not
+//      preview: '=?febwormsPreview'
     },
     replace: true,
     controller: 'febwormsEditController as editCtrl',
@@ -24,13 +24,13 @@ angular.module('febworms').directive('febwormsEdit', function () {
         $scope.schema = {};
       }
 
-      if ($scope.actionsEnabled === undefined) {
-        $scope.actionsEnabled = true;
-      }
-
-      if ($scope.preview === undefined) {
-        $scope.preview = false;
-      }
+//      if ($scope.actionsEnabled === undefined) {
+//        $scope.actionsEnabled = true;
+//      }
+//
+//      if ($scope.preview === undefined) {
+//        $scope.preview = false;
+//      }
 
       schemaCtrl.model($scope.schema);
       $scope.schemaCtrl = schemaCtrl;

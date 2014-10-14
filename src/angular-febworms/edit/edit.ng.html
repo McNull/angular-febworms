@@ -1,35 +1,17 @@
 <div class="febworms-edit">
+  <div class="row">
 
-  <div ng-if="preview" ng-init="previewForm = { data: {} }">
-    <form name="previewForm.state"
-          febworms-form
-          febworms-form-data="previewForm.data"
-          class="form-horizontal"
-          novalidate>
-    </form>
-
-    <div febworms-edit-form-actions></div>
+    <div class="col-sm-8">
+      <div febworms-form
+           febworms-edit-canvas
+           febworms-no-render="true"
+           ></div>
+    </div>
+    <div class="col-sm-4">
+      <div febworms-form
+           febworms-edit-palette
+           febworms-no-render="true"></div>
+    </div>
   </div>
 
-  <div ng-if="!preview" class="">
-
-    <div febworms-edit-meta>
-    </div>
-
-    <div class="row">
-
-      <div class="col-sm-8">
-        <div febworms-form
-             febworms-no-render="true"
-             febworms-edit-canvas></div>
-      </div>
-      <div class="col-sm-4">
-        <div febworms-edit-palette
-             febworms-form
-             febworms-no-render="true"></div>
-      </div>
-    </div>
-
-    <div febworms-edit-form-actions></div>
-  </div>
 </div>

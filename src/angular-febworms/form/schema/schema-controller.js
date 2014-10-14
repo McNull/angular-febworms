@@ -1,6 +1,6 @@
 angular.module('febworms').controller('febwormsSchemaController', function($scope, febwormsUtils) {
 
-  var _model, self = this;
+  var _model;
 
   this.model = function(value) {
     if(value !== undefined) {

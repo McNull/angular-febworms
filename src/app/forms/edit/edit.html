@@ -1,8 +1,23 @@
 <div class="container" ng-controller="FormEditCtrl">
-  <div febworms-edit
-       febworms-schema="form.schema"
-       febworms-on-save="onSave()"
-       febworms-on-cancel="onCancel()">
-  </div>
+  <form class="form" name="form.$state">
+    <legend>
+      <span>{{ form.name || 'Form' }}</span>
+    </legend>
+
+    <div class="row">
+      <div class="form-group col-sm-8">
+        <label>Name</label>
+        <input type="text" ng-model="form.name" class="form-control" placeholder="The name of the form">
+      </div>
+    </div>
+
+    <div febworms-edit
+         febworms-schema="form.schema">
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-click="onSave()" ng-class="{ 'disabled': form.$state.$invalid }">Save</button>
+    <button type="button" class="btn btn-default" ng-class="{ 'disabled': form.$state.$invalid }">Preview</button>
+    <button type="button" class="btn btn-default" ng-click="onClose()">Close</button>
+  </form>
 </div>
 
