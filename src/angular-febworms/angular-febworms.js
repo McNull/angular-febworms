@@ -1,4 +1,4 @@
-var febworms = febworms || {};
+var febworms = angular.module('febworms', ['dq']);
 /**
  * Constructor for febworm Field types.
  * @param {string} type         Indicates the type of field
@@ -14,7 +14,7 @@ febworms.Field = function(type, properties) {
   this.displayName = this.displayName || this.type.charAt(0).toUpperCase() + this.type.substring(1);
 };
 
-angular.module('febworms', ['dq']);
+
 
 angular.module('febworms').config(function($provide) {
 

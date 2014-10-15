@@ -1,17 +1,14 @@
-<div class="febworms-edit">
+<div class="febworms-edit" ng-form="$febworms">
   <div class="row">
-
-    <div class="col-sm-8">
+    <div class="col-sm-8" ng-form="$canvas">
       <div febworms-form
            febworms-edit-canvas
-           febworms-no-render="true"
-           ></div>
+           febworms-no-render="true"></div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4" ng-form="$palette">
       <div febworms-form
            febworms-edit-palette
            febworms-no-render="true"></div>
     </div>
   </div>
-
 </div>
