@@ -74,5 +74,7 @@
   -moz-opacity: 1.0;
   opacity: 1.0;
   filter: alpha(opacity=100);
-  color: #777;
+  color: #ccc;
+  cursor: not-allowed;
+  pointer-events: auto;
 }

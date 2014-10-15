@@ -1,1 +1,1 @@
-angular.module('febworms').controller('febwormsTabsPaneController', function($scope) {});
+//angular.module('febworms').controller('febwormsTabsPaneController', function($scope) {});

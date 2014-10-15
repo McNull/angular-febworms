@@ -9,24 +9,29 @@
        ng-mouseleave="dragEnabled = false">
     <div class="febworms-field-overlay-drag-top" dq-drag-enter="dragPlaceholder.index = $index"></div>
     <div class="febworms-field-overlay-drag-bottom" dq-drag-enter="dragPlaceholder.index = ($index + 1)"></div>
-    <div class="btn-toolbar btn-toolbar-left">
-      <button class="btn btn-default btn-xs" type="button"
-              ng-click="field.$_displayProperties = !field.$_displayProperties">Properties
-      </button>
-    </div>
+    <!--<div class="btn-toolbar btn-toolbar-left">-->
+      <!---->
+    <!--</div>-->
     <div class="btn-toolbar btn-toolbar-right">
       <button class="btn btn-default btn-xs" type="button"
+              ng-click="field.$_displayProperties = !field.$_displayProperties"
+              title="Configure this field.">
+        <span class="glyphicon glyphicon-wrench"></span>
+      </button>
+      <button class="btn btn-default btn-xs" type="button"
               ng-click="schemaCtrl.swapFields($index - 1, $index)"
-              ng-disabled="$index === 0">
-        Up
+              ng-disabled="$index === 0"
+              title="Move up">
+        <span class="glyphicon glyphicon-arrow-up"></span>
       </button>
       <button class="btn btn-default btn-xs" type="button"
               ng-click="schemaCtrl.swapFields($index, $index + 1)"
-              ng-disabled="$index === schema.fields.length - 1">
-        Down
+              ng-disabled="$index === schema.fields.length - 1"
+              title="Move down">
+        <span class="glyphicon glyphicon-arrow-down"></span>
       </button>
-      <button class="btn btn-default btn-xs" type="button" ng-click="schemaCtrl.removeField($index)">
-        Remove
+      <button class="btn btn-default btn-xs" type="button" ng-click="schemaCtrl.removeField($index)" title="Remove">
+        <span class="glyphicon glyphicon-trash"></span>
       </button>
     </div>
   </div>

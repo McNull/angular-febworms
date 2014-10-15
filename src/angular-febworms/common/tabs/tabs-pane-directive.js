@@ -1,28 +1,29 @@
 angular.module('febworms').directive('febwormsTabsPane', function(febwormsTabsPaneLinkFn) {
   return {
-    require: ['febwormsTabsPane', '^febwormsTabs'],
+    require: ['^febwormsTabs'],
     restrict: 'EA',
-    scope: true,
+    scope: {
+      active: '=?febwormsTabsPaneActive'
+    },
     transclude: true,
-    controller: 'febwormsTabsPaneController',
     templateUrl: 'angular-febworms/common/tabs/tabs-pane.ng.html',
     link: febwormsTabsPaneLinkFn
   };
 }).factory('febwormsTabsPaneLinkFn', function() {
   return function($scope, $element, $attrs, ctrls) {
+
+    var tabsCtrl = ctrls[0];
     
-    var paneCtrl = ctrls[0];
-    var tabsCtrl = ctrls[1];
-    
-    // This is done here since angular doesn't allow $ in the 'controller as'
-    // syntax.
-  
-    $scope.$_paneCtrl = paneCtrl;
+    $scope.pane = {};
     
     $attrs.$observe('febwormsTabsPane', function(value) {
-      paneCtrl.title = value;  
+      $scope.pane.title = value;
     });
-    
-    tabsCtrl.addPane(paneCtrl);
+
+    $scope.$watch('pane.active', function(value) {
+      $scope.active = value;
+    });
+
+    tabsCtrl.addPane($scope.pane);
   };
 });
