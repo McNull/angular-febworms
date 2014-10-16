@@ -1,7 +1,7 @@
 angular.module('febworms').directive('febwormsEditCanvasFieldProperties', function (febwormsUtils) {
   return {
     templateUrl: 'angular-febworms/edit/canvas/field/properties/properties.ng.html',
-    replace: true,
+//    replace: true,
     scope: {
       field: '=febwormsEditCanvasFieldProperties'
     },

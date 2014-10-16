@@ -1,21 +1,22 @@
-angular.module('febworms').controller('febwormsTabsController', function($scope) {
-  
-  var self = this;
-  this.panes = [];
-  
-  this.addPane = function(pane) {
-    self.panes.push(pane);
-    
-    if(self.panes.length === 1) {
-      self.active(pane);
+angular.module('febworms').controller('febwormsTabsController', function () {
+
+  this.items = [];
+  this.active = null;
+
+  this.add = function (item) {
+    this.items.push(item);
+
+    this.items.sort(function(x, y) {
+      return x.order - y.order;
+    });
+
+    if (!this.active && item.autoActive != false) {
+      this.activate(item);
     }
   };
-  
-  this.active = function(pane) {
-    angular.forEach(self.panes, function(pane) {
-      pane.active = false;
-    });
-    
-    pane.active = true;
+
+  this.activate = function (item) {
+    this.active = item;
   };
+
 });

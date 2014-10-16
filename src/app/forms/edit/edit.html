@@ -4,6 +4,8 @@
       <span>{{ form.name || 'Form' }}</span>
     </legend>
 
+    <!-- Additional form data -->
+
     <div class="row">
       <div class="form-group col-sm-8"
            ng-class="{ 'has-error': form.$state.formName.$invalid && form.$state.formName.$dirty }">
@@ -17,17 +19,21 @@
       </div>
     </div>
 
+    <!-- The schema of the form -->
+
     <div febworms-edit
          febworms-schema="form.schema">
     </div>
 
-    <!--<div class="row">-->
-      <!--<div class="col-sm-12">-->
+    <!-- Form action buttons -->
+
+    <div class="row">
+      <div class="form-group col-sm-12">
         <button type="submit" class="btn btn-primary" ng-click="onSave()" ng-class="{ 'disabled': form.$state.$invalid }">Save</button>
         <button type="button" class="btn btn-default" ng-class="{ 'disabled': form.$state.$invalid }">Preview</button>
         <button type="button" class="btn btn-default" ng-click="onClose()">Close</button>
-      <!--</div>-->
-    <!--</div>-->
+      </div>
+    </div>
 
   </form>
 </div>

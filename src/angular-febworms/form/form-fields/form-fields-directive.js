@@ -1,7 +1,7 @@
 angular.module('febworms').directive('febwormsFormFields', function() {
 
   return {
-    require: ['^febwormsForm'],
+    require: ['^?febwormsForm'],
     restrict: 'AE',
     templateUrl: 'angular-febworms/form/form-fields/form-fields.ng.html',
     scope: {},

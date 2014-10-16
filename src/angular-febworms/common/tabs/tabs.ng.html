@@ -1,7 +1,7 @@
 <div class="febworms-tabs tabbable">
   <ul class="nav nav-tabs">
-    <li ng-repeat="pane in $_tabCtrl.panes" ng-class="{ active: pane.active }">
-      <a href="" ng-click="$_tabCtrl.active(pane)"> {{ pane.title }}</a>
+    <li ng-repeat="tab in tabs.items" ng-class="{ active: tab === tabs.active }">
+      <a href="" ng-click="tabs.activate(tab)">{{ tab.title }}</a>
     </li>
   </ul>
   <div class="tab-content" ng-transclude></div>

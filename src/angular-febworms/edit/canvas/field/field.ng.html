@@ -14,6 +14,7 @@
     <!--</div>-->
     <div class="btn-toolbar btn-toolbar-right">
       <button class="btn btn-default btn-xs" type="button"
+              ng-class="{ 'active': field.$_displayProperties }"
               ng-click="field.$_displayProperties = !field.$_displayProperties"
               title="Configure this field.">
         <span class="glyphicon glyphicon-wrench"></span>
@@ -30,7 +31,7 @@
               title="Move down">
         <span class="glyphicon glyphicon-arrow-down"></span>
       </button>
-      <button class="btn btn-default btn-xs" type="button" ng-click="schemaCtrl.removeField($index)" title="Remove">
+      <button class="btn btn-default btn-xs btn-danger" type="button" ng-click="schemaCtrl.removeField($index)" title="Remove">
         <span class="glyphicon glyphicon-trash"></span>
       </button>
     </div>

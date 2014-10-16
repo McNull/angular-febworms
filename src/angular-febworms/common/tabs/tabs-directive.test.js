@@ -13,6 +13,44 @@ describe('febworms-tabs-directive', function() {
 
   });
 
+  describe('when compiling the template', function() {
+
+//     it('should have access to the tabs controller', function() {
+
+//       // The pane should have access to the tabs controller via scope inheritance
+
+//       var template = '<div febworms-tabs><div febworms-tabs-pane></div></div>';
+
+//       var $element = angular.element(template);
+
+//       $element = $compile($element)($scope);
+//       $scope.$digest();
+
+//       var paneScope = $element.find('div').scope();
+
+//       expect(paneScope.tabs).toBeDefined();
+
+//     });
+
+    it('should have access to the tabs controller', function() {
+
+      // The pane content should have access to the tabs controller via scope property binding
+
+      var template = '<div febworms-tabs="my.tabs"><div febworms-tabs-pane><p>My Content</p></div></div>';
+
+      var $element = angular.element(template);
+
+      $element = $compile($element)($scope);
+      $scope.$digest();
+
+      var paneScope = $element.find('div').find('p').scope();
+
+      expect(paneScope.my.tabs).toBeDefined();
+
+    });
+
+  });
+
   it('should compile template', function() {
 
     // Arrange

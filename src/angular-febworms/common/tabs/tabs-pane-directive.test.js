@@ -10,12 +10,12 @@ describe('febworms-tabs-pane-directive', function() {
     };
 
     tabsCtrl = {
-      addPane: angular.noop
+      add: angular.noop
     };
 
     paneCtrl = {};
 
-    ctrls = [paneCtrl, tabsCtrl];
+    ctrls = [tabsCtrl];
 
     inject(function(_febwormsTabsPaneLinkFn_, $rootScope, _$compile_) {
       linkFn = _febwormsTabsPaneLinkFn_;
@@ -24,10 +24,122 @@ describe('febworms-tabs-pane-directive', function() {
     });
   });
 
+
+  describe('when linking the directive', function() {
+
+    it('should create a pane property on the scope', function() {
+
+      // Act
+
+      linkFn($scope, $element, $attrs, [tabsCtrl]);
+
+      // Assert
+
+      expect($scope.pane).toBeDefined();
+
+    });
+
+    it('should add a default order value to the pane', function() {
+
+      // Act
+
+      linkFn($scope, $element, $attrs, [tabsCtrl]);
+
+      // Assert
+
+      expect($scope.pane.order).toBeDefined();
+      expect($scope.pane.order).toBe(10);
+
+    });
+
+    it('should add a the provided order value to the pane', function() {
+
+      // Arrange
+
+      $attrs.febwormsTabsPaneOrder = "100";
+
+      // Act
+
+      linkFn($scope, $element, $attrs, [tabsCtrl]);
+
+      // Assert
+
+      expect($scope.pane.order).toBeDefined();
+      expect($scope.pane.order).toBe(100);
+
+    });
+
+    it('should add auto activate property', function() {
+
+      // Act
+
+      linkFn($scope, $element, $attrs, [tabsCtrl]);
+
+      // Assert
+
+      expect($scope.pane.autoActive).toBeDefined();
+      expect($scope.pane.autoActive).toBe(true);
+
+    });
+
+    it('should add provided auto activate property value', function() {
+
+      // Arrange
+
+      $attrs.febwormsTabsPaneAutoActive = "false";
+      // Act
+
+      linkFn($scope, $element, $attrs, [tabsCtrl]);
+
+      // Assert
+
+      expect($scope.pane.autoActive).toBeDefined();
+      expect($scope.pane.autoActive).toBe(false);
+
+    });
+
+
+    it('should add the pane to the tabs controller', function() {
+
+      // Arrange
+
+      tabsCtrl.add = jasmine.createSpy('addPane');
+
+      // Act
+
+      linkFn($scope, $element, $attrs, ctrls);
+
+      // Assert
+
+      expect(tabsCtrl.add).toHaveBeenCalledWith($scope.pane);
+
+    });
+
+
+    it('should assign the title to the pane', function() {
+
+      // Arrange
+
+      var title = 'myTitle';
+      $attrs.febwormsTabsPane = title;
+
+      // Act
+
+
+      linkFn($scope, $element, $attrs, ctrls);
+
+      // Assert
+
+      expect($scope.pane.title).toBe(title);
+
+    });
+
+  }); // when linking the attribute
+
   describe('when compiling the template', function() {
 
     it('should compile', function() {
-      
+
       // Arrange
 
       var $fixture = angular.element('<div></div>');
@@ -43,11 +155,11 @@ describe('febworms-tabs-pane-directive', function() {
       // Assert
 
       expect($fixture.find('.febworms-tabs-pane').length).toBe(1);
-      
+
     });
 
     it('should only be visible when active', function() {
-      
+
       // Arrange
 
       var $fixture = angular.element('<div></div>');
@@ -59,16 +171,16 @@ describe('febworms-tabs-pane-directive', function() {
       $scope.$digest();
 
       var $pane = $fixture.find('.febworms-tabs-pane');
-      var paneCtrl = $pane.controller('febwormsTabsPane');
+//      var paneCtrl = $pane.controller('febwormsTabsPane');
 
       // Act
 
-      paneCtrl.active = false;
+      tabsCtrl.active = null;
       $scope.$digest();
 
       var whenNotActive = $pane.hasClass('ng-hide');
 
-      paneCtrl.active = true;
+      tabsCtrl.active = $pane.scope().pane;
       $scope.$digest();
 
       // console.log($fixture[0].outerHTML);
@@ -81,63 +193,8 @@ describe('febworms-tabs-pane-directive', function() {
       expect(whenActive).toBe(false);   // does not have class ng-hide
 
     });
-    
+
   });
 
-  describe('when linking the directive', function() {
 
-
-    it('should add the pane to the tabs controller', function() {
-
-      // Arrange
-
-      tabsCtrl.addPane = jasmine.createSpy('addPane');
-
-      // Act
-
-      linkFn($scope, $element, $attrs, ctrls);
-
-      // Assert
-
-      expect(tabsCtrl.addPane).toHaveBeenCalledWith(paneCtrl);
-
-    });
-
-    it('should expose the pane controller on scope', function() {
-
-      // Arrange
-
-      // Act
-
-      linkFn($scope, $element, $attrs, ctrls);
-
-      // Assert
-
-      expect($scope.$_paneCtrl).toBe(paneCtrl);
-
-    });
-
-    it('should assign the title to the pane', function() {
-
-      // Arrange
-
-      var title = 'myTitle';
-
-      $attrs.$observe = function(name, fn) {
-        if (name === 'febwormsTabsPane') {
-          fn(title);
-        }
-      };
-
-      // Act
-
-      linkFn($scope, $element, $attrs, ctrls);
-
-      // Assert
-
-      expect(paneCtrl.title).toBe(title);
-
-    });
-
-  }); // when linking the attribute
 });

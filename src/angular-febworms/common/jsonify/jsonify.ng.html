@@ -7,7 +7,8 @@
     </button>
     <button class="btn btn-default btn-xs" type="button"
             title="Display hidden properties."
-            ng-click="displayHidden = !displayHidden">
+            ng-click="displayHidden = !displayHidden"
+            ng-class="{ 'active': displayHidden }">
       <span class="glyphicon glyphicon-eye-open"></span>
     </button>
   </div>

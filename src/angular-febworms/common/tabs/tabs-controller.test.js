@@ -27,7 +27,6 @@ describe('febworms-tabs-controller', function() {
 
   describe('when adding panes', function() {
 
-
     it('should add pane to collection', function() {
 
       // Arrange
@@ -36,19 +35,22 @@ describe('febworms-tabs-controller', function() {
         $scope: $scope
       });
 
-      var pane = {};
+      var pane1 = {}, pane2 = {};
 
       // Act
 
-      controller.addPane(pane);
-      var result = _.indexOf(controller.panes, pane);
+      controller.add(pane1);
+      controller.add(pane2);
 
       // Assert
 
-      expect(result).not.toBe(-1);
+      expect(controller.items.length).toBe(2);
+      expect(controller.items[0]).toBe(pane1);
+      expect(controller.items[1]).toBe(pane2);
+
     });
 
-    it('should set first pane active', function() {
+    it('should set the first pane active', function() {
 
       // Arrange
 
@@ -56,22 +58,20 @@ describe('febworms-tabs-controller', function() {
         $scope: $scope
       });
 
-      var pane = {};
+      var pane1 = {}, pane2 = {};
 
       // Act
 
-      controller.addPane(pane);
+      controller.add(pane1);
+      controller.add(pane2);
 
       // Assert
 
-      expect(pane.active).toBe(true);
+      expect(controller.items[0]).toBe(controller.active);
+
     });
 
-  }); // when adding panes
-
-  describe('when setting a pane active', function() {
-    
-    it('should set pane active', function() {
+    it('should NOT set the first pane active if auto activate is false', function() {
 
       // Arrange
 
@@ -79,30 +79,20 @@ describe('febworms-tabs-controller', function() {
         $scope: $scope
       });
 
-      for (var i = 0; i < 3; i++) {
-        controller.addPane({});
-      }
-
-      var pane = {};
+      var pane1 = { autoActive: false }, pane2 = {};
 
       // Act
 
-      controller.addPane(pane);
-
-      var before = pane.active;
-
-      controller.active(pane);
-
-      var after = pane.active;
+      controller.add(pane1);
+      controller.add(pane2);
 
       // Assert
 
-      expect(before).toBeFalsy();
-      expect(after).toBe(true);
+      expect(controller.active).toBe(pane2);
 
     });
 
-    it('should set other panes inactive', function() {
+    it('should order the panes', function() {
 
       // Arrange
 
@@ -110,26 +100,22 @@ describe('febworms-tabs-controller', function() {
         $scope: $scope
       });
 
-      var otherPanes = [{}, {}, {}];
-      
-      angular.forEach(otherPanes, function(pane) {
-        controller.addPane(pane);
-      });
-
-      var pane = {};
-      controller.addPane(pane);
+      var pane1 = { order: 10 }, pane2 = { order: 100 }, pane3 = { order: 1 };
 
       // Act
-      
-      controller.active(pane);
+
+      controller.add(pane1);
+      controller.add(pane2);
+      controller.add(pane3);
 
       // Assert
 
-      angular.forEach(otherPanes, function(pane) {
-        expect(pane.active).toBeFalsy();
-      });
+      expect(controller.items[0]).toBe(pane3); // Lowest order value 1
+      expect(controller.items[1]).toBe(pane1); // Medium order value 10
+      expect(controller.items[2]).toBe(pane2); // Highest order value 100
 
     });
 
-  }); // when setting a pane active
+  });
+
 });
