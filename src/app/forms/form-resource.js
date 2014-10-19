@@ -293,6 +293,67 @@ app.factory('formData', function () {
       },
       "layout": "form-horizontal",
       "description": "Textbox validation options"
+    },
+    {
+      "name": "People",
+      "layout": "form-horizontal",
+      "schema": {
+        "fields": [
+          {
+            "type": "text",
+            "name": "firstName",
+            "displayName": "Name",
+            "validation": {
+              "messages": {},
+              "required": true
+            },
+            "placeholder": "Fill in your first name",
+            "tooltip": "Fill in your first name"
+          },
+          {
+            "type": "text",
+            "name": "lastName",
+            "displayName": "Last name",
+            "validation": {
+              "messages": {},
+              "required": true
+            },
+            "placeholder": "Fill in your last name",
+            "tooltip": "Fill in your last name"
+          },
+          {
+            "type": "email",
+            "name": "email",
+            "displayName": "Email",
+            "validation": {
+              "messages": {}
+            },
+            "placeholder": "Fill in your email address"
+          },
+          {
+            "type": "text",
+            "name": "country",
+            "displayName": "Country",
+            "validation": {
+              "messages": {}
+            },
+            "placeholder": ""
+          },
+          {
+            "type": "text",
+            "name": "ipAddress",
+            "displayName": "IP Address",
+            "validation": {
+              "messages": {
+                "pattern": "The value \"{{ field.state.$viewValue }}\" is not a valid IP address."
+              },
+              "pattern": "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
+            },
+            "value": ""
+          }
+        ]
+      },
+      "description": "Example person form"
     }
   ];
 
