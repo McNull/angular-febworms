@@ -28,7 +28,44 @@
     singleOrDefault: function(arr, predicate) {
       var idx = app.utils.indexOfMatch(arr, predicate);
       return idx === -1 ? null : arr[idx];
+    },
+    where: function(arr, predicate) {
+
+      var res = [];
+
+      var i = arr.length;
+
+      while(i--) {
+        var item = arr[i];
+
+        if(predicate(item)) {
+          res.push(item);
+        }
+      }
+
+      return res;
     }
   };
 })(app);
 
+app.factory('fakeHttpResolve', function($q, $timeout, blockUI) {
+
+  var fakeWaitTime = 500;
+
+  function fakeHttpResolve(data) {
+    var defer = $q.defer();
+
+    blockUI.start();
+
+    $timeout(function () {
+
+      blockUI.stop();
+      defer.resolve(data ? angular.copy(data) : undefined);
+
+    }, fakeWaitTime);
+
+    return defer.promise;
+  }
+
+  return fakeHttpResolve;
+});

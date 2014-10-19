@@ -8,7 +8,8 @@ app.route = {
    } */
   home: {
     url: '/',
-    templateUrl: 'app/home/index.html'
+    templateUrl: 'app/home/index.html',
+    label: 'Home'
   },
   about: {
       url: '/about'

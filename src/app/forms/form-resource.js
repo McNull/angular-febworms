@@ -1,6 +1,6 @@
-app.factory('Form', function ($q, $timeout, blockUI, formData) {
+app.factory('Form', function (fakeHttpResolve, formData) {
 
-  var fakeWaitTime = 500, idCounter = formData.length;
+  var idCounter = formData.length;
 
   sortForms();
 
@@ -8,21 +8,6 @@ app.factory('Form', function ($q, $timeout, blockUI, formData) {
     formData.sort(function (x, y) {
       return y.id - x.id;
     });
-  }
-
-  function fakeHttpResolve(data) {
-    var defer = $q.defer();
-
-    blockUI.start();
-
-    $timeout(function () {
-
-      blockUI.stop();
-      defer.resolve(data);
-
-    }, fakeWaitTime);
-
-    return defer.promise;
   }
 
   function query(params) {
@@ -42,7 +27,9 @@ app.factory('Form', function ($q, $timeout, blockUI, formData) {
   }
 
   function remove(params) {
-    var idx = app.utils.indexOf(formData, params);
+    var idx = app.utils.indexOfMatch(formData, function (x) {
+      return x.id === params.id;
+    });
 
     if (idx !== -1) {
       formData.splice(idx, 1);
@@ -256,23 +243,56 @@ app.factory('formData', function () {
       "description": "Contains all textbox field templates."
     },
     {
-      "name": "Validation",
+      "name": "Textbox Validation",
       "schema": {
         "fields": [
           {
             "type": "text",
-            "name": "field471",
-            "displayName": "Textbox",
+            "name": "pattern",
+            "displayName": "Pattern",
             "validation": {
               "messages": {},
               "pattern": "^test 123$"
             },
             "placeholder": "Should match \"test 123\""
+          },
+          {
+            "type": "text",
+            "name": "required",
+            "displayName": "Required",
+            "validation": {
+              "messages": {},
+              "required": true
+            },
+            "placeholder": "Value is required"
+          },
+          {
+            "type": "text",
+            "name": "minLength",
+            "displayName": "Min-length",
+            "validation": {
+              "messages": {
+                "minlength": ""
+              },
+              "minlength": 5
+            },
+            "placeholder": "Minimum length of 5"
+          },
+          {
+            "type": "text",
+            "name": "maxLength",
+            "displayName": "Max-length",
+            "validation": {
+              "messages": {},
+              "maxlength": 6
+            },
+            "placeholder": "Maximum length of 6"
           }
         ],
         "name": "Validation"
       },
-      "id": 1
+      "layout": "form-horizontal",
+      "description": "Textbox validation options"
     }
   ];
 

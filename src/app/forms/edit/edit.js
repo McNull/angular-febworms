@@ -1,8 +1,6 @@
 app.controller('FormEditCtrl', function ($scope, $location, inform, $window, formMetaInfo, form, Form) {
 
-  // Copy the form so that we don't persist changes at once
-
-  $scope.form = angular.copy(form);
+  $scope.form = form;
 
   // Precreate the (form) $state object here so we can access it later.
 

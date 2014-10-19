@@ -3,11 +3,11 @@ app.controller('FormListCtrl', function ($scope, Form, forms, $location, $window
   $scope.forms = forms;
 
   $scope.newForm = function () {
-    $location.path('/forms/edit/');
+    $location.path('/forms/0/edit');
   };
 
   $scope.editForm = function (form) {
-    $location.path('/forms/edit/' + form.id);
+    $location.path('/forms/' + form.id + '/edit') ;
   };
 
   $scope.removeForm = function (form) {
@@ -15,17 +15,17 @@ app.controller('FormListCtrl', function ($scope, Form, forms, $location, $window
 
       Form.remove(form).then(function() {
         inform.add('Form has been deleted', { type: 'success' });
+
+        Form.query().then(function(result) {
+          $scope.forms = result;
+        });
       });
 
-//      var idx = app.utils.indexOf(forms, form);
-//      forms.splice(idx, 1);
-//
-//
     }
   };
 
   $scope.displayDataEntries = function (form) {
-    $location.path('/forms/data/' + form.id);
+    $location.path('/forms/' + form.id);
   };
 
 });
