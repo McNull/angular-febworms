@@ -1,20 +1,29 @@
-<div class="container app-form-edit" ng-controller="FormEditCtrl">
+<div class="container app-form-edit">
 
   <h1>
-    Edit
+    Edit Form
   </h1>
 
   <div ng-include="'app/forms/edit/edit-btn-bar.html'"></div>
 
+  <div febworms-tabs class="app-form-edit-tabs">
 
-  <div ng-if="!toggles.preview" ng-include="'app/forms/edit/form-edit.html'"></div>
+    <form class="{{ form.layout }}" name="form.$state">
 
-  <div ng-if="toggles.preview" ng-include="'app/forms/edit/form-preview.html'"></div>
+      <div febworms-tabs-pane="Form Information" render-always="true">
+        <div ng-include="'app/forms/edit/form-edit.html'"></div>
+      </div>
 
-  <div class="row" ng-if="toggles.debug">
-    <div class="col-sm-12">
-      <div jsonify="form"></div>
+      <div febworms-tabs-pane="Form Schema" render-always="true">
+        <div ng-include="'app/forms/edit/form-edit-schema.html'"></div>
+      </div>
+
+    </form>
+
+    <div febworms-tabs-pane="Form Preview" disabled="form.$state.$invalid">
+      <div ng-include="'app/forms/edit/form-preview.html'"></div>
     </div>
+
   </div>
 
 </div>

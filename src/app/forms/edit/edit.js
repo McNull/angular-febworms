@@ -1,77 +1,41 @@
-app.controller('FormEditCtrl', function ($scope, $location, forms, $routeParams, inform, $window, formMetaInfo) {
+app.controller('FormEditCtrl', function ($scope, $location, inform, $window, formMetaInfo, form, Form) {
 
-  var form = app.utils.singleOrDefault(forms, function(x) {
-    return x.id == $routeParams.id;
-  }) || {};
-
-  $scope.formMetaInfo = formMetaInfo;
-  $scope.toggles = {
-    preview: false, debug: false
-  };
+  // Copy the form so that we don't persist changes at once
 
   $scope.form = angular.copy(form);
+
+  // Precreate the (form) $state object here so we can access it later.
+
   $scope.form.$state = {};
 
-  $scope.togglePreview = function() {
-    if($scope.togglePreviewAllowed()) {
-      $scope.toggles.preview = !$scope.toggles.preview;
-      $scope.form.data = {};
-    }
-  };
+  // Make the form schema for editing application specific form information available on the scope.
 
-  $scope.togglePreviewAllowed = function() {
-    if($scope.toggles.preview) {
-      return true;
-    }
+  $scope.formMetaInfo = formMetaInfo;
 
-    return $scope.form.$state.$valid;
-  };
+  // Execute when the `close` button is smashed.
 
-  $scope.onSave = function() {
+  $scope.onClose = function () {
 
-    if($scope.saveAllowed()) {
-      var existingForm = false;
+    // Prompt the user if we've got some unsaved modifications.
 
-      if($scope.form.id) {
-        var idx = app.utils.indexOfMatch(forms, function(x) {
-          return x.id === $scope.form.id;
-        });
-
-        if(idx !== -1) {
-          forms.splice(1, 1, $scope.form);
-          existingForm = true;
-        }
-      }
-
-      if(!existingForm) {
-        forms.push($scope.form);
-      }
-
-      inform.add('Form saved', { type: 'success' });
-
-      $location.path('/forms');
-    }
-  };
-
-  $scope.saveAllowed = function() {
-
-    if($scope.toggles.preview) {
-      return false;
+    if ($scope.form.$state && $scope.form.$state.$dirty && !$window.confirm('Discard unsaved changes?')) {
+      return;
     }
 
-    return $scope.form.$state.$valid;
+    $location.path('/forms');
   };
 
-  $scope.onClose = function() {
+  $scope.canSave = function () {
+    return $scope.form.$state.$dirty && $scope.form.$state.$valid;
+  };
 
-    if($scope.toggles.preview) {
-      $scope.togglePreview();
-    } else {
-      if($scope.form.$state && $scope.form.$state.$dirty && !$window.confirm('Discard unsaved changes?')) {
-        return;
-      }
+  $scope.onSave = function () {
 
-      $location.path('/forms');
+    if ($scope.canSave()) {
+      Form.save($scope.form).then(function() {
+        inform.add('Form saved', { type: 'success' });
+        $location.path('/forms');
+      });
     }
   };
 

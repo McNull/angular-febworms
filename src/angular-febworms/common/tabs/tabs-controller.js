@@ -16,7 +16,11 @@ angular.module('febworms').controller('febwormsTabsController', function () {
   };
 
   this.activate = function (item) {
-    this.active = item;
+
+    if(!item.disabled) {
+      this.active = item;
+    }
+
   };
 
 });

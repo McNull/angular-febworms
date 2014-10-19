@@ -19,19 +19,10 @@ angular.module('febworms').directive('febwormsTabsPane', function(febwormsTabsPa
       renderAlways: $attrs.febwormsTabsPaneRenderAlways === "true" || $attrs.renderAlways === "true"
     };
 
+    $scope.$watch($attrs.disabled, function(value) {
+      $scope.pane.disabled = value;
+    });
+
     $scope.tabs.add($scope.pane);
-//
-//
-//    $scope.pane = {};
-//
-//    $attrs.$observe('febwormsTabsPane', function(value) {
-//      $scope.pane.title = value;
-//    });
-//
-//    $scope.$watch('pane.active', function(value) {
-//      $scope.active = value;
-//    });
-//
-//    tabsCtrl.addPane($scope.pane);
   };
 });

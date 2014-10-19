@@ -1,4 +1,4 @@
-app.controller('FormListCtrl', function ($scope, forms, $location, $window, inform) {
+app.controller('FormListCtrl', function ($scope, Form, forms, $location, $window, inform) {
 
   $scope.forms = forms;
 
@@ -12,10 +12,15 @@ app.controller('FormListCtrl', function ($scope, forms, $location, $window, info
 
   $scope.removeForm = function (form) {
     if ($window.confirm('Are you sure you want to delete the form?')) {
-      var idx = app.utils.indexOf(forms, form);
-      forms.splice(idx, 1);
 
-      inform.add('Form has been deleted', { type: 'success' });
+      Form.remove(form).then(function() {
+        inform.add('Form has been deleted', { type: 'success' });
+      });
+
+//      var idx = app.utils.indexOf(forms, form);
+//      forms.splice(idx, 1);
+//
+//
     }
   };
 

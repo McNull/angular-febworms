@@ -36,7 +36,7 @@ app.value('formMetaInfo', {
           "value": "form", "text": "Vertical"
         }
       ],
-      "value": "form",
+      "value": "form-horizontal",
       "tooltip": "Choose a layout"
     }
   ]

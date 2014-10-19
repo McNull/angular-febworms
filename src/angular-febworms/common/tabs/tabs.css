@@ -8,23 +8,3 @@
 	border-top: none;
 	border-radius: 0px 0px 4px 4px;
 }
-
-.febworms-tabs > .nav-tabs a {
-	color: #999;
-	font-weight: 300;
-}
-
-.febworms-tabs > .nav-tabs a:hover {
-	background-color: inherit;
-	color: #333;
-}
-
-.febworms-tabs > .nav-tabs .active a {
-	color: #333;
-	font-weight: normal;
-	border-bottom: 1px solid #fff !important;
-}
-
-.febworms-tabs {
-  margin-bottom: 10px;
-}

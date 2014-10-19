@@ -1,6 +1,6 @@
 <div class="febworms-tabs tabbable">
   <ul class="nav nav-tabs">
-    <li ng-repeat="tab in tabs.items" ng-class="{ active: tab === tabs.active }">
+    <li ng-repeat="tab in tabs.items" ng-class="{ active: tab === tabs.active, disabled: tab.disabled }">
       <a href="" ng-click="tabs.activate(tab)">{{ tab.title }}</a>
     </li>
   </ul>

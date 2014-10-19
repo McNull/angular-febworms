@@ -25,6 +25,57 @@ describe('febworms-tabs-controller', function() {
 
   });
 
+  describe('when activating panes', function() {
+
+    it('should set the active property to the pane', function() {
+
+      // Arrange
+
+      var controller = $controller('febwormsTabsController', {
+        $scope: $scope
+      });
+
+      var pane1 = {}, pane2 = {};
+
+      controller.add(pane1);
+      controller.add(pane2);
+
+      // Act
+
+      controller.activate(pane2);
+
+      // Assert
+
+      expect(controller.active).toBe(pane2);
+    });
+
+    it('should not activate a disabled pane', function() {
+
+      // Arrange
+
+      var controller = $controller('febwormsTabsController', {
+        $scope: $scope
+      });
+
+      var pane1 = {}, pane2 = { disabled: true };
+
+      controller.add(pane1);
+      controller.add(pane2);
+
+      controller.activate(pane1);
+
+      // Act
+
+      controller.activate(pane2);
+
+      // Assert
+
+      expect(controller.active).toBe(pane1);
+
+    });
+
+  });
+
   describe('when adding panes', function() {
 
     it('should add pane to collection', function() {
