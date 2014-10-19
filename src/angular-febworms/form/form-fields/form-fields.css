@@ -1,0 +1,17 @@
+
+
+
+.form .control-label, .febworms-edit-palette .control-label {
+  float: none;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+}
+
+.form .febworms-field-inner > div, .form .febworms-property-field > div, .febworms-edit-palette .febworms-field-inner > div {
+  margin-left: 0;
+  width: 100%;
+  float: none;
+  padding: 0;
+}
+

@@ -1,16 +1,25 @@
 
-.febworms-edit-palette .controls {
+/*.febworms-edit-palette .controls {*/
   /*margin-left: 0;*/
-  width: 100%;
-}
+  /*width: 100%;*/
+/*}*/
 
-.febworms-edit-palette .control-label {
-  float: none;
-  width: auto;
-  padding-top: 0;
-  text-align: left;
-}
+/*.febworms-edit-palette .control-label {*/
+  /*float: none;*/
+  /*width: 100%;*/
+  /*padding-top: 0;*/
+  /*text-align: left;*/
+/*}*/
 
+/*.febworms-edit-palette .febworms-field-inner > div {*/
+  /*margin-left: 0;*/
+  /*width: 100%;*/
+  /*float: none;*/
+/*}*/
+
+.febworms-edit-palette .form-group {
+  margin: 0px;
+}
 .febworms-field-drag {
   opacity: 0.8;
 }
@@ -39,9 +48,7 @@
   left: auto;
 }
 
-.febworms-edit-palette .febworms-field-inner > div {
-  margin-left: 0;
-}
+
 /*@media (min-width: 768px) and (max-width: 979px) {*/
   /*.febworms-edit-palette select,*/
   /*.febworms-edit-palette input,*/

@@ -1,0 +1,18 @@
+<form class="{{ form.layout }}" name="form.$state">
+
+  <fieldset>
+    <legend>Custom Form Information</legend>
+    <div class="row">
+      <div febworms-form
+           febworms-schema="formMetaInfo"
+           febworms-form-data="form"
+           class="col-sm-8">
+      </div>
+    </div>
+  </fieldset>
+
+  <div febworms-edit
+       febworms-schema="form.schema">
+  </div>
+
+</form>

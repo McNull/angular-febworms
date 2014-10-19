@@ -62,8 +62,10 @@ angular.module('febworms').controller('febwormsEditCanvasController', function (
 
       if (source == 'palette') {
         $scope.schemaCtrl.addField(field, $scope.dragPlaceholder.index);
+
       } else if (source == 'canvas') {
         $scope.schemaCtrl.moveField(index, $scope.dragPlaceholder.index);
+
         // fields.splice(index, 1);
         // fields.splice($scope.dragPlaceholder.index, 0, field);
       }

@@ -22,7 +22,7 @@ describe('febworms-edit-canvas-directive', function() {
 
       // Needed for the require directive flag
       
-      $element = angular.element('<div></div>');
+      $element = angular.element('<div ng-form></div>');
       $element.data('$febwormsEditController', editCtrlMock);
       $element.data('$febwormsSchemaController', schemaCtrlMock);
       

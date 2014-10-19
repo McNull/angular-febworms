@@ -1,3 +1,8 @@
+.form .febworms-edit {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
 .febworms-edit-canvas .febworms-field, .febworms-edit-palette .febworms-field {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -22,7 +27,7 @@
 
 .febworms-edit-canvas-field .form-group, .febworms-edit-palette .form-group {
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 
 .febworms-field {

@@ -2,3 +2,12 @@
 .febworms-field-inner .controls > div > .checkbox:first-child {
   padding-top: 5px;
 }
+
+.febworms-form .radio, .febworms-form .checkbox {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.form-horizontal .febworms-form .radio, .form-horizontal .febworms-form .checkbox {
+  margin-bottom: 0px;
+}

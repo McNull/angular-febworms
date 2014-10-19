@@ -1,40 +1,21 @@
-<div class="container" ng-controller="FormEditCtrl">
-  <form class="form" name="form.$state">
-    <legend>
-      <span>{{ form.name || 'Form' }}</span>
-    </legend>
+<div class="container app-form-edit" ng-controller="FormEditCtrl">
 
-    <!-- Additional form data -->
+  <h1>
+    Edit
+  </h1>
 
-    <div class="row">
-      <div class="form-group col-sm-8"
-           ng-class="{ 'has-error': form.$state.formName.$invalid && form.$state.formName.$dirty }">
-        <label>Name</label>
-        <input type="text"
-               ng-model="form.name"
-               class="form-control"
-               placeholder="The name of the form"
-               name="formName" required>
-        <div febworms-validation-summary="formName"></div>
-      </div>
+  <div ng-include="'app/forms/edit/edit-btn-bar.html'"></div>
+
+
+  <div ng-if="!toggles.preview" ng-include="'app/forms/edit/form-edit.html'"></div>
+
+  <div ng-if="toggles.preview" ng-include="'app/forms/edit/form-preview.html'"></div>
+
+  <div class="row" ng-if="toggles.debug">
+    <div class="col-sm-12">
+      <div jsonify="form"></div>
     </div>
+  </div>
 
-    <!-- The schema of the form -->
-
-    <div febworms-edit
-         febworms-schema="form.schema">
-    </div>
-
-    <!-- Form action buttons -->
-
-    <div class="row">
-      <div class="form-group col-sm-12">
-        <button type="submit" class="btn btn-primary" ng-click="onSave()" ng-class="{ 'disabled': form.$state.$invalid }">Save</button>
-        <button type="button" class="btn btn-default" ng-class="{ 'disabled': form.$state.$invalid }">Preview</button>
-        <button type="button" class="btn btn-default" ng-click="onClose()">Close</button>
-      </div>
-    </div>
-
-  </form>
 </div>
 

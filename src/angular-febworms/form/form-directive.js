@@ -21,6 +21,8 @@ angular.module('febworms').directive('febwormsForm', function(febwormsFormCompil
 }).factory('febwormsFormCompileFn', function(febwormsFormLinkFn) {
   return function($element, $attrs) {
 
+    $element.addClass('febworms-form');
+
     var noRender = $attrs.febwormsNoRender;
     
     if (noRender !== 'true') {

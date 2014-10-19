@@ -1,0 +1,13 @@
+<div class="app-form-edit-btn-bar">
+  <button type="submit" class="btn btn-primary" ng-click="onSave()"
+          ng-class="{ 'disabled': !saveAllowed() }" ng-if="!formPreview">Save
+  </button>
+  <button type="button" class="btn btn-default"
+          ng-click="togglePreview()"
+          ng-class="{ 'disabled': !togglePreviewAllowed(), 'active': toggles.preview }">Preview
+  </button>
+  <button type="button" class="btn btn-default" ng-click="toggles.debug = !toggles.debug"
+          ng-class="{ active: toggles.debug }">Debug
+  </button>
+  <button type="button" class="btn btn-default" ng-click="onClose()">Close</button>
+</div>

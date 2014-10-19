@@ -99,6 +99,36 @@ describe('febworms-tabs-pane-directive', function() {
     });
 
 
+    it('should add auto renderAlways property', function() {
+
+      // Act
+
+      linkFn($scope, $element, $attrs, [tabsCtrl]);
+
+      // Assert
+
+      expect($scope.pane.renderAlways).toBeDefined();
+      expect($scope.pane.renderAlways).toBe(false);
+
+    });
+
+
+    it('should set provided renderAlways property value', function() {
+
+      // Arrange
+
+      $attrs.febwormsTabsPaneRenderAlways = "true";
+      // Act
+
+      linkFn($scope, $element, $attrs, [tabsCtrl]);
+
+      // Assert
+
+      expect($scope.pane.renderAlways).toBeDefined();
+      expect($scope.pane.renderAlways).toBe(true);
+
+    });
+
     it('should add the pane to the tabs controller', function() {
 
       // Arrange
@@ -191,6 +221,94 @@ describe('febworms-tabs-pane-directive', function() {
 
       expect(whenNotActive).toBe(true); // has class ng-hide
       expect(whenActive).toBe(false);   // does not have class ng-hide
+
+    });
+
+    it('should only render when active', function() {
+
+      // Arrange
+
+      var template =
+        '<div febworms-tabs="tabs">' +
+          '<div febworms-tabs-pane="Should be rendered">Tab 1</div>' +
+          '<div febworms-tabs-pane="Should NOT be rendered">Tab 2</div>' +
+        '</div>';
+
+      var $element = $compile(template)($scope);
+      $scope.$digest();
+
+      var tabsCtrl = $scope.tabs;
+
+      // Act
+
+      tabsCtrl.activate(tabsCtrl.items[0]);
+      $scope.$digest();
+
+      var result1 = {
+        tab1: $element.text().indexOf('Tab 1'),
+        tab2: $element.text().indexOf('Tab 2')
+      };
+
+      tabsCtrl.activate(tabsCtrl.items[1]);
+      $scope.$digest();
+
+      var result2 = {
+        tab1: $element.text().indexOf('Tab 1'),
+        tab2: $element.text().indexOf('Tab 2')
+      };
+
+
+      // Assert
+
+      expect(result1.tab1).not.toBe(-1);
+      expect(result1.tab2).toBe(-1);
+
+      expect(result2.tab1).toBe(-1);
+      expect(result2.tab2).not.toBe(-1);
+
+    });
+
+    it('should only always render when forced', function() {
+
+      // Arrange
+
+      var template =
+        '<div febworms-tabs="tabs">' +
+        '<div febworms-tabs-pane="Should be rendered">Tab 1</div>' +
+        '<div febworms-tabs-pane="Should always be rendered" data-render-always="true">Tab 2</div>' +
+        '</div>';
+
+      var $element = $compile(template)($scope);
+      $scope.$digest();
+
+      var tabsCtrl = $scope.tabs;
+
+      // Act
+
+      tabsCtrl.activate(tabsCtrl.items[0]);
+      $scope.$digest();
+
+      var result1 = {
+        tab1: $element.text().indexOf('Tab 1'),
+        tab2: $element.text().indexOf('Tab 2')
+      };
+
+      tabsCtrl.activate(tabsCtrl.items[1]);
+      $scope.$digest();
+
+      var result2 = {
+        tab1: $element.text().indexOf('Tab 1'),
+        tab2: $element.text().indexOf('Tab 2')
+      };
+
+
+      // Assert
+
+      expect(result1.tab1).not.toBe(-1);
+      expect(result1.tab2).not.toBe(-1);
+
+      expect(result2.tab1).toBe(-1);
+      expect(result2.tab2).not.toBe(-1);
 
     });
 

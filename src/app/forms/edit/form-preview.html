@@ -1,0 +1,7 @@
+<form class="{{ form.layout }}" name="form.$state">
+  <fieldset>
+    <legend>{{ form.name }}</legend>
+    <p ng-if="form.description">{{ form.description }}</p>
+    <div febworms-form febworms-schema="form.schema" febworms-data="form.data"></div>
+  </fieldset>
+</form>

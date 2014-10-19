@@ -15,7 +15,8 @@ angular.module('febworms').directive('febwormsTabsPane', function(febwormsTabsPa
     $scope.pane = {
       title: $attrs.febwormsTabsPane || $attrs.title,
       order: parseInt($attrs.febwormsTabsPaneOrder || $attrs.order) || 10,
-      autoActive: !($attrs.febwormsTabsPaneAutoActive === "false" || $attrs.autoActive === "false")
+      autoActive: !($attrs.febwormsTabsPaneAutoActive === "false" || $attrs.autoActive === "false"),
+      renderAlways: $attrs.febwormsTabsPaneRenderAlways === "true" || $attrs.renderAlways === "true"
     };
 
     $scope.tabs.add($scope.pane);

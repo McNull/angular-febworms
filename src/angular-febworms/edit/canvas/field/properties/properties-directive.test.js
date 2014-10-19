@@ -1,36 +1,35 @@
 describe('febworms-edit-canvas-field-properties-directive', function() {
 
-  var $compile, $scope, schema, schemaCtrl = {
-      model: function() { return schema; }
-    };
+  var $compile, $scope, $templateCache;
 
   beforeEach(function() {
 
     module('febworms');
 
-    inject(function(_$compile_, _$rootScope_) {
+    inject(function(_$compile_, _$rootScope_, _$templateCache_) {
 
       $compile = _$compile_;
       $scope = _$rootScope_.$new();
+      $templateCache = _$templateCache_;
 
     });
   });
 
-  function setupElementAndScope(field, fields, template) {
+  function setupElementAndScope(field, template) {
     field = field || new febworms.Field('myType');
-    fields = fields || [field];
+//    fields = fields || [field];
 
-    if (_.indexOf(fields, field) === -1) {
-      fields.push(field);
-    }
+//    if (_.indexOf(fields, field) === -1) {
+//      fields.push(field);
+//    }
 
     $scope.myField = field;
-    schema = {
-      fields: fields
-    };
+//    schema = {
+//      fields: fields
+//    };
 
     var $fixture = angular.element('<div></div>');
-    $fixture.data('$febwormsSchemaController', schemaCtrl);
+    //$fixture.data('$febwormsSchemaController', schemaCtrl);
 
     template = template || '<div febworms-edit-canvas-field-properties="myField"></div>';
 
@@ -54,38 +53,125 @@ describe('febworms-edit-canvas-field-properties-directive', function() {
     expect(result.length).toBe(1);
   });
 
+  it('should set have a property placeholder object on scope', function() {
+
+    // Arrange
+
+    var $element = setupElementAndScope();
+
+    // Act
+
+    $compile($element)($scope);
+    $scope.$digest();
+
+    $element = $element.children().children();
+    $scope = $element.scope();
+
+    // Assert
+
+    expect($scope.property).toBeDefined();
+    expect($scope.property.tabs).toBeDefined();
+    expect($scope.property.tabs.items).toBeDefined();
+    expect($scope.property.tabs.items.length).toBe(1); // Debug pane
+
+  });
+
+  it('should set include property panes from renderinfo', function() {
+
+    // Arrange
+
+    var $element = setupElementAndScope();
+    var renderInfo = {
+      propertiesTemplateUrl: 'my-property-panes'
+    };
+
+    $templateCache.put('my-property-panes', '<div febworms-tabs-pane="tab1">tab1</div><div febworms-tabs-pane="tab2">tab2</div>');
+
+    // Act
+
+    $compile($element)($scope);
+    $scope.$digest();
+
+    $element = $element.children().children();
+    $scope = $element.scope();
+
+    $scope.renderInfo = renderInfo;
+    $scope.$digest();
+
+    // Assert
+
+    expect($element.text().indexOf('tab1')).not.toBe(-1);
+    expect($element.text().indexOf('tab2')).not.toBe(-1);
+    expect($scope.property.tabs.items.length).toBe(3); // + 1 debug tab
+
+  });
+
+  it('should set all property panes to renderAlways = true, expect the debug pane', function() {
+
+    // Arrange
+
+    var $element = setupElementAndScope();
+    var renderInfo = {
+      propertiesTemplateUrl: 'my-property-panes'
+    };
+
+    $templateCache.put('my-property-panes', '<div febworms-tabs-pane="tab1">tab1</div><div febworms-tabs-pane="tab2">tab2</div>');
+
+    // Act
+
+    $compile($element)($scope);
+    $scope.$digest();
+
+    $element = $element.children().children();
+    $scope = $element.scope();
+
+    $scope.renderInfo = renderInfo;
+    $scope.$digest();
+
+    // Assert
+
+    var tabItems = $scope.property.tabs.items;
+
+    // The order of the tabs is tab1, tab2, debug (the debug pane has a high order value set)
+
+    expect(tabItems[0].renderAlways).toBe(true);
+    expect(tabItems[1].renderAlways).toBe(true);
+    expect(tabItems[2].renderAlways).toBe(false); // Debug should be false (performance)
+
+  });
+
   // Moved to common
-  // describe('field name validation', function() {
-
-  //   it('should set the field validation to invalid if the form validation fails', function() {
-
-  //     // Arrange
-
-  //     var $element = setupElementAndScope();
-
-  //     $scope.myField.name = "valid"; // Name is a required value
-
-  //     $compile($element)($scope);
-
-  //     $scope.$digest();
-
-  //     var before = $scope.myField.$_invalid;
-
-  //     // Act
-
-  //     $scope.myField.name = "";
-
-  //     $scope.$digest();
-
-  //     var after = $scope.myField.$_invalid;
-
-  //     // Assert
-
-  //     expect(before).toBeFalsy();
-  //     expect(after).toBeTruthy();
-
-  //   });
-
+//  describe('field name validation', function() {
+//
+//    it('should set the field validation to invalid if the form validation fails', function () {
+//
+//      // Arrange
+//
+//      var $element = setupElementAndScope();
+//
+//      $scope.myField.name = "valid"; // Name is a required value
+//
+//      $compile($element)($scope);
+//
+//      $scope.$digest();
+//
+//      var before = $scope.myField.$_invalid;
+//
+//      // Act
+//
+//      $scope.myField.name = "";
+//
+//      $scope.$digest();
+//
+//      var after = $scope.myField.$_invalid;
+//
+//      // Assert
+//
+//      expect(before).toBeFalsy();
+//      expect(after).toBeTruthy();
+//
+//    });
+//  });
   //   it('should set the field validation to valid if the form validation succeeds', function() {
 
   //     // Arrange
