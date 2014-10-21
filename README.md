@@ -3,6 +3,10 @@ angular-febworms
 
 Drag and drop dynamic bootstrap forms with angular.
 
+## Discontinued
+
+Use [angular-form-gen](https://github.com/McNull/angular-form-gen) instead.
+
 ## Description
 
 FebWorms allows the most _stupidious_ users to design forms in a _bob-ross-wysiwyg_ environment. 
